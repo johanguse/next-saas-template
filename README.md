@@ -58,7 +58,7 @@ pnpm dev
 
 - [x] Fix Vaul drawer for mobile sign in  
 - [ ] Add resend for subscriptions  
-- [ ] Update OG image  
+- [x] Update OG image  
 - [ ] Update documentation
 - [ ] Use Server Actions
 - [ ] Switch subscription plan
