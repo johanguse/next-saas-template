@@ -43,7 +43,8 @@ export function PricingCards({ userId, subscriptionPlan }: PricingCardsProps) {
         <Switch
           checked={isYearly}
           onCheckedChange={toggleBilling}
-          aria-readonly
+          role="switch"
+          aria-label="switch-year"
         />
         <span>Annual Billing</span>
       </div>
