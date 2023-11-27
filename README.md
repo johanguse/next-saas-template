@@ -56,7 +56,7 @@ pnpm dev
 
 ## Roadmap
 
-- [ ] Fix Vaul drawer for mobile sign in  
+- [x] Fix Vaul drawer for mobile sign in  
 - [ ] Add resend for subscriptions  
 - [ ] Update OG image  
 - [ ] Update documentation
@@ -64,8 +64,6 @@ pnpm dev
 - [ ] Switch subscription plan
 
 ## Tech Stack + Features
-
-https://github.com/johanguse/next-saas-template/assets/62285783/a5f0da5a-9b80-41ec-ab5b-01d5121256d5
 
 ### Frameworks
 
