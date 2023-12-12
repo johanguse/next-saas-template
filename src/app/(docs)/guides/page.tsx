@@ -1,14 +1,14 @@
-import Link from "next/link"
-import { allGuides } from "contentlayer/generated"
-import { compareDesc } from "date-fns"
+import Link from 'next/link'
+import { allGuides } from 'contentlayer/generated'
+import { compareDesc } from 'date-fns'
 
-import { formatDate } from "@/lib/utils"
-import { DocsPageHeader } from "@/components/docs/page-header"
+import { formatDate } from '@/lib/utils'
+import { DocsPageHeader } from '@/components/docs/page-header'
 
 export const metadata = {
-  title: "Guides",
+  title: 'Guides',
   description:
-    "This section includes end-to-end guides for developing Next.js 13 apps.",
+    'This section includes end-to-end guides for developing Next.js 13 apps.',
 }
 
 export default function GuidesPage() {

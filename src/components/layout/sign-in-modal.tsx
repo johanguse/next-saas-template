@@ -1,17 +1,17 @@
-"use client";
+'use client'
 
-import { useState } from "react";
+import { useState } from 'react'
+import { signIn } from 'next-auth/react'
 
-import { Icons } from "@/components/shared/icons";
-import { Modal } from "@/components/shared/modal";
-import { Button } from "@/components/ui/button";
-import { siteConfig } from "@/config/site";
-import { useSigninModal } from "@/hooks/use-signin-modal";
-import { signIn } from "next-auth/react";
+import { siteConfig } from '@/config/site'
+import { useSigninModal } from '@/hooks/use-signin-modal'
+import { Button } from '@/components/ui/button'
+import { Icons } from '@/components/shared/icons'
+import { Modal } from '@/components/shared/modal'
 
 export const SignInModal = () => {
-  const signInModal = useSigninModal();
-  const [signInClicked, setSignInClicked] = useState(false);
+  const signInModal = useSigninModal()
+  const [signInClicked, setSignInClicked] = useState(false)
 
   return (
     <Modal showModal={signInModal.isOpen} setShowModal={signInModal.onClose}>
@@ -32,24 +32,24 @@ export const SignInModal = () => {
             variant="default"
             disabled={signInClicked}
             onClick={() => {
-              setSignInClicked(true);
-              signIn("google", { redirect: false }).then(() =>
+              setSignInClicked(true)
+              signIn('google', { redirect: false }).then(() =>
                 // TODO: fix this without setTimeOut(), modal closes too quickly. Idea: update value before redirect
                 setTimeout(() => {
-                  signInModal.onClose();
+                  signInModal.onClose()
                 }, 1000)
-              );
+              )
             }}
           >
             {signInClicked ? (
               <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
             ) : (
               <Icons.google className="mr-2 h-4 w-4" />
-            )}{" "}
+            )}{' '}
             Sign In with Google
           </Button>
         </div>
       </div>
     </Modal>
-  );
-};
+  )
+}

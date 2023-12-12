@@ -1,19 +1,19 @@
-"use client"
+'use client'
 
-import * as React from "react"
-import { useSearchParams } from "next/navigation"
-import { zodResolver } from "@hookform/resolvers/zod"
-import { signIn } from "next-auth/react"
-import { useForm } from "react-hook-form"
-import * as z from "zod"
+import * as React from 'react'
+import { useSearchParams } from 'next/navigation'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { signIn } from 'next-auth/react'
+import { useForm } from 'react-hook-form'
+import * as z from 'zod'
 
-import { cn } from "@/lib/utils"
-import { userAuthSchema } from "@/lib/validations/auth"
-import { buttonVariants } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { toast } from "@/components/ui/use-toast"
-import { Icons } from "@/components/shared/icons"
+import { cn } from '@/lib/utils'
+import { userAuthSchema } from '@/lib/validations/auth'
+import { buttonVariants } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
+import { toast } from '@/components/ui/use-toast'
+import { Icons } from '@/components/shared/icons'
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {
   type?: string
@@ -36,10 +36,10 @@ export function UserAuthForm({ className, type, ...props }: UserAuthFormProps) {
   async function onSubmit(data: FormData) {
     setIsLoading(true)
 
-    const signInResult = await signIn("email", {
+    const signInResult = await signIn('email', {
       email: data.email.toLowerCase(),
       redirect: false,
-      callbackUrl: searchParams?.get("from") || "/dashboard",
+      callbackUrl: searchParams?.get('from') || '/dashboard',
     })
 
     setIsLoading(false)
@@ -47,20 +47,20 @@ export function UserAuthForm({ className, type, ...props }: UserAuthFormProps) {
     // TODO: replace shadcn toast by react-hot-toast
     if (!signInResult?.ok) {
       return toast({
-        title: "Something went wrong.",
-        description: "Your sign in request failed. Please try again.",
-        variant: "destructive",
+        title: 'Something went wrong.',
+        description: 'Your sign in request failed. Please try again.',
+        variant: 'destructive',
       })
     }
 
     return toast({
-      title: "Check your email",
-      description: "We sent you a login link. Be sure to check your spam too.",
+      title: 'Check your email',
+      description: 'We sent you a login link. Be sure to check your spam too.',
     })
   }
 
   return (
-    <div className={cn("grid gap-6", className)} {...props}>
+    <div className={cn('grid gap-6', className)} {...props}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="grid gap-2">
           <div className="grid gap-1">
@@ -75,7 +75,7 @@ export function UserAuthForm({ className, type, ...props }: UserAuthFormProps) {
               autoComplete="email"
               autoCorrect="off"
               disabled={isLoading || isGoogleLoading}
-              {...register("email")}
+              {...register('email')}
             />
             {errors?.email && (
               <p className="px-1 text-xs text-red-600">
@@ -87,9 +87,7 @@ export function UserAuthForm({ className, type, ...props }: UserAuthFormProps) {
             {isLoading && (
               <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
             )}
-            {type === "register"
-              ? "Sign Up with Email"
-              : "Sign In with Email"}
+            {type === 'register' ? 'Sign Up with Email' : 'Sign In with Email'}
           </button>
         </div>
       </form>
@@ -105,10 +103,10 @@ export function UserAuthForm({ className, type, ...props }: UserAuthFormProps) {
       </div>
       <button
         type="button"
-        className={cn(buttonVariants({ variant: "outline" }))}
+        className={cn(buttonVariants({ variant: 'outline' }))}
         onClick={() => {
           setIsGoogleLoading(true)
-          signIn("google")
+          signIn('google')
         }}
         disabled={isLoading || isGoogleLoading}
       >
@@ -116,7 +114,7 @@ export function UserAuthForm({ className, type, ...props }: UserAuthFormProps) {
           <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
         ) : (
           <Icons.google className="mr-2 h-4 w-4" />
-        )}{" "}
+        )}{' '}
         Google
       </button>
     </div>

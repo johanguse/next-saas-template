@@ -1,28 +1,27 @@
-import { redirect } from 'next/navigation';
+import { redirect } from 'next/navigation'
 
-import { BillingInfo } from '@/components/billing-info';
-import { DashboardHeader } from '@/components/dashboard/header';
-import { DashboardShell } from '@/components/dashboard/shell';
-import { Icons } from '@/components/shared/icons';
-import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
-
-import { authOptions } from '@/lib/auth';
-import { getCurrentUser } from '@/lib/session';
-import { getUserSubscriptionPlan } from '@/lib/subscription';
+import { authOptions } from '@/lib/auth'
+import { getCurrentUser } from '@/lib/session'
+import { getUserSubscriptionPlan } from '@/lib/subscription'
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
+import { BillingInfo } from '@/components/billing-info'
+import { DashboardHeader } from '@/components/dashboard/header'
+import { DashboardShell } from '@/components/dashboard/shell'
+import { Icons } from '@/components/shared/icons'
 
 export const metadata = {
   title: 'Billing',
   description: 'Manage billing and your subscription plan.',
-};
+}
 
 export default async function BillingPage() {
-  const user = await getCurrentUser();
+  const user = await getCurrentUser()
 
   if (!user) {
-    redirect(authOptions?.pages?.signIn || '/login');
+    redirect(authOptions?.pages?.signIn || '/login')
   }
 
-  const subscriptionPlan = await getUserSubscriptionPlan(user.id);
+  const subscriptionPlan = await getUserSubscriptionPlan(user.id)
 
   return (
     <DashboardShell>
@@ -51,5 +50,5 @@ export default async function BillingPage() {
         <BillingInfo subscriptionPlan={subscriptionPlan} />
       </div>
     </DashboardShell>
-  );
+  )
 }

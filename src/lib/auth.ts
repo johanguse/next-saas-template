@@ -1,21 +1,22 @@
-import { PrismaAdapter } from "@next-auth/prisma-adapter"
-import { NextAuthOptions } from "next-auth"
-import EmailProvider from "next-auth/providers/email"
-import GoogleProvider from "next-auth/providers/google"
+import MagicLinkEmail from '@/emails/magic-link-email'
+import { env } from '@/root/env.mjs'
+import { PrismaAdapter } from '@next-auth/prisma-adapter'
+import { NextAuthOptions } from 'next-auth'
+import EmailProvider from 'next-auth/providers/email'
+import GoogleProvider from 'next-auth/providers/google'
 
-import { siteConfig } from "@/config/site"
-import MagicLinkEmail from "@/emails/magic-link-email"
-import { env } from "@/root/env.mjs";
-import { prisma } from "@/lib/db"
-import { resend } from "./email"
+import { siteConfig } from '@/config/site'
+import { prisma } from '@/lib/db'
+
+import { resend } from './email'
 
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
   session: {
-    strategy: "jwt",
+    strategy: 'jwt',
   },
   pages: {
-    signIn: "/login",
+    signIn: '/login',
   },
   providers: [
     GoogleProvider({
@@ -32,32 +33,37 @@ export const authOptions: NextAuthOptions = {
             name: true,
             emailVerified: true,
           },
-        });
+        })
 
-        const userVerified = user?.emailVerified ? true : false;
-        const authSubject = userVerified ? `Sign-in link for ${siteConfig.name}` : "Activate your account";
+        const userVerified = user?.emailVerified ? true : false
+        const authSubject = userVerified
+          ? `Sign-in link for ${siteConfig.name}`
+          : 'Activate your account'
 
         try {
           const result = await resend.emails.send({
             from: 'SaaS Starter App <onboarding@resend.dev>',
-            to: process.env.NODE_ENV === "development" ? 'delivered@resend.dev' : identifier,
+            to:
+              process.env.NODE_ENV === 'development'
+                ? 'delivered@resend.dev'
+                : identifier,
             subject: authSubject,
             react: MagicLinkEmail({
               firstName: user?.name as string,
               actionUrl: url,
-              mailType: userVerified ? "login" : "register",
-              siteName: siteConfig.name
+              mailType: userVerified ? 'login' : 'register',
+              siteName: siteConfig.name,
             }),
             // Set this to prevent Gmail from threading emails.
             // More info: https://resend.com/changelog/custom-email-headers
             headers: {
-              'X-Entity-Ref-ID': new Date().getTime() + "",
+              'X-Entity-Ref-ID': new Date().getTime() + '',
             },
-          });
+          })
 
           // console.log(result)
         } catch (error) {
-          throw new Error("Failed to send verification email.")
+          throw new Error('Failed to send verification email.')
         }
       },
     }),

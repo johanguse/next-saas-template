@@ -1,10 +1,10 @@
-"use client"
+'use client'
 
-import * as React from "react"
+import * as React from 'react'
 
-import { cn } from "@/lib/utils"
-import { Input } from "@/components/ui/input"
-import { toast } from "@/components/ui/use-toast"
+import { cn } from '@/lib/utils'
+import { Input } from '@/components/ui/input'
+import { toast } from '@/components/ui/use-toast'
 
 interface DocsSearchProps extends React.HTMLAttributes<HTMLFormElement> {}
 
@@ -13,7 +13,7 @@ export function DocsSearch({ className, ...props }: DocsSearchProps) {
     event.preventDefault()
 
     return toast({
-      title: "Not implemented",
+      title: 'Not implemented',
       description: "We're still working on the search.",
     })
   }
@@ -21,7 +21,7 @@ export function DocsSearch({ className, ...props }: DocsSearchProps) {
   return (
     <form
       onSubmit={onSubmit}
-      className={cn("relative w-full", className)}
+      className={cn('relative w-full', className)}
       {...props}
     >
       <Input

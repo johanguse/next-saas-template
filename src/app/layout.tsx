@@ -1,13 +1,14 @@
-import "@/styles/globals.css";
+import '@/styles/globals.css'
 
-import { fontHeading, fontSans, fontUrban } from "@/assets/fonts";
-import { Analytics } from "@/components/analytics";
-import { ModalProvider } from "@/components/modal-provider";
-import { Providers } from "@/components/providers";
-import { TailwindIndicator } from "@/components/tailwind-indicator";
-import { Toaster } from "@/components/ui/toaster";
-import { siteConfig } from "@/config/site";
-import { cn } from "@/lib/utils";
+import { fontHeading, fontSans, fontUrban } from '@/assets/fonts'
+
+import { siteConfig } from '@/config/site'
+import { cn } from '@/lib/utils'
+import { Toaster } from '@/components/ui/toaster'
+import { Analytics } from '@/components/analytics'
+import { ModalProvider } from '@/components/modal-provider'
+import { Providers } from '@/components/providers'
+import { TailwindIndicator } from '@/components/tailwind-indicator'
 
 interface RootLayoutProps {
   children: React.ReactNode
@@ -20,50 +21,49 @@ export const metadata = {
   },
   description: siteConfig.description,
   keywords: [
-    "Next.js",
-    "React",
-    "Tailwind CSS",
-    "Server Components",
-    "Radix UI",
+    'Next.js',
+    'React',
+    'Tailwind CSS',
+    'Server Components',
+    'Radix UI',
   ],
   authors: [
     {
-      name: "johanguse",
+      name: 'johanguse',
     },
   ],
-  creator: "johanguse",
+  creator: 'johanguse',
   metadataBase: new URL(siteConfig.url),
   openGraph: {
-    type: "website",
-    locale: "en_US",
+    type: 'website',
+    locale: 'en_US',
     url: siteConfig.url,
     title: siteConfig.name,
     description: siteConfig.description,
     siteName: siteConfig.name,
   },
   twitter: {
-    card: "summary_large_image",
+    card: 'summary_large_image',
     title: siteConfig.name,
     description: siteConfig.description,
     images: [`${siteConfig.url}/og.jpg`],
-    creator: "@johanguse",
+    creator: '@johanguse',
   },
   icons: {
-    icon: "/favicons/favicon.ico",
-    shortcut: "/favicons/favicon-16x16.png",
-    apple: "/favicons/apple-touch-icon.png",
+    icon: '/favicons/favicon.ico',
+    shortcut: '/favicons/favicon-16x16.png',
+    apple: '/favicons/apple-touch-icon.png',
   },
   manifest: `${siteConfig.url}/site.webmanifest`,
 }
 
 export default function RootLayout({ children }: RootLayoutProps) {
-
   return (
     <html lang="en" suppressHydrationWarning>
       <head />
       <body
         className={cn(
-          "min-h-screen bg-background font-sans antialiased",
+          'min-h-screen bg-background font-sans antialiased',
           fontSans.variable,
           fontUrban.variable,
           fontHeading.variable

@@ -1,14 +1,14 @@
-import { Metadata } from "next"
-import Link from "next/link"
+import { Metadata } from 'next'
+import Link from 'next/link'
 
-import { cn } from "@/lib/utils"
-import { buttonVariants } from "@/components/ui/button"
-import { Icons } from "@/components/shared/icons"
-import { UserAuthForm } from "@/components/forms/user-auth-form"
+import { cn } from '@/lib/utils'
+import { buttonVariants } from '@/components/ui/button'
+import { UserAuthForm } from '@/components/forms/user-auth-form'
+import { Icons } from '@/components/shared/icons'
 
 export const metadata: Metadata = {
-  title: "Login",
-  description: "Login to your account",
+  title: 'Login',
+  description: 'Login to your account',
 }
 
 export default function LoginPage() {
@@ -17,8 +17,8 @@ export default function LoginPage() {
       <Link
         href="/"
         className={cn(
-          buttonVariants({ variant: "outline", size: "sm" }),
-          "absolute left-4 top-4 md:left-8 md:top-8"
+          buttonVariants({ variant: 'outline', size: 'sm' }),
+          'absolute left-4 top-4 md:left-8 md:top-8'
         )}
       >
         <>

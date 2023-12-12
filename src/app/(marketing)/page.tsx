@@ -1,12 +1,10 @@
-import Link from 'next/link';
+import Link from 'next/link'
+import Balancer from 'react-wrap-balancer'
 
-import Balancer from 'react-wrap-balancer';
-
-import { Icons } from '@/components/shared/icons';
-import { buttonVariants } from '@/components/ui/button';
-
-import { siteConfig } from '@/config/site';
-import { cn } from '@/lib/utils';
+import { siteConfig } from '@/config/site'
+import { cn } from '@/lib/utils'
+import { buttonVariants } from '@/components/ui/button'
+import { Icons } from '@/components/shared/icons'
 
 export default async function IndexPage() {
   return (
@@ -100,7 +98,7 @@ export default async function IndexPage() {
         </div>
       </section>
     </>
-  );
+  )
 }
 
 const features = [
@@ -282,4 +280,4 @@ const features = [
       </svg>
     ),
   },
-];
+]

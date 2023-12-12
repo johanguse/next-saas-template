@@ -1,18 +1,19 @@
-import { notFound } from "next/navigation"
-import { allAuthors, allPosts } from "contentlayer/generated"
+import { notFound } from 'next/navigation'
+import { allAuthors, allPosts } from 'contentlayer/generated'
 
-import { Mdx } from "@/components/content/mdx-components"
+import { Mdx } from '@/components/content/mdx-components'
 
-import "@/styles/mdx.css"
-import { Metadata } from "next"
-import Image from "next/image"
-import Link from "next/link"
+import '@/styles/mdx.css'
 
-import { env } from "@/root/env.mjs";
-import { absoluteUrl, cn, formatDate } from "@/lib/utils"
-import { buttonVariants } from "@/components/ui/button"
-import { Icons } from "@/components/shared/icons"
-import Balancer from "react-wrap-balancer"
+import { Metadata } from 'next'
+import Image from 'next/image'
+import Link from 'next/link'
+import { env } from '@/root/env.mjs'
+import Balancer from 'react-wrap-balancer'
+
+import { absoluteUrl, cn, formatDate } from '@/lib/utils'
+import { buttonVariants } from '@/components/ui/button'
+import { Icons } from '@/components/shared/icons'
 
 interface PostPageProps {
   params: {
@@ -21,7 +22,7 @@ interface PostPageProps {
 }
 
 async function getPostFromParams(params) {
-  const slug = params?.slug?.join("/")
+  const slug = params?.slug?.join('/')
   const post = allPosts.find((post) => post.slugAsParams === slug)
 
   if (!post) {
@@ -43,9 +44,9 @@ export async function generateMetadata({
   const url = env.NEXT_PUBLIC_APP_URL
 
   const ogUrl = new URL(`${url}/api/og`)
-  ogUrl.searchParams.set("heading", post.title)
-  ogUrl.searchParams.set("type", "Blog Post")
-  ogUrl.searchParams.set("mode", "dark")
+  ogUrl.searchParams.set('heading', post.title)
+  ogUrl.searchParams.set('type', 'Blog Post')
+  ogUrl.searchParams.set('mode', 'dark')
 
   return {
     title: post.title,
@@ -56,7 +57,7 @@ export async function generateMetadata({
     openGraph: {
       title: post.title,
       description: post.description,
-      type: "article",
+      type: 'article',
       url: absoluteUrl(post.slug),
       images: [
         {
@@ -68,7 +69,7 @@ export async function generateMetadata({
       ],
     },
     twitter: {
-      card: "summary_large_image",
+      card: 'summary_large_image',
       title: post.title,
       description: post.description,
       images: [ogUrl.toString()],
@@ -77,10 +78,10 @@ export async function generateMetadata({
 }
 
 export async function generateStaticParams(): Promise<
-  PostPageProps["params"][]
+  PostPageProps['params'][]
 > {
   return allPosts.map((post) => ({
-    slug: post.slugAsParams.split("/"),
+    slug: post.slugAsParams.split('/'),
   }))
 }
 
@@ -100,8 +101,8 @@ export default async function PostPage({ params }: PostPageProps) {
       <Link
         href="/blog"
         className={cn(
-          buttonVariants({ variant: "ghost" }),
-          "absolute left-[-200px] top-14 hidden xl:inline-flex"
+          buttonVariants({ variant: 'ghost' }),
+          'absolute left-[-200px] top-14 hidden xl:inline-flex'
         )}
       >
         <Icons.chevronLeft className="mr-2 h-4 w-4" />
@@ -117,9 +118,7 @@ export default async function PostPage({ params }: PostPageProps) {
           </time>
         )}
         <h1 className="mt-2 inline-block font-heading text-4xl leading-tight lg:text-5xl">
-          <Balancer>
-            {post.title}
-          </Balancer>
+          <Balancer>{post.title}</Balancer>
         </h1>
         {authors?.length ? (
           <div className="mt-4 flex space-x-4">
@@ -162,7 +161,7 @@ export default async function PostPage({ params }: PostPageProps) {
       <Mdx code={post.body.code} />
       <hr className="mt-12" />
       <div className="flex justify-center py-6 lg:py-10">
-        <Link href="/blog" className={cn(buttonVariants({ variant: "ghost" }))}>
+        <Link href="/blog" className={cn(buttonVariants({ variant: 'ghost' }))}>
           <Icons.chevronLeft className="mr-2 h-4 w-4" />
           See all posts
         </Link>

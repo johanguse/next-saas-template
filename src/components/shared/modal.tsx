@@ -1,17 +1,16 @@
-'use client';
+'use client'
 
-import { Drawer } from 'vaul';
+import { Drawer } from 'vaul'
 
-import { Dialog, DialogContent } from '@/components/ui/dialog';
-
-import useMediaQuery from '@/hooks/use-media-query';
-import { cn } from '@/lib/utils';
+import { cn } from '@/lib/utils'
+import useMediaQuery from '@/hooks/use-media-query'
+import { Dialog, DialogContent } from '@/components/ui/dialog'
 
 interface ModalProps {
-  children: React.ReactNode;
-  className?: string;
-  showModal: boolean;
-  setShowModal: () => void;
+  children: React.ReactNode
+  className?: string
+  showModal: boolean
+  setShowModal: () => void
 }
 
 export function Modal({
@@ -20,7 +19,7 @@ export function Modal({
   showModal,
   setShowModal,
 }: ModalProps) {
-  const { isMobile } = useMediaQuery();
+  const { isMobile } = useMediaQuery()
 
   if (isMobile) {
     return (
@@ -41,7 +40,7 @@ export function Modal({
           <Drawer.Overlay />
         </Drawer.Portal>
       </Drawer.Root>
-    );
+    )
   }
   return (
     <Dialog open={showModal} onOpenChange={setShowModal}>
@@ -49,5 +48,5 @@ export function Modal({
         {children}
       </DialogContent>
     </Dialog>
-  );
+  )
 }

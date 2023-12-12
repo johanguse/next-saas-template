@@ -56,9 +56,9 @@ pnpm dev
 
 ## Roadmap
 
-- [x] Fix Vaul drawer for mobile sign in  
-- [ ] Add resend for subscriptions  
-- [x] Update OG image  
+- [x] Fix Vaul drawer for mobile sign in
+- [ ] Add resend for subscriptions
+- [x] Update OG image
 - [ ] Update documentation
 - [ ] Use Server Actions
 - [ ] Switch subscription plan
@@ -89,7 +89,7 @@ pnpm dev
 
 ### Hooks and Utilities
 
-- `useIntersectionObserver` –  React hook to observe when an element enters or leaves the viewport
+- `useIntersectionObserver` – React hook to observe when an element enters or leaves the viewport
 - `useLocalStorage` – Persist data in the browser's local storage
 - `useScroll` – React hook to observe scroll position ([example](https://github.com/johanguse/precedent/blob/main/components/layout/navbar.tsx#L12))
 - `nFormatter` – Format numbers with suffixes like `1.2k` or `1.2M`
@@ -118,4 +118,3 @@ This project was inspired by shadcn's [Taxonomy](https://github.com/shadcn-ui/ta
 - Shadcn ([@shadcn](https://twitter.com/shadcn))
 - Steven Tey ([@steventey](https://twitter.com/steventey))
 - Antonio Erdeljac ([@YTCodeAntonio](https://twitter.com/AntonioErdeljac))
-

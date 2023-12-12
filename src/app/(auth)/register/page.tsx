@@ -1,13 +1,13 @@
-import Link from "next/link"
+import Link from 'next/link'
 
-import { cn } from "@/lib/utils"
-import { buttonVariants } from "@/components/ui/button"
-import { Icons } from "@/components/shared/icons"
-import { UserAuthForm } from "@/components/forms/user-auth-form"
+import { cn } from '@/lib/utils'
+import { buttonVariants } from '@/components/ui/button'
+import { UserAuthForm } from '@/components/forms/user-auth-form'
+import { Icons } from '@/components/shared/icons'
 
 export const metadata = {
-  title: "Create an account",
-  description: "Create an account to get started.",
+  title: 'Create an account',
+  description: 'Create an account to get started.',
 }
 
 export default function RegisterPage() {
@@ -16,8 +16,8 @@ export default function RegisterPage() {
       <Link
         href="/login"
         className={cn(
-          buttonVariants({ variant: "ghost" }),
-          "absolute right-4 top-4 md:right-8 md:top-8"
+          buttonVariants({ variant: 'ghost' }),
+          'absolute right-4 top-4 md:right-8 md:top-8'
         )}
       >
         Login
@@ -36,14 +36,14 @@ export default function RegisterPage() {
           </div>
           <UserAuthForm type="register" />
           <p className="px-8 text-center text-sm text-muted-foreground">
-            By clicking continue, you agree to our{" "}
+            By clicking continue, you agree to our{' '}
             <Link
               href="/terms"
               className="hover:text-brand underline underline-offset-4"
             >
               Terms of Service
-            </Link>{" "}
-            and{" "}
+            </Link>{' '}
+            and{' '}
             <Link
               href="/privacy"
               className="hover:text-brand underline underline-offset-4"

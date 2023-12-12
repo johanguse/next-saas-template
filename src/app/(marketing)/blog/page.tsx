@@ -1,10 +1,10 @@
-import { allPosts } from "contentlayer/generated"
-import { compareDesc } from "date-fns"
+import { allPosts } from 'contentlayer/generated'
+import { compareDesc } from 'date-fns'
 
-import { BlogPosts } from "@/components/blog-posts"
+import { BlogPosts } from '@/components/blog-posts'
 
 export const metadata = {
-  title: "Blog",
+  title: 'Blog',
 }
 
 export default async function BlogPage() {

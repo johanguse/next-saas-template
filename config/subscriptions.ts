@@ -1,5 +1,6 @@
-import { SubscriptionPlan } from "types"
-import { env } from "@/root/env.mjs";
+import { env } from '@/root/env.mjs'
+
+import { SubscriptionPlan } from 'types'
 
 export const pricingData: SubscriptionPlan[] = [
   {
@@ -68,4 +69,4 @@ export const pricingData: SubscriptionPlan[] = [
       yearly: env.NEXT_PUBLIC_STRIPE_BUSINESS_YEARLY_PLAN_ID,
     },
   },
-];
+]

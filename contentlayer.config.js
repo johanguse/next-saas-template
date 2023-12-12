@@ -1,35 +1,35 @@
-import { defineDocumentType, makeSource } from "contentlayer/source-files"
-import rehypeAutolinkHeadings from "rehype-autolink-headings"
-import rehypePrettyCode from "rehype-pretty-code"
-import rehypeSlug from "rehype-slug"
-import remarkGfm from "remark-gfm"
+import { defineDocumentType, makeSource } from 'contentlayer/source-files'
+import rehypeAutolinkHeadings from 'rehype-autolink-headings'
+import rehypePrettyCode from 'rehype-pretty-code'
+import rehypeSlug from 'rehype-slug'
+import remarkGfm from 'remark-gfm'
 
 /** @type {import('contentlayer/source-files').ComputedFields} */
 const computedFields = {
   slug: {
-    type: "string",
+    type: 'string',
     resolve: (doc) => `/${doc._raw.flattenedPath}`,
   },
   slugAsParams: {
-    type: "string",
-    resolve: (doc) => doc._raw.flattenedPath.split("/").slice(1).join("/"),
+    type: 'string',
+    resolve: (doc) => doc._raw.flattenedPath.split('/').slice(1).join('/'),
   },
 }
 
 export const Doc = defineDocumentType(() => ({
-  name: "Doc",
+  name: 'Doc',
   filePathPattern: `docs/**/*.mdx`,
-  contentType: "mdx",
+  contentType: 'mdx',
   fields: {
     title: {
-      type: "string",
+      type: 'string',
       required: true,
     },
     description: {
-      type: "string",
+      type: 'string',
     },
     published: {
-      type: "boolean",
+      type: 'boolean',
       default: true,
     },
   },
@@ -37,27 +37,27 @@ export const Doc = defineDocumentType(() => ({
 }))
 
 export const Guide = defineDocumentType(() => ({
-  name: "Guide",
+  name: 'Guide',
   filePathPattern: `guides/**/*.mdx`,
-  contentType: "mdx",
+  contentType: 'mdx',
   fields: {
     title: {
-      type: "string",
+      type: 'string',
       required: true,
     },
     description: {
-      type: "string",
+      type: 'string',
     },
     date: {
-      type: "date",
+      type: 'date',
       required: true,
     },
     published: {
-      type: "boolean",
+      type: 'boolean',
       default: true,
     },
     featured: {
-      type: "boolean",
+      type: 'boolean',
       default: false,
     },
   },
@@ -65,27 +65,27 @@ export const Guide = defineDocumentType(() => ({
 }))
 
 export const Post = defineDocumentType(() => ({
-  name: "Post",
+  name: 'Post',
   filePathPattern: `blog/**/*.mdx`,
-  contentType: "mdx",
+  contentType: 'mdx',
   fields: {
     title: {
-      type: "string",
+      type: 'string',
       required: true,
     },
     description: {
-      type: "string",
+      type: 'string',
     },
     date: {
-      type: "date",
+      type: 'date',
       required: true,
     },
     published: {
-      type: "boolean",
+      type: 'boolean',
       default: true,
     },
     image: {
-      type: "string",
+      type: 'string',
       required: true,
     },
     authors: {
@@ -93,8 +93,8 @@ export const Post = defineDocumentType(() => ({
       // Until this is fixed, we can use a simple list.
       // type: "reference",
       // of: Author,
-      type: "list",
-      of: { type: "string" },
+      type: 'list',
+      of: { type: 'string' },
       required: true,
     },
   },
@@ -102,23 +102,23 @@ export const Post = defineDocumentType(() => ({
 }))
 
 export const Author = defineDocumentType(() => ({
-  name: "Author",
+  name: 'Author',
   filePathPattern: `authors/**/*.mdx`,
-  contentType: "mdx",
+  contentType: 'mdx',
   fields: {
     title: {
-      type: "string",
+      type: 'string',
       required: true,
     },
     description: {
-      type: "string",
+      type: 'string',
     },
     avatar: {
-      type: "string",
+      type: 'string',
       required: true,
     },
     twitter: {
-      type: "string",
+      type: 'string',
       required: true,
     },
   },
@@ -126,23 +126,23 @@ export const Author = defineDocumentType(() => ({
 }))
 
 export const Page = defineDocumentType(() => ({
-  name: "Page",
+  name: 'Page',
   filePathPattern: `pages/**/*.mdx`,
-  contentType: "mdx",
+  contentType: 'mdx',
   fields: {
     title: {
-      type: "string",
+      type: 'string',
       required: true,
     },
     description: {
-      type: "string",
+      type: 'string',
     },
   },
   computedFields,
 }))
 
 export default makeSource({
-  contentDirPath: "./content",
+  contentDirPath: './content',
   documentTypes: [Page, Doc, Guide, Post, Author],
   mdx: {
     remarkPlugins: [remarkGfm],
@@ -151,12 +151,12 @@ export default makeSource({
       [
         rehypePrettyCode,
         {
-          theme: "github-dark",
+          theme: 'github-dark',
           onVisitLine(node) {
             // Prevent lines from collapsing in `display: grid` mode, and allow empty
             // lines to be copy/pasted
             if (node.children.length === 0) {
-              node.children = [{ type: "text", value: " " }]
+              node.children = [{ type: 'text', value: ' ' }]
             }
           },
           onVisitHighlightedLine(node) {
@@ -164,16 +164,16 @@ export default makeSource({
 
             // FIX: I changed remark-gmf 4.0.0 to 3.0.1 (return a lot errors in mdx?)
             // And solve error on onVisitHighlightedLine with code from : https://stackoverflow.com/questions/76549262/onvisithighlightedline-cannot-push-classname-using-rehype-pretty-code
-            const nodeClass = node.properties.className;
+            const nodeClass = node.properties.className
 
             if (nodeClass && nodeClass.length > 0) {
-                node.properties.className.push("line--highlighted");
-            }else{
-                node.properties.className = ["line--highlighted"];
+              node.properties.className.push('line--highlighted')
+            } else {
+              node.properties.className = ['line--highlighted']
             }
           },
           onVisitHighlightedWord(node) {
-            node.properties.className = ["word--highlighted"]
+            node.properties.className = ['word--highlighted']
           },
         },
       ],
@@ -181,8 +181,8 @@ export default makeSource({
         rehypeAutolinkHeadings,
         {
           properties: {
-            className: ["subheading-anchor"],
-            ariaLabel: "Link to section",
+            className: ['subheading-anchor'],
+            ariaLabel: 'Link to section',
           },
         },
       ],

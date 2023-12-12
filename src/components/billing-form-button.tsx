@@ -1,16 +1,21 @@
-import * as React from "react"
-import { SubscriptionPlan, UserSubscriptionPlan } from "types"
-import { Button } from "@/components/ui/button"
-import { toast } from "@/components/ui/use-toast"
-import { Icons } from "@/components/shared/icons"
+import * as React from 'react'
+
+import { SubscriptionPlan, UserSubscriptionPlan } from 'types'
+import { Button } from '@/components/ui/button'
+import { toast } from '@/components/ui/use-toast'
+import { Icons } from '@/components/shared/icons'
 
 interface BillingFormButtonProps {
-  offer: SubscriptionPlan;
-  subscriptionPlan: UserSubscriptionPlan;
-  year: boolean;
+  offer: SubscriptionPlan
+  subscriptionPlan: UserSubscriptionPlan
+  year: boolean
 }
 
-export function BillingFormButton({ year, offer, subscriptionPlan }: BillingFormButtonProps) {
+export function BillingFormButton({
+  year,
+  offer,
+  subscriptionPlan,
+}: BillingFormButtonProps) {
   const [isLoading, setIsLoading] = React.useState<boolean>(false)
 
   async function onSubmit(event) {
@@ -18,21 +23,21 @@ export function BillingFormButton({ year, offer, subscriptionPlan }: BillingForm
     setIsLoading(!isLoading)
 
     // Get a Stripe session URL.
-    const response = await fetch("/api/users/stripe", {
-      method: "POST",
+    const response = await fetch('/api/users/stripe', {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        priceId: offer.stripeIds[year ? "yearly" : "monthly"]
-      })
+        priceId: offer.stripeIds[year ? 'yearly' : 'monthly'],
+      }),
     })
 
     if (!response?.ok) {
       return toast({
-        title: "Something went wrong.",
-        description: "Please refresh the page and try again.",
-        variant: "destructive",
+        title: 'Something went wrong.',
+        description: 'Please refresh the page and try again.',
+        variant: 'destructive',
       })
     }
 
@@ -53,12 +58,11 @@ export function BillingFormButton({ year, offer, subscriptionPlan }: BillingForm
         className="w-full"
         disabled={isLoading}
       >
-        {isLoading && (
-          <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
-        )}
-        {subscriptionPlan.stripePriceId === offer.stripeIds[year ? "yearly" : "monthly"]
-          ? "Manage Subscription"
-          : "Upgrade"}
+        {isLoading && <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />}
+        {subscriptionPlan.stripePriceId ===
+        offer.stripeIds[year ? 'yearly' : 'monthly']
+          ? 'Manage Subscription'
+          : 'Upgrade'}
       </Button>
     </form>
   )

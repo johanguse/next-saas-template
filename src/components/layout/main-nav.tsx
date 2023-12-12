@@ -1,15 +1,15 @@
-"use client"
+'use client'
 
-import * as React from "react"
-import Image from 'next/image';
-import Link from "next/link"
-import { useSelectedLayoutSegment } from "next/navigation"
+import * as React from 'react'
+import Image from 'next/image'
+import Link from 'next/link'
+import { useSelectedLayoutSegment } from 'next/navigation'
 
-import { MainNavItem } from "types"
-import { siteConfig } from "@/config/site"
-import { cn } from "@/lib/utils"
-import { Icons } from "@/components/shared/icons"
-import { MobileNav } from "@/components/layout/mobile-nav"
+import { MainNavItem } from 'types'
+import { siteConfig } from '@/config/site'
+import { cn } from '@/lib/utils'
+import { MobileNav } from '@/components/layout/mobile-nav'
+import { Icons } from '@/components/shared/icons'
 
 interface MainNavProps {
   items?: MainNavItem[]
@@ -31,22 +31,22 @@ export function MainNav({ items, children }: MainNavProps) {
       }
     }
 
-    document.addEventListener("click", closeMobileMenuOnClickOutside)
+    document.addEventListener('click', closeMobileMenuOnClickOutside)
 
     return () => {
-      document.removeEventListener("click", closeMobileMenuOnClickOutside)
+      document.removeEventListener('click', closeMobileMenuOnClickOutside)
     }
   }, [showMobileMenu])
 
   return (
     <div className="flex gap-6 md:gap-10">
       <Link href="/" className="hidden items-center space-x-2 md:flex">
-      <Image
-        src="/next_saas_logo.png"
-        width="40"
-        height="40"
-        alt={`Logo ${siteConfig.name}`}
-      />
+        <Image
+          src="/next_saas_logo.png"
+          width="40"
+          height="40"
+          alt={`Logo ${siteConfig.name}`}
+        />
         <span className="hidden font-urban text-xl font-bold sm:inline-block">
           {siteConfig.name}
         </span>
@@ -56,13 +56,13 @@ export function MainNav({ items, children }: MainNavProps) {
           {items?.map((item, index) => (
             <Link
               key={index}
-              href={item.disabled ? "#" : item.href}
+              href={item.disabled ? '#' : item.href}
               className={cn(
-                "flex items-center text-lg font-medium transition-colors hover:text-foreground/80 sm:text-sm",
+                'flex items-center text-lg font-medium transition-colors hover:text-foreground/80 sm:text-sm',
                 item.href.startsWith(`/${segment}`)
-                  ? "text-foreground"
-                  : "text-foreground/60",
-                item.disabled && "cursor-not-allowed opacity-80"
+                  ? 'text-foreground'
+                  : 'text-foreground/60',
+                item.disabled && 'cursor-not-allowed opacity-80'
               )}
             >
               {item.title}
