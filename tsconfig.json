@@ -17,9 +17,15 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
+      "@/actions/*": ["./src/actions/*"],
+      "@/components/*": ["./src/components/*"],
       "@/config/*": ["./config/*"],
       "@/emails/*": ["./emails/*"],
+      "@/lib/*": ["./src/lib/*"],
+      "@/pages/*": ["./src/pages/*"],
       "@/root/*": ["./*"],
+      "@/styles/*": ["./src/styles/*"],
+      "@/types/*": ["./types/*"],
       "contentlayer/generated": ["./.contentlayer/generated"]
     },
     "plugins": [

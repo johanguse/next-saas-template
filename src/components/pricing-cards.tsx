@@ -10,7 +10,7 @@ import { pricingData } from '@/config/subscriptions'
 import { useSigninModal } from '@/hooks/use-signin-modal'
 import { Button, buttonVariants } from '@/components/ui/button'
 import { Switch } from '@/components/ui/switch'
-import { BillingFormButton } from '@/components/billing-form-button'
+import { BillingFormButton } from '@/components/forms/billing-form-button'
 import { Icons } from '@/components/shared/icons'
 
 interface PricingCardsProps {
