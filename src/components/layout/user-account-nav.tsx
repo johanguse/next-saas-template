@@ -1,7 +1,13 @@
 'use client'
 
 import Link from 'next/link'
-import { CreditCard, LayoutDashboard, LogOut, Settings } from 'lucide-react'
+import {
+  CreditCard,
+  LayoutDashboard,
+  LogOut,
+  Settings,
+  User2Icon,
+} from 'lucide-react'
 import type { User } from 'next-auth'
 import { signOut } from 'next-auth/react'
 
@@ -12,6 +18,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
+import { Icons } from '@/components/shared/icons'
 import { UserAvatar } from '@/components/shared/user-avatar'
 
 interface UserAccountNavProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -52,6 +59,24 @@ export function UserAccountNav({ user }: UserAccountNavProps) {
           >
             <CreditCard className="h-4 w-4" />
             <p className="text-sm">Billing</p>
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem asChild className="cursor-pointer">
+          <Link
+            href="/dashboard/analitycs"
+            className="flex items-center space-x-2.5"
+          >
+            <Icons.barChart className="h-4 w-4" />
+            <p className="text-sm">Analitycs</p>
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem asChild className="cursor-pointer">
+          <Link
+            href="/dashboard/users"
+            className="flex items-center space-x-2.5"
+          >
+            <User2Icon className="h-4 w-4" />
+            <p className="text-sm">Users</p>
           </Link>
         </DropdownMenuItem>
         <DropdownMenuItem asChild className="cursor-pointer">

@@ -60,3 +60,7 @@
       'calt' 1;
   }
 }
+
+/* Import Files */
+@import './changelog-notification.css';
+@import './gradients.css';

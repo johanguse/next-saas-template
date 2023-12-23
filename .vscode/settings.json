@@ -1,11 +1,14 @@
 {
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true,
-    "source.fixAll.prettier": true
+    "source.fixAll.prettier": true,
+    "source.addMissingImports": true
   },
   "[prisma]": {
     "editor.defaultFormatter": "Prisma.prisma"
-  }
+  },
+  "css.customData": [".vscode/tailwind.json"]
 }

@@ -6,7 +6,7 @@ import { CardSkeleton } from '@/components/shared/card-skeleton'
 export default function DashboardLoading() {
   return (
     <DashboardShell>
-      <DashboardHeader heading="Posts" text="Create and manage posts.">
+      <DashboardHeader heading="..." text="........">
         <Button>Fake button</Button>
       </DashboardHeader>
       <div className="divide-border-200 divide-y rounded-md border">

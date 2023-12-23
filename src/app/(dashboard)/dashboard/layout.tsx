@@ -1,3 +1,4 @@
+import { Suspense } from 'react'
 import { notFound } from 'next/navigation'
 
 import { dashboardConfig } from '@/config/dashboard'
@@ -21,7 +22,9 @@ export default async function DashboardLayout({
 
   return (
     <div className="flex min-h-screen flex-col space-y-6">
-      <NavBar user={user} items={dashboardConfig.mainNav} scroll={false} />
+      <Suspense fallback="...">
+        <NavBar user={user} items={dashboardConfig.mainNav} scroll={false} />
+      </Suspense>
 
       <div className="container grid flex-1 gap-12 md:grid-cols-[200px_1fr]">
         <aside className="hidden w-[200px] flex-col md:flex">

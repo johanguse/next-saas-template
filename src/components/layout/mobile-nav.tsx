@@ -1,11 +1,11 @@
 import * as React from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 
 import { MainNavItem } from 'types'
 import { siteConfig } from '@/config/site'
 import { cn } from '@/lib/utils'
 import { useLockBody } from '@/hooks/use-lock-body'
-import { Icons } from '@/components/shared/icons'
 
 interface MobileNavProps {
   items: MainNavItem[]
@@ -23,7 +23,12 @@ export function MobileNav({ items, children }: MobileNavProps) {
     >
       <div className="relative z-20 grid gap-6 rounded-md bg-popover p-4 text-popover-foreground shadow-md">
         <Link href="/" className="flex items-center space-x-2">
-          <Icons.logo />
+          <Image
+            src="/next_saas_logo.png"
+            width="40"
+            height="40"
+            alt={`Logo ${siteConfig.name}`}
+          />
           <span className="font-bold">{siteConfig.name}</span>
         </Link>
         <nav className="grid grid-flow-row auto-rows-max text-sm">

@@ -2,8 +2,8 @@
 
 import { useTransition } from 'react'
 import { generateUserStripe } from '@/actions/generate-user-stripe'
-import { SubscriptionPlan, UserSubscriptionPlan } from 'types'
 
+import { SubscriptionPlan, UserSubscriptionPlan } from 'types'
 import { Button } from '@/components/ui/button'
 import { Icons } from '@/components/shared/icons'
 
