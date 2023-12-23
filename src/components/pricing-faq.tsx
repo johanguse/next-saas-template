@@ -40,29 +40,36 @@ const pricingFaqData = [
   },
 ]
 
-export function PricingFaq() {
+export default function PricingFaq() {
   return (
-    <section className="container max-w-3xl py-2">
-      <div className="mb-14 space-y-6 text-center">
-        <h1 className="text-center font-heading text-3xl md:text-5xl">
-          <Balancer>Frequently Asked Questions</Balancer>
-        </h1>
-        <p className="text-md text-muted-foreground">
-          <Balancer>
-            Explore our comprehensive FAQ to find quick answers to common
-            inquiries. If you need further assistance, don&apos;t hesitate to
-            contact us for personalized help.
-          </Balancer>
-        </p>
+    <section className="py-32">
+      <div className="mx-auto flex max-w-3xl flex-col gap-16 px-4 sm:gap-y-24 sm:px-6 lg:px-8">
+        <div className="w-full">
+          <div className="flex flex-col items-center text-center">
+            <h2 className="relative mb-2 bg-gradient-to-r from-indigo-500 to-purple-500/80 bg-clip-text text-base font-extrabold text-transparent">
+              FAQ
+            </h2>
+            <p className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl dark:text-white">
+              <Balancer>Freequently Asked Questions</Balancer>
+            </p>
+            <p className="mt-6 text-lg text-gray-600 dark:text-gray-300">
+              <Balancer>
+                Explore our comprehensive FAQ to find quick answers to common
+                inquiries. If you need further assistance, don&apos;t hesitate
+                to contact us for personalized help.
+              </Balancer>
+            </p>
+          </div>
+        </div>
+        <Accordion type="single" collapsible className="w-full">
+          {pricingFaqData.map((faqItem) => (
+            <AccordionItem key={faqItem.id} value={faqItem.id}>
+              <AccordionTrigger>{faqItem.question}</AccordionTrigger>
+              <AccordionContent>{faqItem.answer}</AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
       </div>
-      <Accordion type="single" collapsible className="w-full">
-        {pricingFaqData.map((faqItem) => (
-          <AccordionItem key={faqItem.id} value={faqItem.id}>
-            <AccordionTrigger>{faqItem.question}</AccordionTrigger>
-            <AccordionContent>{faqItem.answer}</AccordionContent>
-          </AccordionItem>
-        ))}
-      </Accordion>
     </section>
   )
 }

@@ -2,6 +2,7 @@ import { allPosts } from 'contentlayer/generated'
 import { compareDesc } from 'date-fns'
 
 import { BlogPosts } from '@/components/blog-posts'
+import Pagination from '@/components/shared/pagination'
 
 export const metadata = {
   title: 'Blog',
@@ -17,6 +18,11 @@ export default async function BlogPage() {
   return (
     <main>
       <BlogPosts posts={posts} />
+      <Pagination
+        currentPage={1}
+        totalPostCount={posts.length}
+        className="container my-10"
+      />
     </main>
   )
 }

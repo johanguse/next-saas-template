@@ -18,8 +18,17 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'lh3.googleusercontent.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'i.pravatar.cc',
+      },
     ],
   },
+  transpilePackages: ['html-to-text'],
   experimental: {
     serverComponentsExternalPackages: ['@prisma/client'],
   },

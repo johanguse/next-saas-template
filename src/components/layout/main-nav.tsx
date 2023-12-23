@@ -10,6 +10,7 @@ import { siteConfig } from '@/config/site'
 import { cn } from '@/lib/utils'
 import { MobileNav } from '@/components/layout/mobile-nav'
 import { Icons } from '@/components/shared/icons'
+import IconLogo from '@/components/shared/logo-icon'
 
 interface MainNavProps {
   items?: MainNavItem[]
@@ -74,7 +75,7 @@ export function MainNav({ items, children }: MainNavProps) {
         className="flex items-center space-x-2 md:hidden"
         onClick={toggleMobileMenu}
       >
-        {showMobileMenu ? <Icons.close /> : <Icons.logo />}
+        {showMobileMenu ? <Icons.close className="size-10" /> : <IconLogo />}
         <span className="font-bold">Menu</span>
       </button>
       {showMobileMenu && items && (

@@ -38,6 +38,13 @@ export type SiteConfig = {
     twitter: string
     github: string
   }
+  social: {
+    links: {
+      label: string
+      icon: keyof typeof Icons
+      href: string
+    }[]
+  }
 }
 
 export type DocsConfig = {
@@ -62,6 +69,7 @@ export type SubscriptionPlan = {
   prices: {
     monthly: number
     yearly: number
+    discount?: string
   }
   stripeIds: {
     monthly: string | null

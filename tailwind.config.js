@@ -16,6 +16,23 @@ module.exports = {
       },
     },
     extend: {
+      animation: {
+        'accordion-down': 'accordion-down 0.2s ease-out',
+        'accordion-up': 'accordion-up 0.2s ease-out',
+
+        // Fade up and down
+        'fade-up': 'fade-up 0.5s',
+        'fade-down': 'fade-down 0.5s',
+
+        // Fade in and out
+        'fade-in': 'fade-in 0.4s',
+        'fade-out': 'fade-out 0.4s',
+      },
+      borderRadius: {
+        lg: `var(--radius)`,
+        md: `calc(var(--radius) - 2px)`,
+        sm: 'calc(var(--radius) - 4px)',
+      },
       colors: {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
@@ -50,11 +67,6 @@ module.exports = {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
         },
-      },
-      borderRadius: {
-        lg: `var(--radius)`,
-        md: `calc(var(--radius) - 2px)`,
-        sm: 'calc(var(--radius) - 4px)',
       },
       fontFamily: {
         sans: ['var(--font-sans)', ...fontFamily.sans],
@@ -120,18 +132,6 @@ module.exports = {
             opacity: 1,
           },
         },
-      },
-      animation: {
-        'accordion-down': 'accordion-down 0.2s ease-out',
-        'accordion-up': 'accordion-up 0.2s ease-out',
-
-        // Fade up and down
-        'fade-up': 'fade-up 0.5s',
-        'fade-down': 'fade-down 0.5s',
-
-        // Fade in and out
-        'fade-in': 'fade-in 0.4s',
-        'fade-out': 'fade-out 0.4s',
       },
     },
   },

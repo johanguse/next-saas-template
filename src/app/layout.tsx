@@ -1,11 +1,13 @@
 import '@/styles/globals.css'
 
+import Script from 'next/script'
 import { fontHeading, fontSans, fontUrban } from '@/assets/fonts'
 
 import { siteConfig } from '@/config/site'
 import { cn } from '@/lib/utils'
 import { Toaster } from '@/components/ui/toaster'
 import { Analytics } from '@/components/analytics'
+import HWComponent from '@/components/headwayapp'
 import { ModalProvider } from '@/components/modal-provider'
 import { Providers } from '@/components/providers'
 import { TailwindIndicator } from '@/components/tailwind-indicator'
@@ -76,6 +78,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
           <ModalProvider />
           <TailwindIndicator />
         </Providers>
+        <HWComponent />
       </body>
     </html>
   )

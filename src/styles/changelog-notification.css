@@ -1,0 +1,5 @@
+#changelog .HW_badge {
+  @apply absolute;
+  top: -2px;
+  left: 16px;
+}
