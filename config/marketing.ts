@@ -15,4 +15,5 @@ export const marketingConfig: MarketingConfig = {
       href: '/docs',
     },
   ],
+  postsPerPage: 6,
 }

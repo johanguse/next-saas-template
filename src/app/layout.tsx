@@ -7,10 +7,10 @@ import { siteConfig } from '@/config/site'
 import { cn } from '@/lib/utils'
 import { Toaster } from '@/components/ui/toaster'
 import { Analytics } from '@/components/analytics'
-import HWComponent from '@/components/headwayapp'
 import { ModalProvider } from '@/components/modal-provider'
 import { Providers } from '@/components/providers'
 import { TailwindIndicator } from '@/components/tailwind-indicator'
+import HWComponent from '@/components/thirdparty/headwayapp'
 
 interface RootLayoutProps {
   children: React.ReactNode
@@ -77,8 +77,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
           <Toaster />
           <ModalProvider />
           <TailwindIndicator />
+          <HWComponent />
         </Providers>
-        <HWComponent />
       </body>
     </html>
   )

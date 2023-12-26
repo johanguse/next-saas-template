@@ -1,7 +1,8 @@
 import { useMemo } from 'react'
 import { allPosts } from 'contentlayer/generated'
 
-import { BlogPostsPagination } from '@/components/blog-post-content-pagination'
+import { marketingConfig } from '@/config/marketing'
+import { BlogPostsArchive } from '@/components/blog-posts-archive'
 import Pagination from '@/components/shared/pagination'
 
 type BlogPageProps = {
@@ -13,6 +14,8 @@ export const metadata = {
 }
 
 export default function BlogPage({ params }: BlogPageProps) {
+  const postsPerPage = marketingConfig.postsPerPage
+
   const sortedAndFilteredPosts = useMemo(() => {
     return allPosts
       .filter((post) => post.published)
@@ -21,17 +24,20 @@ export default function BlogPage({ params }: BlogPageProps) {
 
   const currentPage = params.id || 1
 
-  metadata.title = `Blog - Page ${currentPage}`
+  metadata.title = `Blog - Page ${currentPage} of ${Math.ceil(
+    sortedAndFilteredPosts.length / postsPerPage
+  )}`
 
   return (
     <main>
-      <BlogPostsPagination
+      <BlogPostsArchive
         posts={sortedAndFilteredPosts}
         currentPage={currentPage}
       />
       <Pagination
         totalPostCount={sortedAndFilteredPosts.length}
         currentPage={currentPage}
+        postsPerPage={postsPerPage}
         className="container my-10"
       />
     </main>

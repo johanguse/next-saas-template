@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 export default function Testimonials() {
   const testimonials = [
     {
@@ -78,9 +80,11 @@ export default function Testimonials() {
                     {testimonial.quote}
                   </q>
                   <div className="mt-6 flex items-center gap-3">
-                    <span className="relative inline-flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full">
-                      <img
+                    <span className="relative inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full">
+                      <Image
                         className="h-10 w-10 rounded-full"
+                        height={40}
+                        width={40}
                         alt={testimonial.name}
                         src={testimonial.imgSrc}
                         loading="lazy"

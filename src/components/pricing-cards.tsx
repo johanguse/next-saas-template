@@ -16,12 +16,12 @@ export default async function PricingCards() {
   return (
     <section className="container flex flex-col items-center text-center">
       <div className="mx-auto mb-10 flex w-full flex-col gap-5">
-        <p className="text-sm font-medium uppercase tracking-widest text-muted-foreground">
+        <h2 className="relative mb-2 bg-gradient-to-r from-indigo-500 to-purple-500/80 bg-clip-text text-base font-extrabold text-transparent">
           Pricing
-        </p>
-        <h2 className="font-heading text-3xl leading-[1.1] md:text-5xl">
-          Start at full speed !
         </h2>
+        <p className="font-heading text-3xl leading-[1.1] md:text-5xl">
+          Start at full speed !
+        </p>
       </div>
 
       <PricingCardItem userId={user?.id} subscriptionPlan={subscriptionPlan} />

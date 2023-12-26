@@ -1,8 +1,9 @@
 import Link from 'next/link'
 import { allPosts } from '@/root/.contentlayer/generated'
-import { compareDesc, format, parseISO } from 'date-fns'
+import { compareDesc } from 'date-fns'
 
 import { Button } from '@/components/ui/button'
+import { BlogPostListItem } from '@/components/marketing/blog-list-item'
 
 export default function LatestFromBlog() {
   const posts = allPosts
@@ -25,41 +26,12 @@ export default function LatestFromBlog() {
             streamline your workflow.
           </p>
         </div>
-        <ul className="mt-16 grid auto-rows-fr grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {posts.map((items, key) => (
-            <li className="flex border-gray-200 p-5 shadow-sm" key={key}>
-              <article className="flex flex-col">
-                <div className="flex flex-col">
-                  <h3 className="text-lg font-semibold duration-150 group-hover:text-indigo-600">
-                    <Link href={items.slug}>{items.title}</Link>
-                  </h3>
-                  <img
-                    src={items.image}
-                    loading="lazy"
-                    alt={items.title}
-                    className="-order-1 w-full rounded-lg"
-                  />
-                </div>
-                <div className="mt-3 flex-1 space-y-2">
-                  <span className="block text-sm text-indigo-600">
-                    {items.date
-                      ? format(parseISO(items.date), 'MMM, do yyyy')
-                      : null}{' '}
-                  </span>
-                  <p className="duration-150 group-hover:text-gray-800">
-                    {items.description}
-                  </p>
-                </div>
-                <Button
-                  variant="link"
-                  className="ml-0 mt-4 justify-start pl-0 text-left font-semibold"
-                >
-                  Read more
-                </Button>
-              </article>
-            </li>
-          ))}
-        </ul>
+        <BlogPostListItem posts={posts} />
+        <div className="mt-16 flex justify-center">
+          <Button variant="outline" className="p-6 text-sm font-semibold">
+            <Link href="/blog">See all blog posts</Link>
+          </Button>
+        </div>
       </div>
     </section>
   )
