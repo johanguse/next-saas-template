@@ -18,6 +18,8 @@ export function BlogPostListItem({ posts }) {
                 <Link href={items.slug}>{items.title}</Link>
               </h3>
               <Image
+                width={384}
+                height={256}
                 src={items.image}
                 loading="lazy"
                 alt={items.title}
