@@ -127,7 +127,7 @@ export default async function StatusPage() {
           <div className="relative mb-6 flex w-full min-w-0 flex-col break-words rounded border bg-white dark:bg-gray-800">
             <div className="mb-0 rounded-t border-0 px-4 py-3">
               <div className="flex flex-wrap items-center">
-                <div className="relative w-full max-w-full flex-1 grow px-4">
+                <div className="relative w-full max-w-full flex-1 grow">
                   <h3 className="text-base font-semibold">Page Visits</h3>
                 </div>
                 <div className="relative w-full max-w-full flex-1 grow px-4 text-right">
