@@ -5,15 +5,17 @@ interface PaginationProps {
   totalPostCount: number
   currentPage: number
   className?: string
+  postsPerPage: number
 }
 
 const Pagination: React.FC<PaginationProps> = ({
   totalPostCount,
   currentPage,
   className,
+  postsPerPage,
 }) => {
   const totalPages = useMemo(
-    () => Math.ceil(totalPostCount / 6),
+    () => Math.ceil(totalPostCount / postsPerPage),
     [totalPostCount]
   )
 
@@ -28,18 +30,19 @@ const Pagination: React.FC<PaginationProps> = ({
         <div className="hidden justify-between text-sm md:flex">
           <div>
             {currentPage > 1
-              ? `SHOWING ${(currentPage - 1) * 6 + 1}-${Math.min(
-                  currentPage * 6,
+              ? `SHOWING ${(currentPage - 1) * postsPerPage + 1}-${Math.min(
+                  currentPage * postsPerPage,
                   totalPostCount
                 )} OF ${totalPostCount}`
-              : `SHOWING 1-${Math.min(7, totalPostCount)} OF ${totalPostCount}`}
+              : `SHOWING 1-${Math.min(
+                  postsPerPage,
+                  totalPostCount
+                )} OF ${totalPostCount}`}
           </div>
           <div className="flex items-center gap-12" aria-label="Pagination">
             {currentPage > 1 && (
               <Link
-                href={
-                  currentPage >= 2 ? '/blog' : `/blog/page/${currentPage - 1}`
-                }
+                href={`/blog/page/${currentPage - 1}`}
                 className="hover:text-indigo-600"
               >
                 Previous
@@ -76,9 +79,7 @@ const Pagination: React.FC<PaginationProps> = ({
         <div className="flex items-center justify-between text-sm font-medium text-gray-600 md:hidden">
           {currentPage > 1 && (
             <Link
-              href={
-                currentPage == 2 ? '/blog' : `/blog/page/${currentPage - 1}`
-              }
+              href={`/blog/page/${currentPage - 1}`}
               className="rounded-lg border px-4 py-2 duration-150 hover:bg-gray-50"
             >
               Previous
@@ -86,16 +87,16 @@ const Pagination: React.FC<PaginationProps> = ({
           )}
           <div>
             {currentPage > 1
-              ? `SHOWING ${(currentPage - 1) * 6 + 1}-${Math.min(
-                  currentPage * 6,
+              ? `SHOWING ${(currentPage - 1) * postsPerPage + 1}-${Math.min(
+                  currentPage * postsPerPage,
                   totalPostCount
                 )} OF ${totalPostCount}`
               : currentPage == totalPages
                 ? `SHOWING ${
-                    (totalPages - 1) * 6 + 1
+                    (totalPages - 1) * postsPerPage + 1
                   }-${totalPostCount} OF ${totalPostCount}`
                 : `SHOWING 1-${Math.min(
-                    7,
+                    postsPerPage,
                     totalPostCount
                   )} OF ${totalPostCount}`}
           </div>

@@ -54,6 +54,7 @@ export type DocsConfig = {
 
 export type MarketingConfig = {
   mainNav: MainNavItem[]
+  postsPerPage: number
 }
 
 export type DashboardConfig = {

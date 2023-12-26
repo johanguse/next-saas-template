@@ -6,6 +6,8 @@ import { cn } from '@/lib/utils'
 import useMediaQuery from '@/hooks/use-media-query'
 import { Dialog, DialogContent } from '@/components/ui/dialog'
 
+import { Button } from '../ui/button'
+
 interface ModalProps {
   children: React.ReactNode
   className?: string
@@ -24,7 +26,7 @@ export function Modal({
   if (isMobile) {
     return (
       <Drawer.Root open={showModal} onClose={setShowModal}>
-        <Drawer.Overlay className="fixed inset-0 z-40 bg-background/80 backdrop-blur-sm" />
+        <Drawer.Overlay className="fixed inset-0 z-40 bg-background/40 backdrop-blur-sm" />
         <Drawer.Portal>
           <Drawer.Content
             className={cn(
@@ -36,6 +38,16 @@ export function Modal({
               <div className="my-3 h-1.5 w-16 rounded-full bg-muted-foreground/20" />
             </div>
             {children}
+            <div className="sticky bottom-0 z-20 flex w-full items-center justify-center bg-inherit">
+              <Button
+                variant="link"
+                type="button"
+                onClick={() => setShowModal()}
+                className="my-6"
+              >
+                Close modal
+              </Button>
+            </div>
           </Drawer.Content>
           <Drawer.Overlay />
         </Drawer.Portal>

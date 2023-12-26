@@ -2,22 +2,19 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Balancer from 'react-wrap-balancer'
 
-import { formatDate } from '@/lib/utils'
 import { Badge } from '@/components/ui/badge'
+import { BlogPostListItem } from '@/components/marketing/blog-list-item'
 
 export function BlogPosts({ posts }) {
   return (
     <div className="container space-y-10 py-6 md:py-10">
       <section className="mb-2 lg:mb-20">
         <article className="relative">
-          <div className="flex flex-col items-center md:flex-row">
-            <div className="mb-6 flex h-full w-full flex-col items-start justify-center pb-6 pl-0 pr-0 pt-6 md:mb-0 md:w-1/2">
-              <div
-                className="flex h-full transform flex-col items-start justify-center space-y-3 md:space-y-5 md:pr-10
-            lg:pr-16"
-              >
+          <div className="flex flex-col-reverse items-center md:flex-row">
+            <div className="mb-6 flex h-full w-full flex-col items-start justify-center px-0 py-6 md:mb-0 md:w-1/2">
+              <div className="flex h-full flex-col items-start justify-center space-y-3 md:space-y-5 md:pr-10 lg:pr-16">
                 <div
-                  className="flex items-center rounded-full bg-green-600 pb-1.5 pl-2 pr-3 pt-1.5 uppercase leading-none
+                  className="flex items-center rounded-full bg-green-600 py-1.5 pl-2 pr-3 uppercase leading-none
               text-gray-50 dark:bg-green-800"
                 >
                   <p className="inline">
@@ -41,7 +38,7 @@ export function BlogPosts({ posts }) {
                 <a className="text-4xl font-bold leading-none lg:text-5xl xl:text-6xl">
                   {posts[0].title}
                 </a>
-                <div className="pb-0 pl-0 pr-0 pt-2">
+                <div className="px-0 pt-2">
                   {posts[0].description && (
                     <p className="text-muted-foreground md:text-lg">
                       <Balancer>{posts[0].description}</Balancer>
@@ -71,40 +68,14 @@ export function BlogPosts({ posts }) {
       </section>
 
       <section>
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {posts.slice(1, 7).map((post) => (
-            <article
-              key={post._id}
-              className="group relative flex flex-col space-y-2"
-            >
-              {post.image && (
-                <Image
-                  alt={post.title}
-                  src={post.image}
-                  width={804}
-                  height={452}
-                  className="rounded-md border bg-muted transition-colors"
-                />
-              )}
-              <h2 className="line-clamp-1 font-heading text-2xl">
-                {post.title}
-              </h2>
-              {post.description && (
-                <p className="line-clamp-1 text-muted-foreground">
-                  {post.description}
-                </p>
-              )}
-              {post.date && (
-                <p className="text-sm text-muted-foreground">
-                  {formatDate(post.date)}
-                </p>
-              )}
-              <Link href={post.slug} className="absolute inset-0">
-                <span className="sr-only">View Article</span>
-              </Link>
-            </article>
-          ))}
+        <div className="mb-4 block lg:hidden">
+          <div className="mx-auto mb-10 flex w-full flex-col gap-5">
+            <h2 className="relative mb-2 bg-gradient-to-r from-indigo-500 to-purple-500/80 bg-clip-text text-base font-extrabold text-transparent">
+              Lastest posts
+            </h2>
+          </div>
         </div>
+        <BlogPostListItem posts={posts} />
       </section>
     </div>
   )
