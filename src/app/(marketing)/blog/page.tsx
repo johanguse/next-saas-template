@@ -18,14 +18,16 @@ export default async function BlogPage() {
     })
 
   return (
-    <main>
-      <BlogPosts posts={posts} />
-      <Pagination
-        currentPage={1}
-        totalPostCount={posts.length}
-        postsPerPage={postsPerPage}
-        className="container my-10"
-      />
+    <main className="w-full">
+      <div className="container mx-auto flex flex-col px-4 sm:px-6 md:px-8 lg:px-8">
+        <BlogPosts posts={posts} />
+        <Pagination
+          currentPage={1}
+          totalPostCount={posts.length}
+          postsPerPage={postsPerPage}
+          className="container my-10"
+        />
+      </div>
     </main>
   )
 }
