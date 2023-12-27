@@ -8,7 +8,7 @@ import { BlogPostListItem } from '@/components/marketing/blog-list-item'
 export function BlogPosts({ posts }) {
   return (
     <div className="container space-y-10 py-6 md:py-10">
-      <section className="mb-2 lg:mb-20">
+      <section className="mb-2 lg:mb-10">
         <article className="relative">
           <div className="flex flex-col-reverse items-center md:flex-row">
             <div className="mb-6 flex h-full w-full flex-col items-start justify-center px-0 py-6 md:mb-0 md:w-1/2">

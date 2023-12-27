@@ -30,16 +30,18 @@ export default function BlogPage({ params }: BlogPageProps) {
 
   return (
     <main>
-      <BlogPostsArchive
-        posts={sortedAndFilteredPosts}
-        currentPage={currentPage}
-      />
-      <Pagination
-        totalPostCount={sortedAndFilteredPosts.length}
-        currentPage={currentPage}
-        postsPerPage={postsPerPage}
-        className="container my-10"
-      />
+      <div className="container mx-auto flex flex-col gap-10 px-4 sm:gap-y-24 sm:px-6 md:px-8 lg:px-8">
+        <BlogPostsArchive
+          posts={sortedAndFilteredPosts}
+          currentPage={currentPage}
+        />
+        <Pagination
+          totalPostCount={sortedAndFilteredPosts.length}
+          currentPage={currentPage}
+          postsPerPage={postsPerPage}
+          className="container my-10"
+        />
+      </div>
     </main>
   )
 }
