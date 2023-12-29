@@ -1,19 +1,24 @@
 import * as React from 'react'
-import Image from 'next/image'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 import { MainNavItem } from 'types'
-import { siteConfig } from '@/config/site'
 import { cn } from '@/lib/utils'
 import { useLockBody } from '@/hooks/use-lock-body'
 
 interface MobileNavProps {
   items: MainNavItem[]
   children?: React.ReactNode
+  onClose: () => void
 }
 
 export function MobileNav({ items, children }: MobileNavProps) {
   useLockBody()
+  const currentPathname = usePathname()
+
+  const isActiveLink = (href: string) =>
+    href === currentPathname ||
+    (href !== '/' && currentPathname.startsWith(href))
 
   return (
     <div
@@ -22,23 +27,17 @@ export function MobileNav({ items, children }: MobileNavProps) {
       )}
     >
       <div className="relative z-20 grid gap-6 rounded-md bg-popover p-4 text-popover-foreground shadow-md">
-        <Link href="/" className="flex items-center space-x-2">
-          <Image
-            src="/next_saas_logo.png"
-            width="40"
-            height="40"
-            alt={`Logo ${siteConfig.name}`}
-          />
-          <span className="font-bold">{siteConfig.name}</span>
-        </Link>
-        <nav className="grid grid-flow-row auto-rows-max text-sm">
+        <nav className="grid grid-flow-row auto-rows-max space-y-2 text-sm">
           {items.map((item, index) => (
             <Link
               key={index}
               href={item.disabled ? '#' : item.href}
               className={cn(
-                'flex w-full items-center rounded-md p-2 text-sm font-medium hover:underline',
-                item.disabled && 'cursor-not-allowed opacity-60'
+                'flex items-center text-lg font-medium transition-colors hover:text-foreground/80',
+                isActiveLink(item.href)
+                  ? 'text-foreground'
+                  : 'text-foreground/60',
+                item.disabled && 'cursor-not-allowed opacity-80'
               )}
             >
               {item.title}
