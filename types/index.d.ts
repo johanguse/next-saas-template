@@ -1,5 +1,4 @@
 import { User } from '@prisma/client'
-import type { Icon } from 'lucide-react'
 
 import { Icons } from '@/components/shared/icons'
 
@@ -50,6 +49,10 @@ export type SiteConfig = {
 export type DocsConfig = {
   mainNav: MainNavItem[]
   sidebarNav: SidebarNavItem[]
+}
+
+export type BlocksConfig = {
+  sidebarNavBlocks: SidebarNavItem[]
 }
 
 export type MarketingConfig = {

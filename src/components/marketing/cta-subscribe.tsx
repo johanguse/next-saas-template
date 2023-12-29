@@ -1,5 +1,3 @@
-import Balancer from 'react-wrap-balancer'
-
 export default function CtaSubscribe() {
   return (
     <section className="w-full bg-gray-50 py-12 md:py-24 lg:py-32 xl:py-48 dark:bg-slate-900 dark:bg-opacity-50 dark:text-white">
@@ -19,14 +17,12 @@ export default function CtaSubscribe() {
               d="M3 19v-8.93a2 2 0 01.89-1.664l7-4.666a2 2 0 012.22 0l7 4.666A2 2 0 0121 10.07V19M3 19a2 2 0 002 2h14a2 2 0 002-2M3 19l6.75-4.5M21 19l-6.75-4.5M3 10l6.75 4.5M21 10l-6.75 4.5m0 0l-1.14.76a2 2 0 01-2.22 0l-1.14-.76"
             />
           </svg>
-          <h3 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl dark:text-white">
+          <h3 className="text-balance text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl dark:text-white">
             Subscribe to our newsletter
           </h3>
-          <p className="mt-6 text-lg text-gray-600 dark:text-gray-300">
-            <Balancer>
-              Stay up to date with the roadmap progress, announcements and
-              exclusive discounts feel free to sign up with your email.
-            </Balancer>
+          <p className="mt-6 text-balance text-lg text-gray-600 dark:text-gray-300">
+            Stay up to date with the roadmap progress, announcements and
+            exclusive discounts feel free to sign up with your email.
           </p>
         </div>
         <div className="mt-6">

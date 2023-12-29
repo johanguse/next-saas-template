@@ -64,3 +64,14 @@
 /* Import Files */
 @import './changelog-notification.css';
 @import './gradients.css';
+
+/* 
+Coming soon to Tailwind CSS
+https://github.com/tailwindlabs/tailwindcss/pull/12128
+*/
+.break-anywhere {
+  overflow-wrap: anywhere;
+}
+.break-anywhere {
+  word-break: break-word;
+}

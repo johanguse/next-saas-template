@@ -1,6 +1,5 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import Balancer from 'react-wrap-balancer'
 
 import { Badge } from '@/components/ui/badge'
 import { BlogPostListItem } from '@/components/marketing/blog-list-item'
@@ -35,15 +34,27 @@ export function BlogPosts({ posts }) {
                   <p className="inline text-xs font-medium">New</p>
                   <Badge className="ml-2">Featured</Badge>
                 </div>
-                <a className="text-4xl font-bold leading-none lg:text-5xl xl:text-6xl">
+                <a className="text-balance text-4xl font-bold leading-none lg:text-5xl xl:text-6xl">
                   {posts[0].title}
                 </a>
                 <div className="px-0 pt-2">
                   {posts[0].description && (
-                    <p className="text-muted-foreground md:text-lg">
-                      <Balancer>{posts[0].description}</Balancer>
+                    <p className="text-balance text-muted-foreground md:text-lg">
+                      {posts[0].description}
                     </p>
                   )}
+                  <p>
+                    <span className="text-muted-foreground">
+                      {posts[0].author}
+                    </span>{' '}
+                    •{' '}
+                    <time
+                      dateTime={posts[0].date}
+                      className="text-muted-foreground"
+                    >
+                      {posts[0].date}
+                    </time>
+                  </p>
                   <Link href={posts[0].slug} className="absolute inset-0">
                     <span className="sr-only">View Article</span>
                   </Link>
