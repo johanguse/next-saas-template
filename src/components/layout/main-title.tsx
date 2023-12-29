@@ -1,7 +1,7 @@
 /* eslint-disable */
 
 /*
-to fix: Error: Component definition is missing display name  react/display-name
+TODO: fix error on build: Component definition is missing display name  react/display-name
 */
 
 import React from 'react'
