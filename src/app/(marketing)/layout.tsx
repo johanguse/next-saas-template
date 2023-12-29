@@ -1,6 +1,6 @@
 import { marketingConfig } from '@/config/marketing'
 import { getCurrentUser } from '@/lib/session'
-import { NavBar } from '@/components/layout/navbar'
+import { NavBar } from '@/components/layout/navigation/main/navbar'
 import { SiteFooter } from '@/components/layout/site-footer'
 
 interface MarketingLayoutProps {

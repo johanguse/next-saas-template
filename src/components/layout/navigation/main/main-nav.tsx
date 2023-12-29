@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation'
 
 import { siteConfig } from '@/config/site'
 import { cn } from '@/lib/utils'
-import { MobileNav } from '@/components/layout/mobile-nav'
+import { MobileNav } from '@/components/layout/navigation/main/mobile-nav'
 import { Icons } from '@/components/shared/icons'
 import IconLogo from '@/components/shared/logo-icon'
 

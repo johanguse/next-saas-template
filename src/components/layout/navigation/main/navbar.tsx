@@ -8,9 +8,8 @@ import { cn } from '@/lib/utils'
 import useScroll from '@/hooks/use-scroll'
 import { useSigninModal } from '@/hooks/use-signin-modal'
 import { Button, buttonVariants } from '@/components/ui/button'
-
-import { MainNav } from './main-nav'
-import { UserAccountNav } from './user-account-nav'
+import { MainNav } from '@/components/layout/navigation/main/main-nav'
+import { UserAccountNav } from '@/components/layout/navigation/user-account-nav'
 
 interface NavBarProps {
   user: Pick<User, 'name' | 'image' | 'email'> | undefined
