@@ -1,24 +1,26 @@
+import { BlockTitle } from '@/components/layout/main-title'
+
 export default function Features() {
   return (
     <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48">
       <div className="container px-4 md:px-6">
         <div className="grid items-center gap-16 px-4 sm:gap-y-24 sm:px-6 lg:px-8">
-          <div className="relative flex flex-col items-center text-center">
-            <h2 className="relative mb-2 bg-gradient-to-r from-indigo-500 to-purple-500/80 bg-clip-text text-base font-extrabold text-transparent">
-              Features
-            </h2>
-            <p className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl dark:text-white">
+          <BlockTitle.Wrapper>
+            <BlockTitle.Header elementType="h2">Features</BlockTitle.Header>
+
+            <BlockTitle.Title elementType="h3">
               Discover Our Unique Features and titles
-            </p>
-            <p className="mt-6 text-lg text-gray-600 dark:text-gray-300">
+            </BlockTitle.Title>
+
+            <BlockTitle.Description>
               Our features are designed to enhance your productivity and
               streamline your workflow.
-            </p>
-            <div className="absolute inset-0 mx-auto h-10 max-w-xs bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-600 via-pink-600 to-blue-600 blur-[118px]"></div>
-            <div className="mt-16 h-px w-full max-w-xs bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-rose-400 via-fuchsia-500 to-indigo-500 bg-[length:100%_6px] ">
-              &nbsp;
-            </div>
-          </div>
+            </BlockTitle.Description>
+
+            <BlockTitle.Background />
+
+            <BlockTitle.Separator />
+          </BlockTitle.Wrapper>
           <div className="mx-auto w-full max-w-full space-y-4">
             <div className="grid-row grid animate-fade-up gap-6 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 lg:gap-16">
               <div className="flex flex-col items-center space-y-2 rounded-lg border-gray-800 p-4">

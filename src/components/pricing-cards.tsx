@@ -1,5 +1,3 @@
-import Balancer from 'react-wrap-balancer'
-
 import { siteConfig } from '@/config/site'
 import { getCurrentUser } from '@/lib/session'
 import { getUserSubscriptionPlan } from '@/lib/subscription'
@@ -26,21 +24,19 @@ export default async function PricingCards() {
 
       <PricingCardItem userId={user?.id} subscriptionPlan={subscriptionPlan} />
 
-      <p className="mt-3 text-center text-base text-muted-foreground">
-        <Balancer>
-          Email{' '}
-          <a
-            className="font-medium text-primary hover:underline"
-            href={`mailto:${siteConfig.mailSupport}`}
-          >
-            {siteConfig.mailSupport}
-          </a>{' '}
-          for to contact our support team.
-          <br />
-          <strong>
-            You can test the subscriptions and won&apos;t be charged.
-          </strong>
-        </Balancer>
+      <p className="mt-3 text-balance text-center text-base text-muted-foreground">
+        Email{' '}
+        <a
+          className="font-medium text-primary hover:underline"
+          href={`mailto:${siteConfig.mailSupport}`}
+        >
+          {siteConfig.mailSupport}
+        </a>{' '}
+        for to contact our support team.
+        <br />
+        <strong>
+          You can test the subscriptions and won&apos;t be charged.
+        </strong>
       </p>
     </section>
   )

@@ -1,25 +1,7 @@
-import { DocsConfig } from 'types'
+import { BlocksConfig } from 'types'
 
-export const docsConfig: DocsConfig = {
-  mainNav: [
-    {
-      title: 'Home',
-      href: '/',
-    },
-    {
-      title: 'Documentation',
-      href: '/docs',
-    },
-    {
-      title: 'Guides',
-      href: '/guides',
-    },
-    {
-      title: 'Components',
-      href: '/components',
-    },
-  ],
-  sidebarNav: [
+export const blocksConfig: BlocksConfig = {
+  sidebarNavBlocks: [
     {
       title: 'Getting Started',
       items: [
@@ -33,8 +15,8 @@ export const docsConfig: DocsConfig = {
       title: 'Documentation',
       items: [
         {
-          title: 'Introduction',
-          href: '/docs/documentation',
+          title: 'Testimonials',
+          href: '/blocks/testimonials',
         },
         {
           title: 'Contentlayer',

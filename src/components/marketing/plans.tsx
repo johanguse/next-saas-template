@@ -2,6 +2,7 @@ import React from 'react'
 
 import { Button } from '@/components/ui/button'
 import { Tag } from '@/components/ui/tag'
+import { BlockTitle } from '@/components/layout/main-title'
 import { Icons } from '@/components/shared/icons'
 
 type PlanProps = {
@@ -108,18 +109,22 @@ export default function PlansMarketing() {
     <section className="py-32">
       <div className="container px-4 md:px-6">
         <div className="grid items-center gap-16 px-4 sm:gap-y-24 sm:px-6 lg:px-8">
-          <div className="flex flex-col items-center text-center">
-            <h1 className="relative mb-2 bg-gradient-to-r from-indigo-500 to-purple-500/80 bg-clip-text text-base font-extrabold text-transparent">
-              Pricing
-            </h1>
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl dark:text-white">
+          <BlockTitle.Wrapper>
+            <BlockTitle.Header elementType="h1">Pricing</BlockTitle.Header>
+
+            <BlockTitle.Title elementType="h2">
               A plan for every need and titles too
-            </h2>
-            <p className="mb-8 mt-6 text-lg text-gray-600 dark:text-gray-300">
+            </BlockTitle.Title>
+
+            <BlockTitle.Description>
               Pariatur laborum dolor ea commodo sit aute aliquip qui et cillum
               excepteur.
-            </p>
-          </div>
+            </BlockTitle.Description>
+
+            <BlockTitle.Background />
+
+            <BlockTitle.Separator />
+          </BlockTitle.Wrapper>
 
           <div className="-mt-14 flex w-full flex-col items-center gap-8 py-16 lg:grid lg:grid-cols-3">
             {plans.map((plan, index) => (

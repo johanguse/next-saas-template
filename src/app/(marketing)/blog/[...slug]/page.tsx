@@ -9,7 +9,6 @@ import { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { env } from '@/root/env.mjs'
-import Balancer from 'react-wrap-balancer'
 
 import { absoluteUrl, cn, formatDate } from '@/lib/utils'
 import { buttonVariants } from '@/components/ui/button'
@@ -117,8 +116,8 @@ export default async function PostPage({ params }: PostPageProps) {
             Published on {formatDate(post.date)}
           </time>
         )}
-        <h1 className="mt-2 inline-block font-heading text-4xl leading-tight lg:text-5xl">
-          <Balancer>{post.title}</Balancer>
+        <h1 className="mt-2 inline-block text-balance font-heading text-4xl leading-tight lg:text-5xl">
+          {post.title}
         </h1>
         {authors?.length ? (
           <div className="mt-4 flex space-x-4">

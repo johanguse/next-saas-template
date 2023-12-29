@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import Balancer from 'react-wrap-balancer'
 
 import { siteConfig } from '@/config/site'
 import { cn } from '@/lib/utils'
@@ -38,25 +37,21 @@ export default function Hero() {
           </div>
 
           <h1
-            className="my-6 animate-fade-up font-urban text-4xl font-extrabold tracking-tight opacity-0 sm:text-5xl md:text-6xl lg:text-7xl"
+            className="my-6 animate-fade-up text-balance font-urban text-4xl font-extrabold tracking-tight opacity-0 sm:text-5xl md:text-6xl lg:text-7xl"
             style={{ animationDelay: '0.25s', animationFillMode: 'forwards' }}
           >
-            <Balancer>
-              Launching Your SaaS Success Story with{' '}
-              <span className="relative bg-gradient-to-r from-indigo-500 to-purple-500/80 bg-clip-text font-extrabold text-transparent">
-                Next SaaS Template
-              </span>
-            </Balancer>
+            Launching Your SaaS Success Story with{' '}
+            <span className="relative bg-gradient-to-r from-indigo-500 to-purple-500/80 bg-clip-text font-extrabold text-transparent">
+              Next SaaS Template
+            </span>
           </h1>
 
           <p
-            className="mb-8 max-w-[42rem] animate-fade-up leading-normal text-muted-foreground opacity-0 sm:text-xl sm:leading-8"
+            className="mb-8 max-w-[42rem] animate-fade-up text-balance leading-normal text-muted-foreground opacity-0 sm:text-xl sm:leading-8"
             style={{ animationDelay: '0.35s', animationFillMode: 'forwards' }}
           >
-            <Balancer>
-              Empower Your Next Project with Next.js 14, Prisma, Planetscale,
-              Auth.js, Resend, React Email, Shadcn/ui, and Stripe Integration
-            </Balancer>
+            Empower Your Next Project with Next.js 14, Prisma, Planetscale,
+            Auth.js, Resend, React Email, Shadcn/ui, and Stripe Integration
           </p>
 
           <div

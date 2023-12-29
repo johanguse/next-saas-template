@@ -14,7 +14,7 @@ export function BlogPostListItem({ posts }) {
         <li className="flex border-gray-200" key={key}>
           <article className="flex flex-col">
             <div className="flex flex-col">
-              <h3 className="text-lg font-semibold duration-150 group-hover:text-indigo-600">
+              <h3 className="text-balance text-lg font-semibold duration-150 group-hover:text-indigo-600">
                 <Link href={items.slug}>{items.title}</Link>
               </h3>
               <Image
@@ -32,7 +32,7 @@ export function BlogPostListItem({ posts }) {
                   ? format(parseISO(items.date), 'MMM, do yyyy')
                   : null}{' '}
               </span>
-              <p className="duration-150 group-hover:text-gray-800">
+              <p className="text-balance duration-150 group-hover:text-gray-800">
                 {items.description}
               </p>
             </div>
