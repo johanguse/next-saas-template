@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { motion, useAnimation } from 'framer-motion'
 
 import { LogoCompanies, logosCompaniesData } from '@/lib/fake-data/logos'
@@ -11,12 +11,13 @@ const scrollSpeed = 30
 
 const CarouselBlocksPage: React.FC = () => {
   const [logoData, setLogoData] = useState<LogoCompanies[]>([])
-  const controls = useAnimation()
-  const carouselRef = useRef<HTMLDivElement>(null)
+  const [animationActive, setAnimationActive] = useState(true)
 
   useEffect(() => {
     setLogoData([...initialLogoData, ...initialLogoData])
   }, [])
+
+  const controls = useAnimation()
 
   useEffect(() => {
     const totalWidth = logoWidth * logoData.length
@@ -27,24 +28,26 @@ const CarouselBlocksPage: React.FC = () => {
         transition: { duration: totalWidth / scrollSpeed, ease: 'linear' },
       })
 
-      // Reset position and repeat animation
-      if (controls) {
-        controls.set({ x: 0 })
-        animateScroll()
+      if (animationActive) {
+        requestAnimationFrame(animateScroll)
       }
     }
 
     if (logoData.length > 0) {
       animateScroll()
     }
-  }, [logoData, controls])
+
+    return () => {
+      setAnimationActive(false)
+    }
+  }, [logoData, controls, animationActive])
 
   return (
     <div className="flex w-full flex-col gap-16 py-8 md:py-8">
       <h1 className="text-center">Trusted by</h1>
       <div className="container mx-auto py-5 text-center">
-        <div className="inline-flex w-full flex-nowrap overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]">
-          <motion.div ref={carouselRef} animate={controls}>
+        <div className="inline-flex max-w-2xl flex-nowrap overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]">
+          <motion.div animate={controls}>
             <LogoList logoData={logoData} />
           </motion.div>
         </div>
