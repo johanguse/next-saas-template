@@ -9,55 +9,72 @@ export const siteConfig: SiteConfig = {
   description:
     'Empowering your SaaS startup journey with a meticulously crafted Next.js boilerplate and starter kit for fully-functional websites and apps.',
   url: site_url,
+  mailSupport: 'nextsaastemplate@gmail.com',
+  address: '123 Code Street, Suite 404, Devtown, CA 98765',
   ogImage: `${site_url}/og.jpg`,
-  links: {
-    twitter: 'https://twitter.com/johanguse',
-    github: 'https://github.com/johanguse/next-saas-template',
-  },
   social: {
-    links: [
-      {
+    links: {
+      twitter: {
         label: 'Twitter',
         icon: 'twitter',
         href: 'https://twitter.com/next_saaS',
       },
-      {
-        label: 'Github',
-        icon: 'gitHub',
+      github: {
+        label: 'GitHub',
+        icon: 'github',
         href: 'https://github.com/johanguse/next-saas-template',
       },
-      {
-        label: 'Facebook',
-        icon: 'facebook',
-        href: 'https://github.com/johanguse/next-saas-template/issues',
-      },
-      {
-        label: 'Instagram',
-        icon: 'instagram',
-        href: 'https://github.com/johanguse/next-saas-template/issues',
-      },
-      {
-        label: 'Tiktok',
-        icon: 'tiktok',
-        href: 'https://github.com/johanguse/next-saas-template/issues',
-      },
-      {
-        label: 'YouTube',
-        icon: 'youtube',
-        href: 'https://github.com/johanguse/next-saas-template/issues',
-      },
-      {
+      linkedin: {
         label: 'LinkedIn',
         icon: 'linkedin',
-        href: 'https://github.com/johanguse/next-saas-template/issues',
+        href: 'https://github.com/johanguse/next-saas-template',
+      },
+      youtube: {
+        label: 'YouTube',
+        icon: 'youtube',
+        href: 'https://github.com/johanguse/next-saas-template',
+      },
+      instagram: {
+        label: 'Instagram',
+        icon: 'instagram',
+        href: 'https://github.com/johanguse/next-saas-template',
+      },
+      facebook: {
+        label: 'Facebook',
+        icon: 'facebook',
+        href: 'https://github.com/johanguse/next-saas-template',
+      },
+      tiktok: {
+        label: 'Tiktok',
+        icon: 'tiktok',
+        href: 'https://github.com/johanguse/next-saas-template',
+      },
+    },
+  },
+
+  footer: {
+    links: [
+      {
+        href: '/contact',
+        name: 'About',
       },
       {
-        label: 'Discord',
-        icon: 'discord',
-        href: 'https://github.com/johanguse/next-saas-template/issues',
+        href: '/contact',
+        name: 'Blog',
+      },
+      {
+        href: '/contact',
+        name: 'Team',
+      },
+      {
+        href: '/contact',
+        name: 'Careers',
+      },
+
+      {
+        href: '/contact',
+        name: 'Suuport',
       },
     ],
   },
-  mailSupport: 'nextsaastemplate@gmail.com',
-  address: '123 Code Street, Suite 404, Devtown, CA 98765',
 }

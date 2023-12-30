@@ -1,5 +1,6 @@
 import Image from 'next/image'
-import { Testimonial } from '@/root/types/testimonial'
+
+import { Testimonial } from '@/lib/fake-data/testimonials'
 
 interface TestimonialCardsProps {
   testimonials: Testimonial[]

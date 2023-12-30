@@ -2,6 +2,7 @@
 
 /*
 TODO: fix error on build: Component definition is missing display name  react/display-name
+https://bobbyhadz.com/blog/react-component-is-missing-display-name#disable-the-eslint-rule-for-a-single-line
 */
 
 import React from 'react'

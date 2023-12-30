@@ -1,9 +1,9 @@
 'use client'
 
 import Image from 'next/image'
-import { Testimonial } from '@/root/types/testimonial'
 import Autoplay from 'embla-carousel-autoplay'
 
+import { Testimonial } from '@/lib/fake-data/testimonials'
 import {
   Carousel,
   CarouselContent,

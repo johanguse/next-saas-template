@@ -27,6 +27,16 @@ module.exports = {
         // Fade in and out
         'fade-in': 'fade-in 0.4s',
         'fade-out': 'fade-out 0.4s',
+
+        'fade-in-forwards': 'fade-in 0.5s linear forwards',
+        marquee: 'marquee var(--marquee-duration) linear infinite',
+        'spin-slow': 'spin 4s linear infinite',
+        'spin-slower': 'spin 6s linear infinite',
+        'spin-reverse': 'spin-reverse 1s linear infinite',
+        'spin-reverse-slow': 'spin-reverse 4s linear infinite',
+        'spin-reverse-slower': 'spin-reverse 6s linear infinite',
+
+        'infinite-scroll': 'infinite-scroll 25s linear infinite',
       },
       borderRadius: {
         lg: `var(--radius)`,
@@ -86,51 +96,32 @@ module.exports = {
         'fade-up': {
           '0%': {
             opacity: 0,
-            transform: 'translateY(10px)',
           },
-          '80%': {
-            opacity: 0.7,
-          },
-          '100%': {
+          to: {
             opacity: 1,
-            transform: 'translateY(0px)',
           },
         },
-        'fade-down': {
-          '0%': {
-            opacity: 0,
-            transform: 'translateY(-10px)',
-          },
-          '80%': {
-            opacity: 0.6,
-          },
-          '100%': {
-            opacity: 1,
-            transform: 'translateY(0px)',
-          },
-        },
-        // Fade in and out
         'fade-in': {
-          '0%': {
+          from: {
             opacity: 0,
           },
-          '50%': {
-            opacity: 0.6,
-          },
-          '100%': {
+          to: {
             opacity: 1,
           },
         },
-        'fade-out': {
-          '0%': {
-            opacity: 0,
-          },
-          '50%': {
-            opacity: 0.6,
-          },
+        marquee: {
           '100%': {
-            opacity: 1,
+            transform: 'translateY(-50%)',
           },
+        },
+        'spin-reverse': {
+          to: {
+            transform: 'rotate(-360deg)',
+          },
+        },
+        'infinite-scroll': {
+          from: { transform: 'translateX(0)' },
+          to: { transform: 'translateX(-100%)' },
         },
       },
     },
