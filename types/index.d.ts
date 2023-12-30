@@ -26,6 +26,27 @@ export type SidebarNavItem = {
     }
 )
 
+type Icons = {
+  twitter: string
+  github: string
+  linkedin: string
+  youtube: string
+  instagram: string
+  facebook: string
+  tiktok: string
+}
+
+type SocialLink = {
+  label: string
+  icon: keyof typeof Icons
+  href: string
+}
+
+type FooterLink = {
+  href: string
+  name: string
+}
+
 export type SiteConfig = {
   address: string
   name: string
@@ -33,16 +54,11 @@ export type SiteConfig = {
   url: string
   ogImage: string
   mailSupport: string
-  links: {
-    twitter: string
-    github: string
-  }
   social: {
-    links: {
-      label: string
-      icon: keyof typeof Icons
-      href: string
-    }[]
+    links: Record<keyof Icons, SocialLink>
+  }
+  footer: {
+    links: FooterLink[]
   }
 }
 

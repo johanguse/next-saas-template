@@ -112,7 +112,7 @@ export const Icons = {
       />
     </svg>
   ),
-  gitHub: ({ ...props }: LucideProps) => (
+  github: ({ ...props }: LucideProps) => (
     <svg
       aria-hidden="true"
       focusable="false"
