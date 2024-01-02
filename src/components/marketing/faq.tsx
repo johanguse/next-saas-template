@@ -5,7 +5,7 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion'
 
-import { BlockTitle } from '../layout/main-title'
+import { BlockTitle } from '@/components/layout/main-title'
 
 const pricingFaqData = [
   {

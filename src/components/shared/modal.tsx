@@ -4,9 +4,8 @@ import { Drawer } from 'vaul'
 
 import { cn } from '@/lib/utils'
 import useMediaQuery from '@/hooks/use-media-query'
+import { Button } from '@/components/ui/button'
 import { Dialog, DialogContent } from '@/components/ui/dialog'
-
-import { Button } from '../ui/button'
 
 interface ModalProps {
   children: React.ReactNode

@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { testimonials } from '@/lib/fake-data/testimonials'
 import { AvatarsGroup } from '@/components/ui/avatar-group'
 import StarRating from '@/components/ui/star-rating'
-import { BlockTitle } from '@/components/layout/main-title'
+import ReviewsGridAnimation from '@/components/marketing/ReviewsGridAnimation'
 import TestimonialCards from '@/components/marketing/testimonials-cards'
 import TestimonialSlider from '@/components/marketing/testimonials-slider'
 import TestimonialSliderClean from '@/components/marketing/testimonials-slider-clean'
@@ -15,27 +15,6 @@ export const metadata = {
 export default function TestimonialBlocksPage() {
   return (
     <div className="flex w-full flex-col gap-16 py-8 md:py-8">
-      <div className="container mx-auto pt-20 text-center">
-        <BlockTitle.Wrapper>
-          <BlockTitle.Header elementType="h1">
-            Lorem Ipsum Header
-          </BlockTitle.Header>
-
-          <BlockTitle.Title elementType="h2">
-            Lorem Ipsum Title
-          </BlockTitle.Title>
-
-          <BlockTitle.Description
-            elementType="p"
-            className="custom-description-class"
-          >
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          </BlockTitle.Description>
-
-          <BlockTitle.Background />
-          <BlockTitle.Separator />
-        </BlockTitle.Wrapper>
-      </div>
       <div className="container mx-auto text-center">
         <div className="flex justify-center">
           <Image
@@ -58,6 +37,7 @@ export default function TestimonialBlocksPage() {
       <TestimonialSlider testimonials={testimonials} />
       <TestimonialSliderClean testimonials={testimonials} />
       <TestimonialCards testimonials={testimonials} />
+      <ReviewsGridAnimation />
     </div>
   )
 }

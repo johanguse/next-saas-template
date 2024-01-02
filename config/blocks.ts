@@ -23,6 +23,10 @@ export const blocksConfig: BlocksConfig = {
           href: '/blocks/carousel',
         },
         {
+          title: 'FAQ',
+          href: '/blocks/faq',
+        },
+        {
           title: 'Pricing Table',
           href: '/blocks/pricing-table',
         },
