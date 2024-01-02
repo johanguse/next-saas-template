@@ -64,7 +64,7 @@ const LogoList: React.FC<{ logoData: LogoCompanies[] }> = ({ logoData }) => (
           src={logo.src}
           alt={logo.alt}
           style={{ maxWidth: 'none' }}
-          className="mx-auto"
+          className="mx-auto dark:invert"
         />
       </li>
     ))}
