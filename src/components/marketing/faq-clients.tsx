@@ -8,7 +8,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 interface faqsClientDataProps {
   faqsClientData: FaqClient[]
 }
-export default function faqsClientCards({
+export default function FaqsClientQuestions({
   faqsClientData,
 }: faqsClientDataProps) {
   const [searchInput, setSearchInput] = useState('')

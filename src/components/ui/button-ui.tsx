@@ -93,7 +93,7 @@ const getButtonColorClasses = cond<ButtonVariant[], string>([
 
 export const getButtonStyles = (variant: ButtonVariant, className?: string) =>
   cn(
-    'relative group cursor-pointer rounded-md flex px-4 py-3 items-center',
+    'group relative flex cursor-pointer items-center rounded-md px-4 py-3',
     getButtonColorClasses(variant),
     className
   )
@@ -117,7 +117,7 @@ export const Button: FC<ButtonProps<HTMLButtonProps | LinkProps>> = ({
   const classes = useMemo(
     () =>
       cn(
-        'relative group cursor-pointer rounded-md flex px-4 py-3 font-medium items-center',
+        'group relative flex cursor-pointer items-center rounded-md px-4 py-3 font-medium',
         getButtonColorClasses(variant),
         { 'flex-row-reverse': iconPlacement === 'right' },
         className
@@ -169,7 +169,6 @@ type InputSubmitProps = DetailedHTMLProps<
   InputHTMLAttributes<HTMLInputElement>,
   HTMLInputElement
 >
-type CombinedProps = ButtonProps & InputHTMLAttributes<HTMLInputElement>
 
 const SubmitButtonBase: ForwardRefRenderFunction<
   HTMLInputElement,
@@ -190,7 +189,7 @@ const SubmitButtonBase: ForwardRefRenderFunction<
       disabled={loading}
       value={labelToken ?? tokenArgs?.label}
       {...props}
-      ref={ref} // Apply the forwarded ref to the input element
+      ref={ref}
     />
   )
 }
