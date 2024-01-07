@@ -1,17 +1,17 @@
-import { env } from '@/root/env.mjs'
-
 import { SiteConfig } from 'types'
 
-const site_url = env.NEXT_PUBLIC_APP_URL
+const defaultUrl = process.env.VERCEL_URL
+  ? `https://${process.env.VERCEL_URL}`
+  : 'http://localhost:3000'
 
 export const siteConfig: SiteConfig = {
   name: 'Next SaaS Template',
   description:
     'Empowering your SaaS startup journey with a meticulously crafted Next.js boilerplate and starter kit for fully-functional websites and apps.',
-  url: site_url,
+  url: defaultUrl,
   mailSupport: 'nextsaastemplate@gmail.com',
   address: '123 Code Street, Suite 404, Devtown, CA 98765',
-  ogImage: `${site_url}/og.jpg`,
+  ogImage: `${defaultUrl}/og.jpg`,
   social: {
     links: {
       twitter: {
