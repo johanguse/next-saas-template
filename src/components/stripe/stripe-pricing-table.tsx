@@ -1,9 +1,10 @@
 'use client'
 
 import Script from 'next/script'
+import { env } from '@/root/env.mjs'
 
 type TStripePricingTable = {
-  clientReferenceId: string
+  clientReferenceId?: string | null
   customerEmail?: string | null
 }
 export const StripePricingTable = ({
@@ -16,8 +17,8 @@ export const StripePricingTable = ({
       <>
         {/* @ts-ignore */}
         <stripe-pricing-table
-          pricing-table-id="prctbl_xxx"
-          publishable-key="pk_test_xxx"
+          pricing-table-id={env.NEXT_PUBLIC_STRIPE_PRICING_TABLE_ID}
+          publishable-key={env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY}
           client-reference-id={clientReferenceId}
           customer-email={customerEmail}
         />

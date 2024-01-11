@@ -29,7 +29,7 @@ export default function CtaSocialMedia() {
             Stay up to date
           </h1>
           <p
-            className="mt-4 text-3xl font-semibold tracking-tight text-slate-900 sm:text-5xl dark:text-slate-100"
+            className="mt-4 text-3xl font-semibold tracking-tight text-slate-900 dark:text-slate-100 sm:text-5xl"
             id="nx-is-fast"
           >
             NST is growing fast, stay in the loop!

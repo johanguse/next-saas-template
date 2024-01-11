@@ -137,7 +137,9 @@ AvatarGroup.displayName = 'AvatarGroup'
 const AvatarGroupList = ({ children }: { children?: React.ReactNode }) => {
   const { limit, setCount } = useAvatarGroupContext()
 
-  setCount?.(React.Children.count(children))
+  React.useEffect(() => {
+    setCount?.(React.Children.count(children))
+  }, [children, setCount])
 
   return (
     <>{limit ? React.Children.toArray(children).slice(0, limit) : children}</>
@@ -170,10 +172,10 @@ AvatarOverflowIndicator.displayName = 'AvatarOverflowIndicator'
 
 export {
   Avatar,
-  AvatarImage,
-  AvatarFallback,
   AvatarBadge,
+  AvatarFallback,
   AvatarGroup,
   AvatarGroupList,
+  AvatarImage,
   AvatarOverflowIndicator,
 }

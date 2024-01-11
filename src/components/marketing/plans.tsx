@@ -1,7 +1,6 @@
 import React from 'react'
 
 import { Button } from '@/components/ui/button'
-import { Tag } from '@/components/ui/tag'
 import { BlockTitle } from '@/components/layout/main-title'
 import { Icons } from '@/components/shared/icons'
 
@@ -23,32 +22,32 @@ const Plan: React.FC<PlanProps> = ({
   index,
 }) => (
   <div
-    className={`relative flex w-full flex-col divide-y divide-gray-200 self-stretch overflow-hidden rounded-xl bg-white shadow dark:divide-gray-800 dark:bg-gray-900 ${
+    className={`relative flex w-full flex-col divide-y divide-gray-200 self-stretch rounded-xl bg-white shadow dark:divide-gray-800 dark:bg-gray-900 ${
       highlighted
-        ? 'ring-2 ring-gray-900 lg:z-10 lg:scale-[1.1] dark:ring-white'
+        ? 'ring-2 ring-gray-900 dark:ring-white lg:z-10 lg:scale-[1.1]'
         : 'ring-1 ring-gray-200 dark:ring-gray-800'
     }`}
   >
-    <div className="flex flex-1 flex-col gap-y-6 p-8 sm:p-6 xl:p-10">
-      <h3 className="truncate text-2xl font-semibold text-gray-900 sm:text-3xl dark:text-white">
+    {index === 1 && (
+      <div className="absolute left-0 right-0 mx-auto -mt-4 text-center">
+        <div className="inline-flex items-center rounded-full bg-fuchsia-700 px-3 py-1.5 text-xs font-semibold text-white shadow-sm shadow-slate-950/5">
+          Most Popular
+        </div>
+      </div>
+    )}
+    <div className="flex flex-1 flex-col gap-y-6 rounded-xl p-8 sm:p-6 xl:p-10">
+      <h3 className="truncate text-2xl font-semibold text-gray-900 dark:text-white sm:text-3xl">
         {name}
       </h3>
-      {index === 1 && (
-        <Tag
-          labelToken="Most popular"
-          size="sm"
-          className="bg-primary-500 dark:bg-primary-400 absolute right-10 top-8"
-        />
-      )}
-      <p className="mt-2 text-sm text-gray-500 sm:text-base dark:text-gray-400">
+      <p className="mt-2 text-sm text-gray-500 dark:text-gray-400 sm:text-base">
         {description}
       </p>
-      <p className="text-2xl font-semibold text-gray-900 sm:text-4xl dark:text-white">
+      <p className="text-2xl font-semibold text-gray-900 dark:text-white sm:text-4xl">
         {price}
       </p>
       <ul className="order-last flex-1 space-y-3 text-sm">
         {features.map((feature, index) => (
-          <li key={index} className="flex items-center gap-x-3">
+          <li key={index} className="flex items-center gap-x-3 text-left">
             <Icons.add height={12} width={12} />
             <span className="text-gray-600 dark:text-gray-400">{feature}</span>
           </li>
@@ -111,21 +110,16 @@ export default function PlansMarketing() {
         <div className="grid items-center gap-16 px-4 sm:gap-y-24 sm:px-6 lg:px-8">
           <BlockTitle.Wrapper>
             <BlockTitle.Header elementType="h1">Pricing</BlockTitle.Header>
-
             <BlockTitle.Title elementType="h2">
               A plan for every need and titles too
             </BlockTitle.Title>
-
             <BlockTitle.Description>
               Pariatur laborum dolor ea commodo sit aute aliquip qui et cillum
               excepteur.
             </BlockTitle.Description>
-
             <BlockTitle.Background />
-
             <BlockTitle.Separator />
           </BlockTitle.Wrapper>
-
           <div className="-mt-14 flex w-full flex-col items-center gap-8 py-16 lg:grid lg:grid-cols-3">
             {plans.map((plan, index) => (
               <Plan key={index} {...plan} index={index} />
