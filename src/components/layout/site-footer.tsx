@@ -21,7 +21,7 @@ export function SiteFooter({ className }: React.HTMLAttributes<HTMLElement>) {
     <footer
       className={
         cn(className) +
-        ' mx-auto w-full bg-white px-4 pb-6 pt-16 text-gray-500 md:px-8 dark:bg-black'
+        ' mx-auto w-full bg-white px-4 pb-6 pt-16 text-gray-500 dark:bg-black md:px-8'
       }
     >
       <div className="container">
@@ -34,7 +34,7 @@ export function SiteFooter({ className }: React.HTMLAttributes<HTMLElement>) {
               alt={`Logo ${siteConfig.name}`}
               className="mb-2"
             />
-            <span className="mb-6 hidden font-urban text-xl font-bold text-black sm:inline-block dark:text-white">
+            <span className="mb-6 hidden font-urban text-xl font-bold text-black dark:text-white sm:inline-block">
               {siteConfig.name}
             </span>
             <ul className="flex items-center space-x-4">

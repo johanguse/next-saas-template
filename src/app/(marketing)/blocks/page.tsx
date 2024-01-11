@@ -11,25 +11,22 @@ export default function TestimonialBlocksPage() {
       <div className="container mx-auto pt-20 text-center">
         <div className="mb-20">
           <BlockTitle.Wrapper>
-            <BlockTitle.Header elementType="h1" className="custom-header-class">
+            <BlockTitle.Header elementType="h1">
               Lorem Ipsum Header
             </BlockTitle.Header>
 
-            <BlockTitle.Title elementType="h2" className="custom-title-class">
+            <BlockTitle.Title elementType="h2">
               Lorem Ipsum Title
             </BlockTitle.Title>
 
-            <BlockTitle.Description
-              elementType="p"
-              className="custom-description-class"
-            >
+            <BlockTitle.Description elementType="p">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </BlockTitle.Description>
 
-            <BlockTitle.Background className="custom-background-class" />
+            <BlockTitle.Background />
 
-            <BlockTitle.Separator className="custom-separator-class" />
+            <BlockTitle.Separator />
           </BlockTitle.Wrapper>
         </div>
         <div>

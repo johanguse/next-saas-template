@@ -75,7 +75,7 @@ export default function NotFoundPage() {
             <h1 className="font-semibold text-indigo-600 dark:text-indigo-500">
               404 Error
             </h1>
-            <p className="text-4xl font-semibold text-gray-800 sm:text-5xl dark:text-white">
+            <p className="text-4xl font-semibold text-gray-800 dark:text-white sm:text-5xl">
               Page not found
             </p>
             <p className="text-gray-600 dark:text-white">

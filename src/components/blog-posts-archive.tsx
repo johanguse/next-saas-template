@@ -20,7 +20,7 @@ export function BlogPostsArchive({
     <section className="container pt-16">
       <div className="mb-6 flex flex-row items-center justify-between">
         <h1 className="text-3xl font-bold">Blog Archive</h1>
-        <p className="text-sm text-gray-600 md:hidden dark:text-gray-300">
+        <p className="text-sm text-gray-600 dark:text-gray-300 md:hidden">
           {`Page ${currentPage} of ${Math.ceil(posts.length / postsPerPage)}`}
         </p>
       </div>

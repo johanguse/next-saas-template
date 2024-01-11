@@ -20,6 +20,8 @@ export const env = createEnv({
     NEXT_PUBLIC_STRIPE_PRO_YEARLY_PLAN_ID: z.string().min(1),
     NEXT_PUBLIC_STRIPE_BUSINESS_MONTHLY_PLAN_ID: z.string().min(1),
     NEXT_PUBLIC_STRIPE_BUSINESS_YEARLY_PLAN_ID: z.string().min(1),
+    NEXT_PUBLIC_STRIPE_PRICING_TABLE_ID: z.string().min(1).optional(),
+    NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: z.string().min(1).optional(),
   },
   runtimeEnv: {
     NEXTAUTH_URL: process.env.NEXTAUTH_URL,
@@ -41,5 +43,9 @@ export const env = createEnv({
       process.env.NEXT_PUBLIC_STRIPE_BUSINESS_MONTHLY_PLAN_ID,
     NEXT_PUBLIC_STRIPE_BUSINESS_YEARLY_PLAN_ID:
       process.env.NEXT_PUBLIC_STRIPE_BUSINESS_YEARLY_PLAN_ID,
+    NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY:
+      process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY,
+    NEXT_PUBLIC_STRIPE_PRICING_TABLE_ID:
+      process.env.NEXT_PUBLIC_STRIPE_PRICING_TABLE_ID,
   },
 })
