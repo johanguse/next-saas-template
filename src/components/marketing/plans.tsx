@@ -1,7 +1,6 @@
 import React from 'react'
 
 import { Button } from '@/components/ui/button'
-import { BlockTitle } from '@/components/layout/main-title'
 import { Icons } from '@/components/shared/icons'
 
 type PlanProps = {
@@ -29,7 +28,7 @@ const Plan: React.FC<PlanProps> = ({
     }`}
   >
     {index === 1 && (
-      <div className="absolute left-0 right-0 mx-auto -mt-4 text-center">
+      <div className="absolute inset-x-0 mx-auto -mt-4 text-center">
         <div className="inline-flex items-center rounded-full bg-fuchsia-700 px-3 py-1.5 text-xs font-semibold text-white shadow-sm shadow-slate-950/5">
           Most Popular
         </div>
@@ -108,18 +107,6 @@ export default function PlansMarketing() {
     <section className="py-32">
       <div className="container px-4 md:px-6">
         <div className="grid items-center gap-16 px-4 sm:gap-y-24 sm:px-6 lg:px-8">
-          <BlockTitle.Wrapper>
-            <BlockTitle.Header elementType="h1">Pricing</BlockTitle.Header>
-            <BlockTitle.Title elementType="h2">
-              A plan for every need and titles too
-            </BlockTitle.Title>
-            <BlockTitle.Description>
-              Pariatur laborum dolor ea commodo sit aute aliquip qui et cillum
-              excepteur.
-            </BlockTitle.Description>
-            <BlockTitle.Background />
-            <BlockTitle.Separator />
-          </BlockTitle.Wrapper>
           <div className="-mt-14 flex w-full flex-col items-center gap-8 py-16 lg:grid lg:grid-cols-3">
             {plans.map((plan, index) => (
               <Plan key={index} {...plan} index={index} />

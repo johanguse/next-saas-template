@@ -2,7 +2,7 @@ import { redirect } from 'next/navigation'
 
 import { authOptions } from '@/lib/auth'
 import { getCurrentUser } from '@/lib/session'
-import Pagination from '@/components/ui/pagination'
+import PaginationNST from '@/components/ui/pagination-nst'
 import { DashboardHeader } from '@/components/dashboard/header'
 import { DashboardShell } from '@/components/dashboard/shell'
 
@@ -243,7 +243,7 @@ export default async function StatusPage() {
         </div>
       </section>
       <div className="mb-6 w-full">
-        <Pagination />
+        <PaginationNST />
       </div>
     </DashboardShell>
   )

@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 
-export default function Pagination() {
+export default function PaginationNST() {
   const [pages, setPages] = useState(['1', '2', '3', , '...', '8', '9', '10'])
   const [currentPage, setCurrentPage] = useState('1')
 

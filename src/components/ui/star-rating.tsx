@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { cn } from '@/lib/utils'
 import { Icons } from '@/components/shared/icons'
 
@@ -8,10 +6,19 @@ interface StarRatingProps {
   className?: string
 }
 
-const StarRating: React.FC<StarRatingProps> = ({
+const createStarElements = (
+  starsCount: number,
+  classNames: string
+): JSX.Element[] => {
+  return [...Array(starsCount)].map((_, index) => (
+    <Icons.starRating key={index} className={classNames} />
+  ))
+}
+
+export default function StarRating({
   starsCount = 5,
   className,
-}) => {
+}: StarRatingProps) {
   const baseClassNames = cn(
     'h-5 w-5 fill-current text-yellow-300 transition-all hover:scale-110 hover:text-yellow-400 dark:text-yellow-400',
     className
@@ -19,11 +26,7 @@ const StarRating: React.FC<StarRatingProps> = ({
 
   return (
     <div className="flex gap-0.5">
-      {Array.from({ length: starsCount }, (_, index) => (
-        <Icons.starRating key={index} className={baseClassNames} />
-      ))}
+      {createStarElements(starsCount, baseClassNames)}
     </div>
   )
 }
-
-export default StarRating

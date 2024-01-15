@@ -22,6 +22,10 @@ export const marketingConfig: MarketingConfig = {
       title: 'Documentation',
       href: '/docs',
     },
+    {
+      title: 'Contact',
+      href: '/contact',
+    },
   ],
   postsPerPage: 6,
 }
