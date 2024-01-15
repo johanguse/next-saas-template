@@ -3,7 +3,7 @@ import { allPosts } from 'contentlayer/generated'
 
 import { marketingConfig } from '@/config/marketing'
 import { BlogPostsArchive } from '@/components/blog-posts-archive'
-import Pagination from '@/components/shared/pagination'
+import PaginationNST from '@/components/shared/pagination'
 
 type BlogPageProps = {
   params: { id: number }
@@ -35,7 +35,7 @@ export default function BlogPage({ params }: BlogPageProps) {
           posts={sortedAndFilteredPosts}
           currentPage={currentPage}
         />
-        <Pagination
+        <PaginationNST
           totalPostCount={sortedAndFilteredPosts.length}
           currentPage={currentPage}
           postsPerPage={postsPerPage}

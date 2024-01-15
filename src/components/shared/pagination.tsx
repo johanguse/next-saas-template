@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import { useMemo } from 'react'
 import Link from 'next/link'
 
 interface PaginationProps {
@@ -8,12 +8,12 @@ interface PaginationProps {
   postsPerPage: number
 }
 
-const Pagination: React.FC<PaginationProps> = ({
+export default function Pagination({
   totalPostCount,
   currentPage,
   className,
   postsPerPage,
-}) => {
+}: PaginationProps) {
   const totalPages = useMemo(
     () => Math.ceil(totalPostCount / postsPerPage),
     [totalPostCount]
@@ -113,5 +113,3 @@ const Pagination: React.FC<PaginationProps> = ({
     </div>
   )
 }
-
-export default Pagination
