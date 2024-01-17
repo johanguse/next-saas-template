@@ -27,7 +27,7 @@ export function UserNav({ user }: UserAccountNavProps) {
         <Button variant="ghost" className="relative size-8 rounded-full">
           <UserAvatar
             user={{ name: user?.name || null, image: user?.image || null }}
-            className="size-8"
+            className="size-9 border-2 border-slate-100 bg-slate-100 dark:border-slate-700 dark:bg-slate-700"
           />
         </Button>
       </DropdownMenuTrigger>

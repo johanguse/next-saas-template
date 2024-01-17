@@ -76,14 +76,6 @@ export function SiteFooter({ className }: React.HTMLAttributes<HTMLElement>) {
               <li>
                 <ModeToggle />
               </li>
-              <li id="changelog" className="relative">
-                <button
-                  aria-label="Changelog"
-                  className="absolute right-1 top-1"
-                >
-                  <Icons.notification />
-                </button>
-              </li>
             </ul>
           </div>
         </div>
