@@ -1,16 +1,19 @@
 {
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true,
-    "source.fixAll.prettier": true,
-    "source.addMissingImports": true,
-    "source.organizeImports": true,
-    "source.fixAll": true
+    "source.addMissingImports": "explicit",
+    "source.fixAll.eslint": "explicit",
+    "source.fixAll.prettier": "explicit",
+    "source.organizeImports": "explicit",
+    "source.fixAll": "explicit"
   },
   "[prisma]": {
     "editor.defaultFormatter": "Prisma.prisma"
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "css.customData": [".vscode/tailwind.json"],
   "typescript.tsdk": "node_modules/typescript/lib"

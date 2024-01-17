@@ -81,6 +81,19 @@ export type DashboardConfig = {
   sidebarNav: SidebarNavItem[]
 }
 
+export type SideNavItem = {
+  title: string
+  path: string
+  icon?: JSX.Element
+  submenu?: boolean
+  subMenuItems?: SideNavItem[]
+}
+
+export type SideNavItemGroup = {
+  title: string
+  menuList: SideNavItem[]
+}
+
 export type SubscriptionPlan = {
   title: string
   description: string
