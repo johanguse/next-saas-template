@@ -16,16 +16,17 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"],
       "@/actions/*": ["./src/actions/*"],
       "@/components/*": ["./src/components/*"],
       "@/config/*": ["./config/*"],
       "@/emails/*": ["./emails/*"],
+      "@/hooks/*": ["./src/hooks/*"],
       "@/lib/*": ["./src/lib/*"],
       "@/pages/*": ["./src/pages/*"],
       "@/root/*": ["./*"],
       "@/styles/*": ["./src/styles/*"],
       "@/types/*": ["./types/*"],
+      "@/*": ["./src/*"],
       "contentlayer/generated": ["./.contentlayer/generated"]
     },
     "plugins": [
