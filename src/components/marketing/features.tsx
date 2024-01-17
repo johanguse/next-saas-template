@@ -25,7 +25,7 @@ export default function Features() {
             <div className="grid-row grid animate-fade-up gap-6 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 lg:gap-16">
               <div className="flex flex-col items-center space-y-2 rounded-lg border-gray-800 p-4">
                 <div className="rounded-full p-2">
-                  <InboxIcon className="mb-2 h-6 w-6" />
+                  <InboxIcon className="mb-2 size-6" />
                 </div>
                 <h2 className="text-xl font-bold">Smart Inbox</h2>
                 <p>
@@ -35,7 +35,7 @@ export default function Features() {
               </div>
               <div className="flex flex-col items-center space-y-2 rounded-lg border-gray-800 p-4">
                 <div className="rounded-full p-2">
-                  <MergeIcon className="mb-2 h-6 w-6" />
+                  <MergeIcon className="mb-2 size-6" />
                 </div>
                 <h2 className="text-xl font-bold">Seamless Integration</h2>
                 <p>
@@ -45,7 +45,7 @@ export default function Features() {
               </div>
               <div className="flex flex-col items-center space-y-2 rounded-lg border-gray-800 p-4">
                 <div className="rounded-full p-2">
-                  <SettingsIcon className="mb-2 h-6 w-6" />
+                  <SettingsIcon className="mb-2 size-6" />
                 </div>
                 <h2 className="text-xl font-bold">Advanced Customization</h2>
                 <p>
@@ -55,7 +55,7 @@ export default function Features() {
               </div>
               <div className="flex flex-col items-center space-y-2 rounded-lg border-gray-800 p-4">
                 <div className="rounded-full p-2">
-                  <SearchIcon className="mb-2 h-6 w-6" />
+                  <SearchIcon className="mb-2 size-6" />
                 </div>
                 <h2 className="text-xl font-bold">Powerful Search</h2>
                 <p>
@@ -65,7 +65,7 @@ export default function Features() {
               </div>
               <div className="flex flex-col items-center space-y-2 rounded-lg border-gray-800 p-4">
                 <div className="rounded-full p-2">
-                  <LockIcon className="mb-2 h-6 w-6 opacity-75" />
+                  <LockIcon className="mb-2 size-6 opacity-75" />
                 </div>
                 <h2 className="text-xl font-bold">Reliable Security</h2>
                 <p>
@@ -75,7 +75,7 @@ export default function Features() {
               </div>
               <div className="flex flex-col items-center space-y-2 rounded-lg border-gray-800 p-4">
                 <div className="rounded-full p-2">
-                  <MergeIcon className="mb-2 h-6 w-6 opacity-75" />
+                  <MergeIcon className="mb-2 size-6 opacity-75" />
                 </div>
                 <h2 className="text-xl font-bold">Easy Collaboration</h2>
                 <p>

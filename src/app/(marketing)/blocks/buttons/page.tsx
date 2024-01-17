@@ -21,7 +21,7 @@ export default function TestimonialBlocksPage() {
           style={{ animationDelay: '0.15s', animationFillMode: 'forwards' }}
           target="_blank"
         >
-          Introducing on <Icons.twitter className="ml-2 h-4 w-4" />
+          Introducing on <Icons.twitter className="ml-2 size-4" />
         </Link>
 
         <div className="my-6 flex items-center justify-center rounded bg-current py-20">
@@ -32,7 +32,7 @@ export default function TestimonialBlocksPage() {
               className="relative flex rounded bg-black px-7 py-4 font-semibold text-white"
             >
               <div className="flex items-center">
-                Follow me on <Icons.twitter className="ml-2 h-4 w-4" />
+                Follow me on <Icons.twitter className="ml-2 size-4" />
               </div>
             </Link>
           </div>
@@ -45,7 +45,7 @@ export default function TestimonialBlocksPage() {
               className="relative flex rounded bg-black px-7 py-4 font-semibold text-white"
             >
               <div className="flex items-center">
-                Follow me on <Icons.twitter className="ml-2 h-4 w-4" />
+                Follow me on <Icons.twitter className="ml-2 size-4" />
               </div>
             </Link>
           </div>

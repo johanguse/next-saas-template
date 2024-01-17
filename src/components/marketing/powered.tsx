@@ -110,7 +110,7 @@ const features = [
         fill="currentColor"
         stroke="currentColor"
         strokeWidth="1"
-        className="h-9 w-9"
+        className="size-9"
       >
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
       </svg>
@@ -161,7 +161,7 @@ const features = [
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 256 256"
-        className="h-10 w-10"
+        className="size-10"
       >
         <rect width="256" height="256" fill="none"></rect>
         <line

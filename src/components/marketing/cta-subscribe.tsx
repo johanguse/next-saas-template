@@ -5,7 +5,7 @@ export default function CtaSubscribe() {
         <div className="text-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="mx-auto mb-6 h-14 w-14 text-gray-300"
+            className="mx-auto mb-6 size-14 text-gray-300"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"

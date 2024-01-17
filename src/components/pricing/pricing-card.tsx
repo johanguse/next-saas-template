@@ -71,7 +71,7 @@ const PricingCard: React.FC<PricingCardProps> = ({ tier }) => {
               <li key={index} className="flex items-start">
                 <div className="shrink-0">
                   <svg
-                    className={`h-6 w-6 ${
+                    className={`size-6 ${
                       feature.isPositive ? 'text-blue-600' : 'text-red-600'
                     }`}
                     xmlns="http://www.w3.org/2000/svg"

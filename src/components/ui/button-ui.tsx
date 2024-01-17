@@ -130,10 +130,10 @@ export const Button: FC<ButtonProps<HTMLButtonProps | LinkProps>> = ({
       {Icon && (
         <Icon
           className={cn(
-            'h-5 w-5 stroke-2',
+            'size-5 stroke-2',
             {
-              'h-5 w-5': iconSize === 'md',
-              'h-4 w-4': iconSize === 'sm',
+              'size-5': iconSize === 'md',
+              'size-4': iconSize === 'sm',
               invisible: loading,
             },
             iconPlacementRight ? 'ml-2' : 'mr-2'
@@ -145,7 +145,7 @@ export const Button: FC<ButtonProps<HTMLButtonProps | LinkProps>> = ({
       </span>
       {loading && variant !== 'tertiary' && (
         <div className="absolute inset-0 flex items-center justify-center">
-          <Loader2 className="h-8 w-8 animate-spin" />
+          <Loader2 className="size-8 animate-spin" />
         </div>
       )}
     </>

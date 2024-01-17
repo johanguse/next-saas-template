@@ -21,12 +21,12 @@ const rightHeader = () => (
       <DocsSearch />
     </div>
     <div className="flex lg:hidden">
-      <Icons.search className="h-6 w-6 text-muted-foreground" />
+      <Icons.search className="size-6 text-muted-foreground" />
     </div>
     {twitterLink && (
       <nav className="flex space-x-4">
         <Link href={twitterLink} target="_blank" rel="noreferrer">
-          <Icons.github className="h-7 w-7" />
+          <Icons.github className="size-7" />
           <span className="sr-only">GitHub</span>
         </Link>
       </nav>

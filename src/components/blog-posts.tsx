@@ -10,7 +10,7 @@ export function BlogPosts({ posts }) {
       <section className="mb-2 lg:mb-10">
         <article className="relative">
           <div className="flex flex-col-reverse items-center md:flex-row">
-            <div className="mb-6 flex h-full w-full flex-col items-start justify-center px-0 py-6 md:mb-0 md:w-1/2">
+            <div className="mb-6 flex size-full flex-col items-start justify-center px-0 py-6 md:mb-0 md:w-1/2">
               <div className="flex h-full flex-col items-start justify-center space-y-3 md:space-y-5 md:pr-10 lg:pr-16">
                 <div
                   className="flex items-center rounded-full bg-green-600 py-1.5 pl-2 pr-3 uppercase leading-none
@@ -18,7 +18,7 @@ export function BlogPosts({ posts }) {
                 >
                   <p className="inline">
                     <svg
-                      className="mr-1 h-3.5 w-3.5"
+                      className="mr-1 size-3.5"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                       xmlns="http://www.w3.org/2000/svg"
