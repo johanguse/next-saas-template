@@ -31,7 +31,7 @@ export function UserAccountNav({ user }: UserAccountNavProps) {
       <DropdownMenuTrigger>
         <UserAvatar
           user={{ name: user?.name || null, image: user?.image || null }}
-          className="size-8"
+          className="h-8 w-8"
         />
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
@@ -48,7 +48,7 @@ export function UserAccountNav({ user }: UserAccountNavProps) {
         <DropdownMenuSeparator />
         <DropdownMenuItem asChild className="cursor-pointer">
           <Link href="/dashboard" className="flex items-center space-x-2.5">
-            <LayoutDashboard className="size-4" />
+            <LayoutDashboard className="h-4 w-4" />
             <p className="text-sm">Dashboard</p>
           </Link>
         </DropdownMenuItem>
@@ -57,7 +57,7 @@ export function UserAccountNav({ user }: UserAccountNavProps) {
             href="/dashboard/billing"
             className="flex items-center space-x-2.5"
           >
-            <CreditCard className="size-4" />
+            <CreditCard className="h-4 w-4" />
             <p className="text-sm">Billing</p>
           </Link>
         </DropdownMenuItem>
@@ -66,7 +66,7 @@ export function UserAccountNav({ user }: UserAccountNavProps) {
             href="/dashboard/analitycs"
             className="flex items-center space-x-2.5"
           >
-            <Icons.barChart className="size-4" />
+            <Icons.barChart className="h-4 w-4" />
             <p className="text-sm">Analitycs</p>
           </Link>
         </DropdownMenuItem>
@@ -75,7 +75,7 @@ export function UserAccountNav({ user }: UserAccountNavProps) {
             href="/dashboard/users"
             className="flex items-center space-x-2.5"
           >
-            <User2Icon className="size-4" />
+            <User2Icon className="h-4 w-4" />
             <p className="text-sm">Users</p>
           </Link>
         </DropdownMenuItem>
@@ -84,7 +84,7 @@ export function UserAccountNav({ user }: UserAccountNavProps) {
             href="/dashboard/settings"
             className="flex items-center space-x-2.5"
           >
-            <Settings className="size-4" />
+            <Settings className="h-4 w-4" />
             <p className="text-sm">Settings</p>
           </Link>
         </DropdownMenuItem>
@@ -99,7 +99,7 @@ export function UserAccountNav({ user }: UserAccountNavProps) {
           }}
         >
           <div className="flex items-center space-x-2.5">
-            <LogOut className="size-4" />
+            <LogOut className="h-4 w-4" />
             <p className="text-sm">Log out </p>
           </div>
         </DropdownMenuItem>
