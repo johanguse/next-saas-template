@@ -68,7 +68,7 @@ export function MainNav({ items, children }: MainNavProps) {
 
   const navItems = items?.map((item) => (
     <Link
-      key={item.id || item.title} // Preferably use a unique id rather than title or index
+      key={item.id || item.title}
       href={item.disabled ? '#' : item.href}
       className={cn(
         'flex items-center text-lg font-medium transition-colors hover:text-foreground/80 sm:text-sm',
