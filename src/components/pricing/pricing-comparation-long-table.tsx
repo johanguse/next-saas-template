@@ -82,7 +82,7 @@ const sections = [
   },
 ]
 
-function cn(...classes) {
+function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
@@ -151,12 +151,12 @@ export default function PlansComparationTable() {
                             <>
                               {feature.tiers[tier.name] === true ? (
                                 <CheckIcon
-                                  className="ml-auto size-5 text-green-500"
+                                  className="ml-auto h-5 w-5 text-green-500"
                                   aria-hidden="true"
                                 />
                               ) : (
                                 <MinusIcon
-                                  className="ml-auto size-5 text-gray-400"
+                                  className="ml-auto h-5 w-5 text-gray-400"
                                   aria-hidden="true"
                                 />
                               )}
@@ -176,7 +176,7 @@ export default function PlansComparationTable() {
               ))}
 
               <div
-                className={cn(
+                className={classNames(
                   tierIdx < tiers.length - 1 ? 'border-b py-5' : 'pt-5',
                   'border-t border-gray-200 px-6 sm:px-4'
                 )}
@@ -277,12 +277,12 @@ export default function PlansComparationTable() {
                             <>
                               {feature.tiers[tier.name] === true ? (
                                 <CheckIcon
-                                  className="size-5 text-green-500"
+                                  className="h-5 w-5 text-green-500"
                                   aria-hidden="true"
                                 />
                               ) : (
                                 <MinusIcon
-                                  className="size-5 text-gray-400"
+                                  className="h-5 w-5 text-gray-400"
                                   aria-hidden="true"
                                 />
                               )}

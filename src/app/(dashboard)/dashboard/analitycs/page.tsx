@@ -35,7 +35,7 @@ export default async function StatusPage() {
                   </dl>
                   <div className="inline-flex items-center space-x-1 rounded-full bg-emerald-200 px-2 py-1 text-sm font-semibold leading-4 text-emerald-800">
                     <svg
-                      className="hi-solid hi-arrow-circle-up inline-block size-4"
+                      className="hi-solid hi-arrow-circle-up inline-block h-4 w-4"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                       xmlns="http://www.w3.org/2000/svg"
@@ -66,7 +66,7 @@ export default async function StatusPage() {
                   </dl>
                   <div className="inline-flex items-center space-x-1 rounded-full bg-rose-200 px-2 py-1 text-sm font-semibold leading-4 text-rose-800">
                     <svg
-                      className="hi-solid hi-arrow-circle-down inline-block size-4"
+                      className="hi-solid hi-arrow-circle-down inline-block h-4 w-4"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                       xmlns="http://www.w3.org/2000/svg"
@@ -97,7 +97,7 @@ export default async function StatusPage() {
                   </dl>
                   <div className="inline-flex items-center space-x-1 rounded-full bg-emerald-200 px-2 py-1 text-sm font-semibold leading-4 text-emerald-800">
                     <svg
-                      className="hi-solid hi-arrow-circle-up inline-block size-4"
+                      className="hi-solid hi-arrow-circle-up inline-block h-4 w-4"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                       xmlns="http://www.w3.org/2000/svg"
@@ -162,10 +162,10 @@ export default async function StatusPage() {
 
                 <tbody>
                   <tr>
-                    <th className="whitespace-nowrap border-x-0 border-t-0 p-4 px-6 text-left align-middle text-xs">
+                    <th className="whitespace-nowrap border-x-0 border-t-0 p-4 px-6 text-left align-middle text-xs ">
                       /argon/
                     </th>
-                    <td className="whitespace-nowrap border-x-0 border-t-0 p-4 px-6 align-middle text-xs">
+                    <td className="whitespace-nowrap border-x-0 border-t-0 p-4 px-6 align-middle text-xs ">
                       4,569
                     </td>
                     <td className="align-center whitespace-nowrap border-x-0 border-t-0 p-4 px-6 text-xs">
