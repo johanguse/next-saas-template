@@ -8,8 +8,10 @@ import { cn } from '@/lib/utils'
 import useScroll from '@/hooks/use-scroll'
 import { useSigninModal } from '@/hooks/use-signin-modal'
 import { Button, buttonVariants } from '@/components/ui/button'
+import { ModeToggle } from '@/components/layout/mode-toggle'
 import { MainNav } from '@/components/layout/navigation/main/main-nav'
 import { UserAccountNav } from '@/components/layout/navigation/user-account-nav'
+import { Icons } from '@/components/shared/icons'
 
 interface NavBarProps {
   user: Pick<User, 'name' | 'image' | 'email'> | undefined
@@ -51,7 +53,22 @@ export function NavBar({
           ) : null}
 
           {user ? (
-            <UserAccountNav user={user} />
+            <>
+              <ul className="mr-4 flex items-center space-x-4">
+                <li id="changelog" className="relative">
+                  <button
+                    aria-label="Changelog"
+                    className="absolute right-1 top-1"
+                  >
+                    <Icons.notification />
+                  </button>
+                </li>
+                <li>
+                  <ModeToggle />
+                </li>
+              </ul>
+              <UserAccountNav user={user} />
+            </>
           ) : (
             <Button
               className="px-3"
