@@ -1,6 +1,8 @@
 import { Fragment } from 'react'
 import { CheckIcon, MinusIcon } from 'lucide-react'
 
+import { cn } from '@/lib/utils'
+
 const tiers = [
   {
     name: 'Basic',
@@ -81,10 +83,6 @@ const sections = [
     ],
   },
 ]
-
-function cn(...classes) {
-  return classes.filter(Boolean).join(' ')
-}
 
 export default function PlansComparationTable() {
   return (
