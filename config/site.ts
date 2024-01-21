@@ -57,6 +57,7 @@ export const siteConfig: SiteConfig = {
       {
         href: 'https://bit.ly/48LTNin',
         name: 'Public Roadmap',
+        target: '_blank',
       },
       {
         href: '/contact',

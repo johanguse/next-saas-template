@@ -36,6 +36,8 @@ type Icons = {
   tiktok: string
 }
 
+type Target = '_blank' | '_self'
+
 type SocialLink = {
   label: string
   icon: keyof typeof Icons
@@ -45,6 +47,7 @@ type SocialLink = {
 type FooterLink = {
   href: string
   name: string
+  target?: Record<Target>
 }
 
 export type SiteConfig = {
