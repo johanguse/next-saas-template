@@ -55,25 +55,24 @@ export const siteConfig: SiteConfig = {
   footer: {
     links: [
       {
-        href: '/contact',
-        name: 'About',
+        href: 'https://bit.ly/48LTNin',
+        name: 'Public Roadmap',
       },
       {
         href: '/contact',
-        name: 'Blog',
+        name: 'Suport',
       },
       {
-        href: '/contact',
-        name: 'Team',
+        href: '/docs',
+        name: 'Documentation',
       },
       {
-        href: '/contact',
-        name: 'Careers',
+        href: '/guides',
+        name: 'Guides',
       },
-
       {
-        href: '/contact',
-        name: 'Suuport',
+        href: '/blocks',
+        name: 'Components',
       },
     ],
   },

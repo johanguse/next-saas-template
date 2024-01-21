@@ -24,9 +24,9 @@ export default function TestimonialCards({
                     {testimonial.quote}
                   </q>
                   <div className="mt-6 flex items-center gap-3">
-                    <span className="relative inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full">
+                    <span className="relative inline-flex size-10 shrink-0 items-center justify-center rounded-full">
                       <Image
-                        className="h-10 w-10 rounded-full"
+                        className="size-10 rounded-full"
                         height={40}
                         width={40}
                         alt={testimonial.name}
