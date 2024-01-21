@@ -60,7 +60,7 @@ export function SiteFooter({ className }: React.HTMLAttributes<HTMLElement>) {
         <ul className="mt-8 items-center justify-center space-y-5 sm:flex sm:space-x-4 sm:space-y-0">
           {footerMenuLinks.map((item, id) => (
             <li className=" hover:text-gray-800" key={id}>
-              <a key={id} href={item.href}>
+              <a key={id} href={item.href} target={item.target ? '_blank' : ''}>
                 {item.name}
               </a>
             </li>
