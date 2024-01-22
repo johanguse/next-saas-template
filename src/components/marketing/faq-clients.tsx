@@ -63,7 +63,7 @@ export default function FaqsClientQuestions({
                           <AvatarImage
                             src={item.answerImage}
                             alt={item.answerName}
-                            className="h-8 w-8"
+                            className="size-8"
                           />
                           <AvatarFallback>
                             {item.answerName.charAt(0)}

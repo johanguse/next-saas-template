@@ -21,7 +21,7 @@ export default function Hero() {
                 target="_blank"
               >
                 <div className="flex items-center">
-                  Follow me on <Icons.twitter className="ml-2 h-4 w-4" />
+                  Follow me on <Icons.twitter className="ml-2 size-4" />
                 </div>
               </Link>
             </div>
@@ -65,7 +65,7 @@ export default function Hero() {
                   'px-4'
                 )}
               >
-                <Icons.github className="mr-2 h-4 w-4" />
+                <Icons.github className="mr-2 size-4" />
                 <p>
                   <span className="hidden sm:inline-block">Star on</span> GitHub{' '}
                 </p>

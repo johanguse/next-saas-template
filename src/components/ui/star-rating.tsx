@@ -20,7 +20,7 @@ export default function StarRating({
   className,
 }: StarRatingProps) {
   const baseClassNames = cn(
-    'h-5 w-5 fill-current text-yellow-300 transition-all hover:scale-110 hover:text-yellow-400 dark:text-yellow-400',
+    'size-5 fill-current text-yellow-300 transition-all hover:scale-110 hover:text-yellow-400 dark:text-yellow-400',
     className
   )
 

@@ -152,6 +152,9 @@ dependencies:
   hamburger-react:
     specifier: ^2.5.0
     version: 2.5.0(react@18.2.0)
+  immer:
+    specifier: ^10.0.3
+    version: 10.0.3
   lucide-react:
     specifier: ^0.290.0
     version: 0.290.0(react@18.2.0)
@@ -229,7 +232,7 @@ dependencies:
     version: 3.22.4
   zustand:
     specifier: ^4.4.7
-    version: 4.4.7(@types/react@18.2.33)(react@18.2.0)
+    version: 4.4.7(@types/react@18.2.33)(immer@10.0.3)(react@18.2.0)
 
 devDependencies:
   '@commitlint/cli':
@@ -6675,6 +6678,10 @@ packages:
     engines: {node: '>=14.0.0'}
     dev: false
 
+  /immer@10.0.3:
+    resolution: {integrity: sha512-pwupu3eWfouuaowscykeckFmVTpqbzW+rXFCX8rQLkZzM9ftBmU/++Ra+o+L27mz03zJTlyV4UUr+fdKNffo4A==}
+    dev: false
+
   /import-fresh@3.3.0:
     resolution: {integrity: sha512-veYYhQa+D1QBKznvhUHxb8faxlrwUnxseDAbAp457E0wLNio2bOSKnjYDhMj+YiAq61xrMGhQk9iXVk5FzgQMw==}
     engines: {node: '>=6'}
@@ -10868,7 +10875,7 @@ packages:
     resolution: {integrity: sha512-iC+8Io04lddc+mVqQ9AZ7OQ2MrUKGN+oIQyq1vemgt46jwCwLfhq7/pwnBnNXXXZb8VTVLKwp9EDkx+ryxIWmg==}
     dev: false
 
-  /zustand@4.4.7(@types/react@18.2.33)(react@18.2.0):
+  /zustand@4.4.7(@types/react@18.2.33)(immer@10.0.3)(react@18.2.0):
     resolution: {integrity: sha512-QFJWJMdlETcI69paJwhSMJz7PPWjVP8Sjhclxmxmxv/RYI7ZOvR5BHX+ktH0we9gTWQMxcne8q1OY8xxz604gw==}
     engines: {node: '>=12.7.0'}
     peerDependencies:
@@ -10884,6 +10891,7 @@ packages:
         optional: true
     dependencies:
       '@types/react': 18.2.33
+      immer: 10.0.3
       react: 18.2.0
       use-sync-external-store: 1.2.0(react@18.2.0)
     dev: false

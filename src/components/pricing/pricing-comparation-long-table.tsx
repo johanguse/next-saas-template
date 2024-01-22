@@ -151,12 +151,12 @@ export default function PlansComparationTable() {
                             <>
                               {feature.tiers[tier.name] === true ? (
                                 <CheckIcon
-                                  className="ml-auto h-5 w-5 text-green-500"
+                                  className="ml-auto size-5 text-green-500"
                                   aria-hidden="true"
                                 />
                               ) : (
                                 <MinusIcon
-                                  className="ml-auto h-5 w-5 text-gray-400"
+                                  className="ml-auto size-5 text-gray-400"
                                   aria-hidden="true"
                                 />
                               )}
@@ -277,12 +277,12 @@ export default function PlansComparationTable() {
                             <>
                               {feature.tiers[tier.name] === true ? (
                                 <CheckIcon
-                                  className="h-5 w-5 text-green-500"
+                                  className="size-5 text-green-500"
                                   aria-hidden="true"
                                 />
                               ) : (
                                 <MinusIcon
-                                  className="h-5 w-5 text-gray-400"
+                                  className="size-5 text-gray-400"
                                   aria-hidden="true"
                                 />
                               )}

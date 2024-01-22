@@ -47,7 +47,7 @@ export default function TestimonialSlider({
                           <div className="mt-6 flex gap-3">
                             <span className="inline-flex rounded-full">
                               <Image
-                                className="h-10 w-10 rounded-full"
+                                className="size-10 rounded-full"
                                 height={40}
                                 width={40}
                                 alt={testimonial.name}
