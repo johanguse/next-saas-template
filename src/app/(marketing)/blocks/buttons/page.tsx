@@ -5,10 +5,10 @@ import { buttonVariants } from '@/components/ui/button'
 import { Icons } from '@/components/shared/icons'
 
 export const metadata = {
-  title: 'Testimonial Components Page',
+  title: 'Buttons Components Page',
 }
 
-export default function TestimonialBlocksPage() {
+export default function ButtonsBlocksPage() {
   return (
     <div className="flex w-full flex-col gap-16 py-8 md:py-8">
       <div className="container mx-auto pt-20 text-center">

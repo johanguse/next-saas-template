@@ -1,5 +1,3 @@
-'use client'
-
 import { BlockTitle } from '@/components/layout/main-title'
 import PlansMarketing from '@/components/marketing/plans'
 import CardsPricingTable from '@/components/pricing/pricing-card'
@@ -26,7 +24,7 @@ export default function PrincingTablesBlocksPage() {
               className="font-xs text-slate-500 dark:text-slate-400"
             >
               <small>
-                More information:
+                More information:{' '}
                 <a
                   href="https://stripe.com/docs/payments/checkout/pricing-table"
                   target="_blank"

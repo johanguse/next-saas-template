@@ -5,6 +5,10 @@ import { logosCompaniesData } from '@/lib/fake-data/logos'
 import { testimonials } from '@/lib/fake-data/testimonials'
 import { BlockTitle } from '@/components/layout/main-title'
 
+export const metadata = {
+  title: 'Carousel Components Page',
+}
+
 export default function CarouselBlocksPage() {
   return (
     <div className="flex w-full flex-col gap-16 py-8 md:py-8">
