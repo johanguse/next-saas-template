@@ -1,9 +1,9 @@
 'use client'
 
 import { useState } from 'react'
+import { toast } from 'sonner'
 
 import { Button } from '@/components/ui/button-ui'
-import { toast } from '@/components/ui/use-toast'
 
 export default function CtaSubscribe() {
   const [loading, setLoading] = useState<boolean>(false)
@@ -32,28 +32,19 @@ export default function CtaSubscribe() {
       setResults(json.data.message)
 
       if (!dataSuccess) {
-        toast({
-          title: 'Something went wrong.',
-          description: 'Your subscription request failed. Please try again.',
-          variant: 'destructive',
-        })
+        toast.error('Something went wrong. Please try again.')
         throw new Error(json.data.message)
       }
 
-      toast({
-        title: 'Thank you!',
-        description: 'You have successfully subscribed to our newsletter.',
-      })
+      toast.success(
+        'Thanks! You have successfully subscribed to our newsletter.'
+      )
 
       setEmail('')
     } catch (error: any) {
       console.error(error)
 
-      toast({
-        title: 'Something went wrong.',
-        description: 'Your subscription request failed. Please try again.',
-        variant: 'destructive',
-      })
+      toast.error('Something went wrong. Please try again.')
     } finally {
       setLoading(false)
     }

@@ -1,6 +1,5 @@
 import '@/styles/globals.css'
 
-import Script from 'next/script'
 import { fontHeading, fontSans, fontUrban } from '@/assets/fonts'
 
 import { siteConfig } from '@/config/site'
@@ -74,7 +73,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <Providers attribute="class" defaultTheme="system" enableSystem>
           {children}
           <Analytics />
-          <Toaster />
+          <Toaster richColors position="top-center" />
           <ModalProvider />
           <TailwindIndicator />
           <HWComponent />
