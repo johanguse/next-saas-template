@@ -1,6 +1,6 @@
 export default function OneCardPricingTable() {
   return (
-    <div className="relative z-50 mx-auto max-w-7xl bg-white px-6 lg:px-8">
+    <div className="relative z-20 mx-auto max-w-7xl bg-white px-6 lg:px-8">
       <div className="mx-auto mt-8 max-w-2xl rounded-3xl ring-1 ring-gray-200 sm:mt-12 lg:mx-0 lg:flex lg:max-w-none">
         <div className="p-8 sm:p-10 lg:flex-auto">
           <h1 className="text-2xl font-bold tracking-tight text-gray-900">

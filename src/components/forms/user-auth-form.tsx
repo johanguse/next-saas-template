@@ -1,25 +1,38 @@
 'use client'
 
-import * as React from 'react'
-import { useSearchParams } from 'next/navigation'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { signIn } from 'next-auth/react'
+import * as React from 'react'
+import { Suspense } from 'react'
 import { useForm } from 'react-hook-form'
 import * as z from 'zod'
 
-import { cn } from '@/lib/utils'
-import { userAuthSchema } from '@/lib/validations/auth'
+import { Icons } from '@/components/shared/icons'
 import { buttonVariants } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { toast } from '@/components/ui/use-toast'
-import { Icons } from '@/components/shared/icons'
+import { cn } from '@/lib/utils'
+import { userAuthSchema } from '@/lib/validations/auth'
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {
   type?: string
 }
 
 type FormData = z.infer<typeof userAuthSchema>
+
+function useSearchParam(key: string): string | null {
+  const [paramValue, setParamValue] = React.useState<string | null>(null);
+
+  React.useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const urlParams = new URLSearchParams(window.location.search);
+      setParamValue(urlParams.get(key));
+    }
+  }, [key]);
+
+  return paramValue;
+}
 
 export function UserAuthForm({ className, type, ...props }: UserAuthFormProps) {
   const {
@@ -31,7 +44,7 @@ export function UserAuthForm({ className, type, ...props }: UserAuthFormProps) {
   })
   const [isLoading, setIsLoading] = React.useState<boolean>(false)
   const [isGoogleLoading, setIsGoogleLoading] = React.useState<boolean>(false)
-  const searchParams = useSearchParams()
+  const callbackUrl = useSearchParam('from');
 
   async function onSubmit(data: FormData) {
     setIsLoading(true)
@@ -39,12 +52,11 @@ export function UserAuthForm({ className, type, ...props }: UserAuthFormProps) {
     const signInResult = await signIn('email', {
       email: data.email.toLowerCase(),
       redirect: false,
-      callbackUrl: searchParams?.get('from') || '/dashboard',
+      callbackUrl: callbackUrl || '/dashboard',
     })
 
     setIsLoading(false)
 
-    // TODO: replace shadcn toast by react-hot-toast
     if (!signInResult?.ok) {
       return toast({
         title: 'Something went wrong.',
@@ -60,6 +72,7 @@ export function UserAuthForm({ className, type, ...props }: UserAuthFormProps) {
   }
 
   return (
+    <Suspense fallback={<div>Loading...</div>}>
     <div className={cn('grid gap-6', className)} {...props}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="grid gap-2">
@@ -118,5 +131,6 @@ export function UserAuthForm({ className, type, ...props }: UserAuthFormProps) {
         Google
       </button>
     </div>
+    </Suspense>
   )
 }

@@ -1,11 +1,11 @@
-import { create } from "zustand"
+import { create } from 'zustand'
 
 interface SidebarToggle {
-    toggleCollapse: boolean,
-    invokeToggleCollapse: () => void
+  toggleCollapse: boolean
+  invokeToggleCollapse: () => void
 }
 
 export const useSideBarToggle = create<SidebarToggle>((set, get) => ({
-    toggleCollapse: false,
-    invokeToggleCollapse: () => set({ toggleCollapse: !get().toggleCollapse })
+  toggleCollapse: false,
+  invokeToggleCollapse: () => set({ toggleCollapse: !get().toggleCollapse }),
 }))
