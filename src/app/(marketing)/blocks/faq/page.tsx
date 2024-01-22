@@ -2,7 +2,7 @@ import { faqsClientData } from '@/lib/fake-data/faq-clients'
 import FAQClients from '@/components/marketing/faq-clients'
 
 export const metadata = {
-  title: 'Testimonial Components Page',
+  title: "FAQ's Components Page",
 }
 
 export default function FaqBlocksPage() {
