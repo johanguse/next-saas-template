@@ -1,4 +1,57 @@
+'use client'
+
+import { useState } from 'react'
+
+import { Button } from '@/components/ui/button-ui'
+import { toast } from '@/components/ui/use-toast'
+
 export default function CtaSubscribe() {
+  const [loading, setLoading] = useState<boolean>(false)
+  const [email, setEmail] = useState<string>('')
+
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    const data = new FormData()
+    data.set('email', email)
+
+    setLoading(true)
+
+    try {
+      const res = await fetch('/api/marketing/create-contact-loopso', {
+        method: 'POST',
+        body: data,
+      })
+
+      if (!res.ok) throw res
+
+      const json = await res.json()
+      console.log(json)
+
+      if (json.status === 'error') {
+        toast({
+          title: 'Something went wrong.',
+          description: 'Your subscription request failed. Please try again.',
+          variant: 'destructive',
+        })
+        throw new Error(json.error)
+      }
+      toast({
+        title: 'Thank you!',
+        description: 'You have successfully subscribed to our newsletter.',
+      })
+    } catch (error: any) {
+      console.error(error)
+
+      toast({
+        title: 'Something went wrong.',
+        description: 'Your subscription request failed. Please try again.',
+        variant: 'destructive',
+      })
+    } finally {
+      setLoading(false)
+    }
+  }
+
   return (
     <section className="dark:bg-opacity/50 w-full bg-gray-50 py-12 dark:bg-slate-900 dark:text-white md:py-24 lg:py-32 xl:py-48">
       <div className="container mx-auto max-w-3xl">
@@ -26,15 +79,26 @@ export default function CtaSubscribe() {
           </p>
         </div>
         <div className="mt-6">
-          <form className="items-center justify-center sm:flex">
+          <form
+            method="POST"
+            onSubmit={onSubmit}
+            className="items-center justify-center sm:flex"
+          >
             <input
+              name="email"
               type="email"
               placeholder="Enter your email"
               className="w-full rounded-md border p-3  outline-none focus:border-indigo-600"
+              required
             />
-            <button className="mt-3 w-full rounded-md bg-indigo-600 px-5 py-3 text-white shadow-md outline-none ring-indigo-600 ring-offset-2 duration-150 hover:bg-indigo-500 focus:shadow-none focus:ring-2 active:bg-indigo-700 sm:ml-3 sm:mt-0 sm:w-auto">
+            <Button
+              disabled={loading}
+              loading={loading}
+              type="submit"
+              className="mt-3 w-full rounded-md bg-indigo-600 px-5 py-3 text-white shadow-md outline-none ring-indigo-600 ring-offset-2 duration-150 hover:bg-indigo-500 focus:shadow-none focus:ring-2 active:bg-indigo-700 sm:ml-3 sm:mt-0 sm:w-auto"
+            >
               Subscribe
-            </button>
+            </Button>
           </form>
           <p className="mx-auto mt-3 max-w-lg text-center text-[15px] ">
             No spam ever, we are care about the protection of your data. Read
