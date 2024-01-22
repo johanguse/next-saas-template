@@ -1,72 +1,35 @@
-'use client'
-
-import { useEffect, useState } from 'react'
 import Image from 'next/image'
-import { motion, useAnimation } from 'framer-motion'
+import { Marquee } from '@devnomic/marquee'
 
-import { LogoCompanies, logosCompaniesData } from '@/lib/fake-data/logos'
+import { logosCompaniesData } from '@/lib/fake-data/logos'
 
-const initialLogoData = logosCompaniesData
 const logoWidth = 125
-const scrollSpeed = 30
-
-const LogoList: React.FC<{ logoData: LogoCompanies[] }> = ({ logoData }) => (
-  <ul className="flex items-center justify-center">
-    {logoData.map((logo, index) => (
-      <li key={index} className="mx-4" style={{ width: `${logoWidth}px` }}>
-        <Image
-          src={logo.src}
-          alt={logo.alt}
-          width={logoWidth}
-          height={logoWidth}
-          style={{ maxWidth: 'none' }}
-          className="mx-auto dark:invert"
-        />
-      </li>
-    ))}
-  </ul>
-)
 
 const CarouselLogos: React.FC = () => {
-  const [logoData, setLogoData] = useState<LogoCompanies[]>([])
-  const [animationActive, setAnimationActive] = useState(true)
-
-  useEffect(() => {
-    setLogoData([...initialLogoData, ...initialLogoData])
-  }, [])
-
-  const controls = useAnimation()
-
-  useEffect(() => {
-    const totalWidth = logoWidth * logoData.length
-
-    const animateScroll = async () => {
-      await controls.start({
-        x: -totalWidth,
-        transition: { duration: totalWidth / scrollSpeed, ease: 'linear' },
-      })
-
-      if (animationActive) {
-        requestAnimationFrame(animateScroll)
-      }
-    }
-
-    if (logoData.length > 0) {
-      animateScroll()
-    }
-
-    return () => {
-      setAnimationActive(false)
-    }
-  }, [logoData, controls, animationActive])
-
   return (
     <div className="flex w-full flex-col">
       <div className="container mx-auto py-5 text-center">
         <div className="inline-flex max-w-full flex-nowrap overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]">
-          <motion.div animate={controls}>
-            <LogoList logoData={logoData} />
-          </motion.div>
+          <Marquee className="py-2" reverse={false} fade={true}>
+            <ul className="flex items-center justify-center">
+              {logosCompaniesData.map((logo, index) => (
+                <li
+                  key={index}
+                  className="mx-4"
+                  style={{ width: `${logoWidth}px` }}
+                >
+                  <Image
+                    src={logo.src}
+                    alt={logo.alt}
+                    width={logoWidth}
+                    height={logoWidth}
+                    style={{ maxWidth: 'none' }}
+                    className="mx-auto dark:invert"
+                  />
+                </li>
+              ))}
+            </ul>
+          </Marquee>
         </div>
       </div>
     </div>
