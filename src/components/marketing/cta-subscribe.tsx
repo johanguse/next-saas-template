@@ -32,7 +32,6 @@ export default function CtaSubscribe() {
       setResults(json.data.message)
 
       if (!dataSuccess) {
-        toast.error('Something went wrong. Please try again.')
         throw new Error(json.data.message)
       }
 
@@ -104,7 +103,7 @@ export default function CtaSubscribe() {
             </Button>
           </form>
           {results && (
-            <p className="mt-3 text-balance pl-3 text-base text-primary-foreground dark:text-primary">
+            <p className="mt-3 text-balance pl-3 text-base text-rose-600">
               {results}
             </p>
           )}

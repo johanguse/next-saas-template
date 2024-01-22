@@ -73,7 +73,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <Providers attribute="class" defaultTheme="system" enableSystem>
           {children}
           <Analytics />
-          <Toaster richColors position="top-center" />
+          <Toaster richColors closeButton position="top-center" />
           <ModalProvider />
           <TailwindIndicator />
           <HWComponent />
