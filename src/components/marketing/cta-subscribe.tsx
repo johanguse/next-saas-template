@@ -8,6 +8,7 @@ import { toast } from '@/components/ui/use-toast'
 export default function CtaSubscribe() {
   const [loading, setLoading] = useState<boolean>(false)
   const [email, setEmail] = useState<string>('')
+  const [results, setResults] = useState<string>('')
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -25,20 +26,26 @@ export default function CtaSubscribe() {
       if (!res.ok) throw res
 
       const json = await res.json()
-      console.log(json)
 
-      if (json.status === 'error') {
+      const dataSuccess = json.data.success
+
+      setResults(json.data.message)
+
+      if (!dataSuccess) {
         toast({
           title: 'Something went wrong.',
           description: 'Your subscription request failed. Please try again.',
           variant: 'destructive',
         })
-        throw new Error(json.error)
+        throw new Error(json.data.message)
       }
+
       toast({
         title: 'Thank you!',
         description: 'You have successfully subscribed to our newsletter.',
       })
+
+      setEmail('')
     } catch (error: any) {
       console.error(error)
 
@@ -81,12 +88,17 @@ export default function CtaSubscribe() {
         <div className="mt-6">
           <form
             method="POST"
-            onSubmit={onSubmit}
+            onSubmit={(e) => {
+              e.preventDefault()
+              onSubmit(e).catch((err) => console.error({ err }))
+            }}
             className="items-center justify-center sm:flex"
           >
             <input
               name="email"
               type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"
               className="w-full rounded-md border p-3  outline-none focus:border-indigo-600"
               required
@@ -100,7 +112,12 @@ export default function CtaSubscribe() {
               Subscribe
             </Button>
           </form>
-          <p className="mx-auto mt-3 max-w-lg text-center text-[15px] ">
+          {results && (
+            <p className="mt-3 text-balance pl-3 text-base text-primary-foreground dark:text-primary">
+              {results}
+            </p>
+          )}
+          <p className="mx-auto mt-3 text-center text-[15px] ">
             No spam ever, we are care about the protection of your data. Read
             our{' '}
             <a className="text-indigo-600 underline" href="/privacy-policy">
