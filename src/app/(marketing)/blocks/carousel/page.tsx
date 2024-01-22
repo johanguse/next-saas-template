@@ -1,8 +1,6 @@
 import Image from 'next/image'
 import { Marquee } from '@devnomic/marquee'
 
-import '@devnomic/marquee/dist/index.css'
-
 import { logosCompaniesData } from '@/lib/fake-data/logos'
 import { testimonials } from '@/lib/fake-data/testimonials'
 import { BlockTitle } from '@/components/layout/main-title'

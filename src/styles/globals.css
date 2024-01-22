@@ -64,6 +64,7 @@
 /* Import Files */
 @import './changelog-notification.css';
 @import './gradients.css';
+@import './marquee.css';
 
 /* 
 Coming soon to Tailwind CSS

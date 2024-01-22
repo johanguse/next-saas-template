@@ -61,10 +61,9 @@ const CarouselLogos: React.FC = () => {
   }, [logoData, controls, animationActive])
 
   return (
-    <div className="flex w-full flex-col gap-16 py-8 md:py-8">
-      <h1 className="text-center">Trusted by</h1>
+    <div className="flex w-full flex-col">
       <div className="container mx-auto py-5 text-center">
-        <div className="inline-flex max-w-2xl flex-nowrap overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]">
+        <div className="inline-flex max-w-full flex-nowrap overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]">
           <motion.div animate={controls}>
             <LogoList logoData={logoData} />
           </motion.div>
