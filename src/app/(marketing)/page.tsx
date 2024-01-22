@@ -8,16 +8,18 @@ import LatestFromBlog from '@/components/marketing/lastest-from-blog'
 import PlansMarketing from '@/components/marketing/plans'
 import Powered from '@/components/marketing/powered'
 import TestimonialCards from '@/components/marketing/testimonials-cards'
+import Trusted from '@/components/marketing/trusted'
 import PricingFaq from '@/components/pricing-faq'
 
 export default async function IndexPage() {
   return (
     <>
       <Hero />
-      <Powered />
+      <Trusted />
       <Features />
       <PlansMarketing />
       <TestimonialCards testimonials={testimonials} />
+      <Powered />
       <PricingFaq />
       <LatestFromBlog />
       <CtaSocialMedia />

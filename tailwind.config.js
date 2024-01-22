@@ -20,16 +20,16 @@ module.exports = {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
 
-        // Fade up and down
         'fade-up': 'fade-up 0.5s',
         'fade-down': 'fade-down 0.5s',
-
-        // Fade in and out
         'fade-in': 'fade-in 0.4s',
         'fade-out': 'fade-out 0.4s',
-
         'fade-in-forwards': 'fade-in 0.5s linear forwards',
+
         marquee: 'marquee var(--marquee-duration) linear infinite',
+        'marquee-left': 'marquee-left var(--duration, 40s) linear infinite',
+        'marquee-up': 'marquee-up var(--duration, 40s) linear infinite',
+
         'spin-slow': 'spin 4s linear infinite',
         'spin-slower': 'spin 6s linear infinite',
         'spin-reverse': 'spin-reverse 1s linear infinite',
@@ -92,7 +92,6 @@ module.exports = {
           from: { height: 'var(--radix-accordion-content-height)' },
           to: { height: 0 },
         },
-        // Fade up and down
         'fade-up': {
           '0%': {
             opacity: 0,
@@ -113,6 +112,14 @@ module.exports = {
           '100%': {
             transform: 'translateY(-50%)',
           },
+        },
+        'marquee-left': {
+          from: { transform: 'translateX(0)' },
+          to: { transform: 'translateX(calc(-100% - var(--gap)))' },
+        },
+        'marquee-up': {
+          from: { transform: 'translateY(0)' },
+          to: { transform: 'translateY(calc(-100% - var(--gap)))' },
         },
         'spin-reverse': {
           to: {

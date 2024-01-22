@@ -1,9 +1,10 @@
 import Link from 'next/link'
+import { Marquee } from '@devnomic/marquee'
 
 export default function Powered() {
   return (
     <section
-      className="animate-fade-up bg-gray-50 py-16 text-zinc-500 opacity-0 dark:bg-black dark:text-zinc-400 dark:opacity-50"
+      className=" animate-fade-up bg-gray-50 py-16 text-zinc-500 opacity-0 dark:bg-black dark:text-zinc-400 dark:opacity-50"
       style={{ animationDelay: '0.55s', animationFillMode: 'forwards' }}
     >
       <div className="container mx-auto">
@@ -11,18 +12,20 @@ export default function Powered() {
           Powered by
         </h2>
 
-        <div className="my-7 flex flex-wrap items-center justify-center gap-10 gap-y-8 lg:gap-14">
-          {features.map((feature) => (
-            <Link
-              target="_blank"
-              key={feature.title}
-              href={feature.href}
-              aria-label={feature.title}
-              className="flex flex-col items-center transition duration-300 hover:text-black dark:hover:text-white"
-            >
-              {feature.icon}
-            </Link>
-          ))}
+        <div className="mx-auto my-7 flex max-w-3xl flex-wrap items-center justify-center gap-10 gap-y-8 lg:gap-14">
+          <Marquee className="py-2" reverse={true} fade={true}>
+            {features.map((feature) => (
+              <Link
+                target="_blank"
+                key={feature.title}
+                href={feature.href}
+                aria-label={feature.title}
+                className="mx-6 flex flex-col items-center transition duration-300 hover:text-black dark:hover:text-white"
+              >
+                {feature.icon}
+              </Link>
+            ))}
+          </Marquee>
         </div>
       </div>
     </section>
