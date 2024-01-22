@@ -60,20 +60,12 @@ export const siteConfig: SiteConfig = {
         target: '_blank',
       },
       {
-        href: '/contact',
-        name: 'Suport',
+        href: '/privacy-policy',
+        name: 'Privacy Policy',
       },
       {
-        href: '/docs',
-        name: 'Documentation',
-      },
-      {
-        href: '/guides',
-        name: 'Guides',
-      },
-      {
-        href: '/blocks',
-        name: 'Components',
+        href: '/cookies-policy',
+        name: 'Cookies Policy',
       },
     ],
   },

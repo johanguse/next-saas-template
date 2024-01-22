@@ -5,6 +5,7 @@ import { updateUserName, type FormData } from '@/actions/update-user-name'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { User } from '@prisma/client'
 import { useForm } from 'react-hook-form'
+import { toast } from 'sonner'
 
 import { cn } from '@/lib/utils'
 import { userNameSchema } from '@/lib/validations/user'
@@ -19,7 +20,6 @@ import {
 } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import { toast } from '@/components/ui/use-toast'
 import { Icons } from '@/components/shared/icons'
 
 interface UserNameFormProps {
@@ -46,15 +46,9 @@ export function UserNameForm({ user }: UserNameFormProps) {
       const { status } = await updateUserNameWithId(data)
 
       if (status !== 'success') {
-        toast({
-          title: 'Something went wrong.',
-          description: 'Your name was not updated. Please try again.',
-          variant: 'destructive',
-        })
+        toast.error('Something went wrong. Please try again.')
       } else {
-        toast({
-          description: 'Your name has been updated.',
-        })
+        toast.success('Your name has been updated.')
       }
     })
   })
