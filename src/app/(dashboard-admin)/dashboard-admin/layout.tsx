@@ -17,9 +17,9 @@ export default async function DashboardAdminLayout({
 
   return (
     <div className="flex min-h-screen flex-col space-y-6">
-        <main className="flex w-full flex-1 flex-col overflow-hidden">
-          {children}
-        </main>
+      <main className="flex w-full flex-1 flex-col overflow-hidden">
+        {children}
+      </main>
     </div>
   )
 }

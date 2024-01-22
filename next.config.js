@@ -34,7 +34,6 @@ const nextConfig = {
   },
   transpilePackages: ['html-to-text'],
   experimental: {
-    missingSuspenseWithCSRBailout: false,
     serverComponentsExternalPackages: ['@prisma/client'],
   },
 }

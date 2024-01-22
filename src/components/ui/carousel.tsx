@@ -2,18 +2,21 @@
 
 import * as React from 'react'
 import useEmblaCarousel, {
-  type EmblaCarouselType as CarouselApi,
-  type EmblaOptionsType as CarouselOptions,
-  type EmblaPluginType as CarouselPlugin,
+  type UseEmblaCarouselType,
 } from 'embla-carousel-react'
+import { ArrowLeftIcon, ArrowRightIcon } from 'lucide-react'
 
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
-import { Icons } from '@/components/shared/icons'
+
+type CarouselApi = UseEmblaCarouselType[1]
+type UseCarouselParameters = Parameters<typeof useEmblaCarousel>
+type CarouselOptions = UseCarouselParameters[0]
+type CarouselPlugin = UseCarouselParameters[1]
 
 type CarouselProps = {
   opts?: CarouselOptions
-  plugins?: CarouselPlugin[]
+  plugins?: CarouselPlugin
   orientation?: 'horizontal' | 'vertical'
   setApi?: (api: CarouselApi) => void
 }
@@ -203,7 +206,7 @@ const CarouselPrevious = React.forwardRef<
       variant={variant}
       size={size}
       className={cn(
-        'absolute  size-8 rounded-full',
+        'absolute  h-8 w-8 rounded-full',
         orientation === 'horizontal'
           ? '-left-12 top-1/2 -translate-y-1/2'
           : '-top-12 left-1/2 -translate-x-1/2 rotate-90',
@@ -213,7 +216,7 @@ const CarouselPrevious = React.forwardRef<
       onClick={scrollPrev}
       {...props}
     >
-      <Icons.chevronLeft className="size-4" />
+      <ArrowLeftIcon className="h-4 w-4" />
       <span className="sr-only">Previous slide</span>
     </Button>
   )
@@ -232,7 +235,7 @@ const CarouselNext = React.forwardRef<
       variant={variant}
       size={size}
       className={cn(
-        'absolute size-8 rounded-full',
+        'absolute h-8 w-8 rounded-full',
         orientation === 'horizontal'
           ? '-right-12 top-1/2 -translate-y-1/2'
           : '-bottom-12 left-1/2 -translate-x-1/2 rotate-90',
@@ -242,7 +245,7 @@ const CarouselNext = React.forwardRef<
       onClick={scrollNext}
       {...props}
     >
-      <Icons.chevronRight className="size-4" />
+      <ArrowRightIcon className="h-4 w-4" />
       <span className="sr-only">Next slide</span>
     </Button>
   )
