@@ -110,7 +110,10 @@ export default function CtaSubscribe() {
           <p className="mx-auto mt-3 text-center text-[15px] ">
             No spam ever, we are care about the protection of your data. Read
             our{' '}
-            <a className="text-indigo-600 underline" href="/privacy-policy">
+            <a
+              className="text-indigo-600 underline"
+              href="/legal/privacy-policy"
+            >
               {' '}
               Privacy Policy{' '}
             </a>

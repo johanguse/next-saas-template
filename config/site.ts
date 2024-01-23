@@ -60,12 +60,16 @@ export const siteConfig: SiteConfig = {
         target: '_blank',
       },
       {
-        href: '/privacy-policy',
+        href: '/legal/privacy-policy',
         name: 'Privacy Policy',
       },
       {
-        href: '/cookies-policy',
+        href: '/legal/cookies-policy',
         name: 'Cookies Policy',
+      },
+      {
+        href: '/legal/terms-of-service',
+        name: 'Terms of Service',
       },
     ],
   },
