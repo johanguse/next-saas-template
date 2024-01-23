@@ -14,15 +14,18 @@ export const metadata = {
 }
 
 export default function BlogPage({ params }: BlogPageProps) {
+  const currentPage = Number(params.id) || 1
   const postsPerPage = marketingConfig.postsPerPage
 
-  const sortedAndFilteredPosts = useMemo(() => {
-    return allPosts
-      .filter((post) => post.published)
-      .sort((a, b) => -new Date(a.date).getTime() + new Date(b.date).getTime())
-  }, [allPosts])
+  const slicedPosts = useMemo(() => {
+    return currentPage !== 1 ? allPosts.slice(1) : allPosts
+  }, [currentPage])
 
-  const currentPage = params.id || 1
+  const sortedAndFilteredPosts = useMemo(() => {
+    return slicedPosts
+      .filter((post) => post.published)
+      .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+  }, [slicedPosts])
 
   metadata.title = `Blog - Page ${currentPage} of ${Math.ceil(
     sortedAndFilteredPosts.length / postsPerPage

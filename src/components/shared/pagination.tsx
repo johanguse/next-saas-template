@@ -16,7 +16,7 @@ export default function Pagination({
 }: PaginationProps) {
   const totalPages = useMemo(
     () => Math.ceil(totalPostCount / postsPerPage),
-    [totalPostCount]
+    [totalPostCount, postsPerPage]
   )
 
   const pages = useMemo(
@@ -24,9 +24,13 @@ export default function Pagination({
     [totalPages]
   )
 
+  if (totalPostCount <= postsPerPage) {
+    return null
+  }
+
   return (
     <div className={className}>
-      <div className="mx-auto my-2 py-4 text-gray-600">
+      <div className="mx-auto my-2 py-4 font-semibold text-gray-600">
         <div className="hidden justify-between text-sm md:flex">
           <div>
             {currentPage > 1
@@ -43,7 +47,7 @@ export default function Pagination({
             {currentPage > 1 && (
               <Link
                 href={`/blog/page/${currentPage - 1}`}
-                className="hover:text-indigo-600"
+                className="hover:text-primary"
               >
                 Previous
               </Link>
@@ -52,11 +56,11 @@ export default function Pagination({
               {pages.map((page) => (
                 <li key={page}>
                   <Link
-                    href={page == 1 ? '/blog' : `/blog/page/${page}`}
+                    href={`/blog/page/${page}`}
                     aria-current={currentPage == page ? 'page' : undefined}
-                    className={`rounded-lg px-3 py-2 duration-150 hover:bg-indigo-600 hover:text-white ${
+                    className={`rounded-lg px-3 py-2 duration-150 hover:bg-primary hover:text-white ${
                       currentPage == page
-                        ? 'bg-indigo-600 font-medium text-white'
+                        ? 'bg-primary font-medium text-white'
                         : ''
                     }`}
                   >
@@ -68,7 +72,7 @@ export default function Pagination({
             {currentPage < totalPages && (
               <Link
                 href={`/blog/page/${currentPage + 1}`}
-                className="hover:text-indigo-600"
+                className="hover:text-primary"
               >
                 Next
               </Link>

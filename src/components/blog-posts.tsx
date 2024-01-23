@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { format, parseISO } from 'date-fns'
 
 import { Badge } from '@/components/ui/badge'
 import { BlogPostListItem } from '@/components/marketing/blog-list-item'
@@ -13,8 +14,8 @@ export function BlogPosts({ posts }) {
             <div className="mb-6 flex size-full flex-col items-start justify-center px-0 py-6 md:mb-0 md:w-1/2">
               <div className="flex h-full flex-col items-start justify-center space-y-3 md:space-y-5 md:pr-10 lg:pr-16">
                 <div
-                  className="flex items-center rounded-full bg-green-600 py-1.5 pl-2 pr-3 uppercase leading-none
-              text-gray-50 dark:bg-green-800"
+                  className="flex items-center rounded-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 py-1.5 pl-2 pr-3 uppercase leading-none
+              text-gray-50"
                 >
                   <p className="inline">
                     <svg
@@ -32,31 +33,31 @@ export function BlogPosts({ posts }) {
                     </svg>
                   </p>
                   <p className="inline text-xs font-medium">New</p>
-                  <Badge className="ml-2">Featured</Badge>
+                  <Badge className="ml-2" variant="secondary">
+                    Featured
+                  </Badge>
                 </div>
                 <a className="text-balance text-4xl font-bold leading-none lg:text-5xl xl:text-6xl">
                   {posts[0].title}
                 </a>
                 <div className="px-0 pt-2">
                   {posts[0].description && (
-                    <p className="text-balance text-muted-foreground md:text-lg">
+                    <p className="mb-2 text-balance text-muted-foreground md:text-lg">
                       {posts[0].description}
                     </p>
                   )}
-                  <p>
-                    <span className="text-muted-foreground">
-                      {posts[0].author}
-                    </span>{' '}
-                    •{' '}
-                    <time
-                      dateTime={posts[0].date}
-                      className="text-muted-foreground"
-                    >
-                      {posts[0].date}
-                    </time>
-                  </p>
+
+                  <time
+                    dateTime={posts[0].date}
+                    className="block text-sm tracking-tight text-blue-500 dark:text-sky-500"
+                  >
+                    {posts[0].date
+                      ? format(parseISO(posts[0].date), 'MMM, do yyyy')
+                      : null}
+                  </time>
+
                   <Link href={posts[0].slug} className="absolute inset-0">
-                    <span className="sr-only">View Article</span>
+                    <span className="sr-only">{posts[0].title}</span>
                   </Link>
                 </div>
               </div>
