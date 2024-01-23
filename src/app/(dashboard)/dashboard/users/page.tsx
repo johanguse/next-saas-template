@@ -16,7 +16,7 @@ const UserTableRow = ({ user }) => {
           height={40}
           src={user.avatarSrc}
           alt="User Avatar"
-          className="inline-block h-10 w-10 rounded-full"
+          className="inline-block size-10 rounded-full"
         />
       </td>
       <td className="p-3">
@@ -26,7 +26,7 @@ const UserTableRow = ({ user }) => {
       <td className="hidden p-3 text-gray-500 md:table-cell">{user.email}</td>
       <td className="p-3 text-center">
         <span
-          className={`inline-block h-4 w-4 rounded-full ${user.planBadgeColor} md:hidden`}
+          className={`inline-block size-4 rounded-full${user.planBadgeColor} md:hidden`}
         >
           &nbsp;
         </span>
@@ -42,7 +42,7 @@ const UserTableRow = ({ user }) => {
           className="inline-flex items-center justify-center space-x-2 rounded border border-gray-300 bg-white px-2 py-1 text-sm font-semibold leading-5 text-gray-800 shadow-sm hover:border-gray-300 hover:bg-gray-100 hover:text-gray-800 hover:shadow focus:outline-none focus:ring focus:ring-gray-500 focus:ring-opacity-25 active:border-white active:bg-white active:shadow-none"
         >
           <svg
-            className="hi-solid hi-pencil inline-block h-4 w-4"
+            className="hi-solid hi-pencil inline-block size-4"
             fill="currentColor"
             viewBox="0 0 20 20"
             xmlns="http://www.w3.org/2000/svg"
