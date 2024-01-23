@@ -1,11 +1,17 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { Post } from '@/root/.contentlayer/generated'
 import { format, parseISO } from 'date-fns'
 
 import { Badge } from '@/components/ui/badge'
 import { BlogPostListItem } from '@/components/marketing/blog-list-item'
 
-export function BlogPosts({ posts }) {
+type BlogPostsProps = {
+  posts: Post[]
+  currentPage: number
+}
+
+export function BlogPosts({ posts, currentPage }: BlogPostsProps) {
   return (
     <div className="container space-y-10 py-6 md:py-10">
       <section className="mb-2 lg:mb-10">

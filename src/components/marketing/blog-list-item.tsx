@@ -1,11 +1,16 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { Post } from '@/root/.contentlayer/generated'
 import { format, parseISO } from 'date-fns'
 
 import { marketingConfig } from '@/config/marketing'
 import { Button } from '@/components/ui/button-ui'
 
-export function BlogPostListItem({ posts }) {
+interface BlogPostListItemProps {
+  posts: Post[]
+}
+
+export function BlogPostListItem({ posts }: BlogPostListItemProps) {
   const postsPerPage = marketingConfig.postsPerPage
 
   return (
