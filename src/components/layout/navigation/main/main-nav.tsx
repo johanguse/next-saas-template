@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -22,9 +22,9 @@ export function MainNav({ items, children }: MainNavProps) {
     setShowMobileMenu(!showMobileMenu)
   }
 
-  const closeMobileMenu = () => {
+  const closeMobileMenu = useCallback(() => {
     setShowMobileMenu(false)
-  }
+  }, [])
 
   React.useEffect(() => {
     const closeMobileMenuOnClickOutside = (event: MouseEvent) => {

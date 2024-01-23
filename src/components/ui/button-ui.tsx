@@ -23,7 +23,12 @@ type HTMLButtonProps = DetailedHTMLProps<
   ButtonHTMLAttributes<HTMLButtonElement>,
   HTMLButtonElement
 >
-export type ButtonVariant = 'primary' | 'secondary' | 'tertiary' | 'danger'
+export type ButtonVariant =
+  | 'primary'
+  | 'secondary'
+  | 'tertiary'
+  | 'danger'
+  | 'link'
 
 type ButtonProps<NativeProps = {}> = PropsWithChildren & {
   labelToken?: string
@@ -88,6 +93,12 @@ const getButtonColorClasses = cond<ButtonVariant[], string>([
         
   `
     ),
+  ],
+  [
+    equals<ButtonVariant>('link'),
+    always(`
+    text-primary px-3 py-1 text-sm font-medium hover:underline
+  `),
   ],
 ])
 

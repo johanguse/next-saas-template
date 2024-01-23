@@ -111,7 +111,7 @@ const ReviewGrid: FC = () => {
       values.add(randomBetween(20, 30))
     }
     return Array.from(values)
-  }, [])
+  }, [columns.length])
 
   return (
     <div
