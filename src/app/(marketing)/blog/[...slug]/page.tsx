@@ -87,6 +87,7 @@ export async function generateStaticParams(): Promise<
 
 export default async function PostPage({ params }: PostPageProps) {
   const post = await getPostFromParams(params)
+  const postURL = `${env.NEXT_PUBLIC_APP_URL}/blog/${params?.slug?.join('/')}`
 
   if (!post) {
     notFound()
@@ -151,8 +152,12 @@ export default async function PostPage({ params }: PostPageProps) {
             </div>
           ) : null}
           <div>
-            <h3 className="mb-1 text-xs"> Share this post </h3>
-            <ShareButtons params={params} size={32} />
+            <h3
+              className={`mb-1 text-xs ${authors?.length ? 'text-right' : ''}`}
+            >
+              Share this post
+            </h3>
+            <ShareButtons post={post} size={24} />
           </div>
         </div>
       </div>
@@ -170,7 +175,7 @@ export default async function PostPage({ params }: PostPageProps) {
       <hr className="my-10" />
       <div className="mb-10">
         <h3 className="mb-4 text-xl"> Share this post </h3>
-        <ShareButtons params={params} />
+        <ShareButtons size={40} post={post} />
       </div>
       <hr className="my-6" />
       <div className="flex justify-start py-12 lg:py-10">
