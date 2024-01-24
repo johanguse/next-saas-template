@@ -13,6 +13,7 @@ import { env } from '@/root/env.mjs'
 import { absoluteUrl, cn, formatDate } from '@/lib/utils'
 import { buttonVariants } from '@/components/ui/button'
 import { Icons } from '@/components/shared/icons'
+import ShareButtons from '@/components/shared/share-buttons'
 
 interface PostPageProps {
   params: {
@@ -25,7 +26,7 @@ async function getPostFromParams(params) {
   const post = allPosts.find((post) => post.slugAsParams === slug)
 
   if (!post) {
-    null
+    return null
   }
 
   return post
@@ -91,9 +92,11 @@ export default async function PostPage({ params }: PostPageProps) {
     notFound()
   }
 
-  const authors = post.authors.map((author) =>
-    allAuthors.find(({ slug }) => slug === `/authors/${author}`)
-  )
+  const authors = post.authors
+    .map((author) =>
+      allAuthors.find(({ slug }) => slug === `/authors/${author}`)
+    )
+    .filter((author) => author != null)
 
   return (
     <article className="container relative max-w-3xl py-6 lg:py-10">
@@ -119,33 +122,39 @@ export default async function PostPage({ params }: PostPageProps) {
         <h1 className="mt-2 inline-block text-balance font-heading text-4xl leading-tight lg:text-5xl">
           {post.title}
         </h1>
-        {authors?.length ? (
-          <div className="mt-4 flex space-x-4">
-            {authors.map((author) =>
-              author ? (
-                <Link
-                  key={author._id}
-                  href={`https://twitter.com/${author.twitter}`}
-                  className="flex items-center space-x-2 text-sm"
-                >
-                  <Image
-                    src={author.avatar}
-                    alt={author.title}
-                    width={42}
-                    height={42}
-                    className="rounded-full bg-white"
-                  />
-                  <div className="flex-1 text-left leading-tight">
-                    <p className="font-medium">{author.title}</p>
-                    <p className="text-[12px] text-muted-foreground">
-                      @{author.twitter}
-                    </p>
-                  </div>
-                </Link>
-              ) : null
-            )}
+        <div className="mt-8 flex justify-between">
+          {authors?.length ? (
+            <div className="flex space-x-4">
+              {authors.map((author) =>
+                author ? (
+                  <Link
+                    key={author._id}
+                    href={`https://twitter.com/${author.twitter}`}
+                    className="flex items-center space-x-2 text-sm"
+                  >
+                    <Image
+                      src={author.avatar}
+                      alt={author.title}
+                      width={42}
+                      height={42}
+                      className="rounded-full bg-white"
+                    />
+                    <div className="flex-1 text-left leading-tight">
+                      <p className="font-medium">{author.title}</p>
+                      <p className="text-[12px] text-muted-foreground">
+                        @{author.twitter}
+                      </p>
+                    </div>
+                  </Link>
+                ) : null
+              )}
+            </div>
+          ) : null}
+          <div>
+            <h3 className="mb-1 text-xs"> Share this post </h3>
+            <ShareButtons params={params} size={32} />
           </div>
-        ) : null}
+        </div>
       </div>
       {post.image && (
         <Image
@@ -153,13 +162,18 @@ export default async function PostPage({ params }: PostPageProps) {
           alt={post.title}
           width={720}
           height={405}
-          className="my-8 rounded-md border bg-muted transition-colors"
+          className="my-8 w-full rounded-md border bg-muted transition-colors"
           priority
         />
       )}
       <Mdx code={post.body.code} />
-      <hr className="mt-12" />
-      <div className="flex justify-center py-6 lg:py-10">
+      <hr className="my-10" />
+      <div className="mb-10">
+        <h3 className="mb-4 text-xl"> Share this post </h3>
+        <ShareButtons params={params} />
+      </div>
+      <hr className="my-6" />
+      <div className="flex justify-start py-12 lg:py-10">
         <Link href="/blog" className={cn(buttonVariants({ variant: 'ghost' }))}>
           <Icons.chevronLeft className="mr-2 size-4" />
           All posts
