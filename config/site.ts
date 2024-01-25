@@ -1,8 +1,7 @@
 import { SiteConfig } from 'types'
+import { absoluteUrl } from '@/lib/utils'
 
-const defaultUrl = process.env.VERCEL_URL
-  ? `https://${process.env.VERCEL_URL}`
-  : 'http://localhost:3000'
+const defaultUrl = absoluteUrl('')
 
 export const siteConfig: SiteConfig = {
   name: 'Next SaaS Template',

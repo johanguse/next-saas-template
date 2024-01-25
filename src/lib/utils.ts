@@ -27,6 +27,21 @@ export function formatDate(input: string | number): string {
 }
 
 /**
+ * Formats a Date object into an ISO 8601 date string (YYYY-MM-DD).
+ *
+ * This function takes a JavaScript Date object and formats it to an ISO 8601
+ * compliant date string representing the year, month, and day. The time portion
+ * is omitted in the output. If the input date is invalid or not provided,
+ * an error will be thrown by the Date object's toISOString() method.
+ *
+ * @param {Date} date - A JavaScript Date object.
+ * @returns {string} An ISO 8601 formatted date string in 'YYYY-MM-DD' format.
+ */
+export function formatDateToISO(date: Date): string {
+  return date.toISOString().split('T')[0]
+}
+
+/**
  * Generates an absolute URL based on a given path.
  * @param path - The path to be appended to the base URL.
  * @returns A complete URL string.
