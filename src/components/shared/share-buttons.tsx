@@ -1,6 +1,5 @@
 'use client'
 
-import { env } from 'process'
 import { Post } from '@/root/.contentlayer/generated'
 import {
   EmailIcon,
@@ -21,6 +20,8 @@ import {
   WhatsappShareButton,
 } from 'next-share'
 
+import { absoluteUrl } from '@/lib/utils'
+
 interface PostPageProps {
   post: Post
   size?: number
@@ -28,7 +29,7 @@ interface PostPageProps {
 
 export default function ShareButtons({ post, size = 32 }: PostPageProps) {
   const title = post.title
-  const shareUrl = `${env.NEXT_PUBLIC_APP_URL}/blog/${post.slug}`
+  const shareUrl = absoluteUrl(post.slug)
 
   return (
     <div className="grid grid-flow-col justify-start gap-2">

@@ -1,11 +1,12 @@
 import '@/styles/globals.css'
 
 import { fontHeading, fontSans, fontUrban } from '@/assets/fonts'
+import { Analytics } from '@vercel/analytics/react'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 
 import { siteConfig } from '@/config/site'
 import { cn } from '@/lib/utils'
 import { Toaster } from '@/components/ui/toaster'
-import { Analytics } from '@/components/analytics'
 import { ModalProvider } from '@/components/modal-provider'
 import { Providers } from '@/components/providers'
 import { TailwindIndicator } from '@/components/tailwind-indicator'
@@ -73,6 +74,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <Providers attribute="class" defaultTheme="system" enableSystem>
           {children}
           <Analytics />
+          <SpeedInsights />
           <Toaster richColors closeButton position="top-center" />
           <ModalProvider />
           <TailwindIndicator />
