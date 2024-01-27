@@ -1,6 +1,7 @@
 import Image from 'next/image'
 
 import { Testimonial } from '@/lib/fake-data/testimonials'
+import { BlockTitle } from '@/components/layout/main-title'
 
 interface TestimonialCardsProps {
   testimonials: Testimonial[]
@@ -15,6 +16,21 @@ export default function TestimonialCards({
       className="w-full py-12 md:py-24 lg:py-32 xl:py-48"
     >
       <div className="mx-auto flex max-w-7xl flex-col gap-16 px-4 sm:gap-y-24 sm:px-6 lg:px-8">
+        <BlockTitle.Wrapper>
+          <BlockTitle.Header elementType="h2">Testimonial</BlockTitle.Header>
+
+          <BlockTitle.Title elementType="h3">
+            What our customers are saying
+          </BlockTitle.Title>
+
+          <BlockTitle.Description>
+            See what our customers are saying about us
+          </BlockTitle.Description>
+
+          <BlockTitle.Background />
+
+          <BlockTitle.Separator />
+        </BlockTitle.Wrapper>
         <div className="column-1 gap-8 space-y-8 md:columns-2 lg:columns-3 xl:columns-4">
           {testimonials.map((testimonial, index) => (
             <div key={index} className="break-inside-avoid">

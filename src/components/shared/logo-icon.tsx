@@ -1,17 +1,20 @@
 import Image from 'next/image'
-import Link from 'next/link'
 
 import { siteConfig } from '@/config/site'
 
-const IconLogo: React.FC = () => {
+interface IconLogoProps {
+  className?: string
+}
+
+export default function IconLogo({ className }: IconLogoProps) {
   return (
     <Image
-      src="/favicons/apple-icon-180x180.png"
+      src="/next_saas_logo.png"
       width={40}
       height={40}
-      alt={`Logo ${siteConfig.name}`}
+      className={className}
+      alt={`Logo for ${siteConfig.name}`}
+      priority
     />
   )
 }
-
-export default IconLogo

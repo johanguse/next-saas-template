@@ -1,5 +1,4 @@
 import React, { useCallback } from 'react'
-import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
@@ -51,12 +50,7 @@ export function MainNav({ items, children }: MainNavProps) {
   return (
     <div className="flex gap-6 md:gap-10">
       <Link href="/" className="hidden items-center space-x-2 md:flex">
-        <Image
-          src="/next_saas_logo.png"
-          width="40"
-          height="40"
-          alt={`Logo ${siteConfig.name}`}
-        />
+        <IconLogo />
         <span className="hidden font-urban text-xl font-bold sm:inline-block">
           {siteConfig.name}
         </span>
