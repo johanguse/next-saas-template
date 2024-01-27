@@ -7,6 +7,7 @@ import { siteConfig } from '@/config/site'
 import { useSigninModal } from '@/hooks/use-signin-modal'
 import { Button } from '@/components/ui/button'
 import { Icons } from '@/components/shared/icons'
+import IconLogo from '@/components/shared/logo-icon'
 import { Modal } from '@/components/shared/modal'
 
 export const SignInModal = () => {
@@ -18,7 +19,7 @@ export const SignInModal = () => {
       <div className="w-full">
         <div className="flex flex-col items-center justify-center space-y-3 border-b bg-background px-4 py-6 pt-8 text-center md:px-16">
           <a href={siteConfig.url}>
-            <Icons.logo className="size-10" />
+            <IconLogo className="size-10 self-center" />
           </a>
           <h3 className="font-urban text-2xl font-bold">Sign In</h3>
           <p className="text-sm text-gray-500">

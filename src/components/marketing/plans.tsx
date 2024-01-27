@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { Button } from '@/components/ui/button'
+import { BlockTitle } from '@/components/layout/main-title'
 import { Icons } from '@/components/shared/icons'
 
 type PlanProps = {
@@ -107,6 +108,15 @@ export default function PlansMarketing() {
     <section className="py-32">
       <div className="container px-4 md:px-6">
         <div className="grid items-center gap-16 px-4 sm:gap-y-24 sm:px-6 lg:px-8">
+          <BlockTitle.Wrapper className="mb-12">
+            <BlockTitle.Header elementType="h2">Plans</BlockTitle.Header>
+
+            <BlockTitle.Title elementType="h3">
+              Find the plan that&apos;s right for you
+            </BlockTitle.Title>
+
+            <BlockTitle.Background />
+          </BlockTitle.Wrapper>
           <div className="-mt-14 flex w-full flex-col items-center gap-8 py-16 lg:grid lg:grid-cols-3">
             {plans.map((plan, index) => (
               <Plan key={index} {...plan} index={index} />

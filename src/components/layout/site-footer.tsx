@@ -1,5 +1,4 @@
 import * as React from 'react'
-import Image from 'next/image'
 import Link from 'next/link'
 import { SocialLink } from '@/root/types'
 
@@ -7,6 +6,7 @@ import { siteConfig } from '@/config/site'
 import { cn } from '@/lib/utils'
 import { ModeToggle } from '@/components/layout/mode-toggle'
 import { Icons } from '@/components/shared/icons'
+import IconLogo from '@/components/shared/logo-icon'
 
 export function SiteFooter({ className }: React.HTMLAttributes<HTMLElement>) {
   const footerSocialLinks: SocialLink[] = Object.entries(
@@ -27,13 +27,7 @@ export function SiteFooter({ className }: React.HTMLAttributes<HTMLElement>) {
       <div className="container">
         <div className="max-w-lg sm:mx-auto sm:text-center">
           <div className="mx-auto mb-8 flex flex-col items-center">
-            <Image
-              src="/next_saas_logo.png"
-              width="40"
-              height="40"
-              alt={`Logo ${siteConfig.name}`}
-              className="mb-2"
-            />
+            <IconLogo className="mb-2 size-16" />
             <span className="mb-6 hidden font-urban text-xl font-bold text-black dark:text-white sm:inline-block">
               {siteConfig.name}
             </span>
