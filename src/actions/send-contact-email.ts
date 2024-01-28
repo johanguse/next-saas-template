@@ -18,6 +18,7 @@ export async function sendEmail(data: ContactFormInputs) {
       const data = await resend.emails.send({
         from: env.RESEND_FROM_EMAIL,
         to: [siteConfig.mailSupport],
+        reply_to: email,
         subject: 'Contact form submission from ' + siteConfig.name,
         text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
       })
