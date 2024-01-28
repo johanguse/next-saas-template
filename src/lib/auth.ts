@@ -7,8 +7,7 @@ import GoogleProvider from 'next-auth/providers/google'
 
 import { siteConfig } from '@/config/site'
 import { prisma } from '@/lib/db'
-
-import { resend } from './email'
+import { resend } from '@/lib/email'
 
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
