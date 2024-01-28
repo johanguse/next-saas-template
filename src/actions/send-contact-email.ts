@@ -1,6 +1,5 @@
 'use server'
 
-import ContactFormEmail from '@/emails/contact-form-email'
 import { env } from '@/root/env.mjs'
 import { z } from 'zod'
 
@@ -21,7 +20,6 @@ export async function sendEmail(data: ContactFormInputs) {
         to: [siteConfig.mailSupport],
         subject: 'Contact form submission from ' + siteConfig.name,
         text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
-        react: ContactFormEmail({ name, email, message }),
       })
       return { success: true, data }
     } catch (error) {

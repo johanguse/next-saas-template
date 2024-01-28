@@ -1,10 +1,10 @@
-interface ContactFormEmailProps {
-  name: string
-  email: string
-  message: string
-}
+import { z } from 'zod'
 
-const ContactFormEmail: React.FC<Readonly<ContactFormEmailProps>> = ({
+import { ContactFormSchema } from '@/lib/validations/contact-form'
+
+type ContactFormInputs = z.infer<typeof ContactFormSchema>
+
+const ContactFormEmail: React.FC<Readonly<ContactFormInputs>> = ({
   name,
   email,
   message,

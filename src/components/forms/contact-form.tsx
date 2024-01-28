@@ -21,7 +21,8 @@ import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 
 export default function ContactForm() {
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState<boolean>(false)
+  const [status, setStatus] = useState<string>('')
   const form = useForm<z.infer<typeof ContactFormSchema>>({
     resolver: zodResolver(ContactFormSchema),
     defaultValues: {
@@ -37,20 +38,22 @@ export default function ContactForm() {
     try {
       setLoading(true)
 
-      const result = await sendEmail(JSON.parse(JSON.stringify(data)))
+      const result = await sendEmail(data)
 
       if (result?.success) {
         toast.success('Email sent!')
+        setStatus('success')
+        form.reset()
       } else {
         console.error(result?.error)
+        setStatus('error')
         toast.error('Something went wrong!')
       }
-
       setLoading(false)
     } catch (error) {
       console.error(error)
+      setStatus('error')
       toast.error('An unexpected error occurred!')
-
       setLoading(false)
     }
   }
@@ -58,6 +61,16 @@ export default function ContactForm() {
   return (
     <div>
       <Form {...form}>
+        {status === 'success' && (
+          <p className="mb-3 rounded bg-slate-800 p-3 text-center text-sm text-green-400 dark:bg-slate-700">
+            Thank you for your message! We&apos;ll get back to you shortly.
+          </p>
+        )}
+        {status === 'error' && (
+          <p className="mb-3 rounded bg-slate-800 p-3 text-center text-sm text-red-400 dark:bg-slate-700">
+            Something went wrong, please try again!
+          </p>
+        )}
         <form
           onSubmit={form.handleSubmit(processForm)}
           className="grid w-full gap-4"
