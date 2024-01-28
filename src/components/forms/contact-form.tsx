@@ -7,10 +7,7 @@ import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 import * as z from 'zod'
 
-import {
-  ContactFormSchema,
-  FormDataSchema,
-} from '@/lib/validations/contact-form'
+import { ContactFormSchema } from '@/lib/validations/contact-form'
 import { Button } from '@/components/ui/button-ui'
 import {
   Form,
@@ -35,16 +32,14 @@ export default function ContactForm() {
   })
 
   async function processForm(
-    data: z.infer<typeof FormDataSchema>
+    data: z.infer<typeof ContactFormSchema>
   ): Promise<void> {
     try {
       setLoading(true)
-      console.log(JSON.parse(JSON.stringify(data)))
 
       const result = await sendEmail(JSON.parse(JSON.stringify(data)))
 
       if (result?.success) {
-        console.log({ data: result.data })
         toast.success('Email sent!')
       } else {
         console.error(result?.error)

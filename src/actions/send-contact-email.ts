@@ -6,24 +6,7 @@ import { z } from 'zod'
 
 import { siteConfig } from '@/config/site'
 import { resend } from '@/lib/email'
-import {
-  ContactFormSchema,
-  FormDataSchema,
-} from '@/lib/validations/contact-form'
-
-type Inputs = z.infer<typeof FormDataSchema>
-
-export async function addEntry(data: Inputs) {
-  const result = FormDataSchema.safeParse(data)
-
-  if (result.success) {
-    return { success: true, data: result.data }
-  }
-
-  if (result.error) {
-    return { success: false, error: result.error.format() }
-  }
-}
+import { ContactFormSchema } from '@/lib/validations/contact-form'
 
 type ContactFormInputs = z.infer<typeof ContactFormSchema>
 
