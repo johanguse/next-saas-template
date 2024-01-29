@@ -1,19 +1,20 @@
-import { notFound } from 'next/navigation'
-import { allAuthors, allPosts } from 'contentlayer/generated'
-
-import { Mdx } from '@/components/content/mdx-components'
-
-import '@/styles/mdx.css'
-
 import { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-import { env } from '@/root/env.mjs'
+import { notFound } from 'next/navigation'
 
 import { absoluteUrl, cn, formatDate } from '@/lib/utils'
+
 import { buttonVariants } from '@/components/ui/button'
+
+import { Mdx } from '@/components/content/mdx-components'
 import { Icons } from '@/components/shared/icons'
 import ShareButtons from '@/components/shared/share-buttons'
+
+import '@/styles/mdx.css'
+
+import { env } from '@/root/env.mjs'
+import { allAuthors, allPosts } from 'contentlayer/generated'
 
 interface PostPageProps {
   params: {
@@ -100,90 +101,124 @@ export default async function PostPage({ params }: PostPageProps) {
     .filter((author) => author != null)
 
   return (
-    <article className="container relative max-w-3xl py-6 lg:py-10">
-      <Link
-        href="/blog"
-        className={cn(
-          buttonVariants({ variant: 'ghost' }),
-          'absolute left-[-200px] top-14 hidden xl:inline-flex'
-        )}
-      >
-        <Icons.chevronLeft className="mr-2 size-4" />
-        All posts
-      </Link>
-      <div>
-        {post.date && (
-          <time
-            dateTime={post.date}
-            className="block text-sm text-muted-foreground"
-          >
-            Published on {formatDate(post.date)}
-          </time>
-        )}
-        <h1 className="mt-2 inline-block text-balance font-heading text-4xl leading-tight lg:text-5xl">
-          {post.title}
-        </h1>
-        <div className="mt-8 flex justify-between">
-          {authors?.length ? (
-            <div className="flex space-x-4">
-              {authors.map((author) =>
-                author ? (
-                  <Link
-                    key={author._id}
-                    href={`https://twitter.com/${author.twitter}`}
-                    className="flex items-center space-x-2 text-sm"
-                  >
-                    <Image
-                      src={author.avatar}
-                      alt={author.title}
-                      width={42}
-                      height={42}
-                      className="rounded-full bg-white"
-                    />
-                    <div className="flex-1 text-left leading-tight">
-                      <p className="font-medium">{author.title}</p>
-                      <p className="text-[12px] text-muted-foreground">
-                        @{author.twitter}
-                      </p>
-                    </div>
-                  </Link>
-                ) : null
+    <div className="container mx-auto">
+      <div className="mx-auto grid w-full grid-cols-8 gap-16 py-12">
+        <article className="col-span-5 col-start-2">
+          <div>
+            {post.date && (
+              <time
+                dateTime={post.date}
+                className="block text-sm text-muted-foreground"
+              >
+                Published on {formatDate(post.date)}
+              </time>
+            )}
+            <h1 className="mt-2 inline-block text-balance font-heading text-4xl leading-tight lg:text-5xl">
+              {post.title}
+            </h1>
+            <div className="mt-8 flex justify-between">
+              {authors?.length ? (
+                <div className="flex space-x-4">
+                  {authors.map((author) =>
+                    author ? (
+                      <Link
+                        key={author._id}
+                        href={`https://twitter.com/${author.twitter}`}
+                        className="flex items-center space-x-2 text-sm"
+                      >
+                        <Image
+                          src={author.avatar}
+                          alt={author.title}
+                          width={42}
+                          height={42}
+                          className="rounded-full bg-white"
+                        />
+                        <div className="flex-1 text-left leading-tight">
+                          <p className="font-medium">{author.title}</p>
+                          <p className="text-[12px] text-muted-foreground">
+                            @{author.twitter}
+                          </p>
+                        </div>
+                      </Link>
+                    ) : null
+                  )}
+                </div>
+              ) : null}
+              <div>
+                <h3
+                  className={`mb-1 text-xs ${authors?.length ? 'text-right' : ''}`}
+                >
+                  Share this post
+                </h3>
+                <ShareButtons post={post} size={24} />
+              </div>
+            </div>
+          </div>
+          {post.image && (
+            <Image
+              src={post.image}
+              alt={post.title}
+              width={720}
+              height={405}
+              className="my-8 w-full rounded-md border bg-muted transition-colors"
+              priority
+            />
+          )}
+          <Mdx code={post.body.code} />
+          <hr className="my-10" />
+          <div className="mb-10">
+            <h3 className="mb-4 text-xl"> Share this post </h3>
+            <ShareButtons size={40} post={post} />
+          </div>
+          <hr className="my-6" />
+          <div className="flex justify-start py-12 lg:py-10">
+            <Link
+              href="/blog"
+              className={cn(
+                buttonVariants({ variant: 'link' }),
+                'px-0 text-black dark:text-white'
               )}
+            >
+              <Icons.chevronLeft className="mr-2 size-4" />
+              All posts
+            </Link>
+          </div>
+        </article>
+        <aside className="col-span-2 items-center py-6">
+          <div className="mb-10">
+            <Link
+              href="/blog"
+              className={cn(
+                buttonVariants({ variant: 'link' }),
+                'px-0 text-black dark:text-white'
+              )}
+            >
+              <Icons.chevronLeft className="mr-2 size-4" />
+              All posts
+            </Link>
+          </div>
+          {post.toc ? (
+            <div className="w-full">
+              <h3 className="mb-4 uppercase leading-relaxed">On this page</h3>
+              <div className="text-balance">
+                {post.headings.map((heading) => {
+                  return (
+                    <div key={`#${heading.slug}`}>
+                      <a
+                        data-level={heading.level}
+                        href={`#${heading.slug}`}
+                        className="text-sm hover:underline data-[level=three]:pl-4 data-[level=two]:pl-2"
+                      >
+                        {heading.text}
+                      </a>
+                    </div>
+                  )
+                })}
+              </div>
             </div>
           ) : null}
-          <div>
-            <h3
-              className={`mb-1 text-xs ${authors?.length ? 'text-right' : ''}`}
-            >
-              Share this post
-            </h3>
-            <ShareButtons post={post} size={24} />
-          </div>
-        </div>
+        </aside>
       </div>
-      {post.image && (
-        <Image
-          src={post.image}
-          alt={post.title}
-          width={720}
-          height={405}
-          className="my-8 w-full rounded-md border bg-muted transition-colors"
-          priority
-        />
-      )}
-      <Mdx code={post.body.code} />
-      <hr className="my-10" />
-      <div className="mb-10">
-        <h3 className="mb-4 text-xl"> Share this post </h3>
-        <ShareButtons size={40} post={post} />
-      </div>
-      <hr className="my-6" />
-      <div className="flex justify-start py-12 lg:py-10">
-        <Link href="/blog" className={cn(buttonVariants({ variant: 'ghost' }))}>
-          <Icons.chevronLeft className="mr-2 size-4" />
-          All posts
-        </Link>
-      </div>
-    </article>
+    </div>
   )
 }
