@@ -16,7 +16,6 @@
     "^(react/(.*)$)|^(react$)",
     "^(next/(.*)$)|^(next$)",
     "<THIRD_PARTY_MODULES>",
-    "",
     "^types$",
     "^@/env(.*)$",
     "^@/types/(.*)$",
@@ -30,9 +29,10 @@
     "",
     "^[./]"
   ],
-  "importOrderParserPlugins": ["typescript", "jsx", "decorators-legacy"],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true,
   "plugins": [
-    "@ianvs/prettier-plugin-sort-imports",
+    "@trivago/prettier-plugin-sort-imports",
     "prettier-plugin-tailwindcss"
   ]
 }

@@ -1,22 +1,34 @@
+import { Metadata, Viewport } from 'next'
+
+import { siteConfig } from '@/config/site'
+
+import { cn } from '@/lib/utils'
+
+import { Toaster } from '@/components/ui/toaster'
+
+import { ModalProvider } from '@/components/modal-provider'
+import { Providers } from '@/components/providers'
+import { TailwindIndicator } from '@/components/tailwind-indicator'
+import HWComponent from '@/components/thirdparty/headwayapp'
+
 import '@/styles/globals.css'
 
 import { fontHeading, fontSans, fontUrban } from '@/assets/fonts'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 
-import { siteConfig } from '@/config/site'
-import { cn } from '@/lib/utils'
-import { Toaster } from '@/components/ui/toaster'
-import { ModalProvider } from '@/components/modal-provider'
-import { Providers } from '@/components/providers'
-import { TailwindIndicator } from '@/components/tailwind-indicator'
-import HWComponent from '@/components/thirdparty/headwayapp'
-
 interface RootLayoutProps {
   children: React.ReactNode
 }
 
-export const metadata = {
+export const viewport: Viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: 'cyan' },
+    { media: '(prefers-color-scheme: dark)', color: 'black' },
+  ],
+}
+
+export const metadata: Metadata = {
   title: {
     default: siteConfig.name,
     template: `%s | ${siteConfig.name}`,
@@ -48,7 +60,7 @@ export const metadata = {
     card: 'summary_large_image',
     title: siteConfig.name,
     description: siteConfig.description,
-    images: [`${siteConfig.url}/og.jpg`],
+    images: [siteConfig.ogImage],
     creator: '@johanguse',
   },
   icons: {

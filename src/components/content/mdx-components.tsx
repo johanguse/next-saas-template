@@ -160,7 +160,7 @@ export function Mdx({ code }: MdxProps) {
   const Component = useMDXComponent(code)
 
   return (
-    <div className="mdx">
+    <div className="mdx text-balance">
       <Component components={components} />
     </div>
   )

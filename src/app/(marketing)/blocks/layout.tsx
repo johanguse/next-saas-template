@@ -1,4 +1,5 @@
 import { blocksConfig } from '@/config/blocks'
+
 import { DocsSidebarNav } from '@/components/docs/sidebar-nav'
 
 interface DocsLayoutProps {

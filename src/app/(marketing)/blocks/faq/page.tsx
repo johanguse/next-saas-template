@@ -1,4 +1,5 @@
 import { faqsClientData } from '@/lib/fake-data/faq-clients'
+
 import FAQClients from '@/components/marketing/faq-clients'
 
 export const metadata = {
