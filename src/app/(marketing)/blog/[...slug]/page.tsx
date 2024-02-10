@@ -22,6 +22,13 @@ interface PostPageProps {
   }
 }
 
+interface HeadingsProps {
+  slug: string
+  title: string
+  level: number
+  text: string
+}
+
 async function getPostFromParams(params) {
   const slug = params?.slug?.join('/')
   const post = allPosts.find((post) => post.slugAsParams === slug)
@@ -201,7 +208,7 @@ export default async function PostPage({ params }: PostPageProps) {
             <div className="w-full">
               <h3 className="mb-4 uppercase leading-relaxed">On this page</h3>
               <div className="text-balance">
-                {post.headings.map((heading) => {
+                {post.headings.map((heading: HeadingsProps) => {
                   return (
                     <div key={`#${heading.slug}`}>
                       <a

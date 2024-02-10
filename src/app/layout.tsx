@@ -14,8 +14,13 @@ import HWComponent from '@/components/thirdparty/headwayapp'
 import '@/styles/globals.css'
 
 import { fontHeading, fontSans, fontUrban } from '@/assets/fonts'
-import { Analytics } from '@vercel/analytics/react'
+import { Analytics as VercelAnalytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
+import { GA } from 'pliny/analytics/GoogleAnalytics'
+import { env } from 'process'
+
+// e.g. UA-000000-2 or G-XXXXXXX
+const googleAnalyticsId = env.NEXT_PUBLIC_GOOGLE_ANALITYCS!
 
 interface RootLayoutProps {
   children: React.ReactNode
@@ -85,7 +90,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
       >
         <Providers attribute="class" defaultTheme="system" enableSystem>
           {children}
-          <Analytics />
+          <GA googleAnalyticsId={googleAnalyticsId} />
+          <VercelAnalytics />
           <SpeedInsights />
           <Toaster richColors closeButton position="top-center" />
           <ModalProvider />

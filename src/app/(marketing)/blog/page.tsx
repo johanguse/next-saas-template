@@ -1,12 +1,15 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { allPosts } from '@/root/.contentlayer/generated'
-import { format, parseISO } from 'date-fns'
 
 import { marketingConfig } from '@/config/marketing'
+
 import { Badge } from '@/components/ui/badge'
+
 import { BlogPostListItem } from '@/components/marketing/blog-list-item'
 import PaginationNST from '@/components/shared/pagination'
+
+import { allPosts } from '@/root/.contentlayer/generated'
+import { format, parseISO } from 'date-fns'
 
 type BlogPageProps = {
   params: { id: number }
@@ -30,9 +33,11 @@ export default async function BlogPage({ params }: BlogPageProps) {
     sortedAndFilteredPosts.push(randomPost)
   }
 
-  metadata.title = `Blog - Page ${currentPage} of ${Math.ceil(
-    sortedAndFilteredPosts.length / allPostsPerPage
-  )}`
+  if (currentPage >= 1) {
+    metadata.title = `Blog - Page ${currentPage} of ${Math.ceil(
+      sortedAndFilteredPosts.length / allPostsPerPage
+    )}`
+  }
 
   return (
     <main className="w-full">
@@ -101,6 +106,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
                         height={452}
                         src={randomPost.image}
                         width={804}
+                        priority
                       />
                     )}
                   </div>
