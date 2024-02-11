@@ -15,7 +15,7 @@ export const env = createEnv({
     RESEND_FROM_EMAIL: z.string().min(1),
   },
   client: {
-    NEXT_PUBLIC_GOOGLE_ANALITYCS: z.string().min(1).optional(),
+    NEXT_PUBLIC_ANALITYCS_ID: z.string().min(1).optional(),
     NEXT_PUBLIC_APP_URL: z.string().min(1).optional(),
     NEXT_PUBLIC_STRIPE_PRO_MONTHLY_PLAN_ID: z.string().min(1),
     NEXT_PUBLIC_STRIPE_PRO_YEARLY_PLAN_ID: z.string().min(1),
@@ -27,7 +27,7 @@ export const env = createEnv({
   runtimeEnv: {
     NEXT_PUBLIC_APP_URL: process.env.NEXT_PUBLIC_APP_URL,
     DATABASE_URL: process.env.DATABASE_URL,
-    NEXT_PUBLIC_GOOGLE_ANALITYCS: process.env.NEXT_PUBLIC_GOOGLE_ANALITYCS,
+    NEXT_PUBLIC_ANALITYCS_ID: process.env.NEXT_PUBLIC_ANALITYCS_ID,
     // Auth
     NEXTAUTH_URL: process.env.NEXTAUTH_URL,
     NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
