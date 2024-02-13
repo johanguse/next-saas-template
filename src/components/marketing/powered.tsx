@@ -1,10 +1,20 @@
 import Link from 'next/link'
+
+import { cn } from '@/lib/utils'
+
 import { Marquee } from '@devnomic/marquee'
 
-export default function Powered() {
+type PoweredProps = {
+  className?: string
+}
+
+export default function Powered({ className }: PoweredProps) {
   return (
     <section
-      className=" animate-fade-up bg-gray-50 py-16 text-zinc-500 opacity-0 dark:bg-black dark:text-zinc-400 dark:opacity-50"
+      className={cn(
+        'animate-fade-up bg-gray-50 py-16 text-zinc-500 opacity-0 dark:bg-black dark:text-zinc-400 dark:opacity-50',
+        className
+      )}
       style={{ animationDelay: '0.55s', animationFillMode: 'forwards' }}
     >
       <div className="container mx-auto">
