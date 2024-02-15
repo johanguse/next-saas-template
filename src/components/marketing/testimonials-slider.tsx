@@ -2,7 +2,8 @@
 
 import Image from 'next/image'
 
-import { Testimonial } from '@/lib/fake-data/testimonials'
+import { TestimonialType } from '@/lib/fake-data/testimonials'
+
 import { Card, CardContent } from '@/components/ui/card'
 import {
   Carousel,
@@ -13,7 +14,7 @@ import {
 } from '@/components/ui/carousel'
 
 interface TestimonialSliderProps {
-  testimonials: Testimonial[]
+  testimonials: TestimonialType[]
 }
 
 export default function TestimonialSlider({

@@ -1,9 +1,9 @@
-export interface LogoCompanies {
+export type LogoCompaniesType = {
   src: string
   alt: string
 }
 
-export const logosCompaniesData: LogoCompanies[] = [
+export const logosCompaniesData: LogoCompaniesType[] = [
   { src: '/images/demo/logos/facebook.svg', alt: 'Facebook' },
   { src: '/images/demo/logos/disney.svg', alt: 'Disney' },
   { src: '/images/demo/logos/airbnb.svg', alt: 'Airbnb' },

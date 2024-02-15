@@ -1,10 +1,11 @@
 import Image from 'next/image'
 
-import { Testimonial } from '@/lib/fake-data/testimonials'
+import { TestimonialType } from '@/lib/fake-data/testimonials'
+
 import { BlockTitle } from '@/components/layout/main-title'
 
 interface TestimonialCardsProps {
-  testimonials: Testimonial[]
+  testimonials: TestimonialType[]
 }
 
 export default function TestimonialCards({

@@ -1,11 +1,11 @@
-export type Testimonial = {
+export type TestimonialType = {
   quote: string
   name: string
   role: string
   imgSrc: string
 }
 
-export const testimonials: Testimonial[] = [
+export const testimonialsData: TestimonialType[] = [
   {
     quote:
       'Nostrud tempor sunt fugiat. Dolor in sint dolore labore non occaecat adipisicing Lorem labore ullamco enim excepteur. In fugiat Lorem sit velit id veniam esse eiusmod non ea voluptate cupidatat reprehenderit ullamco dolore. Mollit laborum occaecat aliquip.',

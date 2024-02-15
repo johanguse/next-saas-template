@@ -2,11 +2,12 @@
 
 import { useEffect, useState } from 'react'
 
-import { FaqClient } from '@/lib/fake-data/faq-clients'
+import { FaqClientType } from '@/lib/fake-data/faq-clients'
+
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 
 interface faqsClientDataProps {
-  faqsClientData: FaqClient[]
+  faqsClientData: FaqClientType[]
 }
 export default function FaqsClientQuestions({
   faqsClientData,

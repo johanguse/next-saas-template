@@ -1,7 +1,7 @@
 import Image from 'next/image'
 
 import { logosCompaniesData } from '@/lib/fake-data/logos'
-import { testimonials } from '@/lib/fake-data/testimonials'
+import { testimonialsData } from '@/lib/fake-data/testimonials'
 
 import { BlockTitle } from '@/components/layout/main-title'
 import Powered from '@/components/marketing/powered'
@@ -53,7 +53,7 @@ export default function CarouselBlocksPage() {
         <div className="mb-20">
           <div className="mt-10">
             <Marquee className="py-2" fade={true} pauseOnHover={true}>
-              {testimonials.map((testimonial, index) => (
+              {testimonialsData.map((testimonial, index) => (
                 <div key={index} className="w-80 break-inside-avoid">
                   <div className="relative flex h-full divide-y  divide-gray-200 overflow-hidden rounded-lg bg-gray-50 p-4 shadow-sm ring-1 ring-gray-200 dark:divide-gray-800 dark:bg-gray-900 dark:ring-gray-800">
                     <div className="flex flex-col items-center justify-between">
