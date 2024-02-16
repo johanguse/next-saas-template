@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 import Image from 'next/image'
 import Link from 'next/link'
@@ -121,7 +121,21 @@ export const ProductCard = ({
   product: ProductType
   translate: MotionValue<number>
 }) => {
-  const { theme = 'system' } = useTheme()
+  const [mounted, setMounted] = useState(false)
+
+  const { theme, resolvedTheme } = useTheme()
+
+  useEffect(() => setMounted(true), [])
+
+  if (!mounted) return null
+
+  const currentTheme = theme === 'system' ? resolvedTheme : theme
+  const isDark = currentTheme === 'dark'
+
+  let imageUrl = product.thumbnail
+  if (isDark) {
+    imageUrl = product.thumbnailDark
+  }
   return (
     <motion.div
       style={{
@@ -138,7 +152,7 @@ export const ProductCard = ({
         className="block group-hover/product:shadow-2xl "
       >
         <Image
-          src={theme == 'dark' ? product.thumbnailDark : product.thumbnail}
+          src={imageUrl}
           height="600"
           width="600"
           className="absolute inset-0 size-full object-cover object-left-top"
