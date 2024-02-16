@@ -9,7 +9,7 @@ export const metadata = {
 export default function TestimonialBlocksPage() {
   return (
     <div className="flex w-full flex-col gap-16 py-8 md:py-8">
-      <div className="container mx-auto pt-20 text-center">
+      <div className="container mx-auto mb-10 pt-20 text-center">
         <div className="mb-20">
           <BlockTitle.Wrapper>
             <BlockTitle.Header elementType="h1">Blocks</BlockTitle.Header>
@@ -31,10 +31,6 @@ export default function TestimonialBlocksPage() {
           <BlockTitle.Header elementType="h1">Custom Header</BlockTitle.Header>
           <BlockTitle.Title elementType="span">Custom Title</BlockTitle.Title>
         </div>
-        <div>
-          <BlockTitle.Header elementType="h1">Custom Header</BlockTitle.Header>
-          <BlockTitle.Title elementType="span">Custom Title</BlockTitle.Title>
-        </div>
       </div>
       <div>
         <div className="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
@@ -43,12 +39,8 @@ export default function TestimonialBlocksPage() {
               Trusted by Open Source, enterprise, and more than 99,000 of you
             </h2>
           </div>
-
           <BrandLogos />
         </div>
-      </div>
-      <div className="container mx-auto text-center">
-        <p>Here we go!!</p>
       </div>
       <div
         id="reviews"
