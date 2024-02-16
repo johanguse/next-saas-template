@@ -19,8 +19,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next'
 import { GA } from 'pliny/analytics/GoogleAnalytics'
 import { env } from 'process'
 
-// e.g. UA-000000-2 or G-XXXXXXX
-const googleAnalyticsId = env.NEXT_PUBLIC_GOOGLE_ANALITYCS!
+const googleAnalyticsId = env.NEXT_PUBLIC_ANALITYCS_ID!
 
 interface RootLayoutProps {
   children: React.ReactNode

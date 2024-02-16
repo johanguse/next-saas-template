@@ -53,7 +53,7 @@ export default function PrincingTablesBlocksPage() {
           <BlockTitle.Wrapper>
             <BlockTitle.Header elementType="h1">Pricing</BlockTitle.Header>
             <BlockTitle.Title elementType="h2">
-              A plan for every need and titles too
+              Find the plan that&apos;s right for you
             </BlockTitle.Title>
             <BlockTitle.Description>
               Pariatur laborum dolor ea commodo sit aute aliquip qui et cillum

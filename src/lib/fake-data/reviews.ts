@@ -1,25 +1,25 @@
-export interface Review {
+export type ReviewType = {
   title: string
   body: string
   author: string
   rating: number
 }
 
-export interface ReviewData {
+export type ReviewDataType = {
   title: string
   body: string
   author: string
   rating: number
 }
 
-export interface ReviewColumnProps {
-  reviews: ReviewData[]
+export type ReviewColumnPropsType = {
+  reviews: ReviewDataType[]
   reviewClassName?: (index: number) => string
   msPerPixel?: number
   className?: string
 }
 
-export const reviews: Review[] = [
+export const reviews: ReviewType[] = [
   {
     title: 'Impressive Investment Tool',
     body: 'I downloaded Pocket today and turned $5000 into $25,000 in half an hour. This app is a game-changer!',

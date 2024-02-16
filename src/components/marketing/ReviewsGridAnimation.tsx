@@ -1,23 +1,26 @@
 'use client'
 
 import { FC, useEffect, useMemo, useRef, useState } from 'react'
+
+import {
+  ReviewColumnPropsType,
+  ReviewType,
+  reviews,
+} from '@/lib/fake-data/reviews'
+import { cn, splitArray } from '@/lib/utils'
+
+import StarRating from '@/components/ui/star-rating'
+
+import { BlockTitle } from '@/components/layout/main-title'
+
 import clsx from 'clsx'
 import { useInView } from 'framer-motion'
 
-import {
-  ReviewColumnProps,
-  reviews,
-  Review as ReviewType,
-} from '@/lib/fake-data/reviews'
-import { cn, splitArray } from '@/lib/utils'
-import StarRating from '@/components/ui/star-rating'
-import { BlockTitle } from '@/components/layout/main-title'
-
-interface ReviewProps extends ReviewType {
+interface IReviewColumnPropsType extends ReviewType {
   className?: string
 }
 
-const SingleReview: FC<ReviewProps> = ({
+const SingleReview: FC<IReviewColumnPropsType> = ({
   title,
   body,
   author,
@@ -53,7 +56,7 @@ const SingleReview: FC<ReviewProps> = ({
   )
 }
 
-const ReviewColumn: FC<ReviewColumnProps> = ({
+const ReviewColumn: FC<ReviewColumnPropsType> = ({
   reviews,
   reviewClassName = () => '',
   msPerPixel = 0,

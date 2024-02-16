@@ -1,8 +1,10 @@
 import Image from 'next/image'
 
-import { testimonials } from '@/lib/fake-data/testimonials'
+import { testimonialsData } from '@/lib/fake-data/testimonials'
+
 import { AvatarsGroup } from '@/components/ui/avatar-group'
 import StarRating from '@/components/ui/star-rating'
+
 import ReviewsGridAnimation from '@/components/marketing/ReviewsGridAnimation'
 import TestimonialCards from '@/components/marketing/testimonials-cards'
 import TestimonialSlider from '@/components/marketing/testimonials-slider'
@@ -86,9 +88,9 @@ export default function TestimonialBlocksPage() {
         </blockquote>
       </div>
       <TestimonialSliderBrand />
-      <TestimonialSlider testimonials={testimonials} />
-      <TestimonialSliderClean testimonials={testimonials} />
-      <TestimonialCards testimonials={testimonials} />
+      <TestimonialSlider testimonials={testimonialsData} />
+      <TestimonialSliderClean testimonials={testimonialsData} />
+      <TestimonialCards testimonials={testimonialsData} />
       <ReviewsGridAnimation />
     </div>
   )

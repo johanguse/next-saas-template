@@ -1,9 +1,9 @@
 'use client'
 
 import Image from 'next/image'
-import Autoplay from 'embla-carousel-autoplay'
 
-import { Testimonial } from '@/lib/fake-data/testimonials'
+import { TestimonialType } from '@/lib/fake-data/testimonials'
+
 import {
   Carousel,
   CarouselContent,
@@ -12,8 +12,10 @@ import {
   CarouselPrevious,
 } from '@/components/ui/carousel'
 
+import Autoplay from 'embla-carousel-autoplay'
+
 interface TestimonialSliderCleanProps {
-  testimonials: Testimonial[]
+  testimonials: TestimonialType[]
 }
 
 export default function TestimonialSliderClean({

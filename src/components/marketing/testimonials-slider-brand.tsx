@@ -60,9 +60,9 @@ export default function TestimonialSliderBrand() {
 
             <p className="mt-3 text-base text-gray-800 dark:text-white sm:mt-6 md:text-xl">
               <em>
-                &lquot; I&apos;m absolutely floored by the level of care and
+                &quot;I&apos;m absolutely floored by the level of care and
                 attention to detail the team at HS have put into this theme and
-                for one can guarantee that I will be a return customer.&lquot;
+                for one can guarantee that I will be a return customer.&quot;
               </em>
             </p>
           </div>

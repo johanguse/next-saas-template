@@ -1,7 +1,11 @@
+import { Suspense } from 'react'
+
 import Link from 'next/link'
 
 import { cn } from '@/lib/utils'
+
 import { buttonVariants } from '@/components/ui/button'
+
 import { UserAuthForm } from '@/components/forms/user-auth-form'
 import IconLogo from '@/components/shared/logo-icon'
 
@@ -32,7 +36,9 @@ export default function RegisterPage() {
             Enter your email below to create your account
           </p>
         </div>
-        <UserAuthForm type="register" />
+        <Suspense>
+          <UserAuthForm type="register" />
+        </Suspense>
         <p className="px-8 text-center text-sm text-muted-foreground">
           By clicking continue, you agree to our{' '}
           <Link

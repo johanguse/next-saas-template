@@ -1,7 +1,11 @@
 import { siteConfig } from '@/config/site'
+
 import { getCurrentUser } from '@/lib/session'
 import { getUserSubscriptionPlan } from '@/lib/subscription'
+
 import { PricingCardItem } from '@/components/pricing-card-item'
+
+import { BlockTitle } from './layout/main-title'
 
 export default async function PricingCards() {
   const user = await getCurrentUser()
@@ -13,14 +17,18 @@ export default async function PricingCards() {
 
   return (
     <section className="container flex flex-col items-center text-center">
-      <div className="mx-auto mb-10 flex w-full flex-col gap-5">
-        <h2 className="relative mb-2 bg-gradient-to-r from-indigo-500 to-purple-500/80 bg-clip-text text-base font-extrabold text-transparent">
-          Pricing
-        </h2>
-        <p className="font-heading text-3xl leading-[1.1] md:text-5xl">
-          Start at full speed !
-        </p>
-      </div>
+      <BlockTitle.Wrapper className="mb-10">
+        <BlockTitle.Header elementType="h1">Pricing</BlockTitle.Header>
+        <BlockTitle.Title elementType="h2">
+          Find the plan that&apos;s right for you
+        </BlockTitle.Title>
+        <BlockTitle.Description>
+          Pariatur laborum dolor ea commodo sit aute aliquip qui et cillum
+          excepteur.
+        </BlockTitle.Description>
+        <BlockTitle.Background />
+        <BlockTitle.Separator />
+      </BlockTitle.Wrapper>
 
       <PricingCardItem userId={user?.id} subscriptionPlan={subscriptionPlan} />
 

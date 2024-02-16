@@ -1,4 +1,4 @@
-export type FaqClient = {
+export type FaqClientType = {
   question: string
   questionName: string
   questionImage: string
@@ -7,7 +7,7 @@ export type FaqClient = {
   answerImage: string
 }
 
-export const faqsClientData: FaqClient[] = [
+export const faqsClientData: FaqClientType[] = [
   {
     question: 'What is the cost of the free plan?',
     questionName: 'Robert H. James',
