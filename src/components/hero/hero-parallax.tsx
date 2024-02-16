@@ -138,11 +138,7 @@ export const ProductCard = ({
         className="block group-hover/product:shadow-2xl "
       >
         <Image
-          src={
-            theme === 'light'
-              ? product.thumbnail
-              : product.thumbnailDark || product.thumbnail
-          }
+          src={theme == 'dark' ? product.thumbnailDark : product.thumbnail}
           height="600"
           width="600"
           className="absolute inset-0 size-full object-cover object-left-top"
