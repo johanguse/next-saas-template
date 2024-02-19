@@ -63,8 +63,6 @@ export default function FeedbackForm() {
 
   const resetandCleanErros = () => {
     form.reset()
-    form.reset({})
-    form.reset({})
     form.clearErrors()
     setStatus('')
   }
