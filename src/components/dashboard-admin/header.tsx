@@ -4,11 +4,12 @@ import { cn } from '@/lib/utils'
 
 import { useSideBarToggle } from '@/hooks/use-sidebar-toggle'
 
+import { buttonVariants } from '@/components/ui/button'
+
 import { UserNav } from '@/components/dashboard-admin/usernav'
 import { ModeToggle } from '@/components/layout/mode-toggle'
 import { Icons } from '@/components/shared/icons'
 
-import { buttonVariants } from '../ui/button'
 import { Link, MessageSquareText } from 'lucide-react'
 import type { User } from 'next-auth'
 

@@ -1,4 +1,4 @@
-import CarouselLogos from '../carousel/carousel-logos'
+import CarouselLogos from '@/components/carousel/carousel-logos'
 
 export default function Trusted() {
   return (

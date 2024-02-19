@@ -7,7 +7,8 @@ import Link from 'next/link'
 
 import { ProductType } from '@/lib/fake-data/hero-parallax'
 
-import { BlockTitle } from '../layout/main-title'
+import { BlockTitle } from '@/components/layout/main-title'
+
 import {
   MotionValue,
   motion,
