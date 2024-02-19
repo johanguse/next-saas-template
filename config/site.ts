@@ -1,4 +1,5 @@
 import { SiteConfig } from 'types'
+
 import { absoluteUrl } from '@/lib/utils'
 
 const defaultUrl = absoluteUrl('')
@@ -49,27 +50,5 @@ export const siteConfig: SiteConfig = {
         href: 'https://github.com/johanguse/next-saas-template',
       },
     },
-  },
-
-  footer: {
-    links: [
-      {
-        href: 'https://bit.ly/48LTNin',
-        name: 'Public Roadmap',
-        target: '_blank',
-      },
-      {
-        href: '/legal/privacy-policy',
-        name: 'Privacy Policy',
-      },
-      {
-        href: '/legal/cookies-policy',
-        name: 'Cookies Policy',
-      },
-      {
-        href: '/legal/terms-of-service',
-        name: 'Terms of Service',
-      },
-    ],
   },
 }

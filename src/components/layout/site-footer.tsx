@@ -1,12 +1,17 @@
 import * as React from 'react'
-import Link from 'next/link'
-import { SocialLink } from '@/root/types'
 
+import Link from 'next/link'
+
+import { marketingConfig } from '@/config/marketing'
 import { siteConfig } from '@/config/site'
+
 import { cn } from '@/lib/utils'
+
 import { ModeToggle } from '@/components/layout/mode-toggle'
 import { Icons } from '@/components/shared/icons'
 import IconLogo from '@/components/shared/logo-icon'
+
+import { SocialLink } from '@/root/types'
 
 export function SiteFooter({ className }: React.HTMLAttributes<HTMLElement>) {
   const footerSocialLinks: SocialLink[] = Object.entries(
@@ -15,7 +20,7 @@ export function SiteFooter({ className }: React.HTMLAttributes<HTMLElement>) {
     ...value,
     icon: key as keyof typeof Icons,
   }))
-  const footerMenuLinks = siteConfig.footer.links
+  const footerMenuLinks = marketingConfig.footer.links
 
   return (
     <footer

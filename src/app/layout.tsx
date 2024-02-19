@@ -1,3 +1,5 @@
+import type { ReactNode } from 'react'
+
 import { Metadata, Viewport } from 'next'
 
 import { siteConfig } from '@/config/site'
@@ -75,7 +77,12 @@ export const metadata: Metadata = {
   manifest: `${siteConfig.url}/site.webmanifest`,
 }
 
-export default function RootLayout({ children }: RootLayoutProps) {
+interface RootLayoutProps {
+  children: ReactNode
+  modal: ReactNode
+}
+
+export default function RootLayout({ children, modal }: RootLayoutProps) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head />
@@ -89,6 +96,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
       >
         <Providers attribute="class" defaultTheme="system" enableSystem>
           {children}
+          {modal}
           <GA googleAnalyticsId={googleAnalyticsId} />
           <VercelAnalytics />
           <SpeedInsights />

@@ -6,7 +6,10 @@ export default function BrandLogos() {
   return (
     <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-5 lg:gap-6">
       {logosCompaniesColorData.map((logo, index) => (
-        <div className="flex w-full items-center justify-center rounded-lg bg-gray-100 p-4 dark:bg-slate-800 md:p-7">
+        <div
+          key={index}
+          className="flex w-full items-center justify-center rounded-lg bg-gray-100 p-4 dark:bg-slate-800 md:p-7"
+        >
           <Image
             src={logo.src}
             alt={logo.alt || `Logo ${index + 1}`}

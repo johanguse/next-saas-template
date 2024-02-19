@@ -16,7 +16,7 @@ export const productData: ProductType[] = [
   },
   {
     title: 'Reviews',
-    link: '/blocks/reviews',
+    link: '/blocks/testimonials',
     thumbnailDark:
       'https://res.cloudinary.com/nextsaastemplate/image/upload/v1708019728/demo/htdqf2cg3ahnhn6sv7qe.jpg',
     thumbnail:
@@ -80,7 +80,7 @@ export const productData: ProductType[] = [
   },
   {
     title: 'Reviews',
-    link: '/blocks/reviews',
+    link: '/blocks/testimonials',
     thumbnailDark:
       'https://res.cloudinary.com/nextsaastemplate/image/upload/v1708019728/demo/htdqf2cg3ahnhn6sv7qe.jpg',
     thumbnail:

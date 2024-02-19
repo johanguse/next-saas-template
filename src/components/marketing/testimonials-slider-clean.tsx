@@ -23,10 +23,7 @@ export default function TestimonialSliderClean({
 }: TestimonialSliderCleanProps) {
   return (
     <>
-      <section
-        id="testimonials"
-        className="w-full py-12 md:py-24 lg:py-32 xl:py-48"
-      >
+      <section id="testimonials" className="w-full">
         <div className="container mx-auto flex flex-col gap-16 px-4 sm:gap-y-24 sm:px-6 lg:px-8">
           <Carousel
             opts={{

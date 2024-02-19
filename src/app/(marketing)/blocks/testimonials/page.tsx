@@ -5,6 +5,7 @@ import { testimonialsData } from '@/lib/fake-data/testimonials'
 import { AvatarsGroup } from '@/components/ui/avatar-group'
 import StarRating from '@/components/ui/star-rating'
 
+import { BlockTitle } from '@/components/layout/main-title'
 import ReviewsGridAnimation from '@/components/marketing/ReviewsGridAnimation'
 import TestimonialCards from '@/components/marketing/testimonials-cards'
 import TestimonialSlider from '@/components/marketing/testimonials-slider'
@@ -18,7 +19,14 @@ export const metadata = {
 export default function TestimonialBlocksPage() {
   return (
     <div className="flex w-full flex-col gap-16 py-8 md:py-8">
-      <div className="container mx-auto text-center">
+      <div className="pt-20 text-center">
+        <BlockTitle.Wrapper className="mb-20">
+          <BlockTitle.Header elementType="h1" className="text-xl">
+            Testimonials
+          </BlockTitle.Header>
+          <BlockTitle.Background />
+          <BlockTitle.Separator />
+        </BlockTitle.Wrapper>
         <div className="flex justify-center">
           <Image
             src="/images/demo/product-hunt-button.png"
@@ -88,10 +96,10 @@ export default function TestimonialBlocksPage() {
         </blockquote>
       </div>
       <TestimonialSliderBrand />
+      <ReviewsGridAnimation />
       <TestimonialSlider testimonials={testimonialsData} />
       <TestimonialSliderClean testimonials={testimonialsData} />
       <TestimonialCards testimonials={testimonialsData} />
-      <ReviewsGridAnimation />
     </div>
   )
 }

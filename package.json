@@ -8,6 +8,7 @@
   },
   "scripts": {
     "dev": "next dev --turbo",
+    "clean-dev": "rm -fr node_modules/.cache/contentlayer && contentlayer build && rm -fr .next",
     "build": "contentlayer build && next build",
     "turbo": "next dev --turbo",
     "start": "next start",

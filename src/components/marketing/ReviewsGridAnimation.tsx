@@ -144,7 +144,7 @@ export default function ReviewsGridAnimation() {
     <section
       id="reviews"
       aria-labelledby="reviews-title"
-      className="pb-16 pt-20 sm:pb-24 sm:pt-32"
+      className="bg-white pb-16 pt-20 dark:bg-black sm:pb-24 sm:pt-32"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <BlockTitle.Wrapper>

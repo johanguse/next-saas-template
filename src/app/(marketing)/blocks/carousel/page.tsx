@@ -15,25 +15,16 @@ export const metadata = {
 export default function CarouselBlocksPage() {
   return (
     <div className="flex w-full flex-col gap-16 py-8 md:py-8">
-      <div className="container mx-auto pt-20 text-center">
-        <div className="mb-20">
-          <BlockTitle.Wrapper>
-            <BlockTitle.Header elementType="h1">Carousel</BlockTitle.Header>
+      <div className="pt-20 text-center">
+        <BlockTitle.Wrapper className="mb-20">
+          <BlockTitle.Header elementType="h1" className="text-xl">
+            Carousel
+          </BlockTitle.Header>
+          <BlockTitle.Background />
+          <BlockTitle.Separator />
+        </BlockTitle.Wrapper>
 
-            <BlockTitle.Title elementType="h2">
-              Introducing our custom blocks
-            </BlockTitle.Title>
-
-            <BlockTitle.Description>
-              Build webapps easy with our custom blocks
-            </BlockTitle.Description>
-
-            <BlockTitle.Background />
-
-            <BlockTitle.Separator />
-          </BlockTitle.Wrapper>
-        </div>
-        <div className="mb-20 px-0 md:px-44">
+        <div className="mb-20 md:px-44">
           <Marquee className="py-2" reverse={true} fade={true}>
             <ul className="flex items-center justify-center">
               {logosCompaniesData.map((logo, index) => (

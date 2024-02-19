@@ -24,7 +24,7 @@
 
 ## Introduction
 
-Empower your next project with the stack of Next.js 14, Prisma, Planetscale, Auth.js, Resend, React Email, Shadcn/ui, and Stripe.
+Empower your next project with the stack of Next.js 14, Prisma, PostgreSQL, Auth.js, Resend, React Email, Shadcn/ui, and Stripe.
 <br/>
 All seamlessly integrated with the SaaS Starter to accelerate your development and saas journey.
 
@@ -56,12 +56,7 @@ pnpm dev
 
 ## Roadmap
 
-- [x] Fix Vaul drawer for mobile sign in
-- [ ] Add resend for subscriptions
-- [x] Update OG image
-- [ ] Update documentation
-- [ ] Use Server Actions
-- [ ] Switch subscription plan
+Visit our [Public Roadmap](https://bit.ly/48LTNin) for more
 
 ## Tech Stack + Features
 
@@ -75,7 +70,7 @@ pnpm dev
 ### Platforms
 
 - [Vercel](https://vercel.com/) – Easily preview & deploy changes with git
-- [PlanetScale](https://planetscale.com/) – A cutting-edge database platform for seamless, scalable data management
+- [PostgreSQL](https://www.postgresql.org/) – Open source object-relational database system with over 35 years of active development
 - [Resend](https://resend.com/) – A powerful email framework for streamlined email development
 
 ### UI
