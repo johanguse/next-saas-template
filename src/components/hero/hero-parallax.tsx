@@ -7,6 +7,8 @@ import Link from 'next/link'
 
 import { ProductType } from '@/lib/fake-data/hero-parallax'
 
+import { BlockTitle } from '@/components/layout/main-title'
+
 import {
   MotionValue,
   motion,
@@ -55,7 +57,7 @@ export const HeroParallax = ({ products }: { products: ProductType[] }) => {
   return (
     <div
       ref={ref}
-      className="relative flex h-[280vh]  flex-col self-auto overflow-hidden py-40 antialiased [perspective:1000px] [transform-style:preserve-3d]"
+      className="relative flex h-[230vh]  flex-col self-auto overflow-hidden pt-40 antialiased [perspective:1000px] [transform-style:preserve-3d]"
     >
       <Header />
       <motion.div
@@ -102,14 +104,26 @@ export const HeroParallax = ({ products }: { products: ProductType[] }) => {
 export const Header = () => {
   return (
     <div className="relative left-0 top-0 mx-auto w-full max-w-7xl px-4  py-20 md:py-40">
-      <h1 className="text-2xl font-bold dark:text-white md:text-7xl">
-        The Ultimate <br /> development studio
-      </h1>
-      <p className="mt-8 max-w-2xl text-base dark:text-neutral-200 md:text-xl">
-        We build beautiful products with the latest technologies and frameworks.
-        We are a team of passionate developers and designers that love to build
-        amazing products.
-      </p>
+      <BlockTitle.Wrapper>
+        <BlockTitle.Header elementType="h1">Pre Sale</BlockTitle.Header>
+
+        <BlockTitle.Title elementType="h2">
+          Launching Your SaaS Success Story with{' '}
+          <span className="relative bg-gradient-to-r from-indigo-500 to-purple-500/80 bg-clip-text font-extrabold text-transparent">
+            Next SaaS Template
+          </span>
+        </BlockTitle.Title>
+
+        <BlockTitle.Description>
+          Explore our comprehensive FAQ to find quick answers to common
+          inquiries. If you need further assistance, don&apos;t hesitate to
+          contact us for personalized help.
+        </BlockTitle.Description>
+
+        <BlockTitle.Background />
+
+        <BlockTitle.Separator />
+      </BlockTitle.Wrapper>
     </div>
   )
 }

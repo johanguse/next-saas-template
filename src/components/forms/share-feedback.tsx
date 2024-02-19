@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 
-import { ContactFormSchema } from '@/lib/validations/contact-form'
+import { FeedbackFormSchema } from '@/lib/validations/feedback-form'
 
 import { Button } from '@/components/ui/button-ui'
 import {
@@ -16,31 +16,32 @@ import {
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 
-import { sendEmail } from '@/actions/send-contact-email'
+import { sendFeedbackEmail } from '@/actions/send-and-save-feedback'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 import * as z from 'zod'
 
-export default function ContactForm() {
+export default function FeedbackForm() {
   const [loading, setLoading] = useState<boolean>(false)
   const [status, setStatus] = useState<string>('')
-  const form = useForm<z.infer<typeof ContactFormSchema>>({
-    resolver: zodResolver(ContactFormSchema),
+  const form = useForm<z.infer<typeof FeedbackFormSchema>>({
+    resolver: zodResolver(FeedbackFormSchema),
     defaultValues: {
       name: '',
       email: '',
-      message: '',
+      title: '',
+      description: '',
     },
   })
 
   async function processForm(
-    data: z.infer<typeof ContactFormSchema>
+    data: z.infer<typeof FeedbackFormSchema>
   ): Promise<void> {
     try {
       setLoading(true)
 
-      const result = await sendEmail(data)
+      const result = await sendFeedbackEmail(data)
 
       if (result?.success) {
         toast.success('Email sent!')
@@ -71,7 +72,7 @@ export default function ContactForm() {
       <Form {...form}>
         {status === 'success' && (
           <p className="mb-3 rounded bg-slate-800 p-3 text-center text-sm text-green-400 dark:bg-slate-700">
-            Thank you for your message! We&apos;ll get back to you shortly.
+            Thank you for your suggestion! We&apos;ll get back to you shortly.
           </p>
         )}
         {status === 'error' && (
@@ -83,6 +84,36 @@ export default function ContactForm() {
           onSubmit={form.handleSubmit(processForm)}
           className="grid w-full gap-4"
         >
+          <FormField
+            control={form.control}
+            name="title"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Title</FormLabel>
+                <FormControl>
+                  <Input
+                    placeholder="The title"
+                    className="w-full"
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="description"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Description</FormLabel>
+                <FormControl>
+                  <Textarea placeholder="Your suggestion" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
           <FormField
             control={form.control}
             name="name"
@@ -118,19 +149,6 @@ export default function ContactForm() {
               </FormItem>
             )}
           />
-          <FormField
-            control={form.control}
-            name="message"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Message</FormLabel>
-                <FormControl>
-                  <Textarea placeholder="Your message" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
           <div className="mt-3 flex flex-row justify-between">
             <Button
               type="submit"
@@ -138,7 +156,7 @@ export default function ContactForm() {
               disabled={loading}
               loading={loading}
             >
-              Submit
+              Share
             </Button>
             <Button
               variant="link"

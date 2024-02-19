@@ -13,23 +13,14 @@ export const metadata = {
 export default function ChartsBlocksPage() {
   return (
     <div className="flex w-full flex-col gap-16 py-8 md:py-8">
-      <div className="container mx-auto space-y-16 pt-20 text-center">
+      <div className="pt-20 text-center">
         <BlockTitle.Wrapper>
-          <BlockTitle.Header elementType="h1">Charts</BlockTitle.Header>
-
-          <BlockTitle.Title elementType="h2">
-            Introducing our custom blocks
-          </BlockTitle.Title>
-
-          <BlockTitle.Description>
-            Build webapps easy with our custom blocks
-          </BlockTitle.Description>
-
+          <BlockTitle.Header elementType="h1" className="text-xl">
+            Charts
+          </BlockTitle.Header>
           <BlockTitle.Background />
-
           <BlockTitle.Separator />
         </BlockTitle.Wrapper>
-
         <Card className="col-span-4">
           <CardHeader>
             <CardTitle>Overview</CardTitle>
@@ -38,7 +29,6 @@ export default function ChartsBlocksPage() {
             <SalesProductsVisitsBarChart />
           </CardContent>
         </Card>
-
         <Card className="col-span-4">
           <CardHeader>
             <CardTitle>Overview</CardTitle>
@@ -47,7 +37,6 @@ export default function ChartsBlocksPage() {
             <AreaChartComponent />
           </CardContent>
         </Card>
-
         <Card className="col-span-4">
           <CardHeader>
             <CardTitle>Overview</CardTitle>
@@ -56,7 +45,6 @@ export default function ChartsBlocksPage() {
             <OverviewGridChart />
           </CardContent>
         </Card>
-
         <Card className="col-span-4">
           <CardHeader>
             <CardTitle>Overview</CardTitle>

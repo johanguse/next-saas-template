@@ -7,6 +7,10 @@ export const marketingConfig: MarketingConfig = {
       href: '/',
     },
     {
+      title: 'Pre Sale',
+      href: '/pre-sale',
+    },
+    {
       title: 'Blocks',
       href: '/blocks',
     },
@@ -27,5 +31,26 @@ export const marketingConfig: MarketingConfig = {
       href: '/contact',
     },
   ],
+  footer: {
+    links: [
+      {
+        href: 'https://bit.ly/48LTNin',
+        name: 'Public Roadmap',
+        target: '_blank',
+      },
+      {
+        href: '/legal/privacy-policy',
+        name: 'Privacy Policy',
+      },
+      {
+        href: '/legal/cookies-policy',
+        name: 'Cookies Policy',
+      },
+      {
+        href: '/legal/terms-of-service',
+        name: 'Terms of Service',
+      },
+    ],
+  },
   postsPerPage: 6,
 }

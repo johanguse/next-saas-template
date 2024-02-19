@@ -22,10 +22,7 @@ export default function TestimonialSlider({
 }: TestimonialSliderProps) {
   return (
     <>
-      <section
-        id="testimonials"
-        className="w-full py-12 md:py-24 lg:py-32 xl:py-48"
-      >
+      <section id="testimonials" className="w-full">
         <div className="container mx-auto flex flex-col gap-16 px-4 sm:gap-y-24 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-6xl px-3">
             <Carousel
@@ -40,7 +37,7 @@ export default function TestimonialSlider({
                     className="md:basis-1/2 lg:basis-1/3"
                   >
                     <Card className="shadow-sm">
-                      <CardContent className="flex aspect-square justify-center p-6">
+                      <CardContent className="flex justify-center p-6">
                         <div className="flex flex-col px-4 py-5 sm:p-6">
                           <q className="flex-1 text-gray-600 dark:text-gray-300">
                             {testimonial.quote}

@@ -1,12 +1,12 @@
+import { productData } from '@/lib/fake-data/hero-parallax'
 import { testimonialsData } from '@/lib/fake-data/testimonials'
 
-import CarouselLogos from '@/components/carousel/carousel-logos'
+import { HeroParallax } from '@/components/hero/hero-parallax'
 import { BlockTitle } from '@/components/layout/main-title'
 import CtaSocialMedia from '@/components/marketing/cta-social-media'
 import CtaSubscribe from '@/components/marketing/cta-subscribe'
 import FAQ from '@/components/marketing/faq'
 import Features from '@/components/marketing/features'
-import Hero from '@/components/marketing/hero'
 import LatestFromBlog from '@/components/marketing/lastest-from-blog'
 import PlansMarketing from '@/components/marketing/plans'
 import Powered from '@/components/marketing/powered'
@@ -15,21 +15,7 @@ import TestimonialCards from '@/components/marketing/testimonials-cards'
 export default async function IndexPage() {
   return (
     <>
-      <Hero />
-      <section
-        className="animate-fade-up bg-gray-50 py-8 text-zinc-500 opacity-0 dark:bg-black dark:text-zinc-400 dark:opacity-50"
-        style={{ animationDelay: '0.55s', animationFillMode: 'forwards' }}
-      >
-        <div className="container mx-auto">
-          <h2 className="mb-6 text-center text-sm font-semibold uppercase">
-            Trusted by
-          </h2>
-
-          <div className="mx-auto flex w-full flex-wrap items-center justify-center gap-10 gap-y-8 lg:max-w-6xl lg:gap-14">
-            <CarouselLogos />
-          </div>
-        </div>
-      </section>
+      <HeroParallax products={productData} />
       <Features />
       <PlansMarketing />
       <TestimonialCards testimonials={testimonialsData} />

@@ -1,12 +1,19 @@
 'use client'
 
-import type { User } from 'next-auth'
+import Link from 'next/link'
 
 import { cn } from '@/lib/utils'
+
 import { useSideBarToggle } from '@/hooks/use-sidebar-toggle'
+
+import { buttonVariants } from '@/components/ui/button'
+
 import { UserNav } from '@/components/dashboard-admin/usernav'
 import { ModeToggle } from '@/components/layout/mode-toggle'
 import { Icons } from '@/components/shared/icons'
+
+import { MessageSquareText } from 'lucide-react'
+import type { User } from 'next-auth'
 
 interface UserAccountNavProps extends React.HTMLAttributes<HTMLDivElement> {
   user: Pick<User, 'name' | 'image' | 'email'> | undefined
@@ -29,6 +36,18 @@ export default function Header({ user }: UserAccountNavProps) {
         <div className="order-1 flex items-center justify-between sm:order-2">
           <div className="mt-6 sm:mt-0">
             <ul className="flex items-center space-x-4">
+              <li>
+                <Link
+                  href="/feedback"
+                  className={cn(
+                    buttonVariants({ variant: 'outline', size: 'sm' }),
+                    'px-4'
+                  )}
+                >
+                  <MessageSquareText className="mr-2 size-4" />
+                  <p>Share a feedback</p>
+                </Link>
+              </li>
               <li id="changelog" className="relative">
                 <button
                   aria-label="Changelog"

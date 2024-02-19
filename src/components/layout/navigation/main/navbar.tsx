@@ -1,17 +1,22 @@
 'use client'
 
 import Link from 'next/link'
-import { MainNavItem } from '@/root/types'
-import { User } from 'next-auth'
 
 import { cn } from '@/lib/utils'
+
 import useScroll from '@/hooks/use-scroll'
 import { useSigninModal } from '@/hooks/use-signin-modal'
+
 import { Button, buttonVariants } from '@/components/ui/button'
+
 import { ModeToggle } from '@/components/layout/mode-toggle'
 import { MainNav } from '@/components/layout/navigation/main/main-nav'
 import { UserAccountNav } from '@/components/layout/navigation/user-account-nav'
 import { Icons } from '@/components/shared/icons'
+
+import { MainNavItem } from '@/root/types'
+import { MessageSquareText } from 'lucide-react'
+import { User } from 'next-auth'
 
 interface NavBarProps {
   user: Pick<User, 'name' | 'image' | 'email'> | undefined
@@ -55,6 +60,18 @@ export function NavBar({
           {user ? (
             <>
               <ul className="mr-4 flex items-center space-x-4">
+                <li>
+                  <Link
+                    href="/feedback"
+                    className={cn(
+                      buttonVariants({ variant: 'outline', size: 'sm' }),
+                      'px-4'
+                    )}
+                  >
+                    <MessageSquareText className="mr-2 size-4" />
+                    <p>Share a feedback</p>
+                  </Link>
+                </li>
                 <li id="changelog" className="relative">
                   <button
                     aria-label="Changelog"

@@ -1,6 +1,6 @@
-import { User } from '@prisma/client'
-
 import { Icons } from '@/components/shared/icons'
+
+import { User } from '@prisma/client'
 
 export type NavItem = {
   title: string
@@ -60,9 +60,6 @@ export type SiteConfig = {
   social: {
     links: Record<keyof Icons, SocialLink>
   }
-  footer: {
-    links: FooterLink[]
-  }
 }
 
 export type DocsConfig = {
@@ -76,6 +73,9 @@ export type BlocksConfig = {
 
 export type MarketingConfig = {
   mainNav: MainNavItem[]
+  footer: {
+    links: FooterLink[]
+  }
   postsPerPage: number
 }
 
