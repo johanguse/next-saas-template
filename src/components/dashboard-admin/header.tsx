@@ -1,5 +1,7 @@
 'use client'
 
+import Link from 'next/link'
+
 import { cn } from '@/lib/utils'
 
 import { useSideBarToggle } from '@/hooks/use-sidebar-toggle'
@@ -10,7 +12,7 @@ import { UserNav } from '@/components/dashboard-admin/usernav'
 import { ModeToggle } from '@/components/layout/mode-toggle'
 import { Icons } from '@/components/shared/icons'
 
-import { Link, MessageSquareText } from 'lucide-react'
+import { MessageSquareText } from 'lucide-react'
 import type { User } from 'next-auth'
 
 interface UserAccountNavProps extends React.HTMLAttributes<HTMLDivElement> {

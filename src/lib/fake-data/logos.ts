@@ -11,7 +11,6 @@ export const logosCompaniesData: LogoCompaniesType[] = [
   { src: '/images/demo/logos/spark.svg', alt: 'Spark' },
   { src: '/images/demo/logos/samsung.svg', alt: 'Samsung' },
   { src: '/images/demo/logos/quora.svg', alt: 'Quora' },
-  { src: '/images/demo/logos/sass.svg', alt: 'Sass' },
 ]
 
 export const logosCompaniesColorData: LogoCompaniesType[] = [

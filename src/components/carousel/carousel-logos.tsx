@@ -1,14 +1,15 @@
 import Image from 'next/image'
-import { Marquee } from '@devnomic/marquee'
 
 import { logosCompaniesData } from '@/lib/fake-data/logos'
+
+import { Marquee } from '@devnomic/marquee'
 
 const logoWidth = 125
 
 const CarouselLogos: React.FC = () => {
   return (
     <div className="flex w-full flex-col">
-      <div className="container mx-auto py-5 text-center">
+      <div className="container mx-auto text-center">
         <div className="inline-flex max-w-full flex-nowrap overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]">
           <Marquee className="py-2" reverse={false} fade={true}>
             <ul className="flex items-center justify-center">
