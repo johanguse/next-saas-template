@@ -3,6 +3,23 @@ import { ClassValue, clsx } from 'clsx'
 import ms from 'ms'
 import { twMerge } from 'tailwind-merge'
 
+// https://hosnaqasmei.com/posts/nextjs14-blog-view-counter-and-minute-read
+export function calculateReadingTime(mdxContent: any) {
+  // Define the average reading speed (words per minute)
+  const wordsPerMinute = 200
+
+  // Strip MDX/HTML tags and count the words
+  const text = mdxContent.replace(/<\/?[^>]+(>|$)/g, '')
+  const wordCount = text
+    .split(/\s+/)
+    .filter((word: any) => word.length > 0).length
+
+  // Calculate reading time
+  const readingTime = Math.ceil(wordCount / wordsPerMinute)
+
+  return readingTime
+}
+
 /**
  * Combines class names using clsx and tailwind-merge.
  * @param inputs - A variadic set of class values to be combined.
