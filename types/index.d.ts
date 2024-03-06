@@ -6,9 +6,14 @@ export type NavItem = {
   title: string
   href: string
   disabled?: boolean
+  subMenu?: NavItem[]
 }
 
 export type MainNavItem = NavItem
+
+export type MultiLevelNav = {
+  items: MainNavItem[]
+}
 
 export type SidebarNavItem = {
   title: string
@@ -73,6 +78,7 @@ export type BlocksConfig = {
 
 export type MarketingConfig = {
   mainNav: MainNavItem[]
+  multiLevelNav: MainNavItem[]
   footer: {
     links: FooterLink[]
   }
