@@ -1,11 +1,12 @@
 import Link from 'next/link'
 
-import { docsConfig } from '@/config/docs'
+import { marketingConfig } from '@/config/marketing'
 import { siteConfig } from '@/config/site'
+
 import { getCurrentUser } from '@/lib/session'
+
 import { DocsSearch } from '@/components/docs/search'
-import { DocsSidebarNav } from '@/components/docs/sidebar-nav'
-import { NavBar } from '@/components/layout/navigation/main/navbar'
+import { MultiLevelNav } from '@/components/layout/navigation/multi-level/multi-level'
 import { SiteFooter } from '@/components/layout/site-footer'
 import { Icons } from '@/components/shared/icons'
 
@@ -39,13 +40,11 @@ export default async function DocsLayout({ children }: DocsLayoutProps) {
 
   return (
     <div className="flex min-h-screen flex-col">
-      <NavBar
+      <MultiLevelNav
         user={user}
-        items={docsConfig.mainNav}
-        rightElements={rightHeader()}
-      >
-        <DocsSidebarNav items={docsConfig.sidebarNav} />
-      </NavBar>
+        items={marketingConfig.multiLevelNav}
+        scroll={false}
+      />
       <div className="container flex-1">{children}</div>
       <SiteFooter className="border-t" />
     </div>
