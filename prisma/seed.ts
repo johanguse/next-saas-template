@@ -5,7 +5,12 @@ var bcrypt = require('bcryptjs')
 
 const prisma = new PrismaClient()
 
-const userRoles = ['ADMIN', 'EDITOR', 'USER']
+const userRoles = ['ADMIN', 'EDITOR', 'USER'] as const
+
+type UserRole = (typeof userRoles)[number]
+
+const providers = ['google', 'github', 'credentials']
+const type = ['oauth', 'email', 'credentials']
 
 const main = async () => {
   try {
@@ -16,32 +21,27 @@ const main = async () => {
 
     // Seed 30 users
     for (let i = 0; i < 30; i++) {
-      const name = faker.name.fullName()
-      const email = faker.internet.email()
       const hashedPassword = await bcrypt.hash('my_secure_password', 10)
-      const role = faker.helpers.arrayElement(userRoles)
 
       const user = await prisma.user.create({
         data: {
-          name,
-          email,
+          name: faker.person.fullName(),
+          email: faker.internet.email(),
           password: hashedPassword,
-          role: 'USER',
+          role: faker.helpers.arrayElement(userRoles),
           isTwoFactorEnabled: faker.datatype.boolean(),
           emailVerified: faker.date.past(),
-          image: faker.image.avatar(),
+          image: faker.image.avatarGitHub(),
           // Add other fields as necessary
         },
       })
 
-      // Seed related Account for each User
-      const providers = ['google', 'github', 'credentials']
       await prisma.account.create({
         data: {
           userId: user.id,
-          type: faker.random.word(),
+          type: faker.helpers.arrayElement(type),
           provider: faker.helpers.arrayElement(providers),
-          providerAccountId: faker.datatype.uuid(),
+          providerAccountId: faker.string.uuid(),
           // Add other fields as necessary
         },
       })
@@ -50,7 +50,7 @@ const main = async () => {
       await prisma.session.create({
         data: {
           userId: user.id,
-          sessionToken: faker.datatype.uuid(),
+          sessionToken: faker.string.uuid(),
           expires: faker.date.future(),
           // Add other fields as necessary
         },
