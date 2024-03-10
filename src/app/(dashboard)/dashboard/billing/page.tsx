@@ -1,13 +1,12 @@
 import { redirect } from 'next/navigation'
 
-import { authOptions } from '@/lib/auth'
-import { getCurrentUser } from '@/lib/session'
-import { getUserSubscriptionPlan } from '@/lib/subscription'
-import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import { BillingInfo } from '@/components/billing-info'
 import { DashboardHeader } from '@/components/dashboard/header'
 import { DashboardShell } from '@/components/dashboard/shell'
 import { Icons } from '@/components/shared/icons'
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
+import { getCurrentUser } from '@/lib/session'
+import { getUserSubscriptionPlan } from '@/lib/subscription'
 
 export const metadata = {
   title: 'Billing',
@@ -18,7 +17,7 @@ export default async function BillingPage() {
   const user = await getCurrentUser()
 
   if (!user) {
-    redirect(authOptions?.pages?.signIn || '/login')
+    redirect('/login')
   }
 
   const subscriptionPlan = await getUserSubscriptionPlan(user.id)

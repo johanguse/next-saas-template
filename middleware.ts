@@ -1,46 +1,59 @@
-import { NextResponse } from 'next/server'
-import { getToken } from 'next-auth/jwt'
-import { withAuth } from 'next-auth/middleware'
+import { NextRequest } from 'next/server'
 
-export default withAuth(
-  async function middleware(req) {
-    const token = await getToken({ req })
-    const isAuth = !!token
-    const isAuthPage =
-      req.nextUrl.pathname.startsWith('/login') ||
-      req.nextUrl.pathname.startsWith('/register')
+import authConfig from '@/root/auth.config'
+import {
+  DEFAULT_LOGIN_REDIRECT,
+  apiAuthPrefix,
+  authRoutes,
+  publicRoutes,
+} from '@/root/routes'
+import NextAuth, { Session } from 'next-auth'
 
-    if (isAuthPage) {
-      if (isAuth) {
-        return NextResponse.redirect(new URL('/dashboard', req.url))
+const { auth: middleware } = NextAuth(authConfig)
+
+export default middleware(
+  (req: NextRequest & { auth: Session | null }): Response | void => {
+    const { nextUrl } = req
+    const isLoggedIn = !!req.auth
+
+    const isApiAuthRoute = nextUrl.pathname.startsWith(apiAuthPrefix)
+    const isPublicRoute = publicRoutes.some((route) => {
+      if (route === '/') {
+        return nextUrl.pathname === route
+      } else {
+        return nextUrl.pathname.startsWith(route)
       }
+    })
 
-      return null
+    const isAuthRoute = authRoutes.includes(nextUrl.pathname)
+
+    if (isApiAuthRoute) return
+
+    if (isAuthRoute) {
+      if (isLoggedIn) {
+        return Response.redirect(new URL(DEFAULT_LOGIN_REDIRECT, nextUrl))
+      }
+      return
     }
 
-    if (!isAuth) {
-      let from = req.nextUrl.pathname
-      if (req.nextUrl.search) {
-        from += req.nextUrl.search
+    if (!isLoggedIn && !isPublicRoute) {
+      let callbackUrl = nextUrl.pathname
+      if (nextUrl.search) {
+        callbackUrl += nextUrl.search
       }
 
-      return NextResponse.redirect(
-        new URL(`/login?from=${encodeURIComponent(from)}`, req.url)
+      const encodedCallbackUrl = encodeURIComponent(callbackUrl)
+
+      return Response.redirect(
+        new URL(`/login?callbackUrl=${encodedCallbackUrl}`, nextUrl)
       )
     }
-  },
-  {
-    callbacks: {
-      async authorized() {
-        // This is a work-around for handling redirect on auth pages.
-        // We return true here so that the middleware function above
-        // is always called.
-        return true
-      },
-    },
+
+    return
   }
 )
 
+// Optionally, don't invoke Middleware on some paths
 export const config = {
-  matcher: ['/dashboard/:path*', '/login', '/register'],
+  matcher: ['/((?!api|_next/static|_next/image|images|favicon.ico).*)'],
 }

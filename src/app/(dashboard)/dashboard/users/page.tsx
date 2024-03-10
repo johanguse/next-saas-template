@@ -1,11 +1,10 @@
 import Image from 'next/image'
 import { redirect } from 'next/navigation'
 
-import { authOptions } from '@/lib/auth'
-import { getCurrentUser } from '@/lib/session'
-import PaginationNST from '@/components/ui/pagination-nst'
 import { DashboardHeader } from '@/components/dashboard/header'
 import { DashboardShell } from '@/components/dashboard/shell'
+import PaginationNST from '@/components/ui/pagination-nst'
+import { getCurrentUser } from '@/lib/session'
 
 const UserTableRow = ({ user }) => {
   return (
@@ -134,7 +133,7 @@ export default async function StatusPage() {
   const user = await getCurrentUser()
 
   if (!user) {
-    redirect(authOptions?.pages?.signIn || '/login')
+    redirect('/login')
   }
 
   return (

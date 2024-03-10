@@ -1,9 +1,9 @@
 import Link from 'next/link'
 
+import { Icons } from '@/components/shared/icons'
+import { buttonVariants } from '@/components/ui/button'
 import { siteConfig } from '@/config/site'
 import { cn } from '@/lib/utils'
-import { buttonVariants } from '@/components/ui/button'
-import { Icons } from '@/components/shared/icons'
 
 export default function Hero() {
   const twitterLink = siteConfig.social?.links?.twitter
@@ -42,7 +42,7 @@ export default function Hero() {
             style={{ animationDelay: '0.35s', animationFillMode: 'forwards' }}
           >
             Empower Your Next Project with Next.js 14, Prisma, Planetscale,
-            Auth.js, Resend, React Email, Shadcn/ui, and Stripe Integration
+            Auth.js v5, Resend, React Email, Shadcn/ui, and Stripe Integration
           </p>
 
           <div

@@ -1,10 +1,9 @@
 import { redirect } from 'next/navigation'
 
-import { authOptions } from '@/lib/auth'
-import { getCurrentUser } from '@/lib/session'
-import PaginationNST from '@/components/ui/pagination-nst'
 import { DashboardHeader } from '@/components/dashboard/header'
 import { DashboardShell } from '@/components/dashboard/shell'
+import PaginationNST from '@/components/ui/pagination-nst'
+import { getCurrentUser } from '@/lib/session'
 
 export const metadata = {
   title: 'Analitycs',
@@ -15,7 +14,7 @@ export default async function StatusPage() {
   const user = await getCurrentUser()
 
   if (!user) {
-    redirect(authOptions?.pages?.signIn || '/login')
+    redirect('/login')
   }
 
   return (
