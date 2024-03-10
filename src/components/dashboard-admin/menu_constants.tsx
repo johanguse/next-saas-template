@@ -5,10 +5,12 @@ import {
   KanbanSquareIcon,
   ListIcon,
   MailIcon,
+  UsersIcon,
   WarehouseIcon,
 } from 'lucide-react'
 
 const WarehouseIconElement = <WarehouseIcon />
+const UsersIconElement = <UsersIcon />
 const KanbanSquareIconElement = <KanbanSquareIcon />
 const ListIconElement = <ListIcon />
 const MailIconElement = <MailIcon />
@@ -23,6 +25,16 @@ export const SIDENAV_ITEMS: SideNavItemGroup[] = [
         title: 'Dashboard',
         path: '/dashboard-admin',
         icon: WarehouseIconElement,
+      },
+    ],
+  },
+  {
+    title: 'Users',
+    menuList: [
+      {
+        title: 'All Users',
+        path: '/dashboard-admin/users',
+        icon: UsersIconElement,
       },
     ],
   },
