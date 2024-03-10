@@ -5,8 +5,7 @@ import { siteConfig } from '@/config/site'
 export default function manifest(): MetadataRoute.Manifest {
   return {
     name: siteConfig.name,
-    short_name:
-      'Empowering your SaaS startup journey with a meticulously crafted Next.js boilerplate',
+    short_name: siteConfig.shortDescription,
     description: siteConfig.description,
     start_url: '/',
     display: 'standalone',
