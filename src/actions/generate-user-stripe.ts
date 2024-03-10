@@ -1,18 +1,19 @@
 'use server'
 
 import { redirect } from 'next/navigation'
-import { getServerSession } from 'next-auth'
 
-import { authOptions } from '@/lib/auth'
 import { stripe } from '@/lib/stripe'
 import { getUserSubscriptionPlan } from '@/lib/subscription'
 import { absoluteUrl } from '@/lib/utils'
+
+import { auth } from '@/root/auth'
 
 export type responseAction = {
   status: 'success' | 'error'
   stripeUrl?: string
 }
 
+// const billingUrl = absoluteUrl("/dashboard/billing")
 const billingUrl = absoluteUrl('/pricing')
 
 export async function generateUserStripe(
@@ -21,7 +22,7 @@ export async function generateUserStripe(
   let redirectUrl: string = ''
 
   try {
-    const session = await getServerSession(authOptions)
+    const session = await auth()
 
     if (!session?.user || !session?.user.email) {
       throw new Error('Unauthorized')

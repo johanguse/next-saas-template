@@ -1,16 +1,20 @@
 'use client'
 
 import { useState } from 'react'
+
 import Link from 'next/link'
-import { UserSubscriptionPlan } from '@/root/types'
 
 import { pricingData } from '@/config/subscriptions'
+
 import { useSigninModal } from '@/hooks/use-signin-modal'
+
 import { Button, buttonVariants } from '@/components/ui/button'
 import { Switch } from '@/components/ui/switch'
-import { Tag } from '@/components/ui/tag'
+
 import { BillingFormButton } from '@/components/forms/billing-form-button'
 import { Icons } from '@/components/shared/icons'
+
+import { UserSubscriptionPlan } from '@/root/types'
 
 interface PricingCardsProps {
   userId?: string
@@ -33,7 +37,7 @@ export function PricingCardItem({
   }
 
   return (
-    <>
+    <section className="container flex flex-col items-center text-center">
       <div className="mb-4 flex items-center gap-5">
         <span>Monthly Billing</span>
         <Switch
@@ -44,29 +48,16 @@ export function PricingCardItem({
         />
         <span>Annual Billing</span>
       </div>
-      <div className="mx-auto grid max-w-screen-lg gap-5 bg-inherit py-4 md:grid-cols-3 lg:grid-cols-3 lg:gap-8 lg:py-12">
-        {pricingData.map((offer, index) => (
+      <div className="mx-auto grid max-w-screen-lg gap-5 bg-inherit py-5 md:grid-cols-3 lg:grid-cols-3">
+        {pricingData.map((offer) => (
           <div
-            key={index}
-            className={`relative flex flex-col overflow-hidden rounded-xl border ${
-              index === 1 ? 'outline lg:z-10 lg:scale-[1.1]' : ''
-            }`}
+            className="relative flex flex-col overflow-hidden rounded-xl border"
+            key={offer.title}
           >
             <div className="min-h-[150px] items-start space-y-4 bg-secondary/70 p-6">
-              <div className="flex flex-row justify-between">
-                <p className="flex font-urban text-sm font-bold uppercase tracking-wider">
-                  {offer.title}
-                </p>
-                {isYearly &&
-                offer.prices.monthly > 0 &&
-                offer.prices.discount !== '' ? (
-                  <Tag
-                    labelToken={offer.prices.discount}
-                    size="sm"
-                    className="absolute right-6 top-5 bg-slate-200 dark:bg-slate-950"
-                  />
-                ) : null}
-              </div>
+              <p className="flex font-urban text-sm font-bold uppercase tracking-wider text-muted-foreground">
+                {offer.title}
+              </p>
 
               <div className="flex flex-row">
                 <div className="flex items-end">
@@ -96,36 +87,7 @@ export function PricingCardItem({
               ) : null}
             </div>
 
-            <div className="flex h-full flex-col justify-items-start gap-4 p-6">
-              <div className="mb-8">
-                {userId && subscriptionPlan ? (
-                  offer.title === 'Starter' ? (
-                    <Link
-                      href="/dashboard"
-                      className={buttonVariants({
-                        className: 'w-full',
-                        variant: 'default',
-                      })}
-                    >
-                      Go to dashboard
-                    </Link>
-                  ) : (
-                    <BillingFormButton
-                      year={isYearly}
-                      offer={offer}
-                      subscriptionPlan={subscriptionPlan}
-                    />
-                  )
-                ) : (
-                  <Button
-                    variant={index === 1 ? 'default' : 'outline'}
-                    className="w-full"
-                    onClick={signInModal.onOpen}
-                  >
-                    Get Started
-                  </Button>
-                )}
-              </div>
+            <div className="flex h-full flex-col justify-between gap-16 p-6">
               <ul className="space-y-2 text-left text-sm font-medium leading-normal">
                 {offer.benefits.map((feature) => (
                   <li className="flex items-start" key={feature}>
@@ -145,10 +107,32 @@ export function PricingCardItem({
                     </li>
                   ))}
               </ul>
+
+              {userId && subscriptionPlan ? (
+                offer.title === 'Starter' ? (
+                  <Link
+                    href="/dashboard"
+                    className={buttonVariants({
+                      className: 'w-full',
+                      variant: 'default',
+                    })}
+                  >
+                    Go to dashboard
+                  </Link>
+                ) : (
+                  <BillingFormButton
+                    year={isYearly}
+                    offer={offer}
+                    subscriptionPlan={subscriptionPlan}
+                  />
+                )
+              ) : (
+                <Button onClick={signInModal.onOpen}>Sign in</Button>
+              )}
             </div>
           </div>
         ))}
       </div>
-    </>
+    </section>
   )
 }

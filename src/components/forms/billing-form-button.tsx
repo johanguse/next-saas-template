@@ -1,31 +1,25 @@
-'use client'
+"use client"
 
-import { useTransition } from 'react'
 import { generateUserStripe } from '@/actions/generate-user-stripe'
-
-import { SubscriptionPlan, UserSubscriptionPlan } from 'types'
-import { Button } from '@/components/ui/button'
-import { Icons } from '@/components/shared/icons'
+import { Icons } from "@/components/shared/icons"
+import { Button } from "@/components/ui/button"
+import { SubscriptionPlan, UserSubscriptionPlan } from "@/root/types"
+import { useTransition } from 'react'
 
 interface BillingFormButtonProps {
-  offer: SubscriptionPlan
-  subscriptionPlan: UserSubscriptionPlan
-  year: boolean
+  offer: SubscriptionPlan;
+  subscriptionPlan: UserSubscriptionPlan;
+  year: boolean;
 }
 
-export function BillingFormButton({
-  year,
-  offer,
-  subscriptionPlan,
-}: BillingFormButtonProps) {
-  let [isPending, startTransition] = useTransition()
+export function BillingFormButton({ year, offer, subscriptionPlan }: BillingFormButtonProps) {
+  let [isPending, startTransition] = useTransition();
   const generateUserStripeSession = generateUserStripe.bind(
     null,
-    offer.stripeIds[year ? 'yearly' : 'monthly']
-  )
+    offer.stripeIds[year ? "yearly" : "monthly"]
+  );
 
-  const stripeSessionAction = () =>
-    startTransition(async () => await generateUserStripeSession())
+  const stripeSessionAction = () => startTransition(async () => await generateUserStripeSession());
 
   return (
     <Button
@@ -40,10 +34,9 @@ export function BillingFormButton({
         </>
       ) : (
         <>
-          {subscriptionPlan.stripePriceId ===
-          offer.stripeIds[year ? 'yearly' : 'monthly']
-            ? 'Manage Subscription'
-            : 'Upgrade'}
+          {subscriptionPlan.stripePriceId === offer.stripeIds[year ? "yearly" : "monthly"]
+            ? "Manage Subscription"
+            : "Upgrade"}
         </>
       )}
     </Button>

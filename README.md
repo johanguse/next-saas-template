@@ -24,7 +24,7 @@
 
 ## Introduction
 
-Empower your next project with the stack of Next.js 14, Prisma, PostgreSQL, Auth.js, Resend, React Email, Shadcn/ui, and Stripe.
+Empower your next project with the stack of Next.js 14, Prisma, PostgreSQL, Auth.js v5, Resend, React Email, Shadcn/ui, and Stripe.
 <br/>
 All seamlessly integrated with the SaaS Starter to accelerate your development and saas journey.
 

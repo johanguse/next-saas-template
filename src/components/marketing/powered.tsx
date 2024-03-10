@@ -115,7 +115,7 @@ const features = [
     ),
   },
   {
-    title: 'Auth.js',
+    title: 'Auth.js v5',
     href: 'https://authjs.dev/',
     icon: (
       <svg
