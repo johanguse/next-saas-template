@@ -10,10 +10,20 @@ import { buttonVariants } from '@/components/ui/button'
 
 import { UserNav } from '@/components/dashboard-admin/usernav'
 import { ModeToggle } from '@/components/layout/mode-toggle'
-import { Icons } from '@/components/shared/icons'
+import ChangelogButton from '@/components/shared/changelog-button'
 
 import { MessageSquareText } from 'lucide-react'
 import type { User } from 'next-auth'
+
+const FeedbackLink = () => (
+  <Link
+    href="/feedback"
+    className={cn(buttonVariants({ variant: 'outline', size: 'sm' }), 'px-4')}
+  >
+    <MessageSquareText className="mr-2 size-4" />
+    <p>Share a feedback</p>
+  </Link>
+)
 
 interface UserAccountNavProps extends React.HTMLAttributes<HTMLDivElement> {
   user: Pick<User, 'name' | 'image' | 'email'> | undefined
@@ -37,24 +47,10 @@ export default function Header({ user }: UserAccountNavProps) {
           <div className="mt-6 sm:mt-0">
             <ul className="flex items-center space-x-4">
               <li>
-                <Link
-                  href="/feedback"
-                  className={cn(
-                    buttonVariants({ variant: 'outline', size: 'sm' }),
-                    'px-4'
-                  )}
-                >
-                  <MessageSquareText className="mr-2 size-4" />
-                  <p>Share a feedback</p>
-                </Link>
+                <FeedbackLink />
               </li>
-              <li id="changelog" className="relative">
-                <button
-                  aria-label="Changelog"
-                  className="absolute right-1 top-1"
-                >
-                  <Icons.notification />
-                </button>
+              <li>
+                <ChangelogButton />
               </li>
               <li>
                 <ModeToggle />

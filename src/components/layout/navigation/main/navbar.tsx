@@ -9,10 +9,9 @@ import { useSigninModal } from '@/hooks/use-signin-modal'
 
 import { Button, buttonVariants } from '@/components/ui/button'
 
-import { ModeToggle } from '@/components/layout/mode-toggle'
 import { MainNav } from '@/components/layout/navigation/main/main-nav'
 import { UserAccountNav } from '@/components/layout/navigation/user-account-nav'
-import { Icons } from '@/components/shared/icons'
+import ChangelogButton from '@/components/shared/changelog-button'
 
 import { MainNavItem } from '@/root/types'
 import { MessageSquareText } from 'lucide-react'
@@ -26,6 +25,25 @@ interface NavBarProps {
   scroll?: boolean
 }
 
+const LoginLink = () => (
+  <Link
+    href="/login"
+    className={cn(buttonVariants({ variant: 'outline', size: 'sm' }))}
+  >
+    Login Page
+  </Link>
+)
+
+const FeedbackLink = () => (
+  <Link
+    href="/feedback"
+    className={cn(buttonVariants({ variant: 'outline', size: 'sm' }), 'px-4')}
+  >
+    <MessageSquareText className="mr-2 size-4" />
+    <p>Share a feedback</p>
+  </Link>
+)
+
 export function NavBar({
   user,
   items,
@@ -38,9 +56,11 @@ export function NavBar({
 
   return (
     <header
-      className={`sticky top-0 z-40 flex w-full justify-center bg-background/60 backdrop-blur-xl transition-all ${
-        scroll ? (scrolled ? 'border-b' : 'bg-background/0') : 'border-b'
-      }`}
+      className={cn(
+        'sticky top-0 z-40 flex w-full justify-center bg-background/60 backdrop-blur-xl transition-all',
+        { 'border-b': scroll ? scrolled : true },
+        { 'bg-background/0': scroll && !scrolled }
+      )}
     >
       <div className="container flex h-16 items-center justify-between py-4">
         <MainNav items={items}>{children}</MainNav>
@@ -48,45 +68,22 @@ export function NavBar({
         <div className="flex items-center space-x-3">
           {rightElements}
 
-          {!user ? (
-            <Link
-              href="/login"
-              className={cn(buttonVariants({ variant: 'outline', size: 'sm' }))}
-            >
-              Login Page
-            </Link>
-          ) : null}
+          <ChangelogButton />
 
-          {user ? (
+          {!user && <LoginLink />}
+
+          {user && (
             <>
               <ul className="mr-4 flex items-center space-x-4">
                 <li>
-                  <Link
-                    href="/feedback"
-                    className={cn(
-                      buttonVariants({ variant: 'outline', size: 'sm' }),
-                      'px-4'
-                    )}
-                  >
-                    <MessageSquareText className="mr-2 size-4" />
-                    <p>Share a feedback</p>
-                  </Link>
-                </li>
-                <li id="changelog" className="relative">
-                  <button
-                    aria-label="Changelog"
-                    className="absolute right-1 top-1"
-                  >
-                    <Icons.notification />
-                  </button>
-                </li>
-                <li>
-                  <ModeToggle />
+                  <FeedbackLink />
                 </li>
               </ul>
               <UserAccountNav user={user} />
             </>
-          ) : (
+          )}
+
+          {!user && (
             <Button
               className="px-3"
               variant="default"
