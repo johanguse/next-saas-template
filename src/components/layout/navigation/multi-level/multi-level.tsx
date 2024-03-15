@@ -22,7 +22,7 @@ import {
   navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu'
 
-import { Icons } from '@/components/shared/icons'
+import ChangelogButton from '@/components/shared/changelog-button'
 import IconLogo from '@/components/shared/logo-icon'
 
 import { ModeToggle } from '../../mode-toggle'
@@ -30,6 +30,25 @@ import { UserAccountNav } from '../user-account-nav'
 import { MainNavItem } from '@/root/types'
 import { MessageSquareText } from 'lucide-react'
 import { User } from 'next-auth'
+
+const LoginLink = () => (
+  <Link
+    href="/login"
+    className={cn(buttonVariants({ variant: 'outline', size: 'sm' }))}
+  >
+    Login Page
+  </Link>
+)
+
+const FeedbackLink = () => (
+  <Link
+    href="/feedback"
+    className={cn(buttonVariants({ variant: 'outline', size: 'sm' }), 'px-4')}
+  >
+    <MessageSquareText className="mr-2 size-4" />
+    <p>Share a feedback</p>
+  </Link>
+)
 
 interface NavBarProps {
   user: Pick<User, 'name' | 'image' | 'email'> | undefined
@@ -106,37 +125,16 @@ export function MultiLevelNav({
         <div className="flex items-center space-x-3">
           {rightElements}
 
-          {!user ? (
-            <Link
-              href="/login"
-              className={cn(buttonVariants({ variant: 'outline', size: 'sm' }))}
-            >
-              Login Page
-            </Link>
-          ) : null}
+          {!user ? <LoginLink /> : null}
 
           {user ? (
             <>
               <ul className="mr-4 flex items-center space-x-4">
                 <li>
-                  <Link
-                    href="/feedback"
-                    className={cn(
-                      buttonVariants({ variant: 'outline', size: 'sm' }),
-                      'px-4'
-                    )}
-                  >
-                    <MessageSquareText className="mr-2 size-4" />
-                    <p>Share a feedback</p>
-                  </Link>
+                  <FeedbackLink />
                 </li>
-                <li id="changelog" className="relative">
-                  <button
-                    aria-label="Changelog"
-                    className="absolute right-1 top-1"
-                  >
-                    <Icons.notification />
-                  </button>
+                <li>
+                  <ChangelogButton />
                 </li>
                 <li>
                   <ModeToggle />

@@ -2,6 +2,8 @@
 
 import React from 'react'
 
+import { usePathname } from 'next/navigation'
+
 import { useCollectEmailsModal } from '@/hooks/use-collect-emails-modal'
 
 import { Button } from '@/components/ui/button'
@@ -9,8 +11,13 @@ import { Button } from '@/components/ui/button'
 import { XIcon } from 'lucide-react'
 
 export const CtaBanner = () => {
+  const pathname = usePathname()
   const [displayed, setDisplayed] = React.useState(true)
   const collectEmailsModal = useCollectEmailsModal()
+
+  if (pathname === '/login' || pathname === '/register') {
+    return null
+  }
 
   if (!displayed) return null
 

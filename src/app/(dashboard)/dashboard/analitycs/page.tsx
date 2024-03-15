@@ -1,9 +1,11 @@
 import { redirect } from 'next/navigation'
 
+import { getCurrentUser } from '@/lib/session'
+
+import PaginationNST from '@/components/ui/pagination-nst'
+
 import { DashboardHeader } from '@/components/dashboard/header'
 import { DashboardShell } from '@/components/dashboard/shell'
-import PaginationNST from '@/components/ui/pagination-nst'
-import { getCurrentUser } from '@/lib/session'
 
 export const metadata = {
   title: 'Analitycs',
@@ -50,7 +52,7 @@ export default async function StatusPage() {
                 </div>
                 <a
                   href="#"
-                  className="block bg-gray-50 p-3 text-center text-sm font-medium text-blue-600 hover:bg-gray-100 hover:bg-opacity-70 hover:text-blue-700 active:bg-gray-50 dark:bg-gray-900/50 dark:text-blue-400 dark:hover:bg-gray-900/75 dark:hover:text-blue-300 dark:active:bg-gray-900/50"
+                  className="block bg-gray-50 p-3 text-center text-sm font-medium text-blue-600 hover:bg-gray-100 hover:text-blue-700/70 active:bg-gray-50 dark:bg-gray-900/50 dark:text-blue-400 dark:hover:bg-gray-900/75 dark:hover:text-blue-300 dark:active:bg-gray-900/50"
                 >
                   View All Sales
                 </a>
@@ -81,7 +83,7 @@ export default async function StatusPage() {
                 </div>
                 <a
                   href="#"
-                  className="block bg-gray-50 p-3 text-center text-sm font-medium text-blue-600 hover:bg-gray-100 hover:bg-opacity-70 hover:text-blue-700 active:bg-gray-50 dark:bg-gray-900/50 dark:text-blue-400 dark:hover:bg-gray-900/75 dark:hover:text-blue-300 dark:active:bg-gray-900/50"
+                  className="block bg-gray-50 p-3 text-center text-sm font-medium text-blue-600 hover:bg-gray-100 hover:text-blue-700/70 active:bg-gray-50 dark:bg-gray-900/50 dark:text-blue-400 dark:hover:bg-gray-900/75 dark:hover:text-blue-300 dark:active:bg-gray-900/50"
                 >
                   View all Earnings
                 </a>
@@ -112,7 +114,7 @@ export default async function StatusPage() {
                 </div>
                 <a
                   href="#"
-                  className="block bg-gray-50 p-3 text-center text-sm font-medium text-blue-600 hover:bg-gray-100 hover:bg-opacity-70 hover:text-blue-700 active:bg-gray-50 dark:bg-gray-900/50 dark:text-blue-400 dark:hover:bg-gray-900/75 dark:hover:text-blue-300 dark:active:bg-gray-900/50"
+                  className="block bg-gray-50 p-3 text-center text-sm font-medium text-blue-600 hover:bg-gray-100 hover:text-blue-700/70 active:bg-gray-50 dark:bg-gray-900/50 dark:text-blue-400 dark:hover:bg-gray-900/75 dark:hover:text-blue-300 dark:active:bg-gray-900/50"
                 >
                   Check your Balance
                 </a>
