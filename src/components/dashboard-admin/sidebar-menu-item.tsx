@@ -27,7 +27,7 @@ export const SideBarMenuItem = ({ item }: { item: SideNavItem }) => {
     'text-sidebar-foreground flex h-full min-h-[40px] cursor-pointer items-center rounded-md transition duration-200'
   )
 
-  const activeLink = cn('active bg-sidebar-muted text-red cursor-pointer')
+  const activeLink = cn('active cursor-pointer')
 
   const navMenuDropdownItem = 'text-red transition duration-200 rounded-md'
 
