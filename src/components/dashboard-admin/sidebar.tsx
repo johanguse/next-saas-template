@@ -1,71 +1,122 @@
-'use client'
+import Link from 'next/link'
 
-import { useEffect, useState } from 'react'
-import { ChevronLeft } from 'lucide-react'
-
-import { siteConfig } from '@/config/site'
 import { cn } from '@/lib/utils'
-import { useSideBarToggle } from '@/hooks/use-sidebar-toggle'
-import { SIDENAV_ITEMS } from '@/components/dashboard-admin/menu_constants'
-import { SideBarLogo } from '@/components/dashboard-admin/sidebar-logo'
-import SideBarMenuGroup from '@/components/dashboard-admin/sidebar-menu-group'
 
-export const SideBar = () => {
-  const [mounted, setMounted] = useState(false)
-  const { toggleCollapse, invokeToggleCollapse } = useSideBarToggle()
-  const sidebarToggle = () => {
-    invokeToggleCollapse()
-  }
-  const chevronLeftIconClass = cn('icon-class', {
-    'rotate-180': toggleCollapse,
-  })
+export type DashboardSidebarGenericProps<T = unknown> = {
+  children: React.ReactNode
+  className?: string
+} & T
 
-  const asideStyle = cn(
-    'sidebar bg-sidebar fixed z-[99999] h-full overflow-auto shadow-sm shadow-slate-500/40 transition duration-300 ease-in-out',
-    {
-      ['w-[16rem]']: !toggleCollapse,
-      ['sm:w-[4.2rem] sm:left-0 left-[-100%]']: toggleCollapse,
-    }
-  )
-
-  useEffect(() => setMounted(true), [])
-
+export function DashboardSidebar({
+  className,
+  children,
+}: DashboardSidebarGenericProps) {
   return (
-    <aside className={asideStyle}>
-      <div className="sidebar-top relative flex items-center justify-start px-3.5 py-3">
-        {mounted && <SideBarLogo />}
-        <h3
-          className={cn(
-            'text-sidebar-foreground min-w-max pl-2 text-2xl font-bold',
-            { hidden: toggleCollapse }
-          )}
-        >
-          <span className="hidden font-urban text-base font-bold sm:inline-block">
-            {siteConfig.name}
-          </span>
-        </h3>
-      </div>
-      <nav className="flex flex-col gap-2 transition duration-300 ease-in-out">
-        <div
-          className={cn('relative flex w-full flex-col gap-2 px-4', {
-            'items-center': toggleCollapse,
-          })}
-        >
-          {SIDENAV_ITEMS.map((item, idx) => {
-            return <SideBarMenuGroup key={idx} menuGroup={item} />
-          })}
-        </div>
-      </nav>
-      <button
-        onClick={sidebarToggle}
-        className={cn(
-          'shrink-btn bg-sidebar-muted text-sidebar-muted-foreground absolute bottom-2 right-4 z-50 order-2 float-right flex size-[30px] items-center justify-center rounded-md transition duration-300 ease-in-out hover:bg-foreground  hover:text-background sm:order-1',
-          chevronLeftIconClass
-        )}
-      >
-        <ChevronLeft />
-        <span className="sr-only">Collapse sidebar</span>
-      </button>
+    <aside
+      className={cn([
+        'flex flex-col space-y-6 border-r border-border',
+        className,
+      ])}
+    >
+      {children}
     </aside>
+  )
+}
+
+export function DashboardSidebarHeader({
+  className,
+  children,
+}: DashboardSidebarGenericProps) {
+  return (
+    <header className={cn(['border-b border-border px-6 py-3', className])}>
+      {children}
+    </header>
+  )
+}
+
+export function DashboardSidebarHeaderTitle({
+  className,
+  children,
+}: DashboardSidebarGenericProps) {
+  return <h2 className={cn(['', className])}>{children}</h2>
+}
+
+export function DashboardSidebarMain({
+  className,
+  children,
+}: DashboardSidebarGenericProps) {
+  return <main className={cn(['px-3', className])}>{children}</main>
+}
+
+export function DashboardSidebarNav({
+  className,
+  children,
+}: DashboardSidebarGenericProps) {
+  return <nav className={cn(['', className])}>{children}</nav>
+}
+
+export function DashboardSidebarNavHeader({
+  className,
+  children,
+}: DashboardSidebarGenericProps) {
+  return <header className={cn(['', className])}>{children}</header>
+}
+
+export function DashboardSidebarNavHeaderTitle({
+  className,
+  children,
+}: DashboardSidebarGenericProps) {
+  return (
+    <div
+      className={cn([
+        'ml-3 text-xs uppercase text-muted-foreground',
+        className,
+      ])}
+    >
+      {children}
+    </div>
+  )
+}
+
+export function DashboardSidebarNavMain({
+  className,
+  children,
+}: DashboardSidebarGenericProps) {
+  return <div className={cn(['flex flex-col', className])}>{children}</div>
+}
+
+type DashboardSidebarNavLinkProps = {
+  href: string
+  active?: boolean
+}
+
+export function DashboardSidebarNavLink({
+  className,
+  children,
+  href,
+  active,
+}: DashboardSidebarGenericProps<DashboardSidebarNavLinkProps>) {
+  return (
+    <Link
+      href={href}
+      className={cn([
+        'flex items-center rounded-md px-3 py-2 text-base',
+        active && 'bg-secondary',
+        className,
+      ])}
+    >
+      {children}
+    </Link>
+  )
+}
+
+export function DashboardSidebarFooter({
+  className,
+  children,
+}: DashboardSidebarGenericProps) {
+  return (
+    <footer className={cn(['mt-auto border-t border-border p-6', className])}>
+      {children}
+    </footer>
   )
 }

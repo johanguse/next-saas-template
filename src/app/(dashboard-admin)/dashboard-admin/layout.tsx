@@ -2,6 +2,8 @@ import { redirect } from 'next/navigation'
 
 import { getCurrentUser } from '@/lib/session'
 
+import { MainSidebar } from '@/components/dashboard-admin/main-sidebar'
+
 interface DashboardLayoutProps {
   children?: React.ReactNode
 }
@@ -16,10 +18,9 @@ export default async function DashboardAdminLayout({
   }
 
   return (
-    <div className="flex min-h-screen flex-col space-y-6">
-      <main className="flex w-full flex-1 flex-col overflow-hidden">
-        {children}
-      </main>
+    <div className="grid grid-cols-[16rem_1fr]">
+      <MainSidebar user={user} />
+      <main>{children}</main>
     </div>
   )
 }

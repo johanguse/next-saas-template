@@ -11,10 +11,10 @@ import { Button, buttonVariants } from '@/components/ui/button'
 
 import { MainNav } from '@/components/layout/navigation/main/main-nav'
 import { UserAccountNav } from '@/components/layout/navigation/user-account-nav'
+import ButtonShareFeedback from '@/components/shared/button-share-feedback'
 import ChangelogButton from '@/components/shared/changelog-button'
 
 import { MainNavItem } from '@/root/types'
-import { MessageSquareText } from 'lucide-react'
 import { User } from 'next-auth'
 
 interface NavBarProps {
@@ -31,16 +31,6 @@ const LoginLink = () => (
     className={cn(buttonVariants({ variant: 'outline', size: 'sm' }))}
   >
     Login Page
-  </Link>
-)
-
-const FeedbackLink = () => (
-  <Link
-    href="/feedback"
-    className={cn(buttonVariants({ variant: 'outline', size: 'sm' }), 'px-4')}
-  >
-    <MessageSquareText className="mr-2 size-4" />
-    <p>Share a feedback</p>
   </Link>
 )
 
@@ -76,7 +66,7 @@ export function NavBar({
             <>
               <ul className="mr-4 flex items-center space-x-4">
                 <li>
-                  <FeedbackLink />
+                  <ButtonShareFeedback />
                 </li>
               </ul>
               <UserAccountNav user={user} />

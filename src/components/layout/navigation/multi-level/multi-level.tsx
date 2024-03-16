@@ -22,13 +22,13 @@ import {
   navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu'
 
+import ButtonShareFeedback from '@/components/shared/button-share-feedback'
 import ChangelogButton from '@/components/shared/changelog-button'
 import IconLogo from '@/components/shared/logo-icon'
 
 import { ModeToggle } from '../../mode-toggle'
 import { UserAccountNav } from '../user-account-nav'
 import { MainNavItem } from '@/root/types'
-import { MessageSquareText } from 'lucide-react'
 import { User } from 'next-auth'
 
 const LoginLink = () => (
@@ -37,16 +37,6 @@ const LoginLink = () => (
     className={cn(buttonVariants({ variant: 'outline', size: 'sm' }))}
   >
     Login Page
-  </Link>
-)
-
-const FeedbackLink = () => (
-  <Link
-    href="/feedback"
-    className={cn(buttonVariants({ variant: 'outline', size: 'sm' }), 'px-4')}
-  >
-    <MessageSquareText className="mr-2 size-4" />
-    <p>Share a feedback</p>
   </Link>
 )
 
@@ -131,7 +121,7 @@ export function MultiLevelNav({
             <>
               <ul className="mr-4 flex items-center space-x-4">
                 <li>
-                  <FeedbackLink />
+                  <ButtonShareFeedback />
                 </li>
                 <li>
                   <ChangelogButton />

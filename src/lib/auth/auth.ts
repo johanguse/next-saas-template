@@ -1,49 +1,50 @@
-import authConfig from "@/lib/auth/auth.config"
-import { prisma } from "@/lib/db"
-import { getUserById } from "@/lib/user"
-import { PrismaAdapter } from "@auth/prisma-adapter"
-import NextAuth from "next-auth"
+import authConfig from '@/lib/auth/auth.config'
+import { prisma } from '@/lib/db'
+import { getUserById } from '@/lib/user'
 
-export const { 
+import { PrismaAdapter } from '@auth/prisma-adapter'
+import NextAuth from 'next-auth'
+
+export const {
   handlers: { GET, POST },
   auth,
 } = NextAuth({
   adapter: PrismaAdapter(prisma),
-  session: { strategy: "jwt" },
+  session: { strategy: 'jwt' },
   pages: {
-    signIn: "/login",
+    signIn: '/login',
     // error: "/auth/error",
   },
   callbacks: {
     async session({ token, session }) {
       if (session.user) {
         if (token.sub) {
-          session.user.id = token.sub;
-        }
-  
-        if (token.email) {
-          session.user.email = token.email;
+          session.user.id = token.sub
         }
 
-        session.user.name = token.name;
-        session.user.image = token.picture;
+        if (token.email) {
+          session.user.email = token.email
+        }
+
+        session.user.name = token.name
+        session.user.image = token.picture
       }
 
       return session
     },
 
     async jwt({ token }) {
-      if (!token.sub) return token;
+      if (!token.sub) return token
 
-      const dbUser = await getUserById(token.sub);
+      const dbUser = await getUserById(token.sub)
 
-      if (!dbUser) return token;
+      if (!dbUser) return token
 
-      token.name = dbUser.name;
-      token.email = dbUser.email;
-      token.picture = dbUser.image;
+      token.name = dbUser.name
+      token.email = dbUser.email
+      token.picture = dbUser.image
 
-      return token;
+      return token
     },
   },
   ...authConfig,

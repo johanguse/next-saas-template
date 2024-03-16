@@ -17,9 +17,9 @@ const MailIconElement = <MailIcon />
 const CogIconElement = <CogIcon />
 const HelpCircleIconElement = <HelpCircleIcon />
 
-export const SIDENAV_ITEMS: SideNavItemGroup[] = [
+export const dashboardAdminMenu: SideNavItemGroup[] = [
   {
-    title: 'Dashboards',
+    title: 'Dashboard',
     menuList: [
       {
         title: 'Dashboard',
@@ -43,7 +43,7 @@ export const SIDENAV_ITEMS: SideNavItemGroup[] = [
     menuList: [
       {
         title: 'Products',
-        path: '/products',
+        path: '/dashboard-admin/products',
         icon: KanbanSquareIconElement,
         submenu: true,
         subMenuItems: [
@@ -53,12 +53,12 @@ export const SIDENAV_ITEMS: SideNavItemGroup[] = [
       },
       {
         title: 'Orders',
-        path: '/orders',
+        path: '/dashboard-admin/orders',
         icon: ListIconElement,
       },
       {
         title: 'Feedbacks',
-        path: '/feedbacks',
+        path: '/dashboard-admin/feedbacks',
         icon: MailIconElement,
       },
     ],
@@ -67,13 +67,13 @@ export const SIDENAV_ITEMS: SideNavItemGroup[] = [
     title: 'Others',
     menuList: [
       {
-        title: 'Account',
-        path: '/account',
+        title: 'Settings',
+        path: '/dashboard-admin/settings',
         icon: CogIconElement,
       },
       {
         title: 'Help',
-        path: '/help',
+        path: '/dashboard-admin/help',
         icon: HelpCircleIconElement,
       },
     ],

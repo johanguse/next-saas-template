@@ -4,6 +4,13 @@ import { prisma } from '@/lib/db'
 
 import PaginationNST from '@/components/ui/pagination-nst'
 
+import {
+  DashboardPage,
+  DashboardPageHeader,
+  DashboardPageHeaderTitle,
+  DashboardPageMain,
+} from '@/components/dashboard-admin/page'
+
 const UserTableRow = ({ user }) => {
   return (
     <tr className="even:bg-gray-50">
@@ -54,10 +61,17 @@ export const metadata = {
 }
 
 export default async function AdminUsersPage() {
-  const usersData = await prisma.user.findMany()
+  const usersData = await prisma.user.findMany({
+    take: 12,
+    where: {},
+    orderBy: [{ createdAt: 'desc' }],
+  })
   return (
-    <>
-      <section className="p-10">
+    <DashboardPage>
+      <DashboardPageHeader>
+        <DashboardPageHeaderTitle>Users</DashboardPageHeaderTitle>
+      </DashboardPageHeader>
+      <DashboardPageMain>
         <div className="rounded border border-gray-200 bg-white">
           <table className="min-w-full align-middle text-sm">
             <thead>
@@ -87,10 +101,10 @@ export default async function AdminUsersPage() {
             </tbody>
           </table>
         </div>
-      </section>
-      <div className="mb-6 w-full px-10">
-        <PaginationNST />
-      </div>
-    </>
+        <div className="mb-6 w-full px-10">
+          <PaginationNST />
+        </div>
+      </DashboardPageMain>
+    </DashboardPage>
   )
 }

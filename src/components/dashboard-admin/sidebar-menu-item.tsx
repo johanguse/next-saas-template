@@ -1,13 +1,16 @@
 'use client'
 
 import { useState } from 'react'
+
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { SideNavItem } from '@/root/types'
-import { ChevronRight } from 'lucide-react'
 
 import { cn } from '@/lib/utils'
+
 import { useSideBarToggle } from '@/hooks/use-sidebar-toggle'
+
+import { SideNavItem } from '@/root/types'
+import { ChevronRight } from 'lucide-react'
 
 export const SideBarMenuItem = ({ item }: { item: SideNavItem }) => {
   const { toggleCollapse } = useSideBarToggle()
@@ -24,7 +27,7 @@ export const SideBarMenuItem = ({ item }: { item: SideNavItem }) => {
     'text-sidebar-foreground flex h-full min-h-[40px] cursor-pointer items-center rounded-md transition duration-200'
   )
 
-  const activeLink = cn('active cursor-pointer')
+  const activeLink = cn('active bg-sidebar-muted text-red cursor-pointer')
 
   const navMenuDropdownItem = 'text-red transition duration-200 rounded-md'
 
