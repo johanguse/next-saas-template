@@ -8,7 +8,6 @@ import { cn } from '@/lib/utils'
 
 import { Toaster } from '@/components/ui/toaster'
 
-import { CtaBanner } from '@/components/marketing/cta-banner'
 import { ModalProvider } from '@/components/modal-provider'
 import { Providers } from '@/components/providers'
 import { TailwindIndicator } from '@/components/tailwind-indicator'
@@ -96,7 +95,6 @@ export default function RootLayout({ children, modal }: RootLayoutProps) {
         )}
       >
         <Providers attribute="class" defaultTheme="system" enableSystem>
-          <CtaBanner />
           {children}
           {modal}
           <GA googleAnalyticsId={googleAnalyticsId} />

@@ -1,15 +1,21 @@
 import { redirect } from 'next/navigation'
 
-import Header from '@/components/dashboard-admin/header'
-import { SideBar } from '@/components/dashboard-admin/sidebar'
-import { DashboardShell } from '@/components/dashboard/shell'
 import { getCurrentUser } from '@/lib/session'
+
+import {
+  DashboardPage,
+  DashboardPageHeader,
+  DashboardPageHeaderNav,
+  DashboardPageHeaderTitle,
+  DashboardPageMain,
+} from '@/components/dashboard-admin/page'
+import { ModeToggle } from '@/components/layout/mode-toggle'
 
 export const metadata = {
   title: 'Dashboard',
 }
 
-export default async function DashboardPage() {
+export default async function MainDashboardPage() {
   const user = await getCurrentUser()
 
   if (!user) {
@@ -17,9 +23,18 @@ export default async function DashboardPage() {
   }
 
   return (
-    <DashboardShell>
-      <SideBar />
-      <Header user={user} />
-    </DashboardShell>
+    <DashboardPage>
+      <DashboardPageHeader>
+        <DashboardPageHeaderTitle>Home</DashboardPageHeaderTitle>
+        <DashboardPageHeaderNav>
+          <DashboardPageHeaderNav>
+            <ModeToggle />
+          </DashboardPageHeaderNav>
+        </DashboardPageHeaderNav>
+      </DashboardPageHeader>
+      <DashboardPageMain>
+        <p>tesssste</p>
+      </DashboardPageMain>
+    </DashboardPage>
   )
 }

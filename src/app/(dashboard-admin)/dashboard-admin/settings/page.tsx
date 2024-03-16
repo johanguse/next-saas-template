@@ -4,19 +4,15 @@ import {
   DashboardPageHeaderTitle,
   DashboardPageMain,
 } from '@/components/dashboard-admin/page'
-import { CardSkeleton } from '@/components/shared/card-skeleton'
 
-export default function DashboardLoading() {
+export default function Page() {
   return (
     <DashboardPage>
       <DashboardPageHeader>
-        <DashboardPageHeaderTitle>Loading...</DashboardPageHeaderTitle>
+        <DashboardPageHeaderTitle>Settings</DashboardPageHeaderTitle>
       </DashboardPageHeader>
       <DashboardPageMain>
-        <CardSkeleton />
-        <CardSkeleton />
-        <CardSkeleton />
-        <CardSkeleton />
+        <h1>Settings</h1>
       </DashboardPageMain>
     </DashboardPage>
   )

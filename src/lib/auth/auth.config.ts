@@ -1,7 +1,7 @@
-import { env } from "@/root/env.mjs"
-import Google from "next-auth/providers/google"
+import { env } from '@/root/env.mjs'
+import type { NextAuthConfig } from 'next-auth'
+import Google from 'next-auth/providers/google'
 
-import type { NextAuthConfig } from "next-auth"
 // import { siteConfig } from "@/config/site"
 // import { getUserByEmail } from "@/lib/user";
 // import MagicLinkEmail from "@/emails/magic-link-email"

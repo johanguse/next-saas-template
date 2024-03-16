@@ -1,13 +1,16 @@
 'use client'
 
 import { useState } from 'react'
+
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { SideNavItem } from '@/root/types'
-import { ChevronRight } from 'lucide-react'
 
 import { cn } from '@/lib/utils'
+
 import { useSideBarToggle } from '@/hooks/use-sidebar-toggle'
+
+import { SideNavItem } from '@/root/types'
+import { ChevronRight } from 'lucide-react'
 
 export const SideBarMenuItem = ({ item }: { item: SideNavItem }) => {
   const { toggleCollapse } = useSideBarToggle()

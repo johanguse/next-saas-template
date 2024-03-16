@@ -3,6 +3,7 @@ import { getUserById } from '@/lib/user'
 
 import authConfig from '@/root/auth.config'
 import { PrismaAdapter } from '@auth/prisma-adapter'
+import { UserRole } from '@prisma/client'
 import NextAuth from 'next-auth'
 
 export const {
@@ -31,6 +32,10 @@ export const {
           session.user.id = token.sub
         }
 
+        if (token.role && session.user) {
+          session.user.role = token.role as UserRole
+        }
+
         if (token.email) {
           session.user.email = token.email
         }
@@ -50,6 +55,7 @@ export const {
       if (!dbUser) return token
 
       token.name = dbUser.name
+      token.role = dbUser.role
       token.email = dbUser.email
       token.picture = dbUser.image
 
