@@ -15,10 +15,10 @@ import ButtonShareFeedback from '@/components/shared/button-share-feedback'
 import ChangelogButton from '@/components/shared/changelog-button'
 
 import { MainNavItem } from '@/root/types'
-import { User } from 'next-auth'
+import { Session } from 'next-auth'
 
 interface NavBarProps {
-  user: Pick<User, 'name' | 'image' | 'email'> | undefined
+  user: Session['user']
   items?: MainNavItem[]
   children?: React.ReactNode
   rightElements?: React.ReactNode
