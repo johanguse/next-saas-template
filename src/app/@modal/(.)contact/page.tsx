@@ -2,6 +2,8 @@
 
 import { useRouter } from 'next/navigation'
 
+import { useCurrentUser } from '@/hooks/use-current-user'
+
 import { Card, CardContent, CardHeader } from '@/components/ui/card'
 import { Dialog, DialogContent } from '@/components/ui/dialog'
 
@@ -10,6 +12,7 @@ import { BlockTitle } from '@/components/layout/main-title'
 
 const ContactModal = () => {
   const router = useRouter()
+  const user = useCurrentUser()
   return (
     <Dialog open={true} onOpenChange={() => router.back()}>
       <DialogContent className="border-0 bg-white text-transparent dark:bg-black lg:w-[700px]">
@@ -26,7 +29,7 @@ const ContactModal = () => {
             </BlockTitle.Wrapper>
           </CardHeader>
           <CardContent>
-            <ContactForm />
+            <ContactForm user={user} />
           </CardContent>
         </Card>
       </DialogContent>

@@ -18,18 +18,23 @@ import { Textarea } from '@/components/ui/textarea'
 
 import { sendFeedbackEmail } from '@/actions/send-and-save-feedback'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { User } from 'next-auth'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 import * as z from 'zod'
 
-export default function FeedbackForm() {
+type feedbackFormProps = {
+  user?: User
+}
+
+export default function FeedbackForm({ user }: feedbackFormProps) {
   const [loading, setLoading] = useState<boolean>(false)
   const [status, setStatus] = useState<string>('')
   const form = useForm<z.infer<typeof FeedbackFormSchema>>({
     resolver: zodResolver(FeedbackFormSchema),
     defaultValues: {
-      name: '',
-      email: '',
+      name: user?.name || '',
+      email: user?.email || '',
       title: '',
       description: '',
     },

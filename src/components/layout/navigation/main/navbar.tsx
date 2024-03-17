@@ -58,9 +58,12 @@ export function NavBar({
         <div className="flex items-center space-x-3">
           {rightElements}
 
-          <ChangelogButton />
-
-          {!user && <LoginLink />}
+          {!user && (
+            <>
+              <ChangelogButton />
+              <LoginLink />
+            </>
+          )}
 
           {user && (
             <>

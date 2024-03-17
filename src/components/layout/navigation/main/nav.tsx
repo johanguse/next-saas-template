@@ -4,7 +4,13 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
 import { SidebarNavItem } from 'types'
+
 import { cn } from '@/lib/utils'
+
+import { useCurrentRole } from '@/hooks/use-current-role'
+
+import { Button } from '@/components/ui/button-ui'
+
 import { Icons } from '@/components/shared/icons'
 
 interface DashboardNavProps {
@@ -13,6 +19,7 @@ interface DashboardNavProps {
 
 export function DashboardNav({ items }: DashboardNavProps) {
   const path = usePathname()
+  const userRole = useCurrentRole()
 
   if (!items?.length) {
     return null
@@ -39,6 +46,11 @@ export function DashboardNav({ items }: DashboardNavProps) {
           )
         )
       })}
+      {(userRole === 'ADMIN' || userRole === 'EDITOR') && (
+        <Button variant="tertiary" href="/dashboard-admin" className="mt-10">
+          Go to admin dashboard
+        </Button>
+      )}
     </nav>
   )
 }

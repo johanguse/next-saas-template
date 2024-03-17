@@ -1,8 +1,11 @@
 import { Suspense } from 'react'
+
 import { notFound } from 'next/navigation'
 
 import { dashboardConfig } from '@/config/dashboard'
+
 import { getCurrentUser } from '@/lib/session'
+
 import { DashboardNav } from '@/components/layout/navigation/main/nav'
 import { NavBar } from '@/components/layout/navigation/main/navbar'
 import { SiteFooter } from '@/components/layout/site-footer'

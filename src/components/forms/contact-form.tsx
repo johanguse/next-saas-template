@@ -18,18 +18,23 @@ import { Textarea } from '@/components/ui/textarea'
 
 import { sendEmail } from '@/actions/send-contact-email'
 import { zodResolver } from '@hookform/resolvers/zod'
+import type { User } from 'next-auth'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 import * as z from 'zod'
 
-export default function ContactForm() {
+interface contactFormProps {
+  user?: User
+}
+
+export default function ContactForm({ user }: contactFormProps) {
   const [loading, setLoading] = useState<boolean>(false)
   const [status, setStatus] = useState<string>('')
   const form = useForm<z.infer<typeof ContactFormSchema>>({
     resolver: zodResolver(ContactFormSchema),
     defaultValues: {
-      name: '',
-      email: '',
+      name: user?.name || '',
+      email: user?.email || '',
       message: '',
     },
   })
