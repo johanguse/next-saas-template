@@ -1,10 +1,12 @@
 import { redirect } from 'next/navigation'
 
+import { getCurrentUser } from '@/lib/session'
+
+import { Button } from '@/components/ui/button-ui'
+
 import { DashboardHeader } from '@/components/dashboard/header'
 import { DashboardShell } from '@/components/dashboard/shell'
 import { EmptyPlaceholder } from '@/components/shared/empty-placeholder'
-import { Button } from '@/components/ui/button'
-import { getCurrentUser } from '@/lib/session'
 
 export const metadata = {
   title: 'Dashboard',
@@ -12,6 +14,7 @@ export const metadata = {
 
 export default async function DashboardPage() {
   const user = await getCurrentUser()
+  const userRole = user?.role
 
   if (!user) {
     redirect('/login')
@@ -20,18 +23,21 @@ export default async function DashboardPage() {
   return (
     <DashboardShell>
       <DashboardHeader heading="Panel" text="Create and manage content.">
-        <Button>Fake button</Button>
+        {(userRole === 'ADMIN' || userRole === 'EDITOR') && (
+          <Button variant="tertiary" href="/dashboard-admin">
+            Go to admin dashboard
+          </Button>
+        )}
       </DashboardHeader>
-      <div>
-        <EmptyPlaceholder>
-          <EmptyPlaceholder.Icon name="post" />
-          <EmptyPlaceholder.Title>No content created</EmptyPlaceholder.Title>
-          <EmptyPlaceholder.Description>
-            You don&apos;t have any content yet. Start creating content.
-          </EmptyPlaceholder.Description>
-          <Button variant="outline">Fake button</Button>
-        </EmptyPlaceholder>
-      </div>
+
+      <EmptyPlaceholder>
+        <EmptyPlaceholder.Icon name="post" />
+        <EmptyPlaceholder.Title>No content created</EmptyPlaceholder.Title>
+        <EmptyPlaceholder.Description>
+          You don&apos;t have any content yet. Start creating content.
+        </EmptyPlaceholder.Description>
+        <Button variant="secondary">Fake button</Button>
+      </EmptyPlaceholder>
     </DashboardShell>
   )
 }

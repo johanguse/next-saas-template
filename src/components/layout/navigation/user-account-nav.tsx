@@ -1,15 +1,6 @@
 'use client'
 
 import Link from 'next/link'
-import {
-  CreditCard,
-  LayoutDashboard,
-  LogOut,
-  Settings,
-  User2Icon,
-} from 'lucide-react'
-import type { User } from 'next-auth'
-import { signOut } from 'next-auth/react'
 
 import {
   DropdownMenu,
@@ -18,14 +9,30 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
+
 import { Icons } from '@/components/shared/icons'
 import { UserAvatar } from '@/components/shared/user-avatar'
 
-interface UserAccountNavProps extends React.HTMLAttributes<HTMLDivElement> {
-  user: Pick<User, 'name' | 'image' | 'email'>
+import {
+  Cog,
+  CreditCard,
+  LayoutDashboard,
+  LogOut,
+  Settings,
+  User2Icon,
+} from 'lucide-react'
+import type { Session } from 'next-auth'
+import { signOut } from 'next-auth/react'
+
+type UserAccountNavProps = {
+  user: Session['user']
 }
 
 export function UserAccountNav({ user }: UserAccountNavProps) {
+  if (!user) return
+
+  const userRole = user.role
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
@@ -89,6 +96,20 @@ export function UserAccountNav({ user }: UserAccountNavProps) {
           </Link>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
+        {(userRole === 'ADMIN' || userRole === 'EDITOR') && (
+          <>
+            <DropdownMenuItem asChild className="cursor-pointer">
+              <Link
+                href="/dashboard-admin"
+                className="flex items-center space-x-2.5"
+              >
+                <Cog className="size-4" />
+                <p className="text-sm">Admin dashboard</p>
+              </Link>
+            </DropdownMenuItem>
+            <DropdownMenuSeparator />
+          </>
+        )}
         <DropdownMenuItem
           className="cursor-pointer"
           onSelect={(event) => {

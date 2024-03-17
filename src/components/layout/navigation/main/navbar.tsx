@@ -4,6 +4,7 @@ import Link from 'next/link'
 
 import { cn } from '@/lib/utils'
 
+import { useCurrentUser } from '@/hooks/use-current-user'
 import useScroll from '@/hooks/use-scroll'
 import { useSigninModal } from '@/hooks/use-signin-modal'
 
@@ -15,10 +16,8 @@ import ButtonShareFeedback from '@/components/shared/button-share-feedback'
 import ChangelogButton from '@/components/shared/changelog-button'
 
 import { MainNavItem } from '@/root/types'
-import { User } from 'next-auth'
 
 interface NavBarProps {
-  user: Pick<User, 'name' | 'image' | 'email'> | undefined
   items?: MainNavItem[]
   children?: React.ReactNode
   rightElements?: React.ReactNode
@@ -35,7 +34,6 @@ const LoginLink = () => (
 )
 
 export function NavBar({
-  user,
   items,
   children,
   rightElements,
@@ -43,6 +41,7 @@ export function NavBar({
 }: NavBarProps) {
   const scrolled = useScroll(50)
   const signInModal = useSigninModal()
+  const user = useCurrentUser()
 
   return (
     <header
@@ -58,9 +57,12 @@ export function NavBar({
         <div className="flex items-center space-x-3">
           {rightElements}
 
-          <ChangelogButton />
-
-          {!user && <LoginLink />}
+          {!user && (
+            <>
+              <ChangelogButton />
+              <LoginLink />
+            </>
+          )}
 
           {user && (
             <>
