@@ -12,7 +12,7 @@ export default function Page() {
         <DashboardPageHeaderTitle>Settings</DashboardPageHeaderTitle>
       </DashboardPageHeader>
       <DashboardPageMain>
-        <h1>Settings</h1>
+        <div className="h-96 w-full">teste</div>
       </DashboardPageMain>
     </DashboardPage>
   )

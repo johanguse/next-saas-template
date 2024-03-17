@@ -1,122 +1,53 @@
+'use client'
+
 import Link from 'next/link'
+
+import { dashboardAdminMenuitems } from '@/config/dashboard-admin'
+import { siteConfig } from '@/config/site'
 
 import { cn } from '@/lib/utils'
 
-export type DashboardSidebarGenericProps<T = unknown> = {
-  children: React.ReactNode
-  className?: string
-} & T
+import SidebarItem from '@/components/dashboard-admin/sidebar/item'
+import { UserDropdown } from '@/components/dashboard-admin/sidebar/user-dropdown'
+import IconLogo from '@/components/shared/logo-icon'
 
-export function DashboardSidebar({
-  className,
-  children,
-}: DashboardSidebarGenericProps) {
+import { Session } from 'next-auth'
+
+type SidebarProps = {
+  user: Session['user']
+}
+
+export function Sidebar({ user }: SidebarProps) {
   return (
-    <aside
-      className={cn([
-        'flex flex-col space-y-6 border-r border-border',
-        className,
-      ])}
-    >
-      {children}
-    </aside>
-  )
-}
-
-export function DashboardSidebarHeader({
-  className,
-  children,
-}: DashboardSidebarGenericProps) {
-  return (
-    <header className={cn(['border-b border-border px-6 py-3', className])}>
-      {children}
-    </header>
-  )
-}
-
-export function DashboardSidebarHeaderTitle({
-  className,
-  children,
-}: DashboardSidebarGenericProps) {
-  return <h2 className={cn(['', className])}>{children}</h2>
-}
-
-export function DashboardSidebarMain({
-  className,
-  children,
-}: DashboardSidebarGenericProps) {
-  return <main className={cn(['px-3', className])}>{children}</main>
-}
-
-export function DashboardSidebarNav({
-  className,
-  children,
-}: DashboardSidebarGenericProps) {
-  return <nav className={cn(['', className])}>{children}</nav>
-}
-
-export function DashboardSidebarNavHeader({
-  className,
-  children,
-}: DashboardSidebarGenericProps) {
-  return <header className={cn(['', className])}>{children}</header>
-}
-
-export function DashboardSidebarNavHeaderTitle({
-  className,
-  children,
-}: DashboardSidebarGenericProps) {
-  return (
-    <div
-      className={cn([
-        'ml-3 text-xs uppercase text-muted-foreground',
-        className,
-      ])}
-    >
-      {children}
+    <div className="fixed left-0 top-0 z-10 h-screen w-64 bg-slate-50 p-4 shadow-lg dark:bg-slate-800/40">
+      <div className="flex size-full flex-col justify-between space-y-10">
+        <div>
+          <Link
+            href="/"
+            target="_blank"
+            className="sidebar-top relative mb-12 flex items-center justify-start px-3.5 py-3"
+          >
+            <IconLogo />
+            <h3
+              className={cn(
+                'text-sidebar-foreground min-w-max pl-2 text-2xl font-bold'
+              )}
+            >
+              <span className="hidden font-urban text-base font-bold sm:inline-block">
+                {siteConfig.name}
+              </span>
+            </h3>
+          </Link>
+          <div className="flex flex-col space-y-2">
+            {dashboardAdminMenuitems.map((item, index) => (
+              <SidebarItem key={index} item={item} />
+            ))}
+          </div>
+        </div>
+        <div className="mt-auto border-t border-border p-6">
+          <UserDropdown user={user} />
+        </div>
+      </div>
     </div>
-  )
-}
-
-export function DashboardSidebarNavMain({
-  className,
-  children,
-}: DashboardSidebarGenericProps) {
-  return <div className={cn(['flex flex-col', className])}>{children}</div>
-}
-
-type DashboardSidebarNavLinkProps = {
-  href: string
-  active?: boolean
-}
-
-export function DashboardSidebarNavLink({
-  className,
-  children,
-  href,
-  active,
-}: DashboardSidebarGenericProps<DashboardSidebarNavLinkProps>) {
-  return (
-    <Link
-      href={href}
-      className={cn([
-        'flex items-center rounded-md px-3 py-2 text-base',
-        active && 'bg-secondary',
-        className,
-      ])}
-    >
-      {children}
-    </Link>
-  )
-}
-
-export function DashboardSidebarFooter({
-  className,
-  children,
-}: DashboardSidebarGenericProps) {
-  return (
-    <footer className={cn(['mt-auto border-t border-border p-6', className])}>
-      {children}
-    </footer>
   )
 }
