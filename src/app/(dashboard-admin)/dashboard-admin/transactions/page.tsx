@@ -1,39 +1,18 @@
-import { redirect } from 'next/navigation'
-
-import { getCurrentUser } from '@/lib/session'
-
 import { Button } from '@/components/ui/button'
 
 import {
   DashboardPage,
   DashboardPageHeader,
-  DashboardPageHeaderNav,
   DashboardPageHeaderTitle,
   DashboardPageMain,
 } from '@/components/dashboard-admin/page'
-import { ModeToggle } from '@/components/layout/mode-toggle'
 import { EmptyPlaceholder } from '@/components/shared/empty-placeholder'
 
-export const metadata = {
-  title: 'Dashboard',
-}
-
-export default async function MainDashboardPage() {
-  const user = await getCurrentUser()
-
-  if (!user) {
-    redirect('/login')
-  }
-
+export default function Page() {
   return (
     <DashboardPage>
       <DashboardPageHeader>
-        <DashboardPageHeaderTitle>Home</DashboardPageHeaderTitle>
-        <DashboardPageHeaderNav>
-          <DashboardPageHeaderNav>
-            <ModeToggle />
-          </DashboardPageHeaderNav>
-        </DashboardPageHeaderNav>
+        <DashboardPageHeaderTitle>Transactions</DashboardPageHeaderTitle>
       </DashboardPageHeader>
       <DashboardPageMain>
         <section className="mb-8">

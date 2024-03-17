@@ -13,7 +13,7 @@ import {
 
 const UserTableRow = ({ user }) => {
   return (
-    <tr className="even:bg-gray-50">
+    <tr className="text-black even:bg-gray-50 dark:text-white dark:even:bg-gray-700">
       <td className="hidden p-3 text-center md:table-cell">
         <Image
           width={40}
@@ -23,10 +23,12 @@ const UserTableRow = ({ user }) => {
           className="inline-block size-10 rounded-full"
         />
       </td>
-      <td className="p-3">
+      <td className="p-3 ">
         <p className="font-medium">{user.name}</p>
       </td>
-      <td className="hidden p-3 text-gray-500 md:table-cell">{user.email}</td>
+      <td className="hidden p-3 text-gray-800 dark:text-gray-200 md:table-cell">
+        {user.email}
+      </td>
       <td className="p-3 text-center">
         <span className={`text-sm md:hidden`}>{user.role}</span>
         <div
@@ -72,23 +74,23 @@ export default async function AdminUsersPage() {
         <DashboardPageHeaderTitle>Users</DashboardPageHeaderTitle>
       </DashboardPageHeader>
       <DashboardPageMain>
-        <div className="rounded border border-gray-200 bg-white">
+        <div className="rounded border border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-800">
           <table className="min-w-full align-middle text-sm">
-            <thead>
-              <tr className="bg-gray-50">
-                <th className="hidden bg-gray-100 p-3 text-center text-sm font-semibold uppercase tracking-wider text-gray-700 md:table-cell">
+            <thead className="bg-gray-100 text-gray-700 dark:bg-gray-900 dark:text-white">
+              <tr className="p-3 text-left text-sm font-semibold uppercase tracking-wider">
+                <th className="hidden p-3 text-center text-sm font-semibold uppercase tracking-wider md:table-cell">
                   Avatar
                 </th>
-                <th className="bg-gray-100 p-3 text-left text-sm font-semibold uppercase tracking-wider text-gray-700">
+                <th className="p-3 text-left text-sm font-semibold uppercase tracking-wider">
                   Name
                 </th>
-                <th className="hidden bg-gray-100 p-3 text-left text-sm font-semibold uppercase tracking-wider text-gray-700 md:table-cell">
+                <th className="hidden p-3 text-left text-sm font-semibold uppercase tracking-wider md:table-cell">
                   Email
                 </th>
-                <th className="bg-gray-100 p-3 text-center text-sm font-semibold uppercase tracking-wider text-gray-700">
+                <th className="p-3 text-center text-sm font-semibold uppercase tracking-wider">
                   Role
                 </th>
-                <th className="bg-gray-100 p-3 text-center text-sm font-semibold uppercase tracking-wider text-gray-700">
+                <th className="p-3 text-center text-sm font-semibold uppercase tracking-wider">
                   Actions
                 </th>
               </tr>
