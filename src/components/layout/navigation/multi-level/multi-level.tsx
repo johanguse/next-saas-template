@@ -8,6 +8,7 @@ import { siteConfig } from '@/config/site'
 
 import { cn } from '@/lib/utils'
 
+import { useCurrentUser } from '@/hooks/use-current-user'
 import useScroll from '@/hooks/use-scroll'
 import { useSigninModal } from '@/hooks/use-signin-modal'
 
@@ -29,7 +30,6 @@ import ChangelogButton from '@/components/shared/changelog-button'
 import IconLogo from '@/components/shared/logo-icon'
 
 import { MainNavItem } from '@/root/types'
-import type { Session } from 'next-auth'
 
 const LoginLink = () => (
   <Link
@@ -41,7 +41,6 @@ const LoginLink = () => (
 )
 
 interface NavBarProps {
-  user: Session['user']
   items?: MainNavItem[]
   children?: React.ReactNode
   rightElements?: React.ReactNode
@@ -49,7 +48,6 @@ interface NavBarProps {
 }
 
 export function MultiLevelNav({
-  user,
   items,
   children,
   rightElements,
@@ -57,6 +55,7 @@ export function MultiLevelNav({
 }: NavBarProps) {
   const scrolled = useScroll(50)
   const signInModal = useSigninModal()
+  const user = useCurrentUser()
 
   return (
     <header
