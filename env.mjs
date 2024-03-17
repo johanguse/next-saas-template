@@ -4,6 +4,7 @@ import { z } from 'zod'
 export const env = createEnv({
   server: {
     POSTGRES_DATABASE_URL: z.string().url(),
+    NEXTAUTH_URL: z.string().url(),
     NEXTAUTH_SECRET: z.string().min(1),
     GOOGLE_CLIENT_ID: z.string().min(1),
     GOOGLE_CLIENT_SECRET: z.string().min(1),
@@ -28,6 +29,7 @@ export const env = createEnv({
     POSTGRES_DATABASE_URL: process.env.POSTGRES_DATABASE_URL,
     NEXT_PUBLIC_ANALITYCS_ID: process.env.NEXT_PUBLIC_ANALITYCS_ID,
     // Auth v5
+    NEXTAUTH_URL: process.env.NEXTAUTH_URL,
     NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
     GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
     GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET,
