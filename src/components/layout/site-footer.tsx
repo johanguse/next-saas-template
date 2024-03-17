@@ -9,10 +9,10 @@ import { getCurrentUser } from '@/lib/session'
 import { cn } from '@/lib/utils'
 
 import { ModeToggle } from '@/components/layout/mode-toggle'
+import ChangelogButton from '@/components/shared/changelog-button'
 import { Icons } from '@/components/shared/icons'
 import IconLogo from '@/components/shared/logo-icon'
 
-import ChangelogButton from '../shared/changelog-button'
 import { SocialLink } from '@/root/types'
 
 export async function SiteFooter({

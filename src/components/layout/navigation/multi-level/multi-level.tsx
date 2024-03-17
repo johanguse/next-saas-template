@@ -22,14 +22,14 @@ import {
   navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu'
 
+import { ModeToggle } from '@/components/layout/mode-toggle'
+import { UserAccountNav } from '@/components/layout/navigation/user-account-nav'
 import ButtonShareFeedback from '@/components/shared/button-share-feedback'
 import ChangelogButton from '@/components/shared/changelog-button'
 import IconLogo from '@/components/shared/logo-icon'
 
-import { ModeToggle } from '../../mode-toggle'
-import { UserAccountNav } from '../user-account-nav'
 import { MainNavItem } from '@/root/types'
-import { User } from 'next-auth'
+import type { Session } from 'next-auth'
 
 const LoginLink = () => (
   <Link
@@ -41,7 +41,7 @@ const LoginLink = () => (
 )
 
 interface NavBarProps {
-  user: Pick<User, 'name' | 'image' | 'email'> | undefined
+  user: Session['user']
   items?: MainNavItem[]
   children?: React.ReactNode
   rightElements?: React.ReactNode
