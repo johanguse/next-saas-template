@@ -2,18 +2,21 @@
 
 import * as React from 'react'
 import { Suspense } from 'react'
+
+import { cn } from '@/lib/utils'
+import { userAuthSchema } from '@/lib/validations/auth'
+
+import { buttonVariants } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
+
+import { Icons } from '@/components/shared/icons'
+
 import { zodResolver } from '@hookform/resolvers/zod'
 import { signIn } from 'next-auth/react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 import * as z from 'zod'
-
-import { cn } from '@/lib/utils'
-import { userAuthSchema } from '@/lib/validations/auth'
-import { buttonVariants } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
-import { Icons } from '@/components/shared/icons'
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {
   type?: string
@@ -114,7 +117,9 @@ export function UserAuthForm({ className, type, ...props }: UserAuthFormProps) {
           className={cn(buttonVariants({ variant: 'outline' }))}
           onClick={() => {
             setIsGoogleLoading(true)
-            signIn('google')
+            signIn('google', {
+              callbackUrl: callbackUrl || '/dashboard',
+            })
           }}
           disabled={isLoading || isGoogleLoading}
         >

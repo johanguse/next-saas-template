@@ -60,6 +60,8 @@ model User {
   image         String?
   password      String?
 
+  isBlocked Boolean @default(false)
+
   role                  UserRole               @default(USER)
   isTwoFactorEnabled    Boolean                @default(false)
   twoFactorConfirmation TwoFactorConfirmation?

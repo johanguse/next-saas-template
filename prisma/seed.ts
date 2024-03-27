@@ -28,6 +28,7 @@ const main = async () => {
           name: faker.person.fullName(),
           email: faker.internet.email().toLocaleLowerCase(),
           password: hashedPassword,
+          isBlocked: faker.datatype.boolean(),
           role: faker.helpers.arrayElement(userRoles),
           isTwoFactorEnabled: faker.datatype.boolean(),
           emailVerified: faker.date.past(),
