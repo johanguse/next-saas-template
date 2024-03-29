@@ -370,6 +370,8 @@ importers:
         specifier: ^5.0.0
         version: 5.0.0
 
+  packages/eslint-config: {}
+
   packages/ui:
     dependencies:
       '@radix-ui/react-dialog':

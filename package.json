@@ -5,7 +5,10 @@
   "packageManager": "pnpm@6.14.1",
   "scripts": {
     "dev": "turbo dev",
-    "prepare": "husky"
+    "format": "prettier --check --ignore-path .gitignore .",
+    "format:fix": "prettier --write --ignore-path .gitignore .",
+    "postinstall": "if [ \"$npm_config_omit\" = \"dev\" ]; then echo \"Skip husky installation\"; else husky install; fi",
+    "prepare": "husky install || true"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.2.0",
