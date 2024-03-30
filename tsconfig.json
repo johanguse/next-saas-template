@@ -19,14 +19,14 @@
       "@/*": ["./src/*"],
       "@/actions/*": ["./src/actions/*"],
       "@/components/*": ["./src/components/*"],
+      "@/content": ["./.velite"],
       "@/config/*": ["./config/*"],
       "@/emails/*": ["./emails/*"],
       "@/lib/*": ["./src/lib/*"],
       "@/pages/*": ["./src/pages/*"],
       "@/root/*": ["./*"],
       "@/styles/*": ["./src/styles/*"],
-      "@/types/*": ["./types/*"],
-      "contentlayer/generated": ["./.contentlayer/generated"]
+      "@/types/*": ["./types/*"]
     },
     "plugins": [
       {
@@ -40,7 +40,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    ".contentlayer/generated"
+    ".velite"
   ],
   "exclude": ["node_modules"]
 }

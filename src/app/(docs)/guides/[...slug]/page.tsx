@@ -1,20 +1,21 @@
+import { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { allGuides } from 'contentlayer/generated'
 
 import { getTableOfContents } from '@/lib/toc'
-import { Mdx } from '@/components/content/mdx-components'
+import { absoluteUrl, cn } from '@/lib/utils'
+
+import { buttonVariants } from '@/components/ui/button'
+
+import { MDXContent } from '@/components/content/mdx-content'
 import { DocsPageHeader } from '@/components/docs/page-header'
 import { Icons } from '@/components/shared/icons'
 import { DashboardTableOfContents } from '@/components/shared/toc'
 
 import '@/styles/mdx.css'
 
-import { Metadata } from 'next'
+import { allGuides } from '@/content'
 import { env } from '@/root/env.mjs'
-
-import { absoluteUrl, cn } from '@/lib/utils'
-import { buttonVariants } from '@/components/ui/button'
 
 interface GuidePageProps {
   params: {
@@ -24,7 +25,7 @@ interface GuidePageProps {
 
 async function getGuideFromParams(params) {
   const slug = params?.slug?.join('/')
-  const guide = allGuides.find((guide) => guide.slugAsParams === slug)
+  const guide = allGuides.find((guide) => guide.slug === slug)
 
   if (!guide) {
     null
@@ -79,7 +80,7 @@ export async function generateStaticParams(): Promise<
   GuidePageProps['params'][]
 > {
   return allGuides.map((guide) => ({
-    slug: guide.slugAsParams.split('/'),
+    slug: guide.slug.split('/'),
   }))
 }
 
@@ -90,13 +91,13 @@ export default async function GuidePage({ params }: GuidePageProps) {
     notFound()
   }
 
-  const toc = await getTableOfContents(guide.body.raw)
+  const toc = await getTableOfContents(guide.body)
 
   return (
     <main className="relative py-6 lg:grid lg:grid-cols-[1fr_300px] lg:gap-10 lg:py-10 xl:gap-20">
       <div>
         <DocsPageHeader heading={guide.title} text={guide.description} />
-        <Mdx code={guide.body.code} />
+        <MDXContent code={guide.body} />
         <hr className="my-4" />
         <div className="flex justify-center py-6 lg:py-10">
           <Link

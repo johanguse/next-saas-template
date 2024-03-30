@@ -7,14 +7,14 @@ import { absoluteUrl, cn, formatDate } from '@/lib/utils'
 
 import { buttonVariants } from '@/components/ui/button'
 
-import { Mdx } from '@/components/content/mdx-components'
+import { MDXContent } from '@/components/content/mdx-content'
 import { Icons } from '@/components/shared/icons'
 import ShareButtons from '@/components/shared/share-buttons'
 
 import '@/styles/mdx.css'
 
+import { allAuthors, allPosts } from '@/content'
 import { env } from '@/root/env.mjs'
-import { allAuthors, allPosts } from 'contentlayer/generated'
 
 interface PostPageProps {
   params: {
@@ -31,7 +31,7 @@ interface HeadingsProps {
 
 async function getPostFromParams(params) {
   const slug = params?.slug?.join('/')
-  const post = allPosts.find((post) => post.slugAsParams === slug)
+  const post = allPosts.find((post) => post.slug === slug)
 
   if (!post) {
     return null
@@ -89,13 +89,12 @@ export async function generateStaticParams(): Promise<
   PostPageProps['params'][]
 > {
   return allPosts.map((post) => ({
-    slug: post.slugAsParams.split('/'),
+    slug: post.slug.split('/'),
   }))
 }
 
 export default async function PostPage({ params }: PostPageProps) {
   const post = await getPostFromParams(params)
-  const postURL = `${env.NEXT_PUBLIC_APP_URL}/blog/${params?.slug?.join('/')}`
 
   if (!post) {
     notFound()
@@ -129,12 +128,12 @@ export default async function PostPage({ params }: PostPageProps) {
                   {authors.map((author) =>
                     author ? (
                       <Link
-                        key={author._id}
+                        key={author.slug}
                         href={`https://twitter.com/${author.twitter}`}
                         className="flex items-center space-x-2 text-sm"
                       >
                         <Image
-                          src={author.avatar}
+                          src={author.avatar || '/images/avatars/shadcn.png'}
                           alt={author.title}
                           width={42}
                           height={42}
@@ -171,7 +170,7 @@ export default async function PostPage({ params }: PostPageProps) {
               priority
             />
           )}
-          <Mdx code={post.body.code} />
+          <MDXContent code={post.body} />
           <hr className="my-10" />
           <div className="mb-10">
             <h3 className="mb-4 text-xl"> Share this post </h3>
@@ -204,23 +203,31 @@ export default async function PostPage({ params }: PostPageProps) {
               All posts
             </Link>
           </div>
-          {post.toc ? (
+          {post.hasToc && post.toc ? (
             <div className="w-full">
               <h3 className="mb-4 uppercase leading-relaxed">On this page</h3>
               <div className="text-balance">
-                {post.headings.map((heading: HeadingsProps) => {
-                  return (
-                    <div key={`#${heading.slug}`}>
-                      <a
-                        data-level={heading.level}
-                        href={`#${heading.slug}`}
-                        className="text-sm hover:underline data-[level=three]:pl-4 data-[level=two]:pl-2"
-                      >
-                        {heading.text}
-                      </a>
-                    </div>
-                  )
-                })}
+                {post.toc.map((section) => (
+                  <div key={section.url}>
+                    <a href={section.url} className="text-sm hover:underline">
+                      {section.title}
+                    </a>
+                    {section.items.length > 0 && (
+                      <div className="ml-2">
+                        {section.items.map((item) => (
+                          <div key={item.url}>
+                            <a
+                              href={item.url}
+                              className="text-sm hover:underline"
+                            >
+                              {item.title}
+                            </a>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ))}
               </div>
             </div>
           ) : null}

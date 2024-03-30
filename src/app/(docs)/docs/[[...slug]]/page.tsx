@@ -1,18 +1,18 @@
+import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { allDocs } from 'contentlayer/generated'
 
 import { getTableOfContents } from '@/lib/toc'
-import { Mdx } from '@/components/content/mdx-components'
+import { absoluteUrl } from '@/lib/utils'
+
+import { MDXContent } from '@/components/content/mdx-content'
 import { DocsPageHeader } from '@/components/docs/page-header'
 import { DocsPager } from '@/components/docs/pager'
 import { DashboardTableOfContents } from '@/components/shared/toc'
 
 import '@/styles/mdx.css'
 
-import { Metadata } from 'next'
+import { allDocs } from '@/content'
 import { env } from '@/root/env.mjs'
-
-import { absoluteUrl } from '@/lib/utils'
 
 interface DocPageProps {
   params: {
@@ -22,7 +22,7 @@ interface DocPageProps {
 
 async function getDocFromParams(params) {
   const slug = params.slug?.join('/') || ''
-  const doc = allDocs.find((doc) => doc.slugAsParams === slug)
+  const doc = allDocs.find((doc) => doc.slug === slug)
 
   if (!doc) {
     null
@@ -77,7 +77,7 @@ export async function generateStaticParams(): Promise<
   DocPageProps['params'][]
 > {
   return allDocs.map((doc) => ({
-    slug: doc.slugAsParams.split('/'),
+    slug: doc.slug.split('/'),
   }))
 }
 
@@ -88,13 +88,13 @@ export default async function DocPage({ params }: DocPageProps) {
     notFound()
   }
 
-  const toc = await getTableOfContents(doc.body.raw)
+  const toc = await getTableOfContents(doc.body)
 
   return (
     <main className="relative py-6 lg:gap-10 lg:py-10 xl:grid xl:grid-cols-[1fr_300px]">
       <div className="mx-auto w-full min-w-0">
         <DocsPageHeader heading={doc.title} text={doc.description} />
-        <Mdx code={doc.body.code} />
+        <MDXContent code={doc.body} />
         <hr className="my-4 md:my-6" />
         <DocsPager doc={doc} />
       </div>

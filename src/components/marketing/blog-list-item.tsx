@@ -1,10 +1,12 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { Post } from '@/root/.contentlayer/generated'
-import { format, parseISO } from 'date-fns'
 
 import { marketingConfig } from '@/config/marketing'
+
 import { Button } from '@/components/ui/button-ui'
+
+import { Post } from '@/content'
+import { format, parseISO } from 'date-fns'
 
 interface BlogPostListItemProps {
   posts: Post[]
@@ -19,7 +21,7 @@ export function BlogPostListItem({ posts }: BlogPostListItemProps) {
         <li className="flex border-gray-200" key={key}>
           <article className="flex flex-col">
             <div className="flex flex-col">
-              <Link href={items.slug} tabIndex={-1}>
+              <Link href={`/blog/${items.slug}`} tabIndex={-1}>
                 <Image
                   width={384}
                   height={256}
@@ -30,7 +32,7 @@ export function BlogPostListItem({ posts }: BlogPostListItemProps) {
                 />
               </Link>
               <h3 className="mt-2 text-balance text-lg font-semibold">
-                <Link href={items.slug}>{items.title}</Link>
+                <Link href={`/blog/${items.slug}`}>{items.title}</Link>
               </h3>
             </div>
             <div className="mt-3 flex-1 space-y-2">
@@ -46,7 +48,7 @@ export function BlogPostListItem({ posts }: BlogPostListItemProps) {
             <Button
               className="ml-0 mt-4 justify-start pl-0 text-left font-semibold"
               tabIndex={-1}
-              href={items.slug}
+              href={`/blog/${items.slug}`}
               variant="link"
             >
               Read more

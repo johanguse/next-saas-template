@@ -1,15 +1,16 @@
+import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { allPages } from 'contentlayer/generated'
 
-import { Mdx } from '@/components/content/mdx-components'
+import { siteConfig } from '@/config/site'
+
+import { absoluteUrl } from '@/lib/utils'
+
+import { MDXContent } from '@/components/content/mdx-content'
 
 import '@/styles/mdx.css'
 
-import { Metadata } from 'next'
+import { allPages } from '@/content'
 import { env } from '@/root/env.mjs'
-
-import { siteConfig } from '@/config/site'
-import { absoluteUrl } from '@/lib/utils'
 
 interface PageProps {
   params: {
@@ -19,7 +20,7 @@ interface PageProps {
 
 async function getPageFromParams(params) {
   const slug = params?.slug?.join('/')
-  const page = allPages.find((page) => page.slugAsParams === slug)
+  const page = allPages.find((page) => page.slug === slug)
 
   if (!page) {
     null
@@ -72,7 +73,7 @@ export async function generateMetadata({
 
 export async function generateStaticParams(): Promise<PageProps['params'][]> {
   return allPages.map((page) => ({
-    slug: page.slugAsParams.split('/'),
+    slug: page.slug.split('/'),
   }))
 }
 
@@ -94,7 +95,7 @@ export default async function PagePage({ params }: PageProps) {
         )}
       </div>
       <hr className="my-4" />
-      <Mdx code={page.body.code} />
+      <MDXContent code={page.body} />
     </article>
   )
 }
