@@ -22,14 +22,16 @@ export function BlogPostListItem({ posts }: BlogPostListItemProps) {
           <article className="flex flex-col">
             <div className="flex flex-col">
               <Link href={`/blog/${items.slug}`} tabIndex={-1}>
-                <Image
-                  width={384}
-                  height={256}
-                  src={items.image}
-                  loading="lazy"
-                  alt={items.title}
-                  className="w-full rounded-lg"
-                />
+                {items.image && (
+                  <Image
+                    width={384}
+                    height={256}
+                    src={items.image}
+                    loading="lazy"
+                    alt={items.title}
+                    className="w-full rounded-lg"
+                  />
+                )}
               </Link>
               <h3 className="mt-2 text-balance text-lg font-semibold">
                 <Link href={`/blog/${items.slug}`}>{items.title}</Link>
