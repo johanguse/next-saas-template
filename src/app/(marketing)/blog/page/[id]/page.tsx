@@ -1,9 +1,11 @@
 import { useMemo } from 'react'
-import { allPosts } from 'contentlayer/generated'
 
 import { marketingConfig } from '@/config/marketing'
+
 import { BlogPostsArchive } from '@/components/blog-posts-archive'
 import PaginationNST from '@/components/shared/pagination'
+
+import { allPosts } from '@/content'
 
 type BlogPageProps = {
   params: { id: number }

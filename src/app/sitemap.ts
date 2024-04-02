@@ -1,8 +1,10 @@
 import { MetadataRoute } from 'next'
-import { allPosts } from 'contentlayer/generated'
 
 import { marketingConfig } from '@/config/marketing'
+
 import { absoluteUrl, formatDateToISO } from '@/lib/utils'
+
+import { allPosts } from '@/content'
 
 const baseUrl = absoluteUrl('')
 
@@ -16,7 +18,7 @@ const routes: MetadataRoute.Sitemap = [
 }))
 
 const postsSitemap: MetadataRoute.Sitemap = allPosts.map((post) => ({
-  url: `${baseUrl}/${post._raw.flattenedPath}`,
+  url: `${baseUrl}/${post.slug}`,
   lastModified: formatDateToISO(new Date(post.date)),
 }))
 

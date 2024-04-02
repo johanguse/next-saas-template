@@ -1,7 +1,8 @@
-import { Post } from '@/root/.contentlayer/generated'
-
 import { marketingConfig } from '@/config/marketing'
+
 import { BlogPostListItem } from '@/components/marketing/blog-list-item'
+
+import { Post } from '@/content'
 
 interface BlogPostsArchiveProps {
   posts: Post[]

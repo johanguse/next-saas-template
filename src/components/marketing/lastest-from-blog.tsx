@@ -1,9 +1,10 @@
-import { allPosts } from '@/root/.contentlayer/generated'
-import { compareDesc } from 'date-fns'
-
 import { Button } from '@/components/ui/button-ui'
+
 import { BlockTitle } from '@/components/layout/main-title'
 import { BlogPostListItem } from '@/components/marketing/blog-list-item'
+
+import { allPosts } from '@/content'
+import { compareDesc } from 'date-fns'
 
 export default function LatestFromBlog() {
   const posts = allPosts

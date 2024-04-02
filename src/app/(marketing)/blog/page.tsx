@@ -8,7 +8,7 @@ import { Badge } from '@/components/ui/badge'
 import { BlogPostListItem } from '@/components/marketing/blog-list-item'
 import PaginationNST from '@/components/shared/pagination'
 
-import { allPosts } from '@/root/.contentlayer/generated'
+import { allPosts } from '@/content'
 import { format, parseISO } from 'date-fns'
 
 type BlogPageProps = {

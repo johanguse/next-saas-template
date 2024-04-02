@@ -1,6 +1,8 @@
 'use client'
 
-import { Post } from '@/root/.contentlayer/generated'
+import { absoluteUrl } from '@/lib/utils'
+
+import { Post } from '@/content'
 import {
   EmailIcon,
   EmailShareButton,
@@ -19,8 +21,6 @@ import {
   WhatsappIcon,
   WhatsappShareButton,
 } from 'next-share'
-
-import { absoluteUrl } from '@/lib/utils'
 
 interface PostPageProps {
   post: Post

@@ -40,3 +40,5 @@ next-env.d.ts
 /.react-email/
 
 .contentlayer
+.velite
+/public/static
