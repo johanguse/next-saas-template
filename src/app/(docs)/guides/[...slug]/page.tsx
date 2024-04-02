@@ -7,9 +7,8 @@ import { absoluteUrl, cn } from '@/lib/utils'
 
 import { buttonVariants } from '@/components/ui/button'
 
-import { MDXContent } from '@/components/content/mdx-content'
+import { Mdx } from '@/components/content/mdx-components'
 import { DocsPageHeader } from '@/components/docs/page-header'
-import { Callout } from '@/components/shared/callout'
 import { Icons } from '@/components/shared/icons'
 import { DashboardTableOfContents } from '@/components/shared/toc'
 
@@ -98,7 +97,7 @@ export default async function GuidePage({ params }: GuidePageProps) {
     <main className="relative py-6 lg:grid lg:grid-cols-[1fr_300px] lg:gap-10 lg:py-10 xl:gap-20">
       <div>
         <DocsPageHeader heading={guide.title} text={guide.description} />
-        <MDXContent code={guide.body} components={{ Callout }} />
+        <Mdx code={guide.body} />
         <hr className="my-4" />
         <div className="flex justify-center py-6 lg:py-10">
           <Link
