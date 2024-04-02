@@ -8,6 +8,7 @@ import { absoluteUrl, cn, formatDate } from '@/lib/utils'
 import { buttonVariants } from '@/components/ui/button'
 
 import { MDXContent } from '@/components/content/mdx-content'
+import { Callout } from '@/components/shared/callout'
 import { Icons } from '@/components/shared/icons'
 import ShareButtons from '@/components/shared/share-buttons'
 
@@ -170,7 +171,7 @@ export default async function PostPage({ params }: PostPageProps) {
               priority
             />
           )}
-          <MDXContent code={post.body} />
+          <MDXContent code={post.body} components={{ Callout }} />
           <hr className="my-10" />
           <div className="mb-10">
             <h3 className="mb-4 text-xl"> Share this post </h3>

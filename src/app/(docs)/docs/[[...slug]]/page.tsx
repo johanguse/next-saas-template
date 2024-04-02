@@ -4,9 +4,19 @@ import { notFound } from 'next/navigation'
 import { getTableOfContents } from '@/lib/toc'
 import { absoluteUrl } from '@/lib/utils'
 
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card'
+
 import { MDXContent } from '@/components/content/mdx-content'
 import { DocsPageHeader } from '@/components/docs/page-header'
 import { DocsPager } from '@/components/docs/pager'
+import { Callout } from '@/components/shared/callout'
 import { DashboardTableOfContents } from '@/components/shared/toc'
 
 import '@/styles/mdx.css'
@@ -94,7 +104,18 @@ export default async function DocPage({ params }: DocPageProps) {
     <main className="relative py-6 lg:gap-10 lg:py-10 xl:grid xl:grid-cols-[1fr_300px]">
       <div className="mx-auto w-full min-w-0">
         <DocsPageHeader heading={doc.title} text={doc.description} />
-        <MDXContent code={doc.body} />
+        <MDXContent
+          code={doc.body}
+          components={{
+            Callout,
+            Card,
+            CardContent,
+            CardDescription,
+            CardFooter,
+            CardHeader,
+            CardTitle,
+          }}
+        />
         <hr className="my-4 md:my-6" />
         <DocsPager doc={doc} />
       </div>

@@ -6,6 +6,7 @@ import { siteConfig } from '@/config/site'
 import { absoluteUrl } from '@/lib/utils'
 
 import { MDXContent } from '@/components/content/mdx-content'
+import { Callout } from '@/components/shared/callout'
 
 import '@/styles/mdx.css'
 
@@ -95,7 +96,7 @@ export default async function PagePage({ params }: PageProps) {
         )}
       </div>
       <hr className="my-4" />
-      <MDXContent code={page.body} />
+      <MDXContent code={page.body} components={{ Callout }} />
     </article>
   )
 }
