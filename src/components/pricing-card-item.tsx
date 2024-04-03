@@ -8,8 +8,7 @@ import { pricingData } from '@/config/subscriptions'
 
 import { useSigninModal } from '@/hooks/use-signin-modal'
 
-import { buttonVariants } from '@/components/ui/button'
-import { Button as ButtonUI } from '@/components/ui/button-ui'
+import { Button, buttonVariants } from '@/components/ui/button'
 import { Switch } from '@/components/ui/switch'
 
 import { BillingFormButton } from '@/components/forms/billing-form-button'
@@ -117,7 +116,7 @@ export function PricingCardItem({
                     href="/dashboard"
                     className={buttonVariants({
                       className: 'w-full',
-                      variant: 'default',
+                      variant: 'outline',
                     })}
                   >
                     Go to dashboard
@@ -130,13 +129,17 @@ export function PricingCardItem({
                   />
                 )
               ) : (
-                <ButtonUI
-                  variant="primary"
+                <Button
+                  variant={
+                    offer.title.toLocaleLowerCase() === 'pro'
+                      ? 'default'
+                      : 'outline'
+                  }
                   onClick={signInModal.onOpen}
                   className="w-full justify-center"
                 >
                   Sign in
-                </ButtonUI>
+                </Button>
               )}
             </div>
           </div>

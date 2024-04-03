@@ -1,29 +1,46 @@
-"use client"
+'use client'
 
-import { generateUserStripe } from '@/actions/generate-user-stripe'
-import { Icons } from "@/components/shared/icons"
-import { Button } from "@/components/ui/button"
-import { SubscriptionPlan, UserSubscriptionPlan } from "@/root/types"
 import { useTransition } from 'react'
 
+import { Button } from '@/components/ui/button'
+
+import { Icons } from '@/components/shared/icons'
+
+import { generateUserStripe } from '@/actions/generate-user-stripe'
+import { SubscriptionPlan, UserSubscriptionPlan } from '@/root/types'
+
 interface BillingFormButtonProps {
-  offer: SubscriptionPlan;
-  subscriptionPlan: UserSubscriptionPlan;
-  year: boolean;
+  offer: SubscriptionPlan
+  subscriptionPlan: UserSubscriptionPlan
+  year: boolean
 }
 
-export function BillingFormButton({ year, offer, subscriptionPlan }: BillingFormButtonProps) {
-  let [isPending, startTransition] = useTransition();
+export function BillingFormButton({
+  year,
+  offer,
+  subscriptionPlan,
+}: BillingFormButtonProps) {
+  let [isPending, startTransition] = useTransition()
   const generateUserStripeSession = generateUserStripe.bind(
     null,
-    offer.stripeIds[year ? "yearly" : "monthly"]
-  );
+    offer.stripeIds[year ? 'yearly' : 'monthly']
+  )
 
-  const stripeSessionAction = () => startTransition(async () => await generateUserStripeSession());
+  const stripeSessionAction = () => {
+    startTransition(() => {
+      generateUserStripeSession()
+    })
+  }
+
+  const userOffer =
+    subscriptionPlan.stripePriceId ===
+    offer.stripeIds[year ? 'yearly' : 'monthly']
 
   return (
     <Button
-      variant="default"
+      variant={
+        offer.title.toLocaleLowerCase() === 'pro' ? 'default' : 'outline'
+      }
       className="w-full"
       disabled={isPending}
       onClick={stripeSessionAction}
@@ -33,11 +50,7 @@ export function BillingFormButton({ year, offer, subscriptionPlan }: BillingForm
           <Icons.spinner className="mr-2 size-4 animate-spin" /> Loading...
         </>
       ) : (
-        <>
-          {subscriptionPlan.stripePriceId === offer.stripeIds[year ? "yearly" : "monthly"]
-            ? "Manage Subscription"
-            : "Upgrade"}
-        </>
+        <>{userOffer ? 'Manage Subscription' : 'Upgrade'}</>
       )}
     </Button>
   )
