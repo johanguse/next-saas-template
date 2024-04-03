@@ -1,9 +1,13 @@
 import React from 'react'
+
 import Link from 'next/link'
-import { SocialLink } from '@/root/types'
 
 import { siteConfig } from '@/config/site'
+
 import { Icons } from '@/components/shared/icons'
+
+import { BlockTitle } from '../layout/main-title'
+import { SocialLink } from '@/root/types'
 
 export default function CtaSocialMedia() {
   const footerSocialLinks: SocialLink[] = Object.entries(
@@ -22,12 +26,9 @@ export default function CtaSocialMedia() {
     <div className="bg-slate-50 dark:bg-slate-800/40">
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:flex lg:items-center lg:px-8 lg:py-24">
         <div className="mr-10 lg:w-0 lg:flex-1">
-          <h1
-            className="text-lg font-semibold tracking-tight text-blue-500 dark:text-sky-500"
-            id="stay-informed"
-          >
-            Stay up to date
-          </h1>
+          <BlockTitle.Header elementType="h1">
+            Stay in the loop
+          </BlockTitle.Header>
           <p
             className="mt-4 text-3xl font-semibold tracking-tight text-slate-900 dark:text-slate-100 sm:text-5xl"
             id="nx-is-fast"
