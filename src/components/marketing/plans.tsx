@@ -24,7 +24,7 @@ const Plan: React.FC<PlanProps> = ({
   <div
     className={`relative flex w-full flex-col divide-y divide-gray-200 self-stretch rounded-xl bg-white shadow dark:divide-gray-800 dark:bg-gray-900 ${
       highlighted
-        ? 'ring-2 ring-gray-900 dark:ring-white lg:z-10 lg:scale-[1.1]'
+        ? 'ring-2 ring-gray-900 dark:ring-white lg:z-10 lg:scale-110'
         : 'ring-1 ring-gray-200 dark:ring-gray-800'
     }`}
   >
@@ -105,16 +105,14 @@ export default function PlansMarketing() {
   ]
 
   return (
-    <section className="py-32">
-      <div className="container px-4 md:px-6">
-        <div className="grid items-center gap-16 px-4 sm:gap-y-24 sm:px-6 lg:px-8">
-          <div className="-mt-14 flex w-full flex-col items-center gap-8 py-16 lg:grid lg:grid-cols-3">
-            {plans.map((plan, index) => (
-              <Plan key={index} {...plan} index={index} />
-            ))}
-          </div>
+    <div className="container px-4 md:px-6">
+      <div className="grid items-center gap-16 px-4 sm:gap-y-24 sm:px-6 lg:px-8">
+        <div className="-mt-14 flex w-full flex-col items-center gap-8 py-16 lg:grid lg:grid-cols-3">
+          {plans.map((plan, index) => (
+            <Plan key={index} {...plan} index={index} />
+          ))}
         </div>
       </div>
-    </section>
+    </div>
   )
 }

@@ -51,7 +51,9 @@ export function PricingCardItem({
       <div className="mx-auto grid max-w-screen-lg gap-5 bg-inherit py-5 md:grid-cols-3 lg:grid-cols-3">
         {pricingData.map((offer) => (
           <div
-            className="relative flex flex-col overflow-hidden rounded-xl border"
+            className={`relative flex flex-col overflow-hidden rounded-xl border ${
+              offer.title.toLowerCase() === 'pro' ? 'border-purple-600' : ''
+            }`}
             key={offer.title}
           >
             <div className="min-h-[150px] items-start space-y-4 bg-secondary/70 p-6">
@@ -91,7 +93,7 @@ export function PricingCardItem({
               <ul className="space-y-2 text-left text-sm font-medium leading-normal">
                 {offer.benefits.map((feature) => (
                   <li className="flex items-start" key={feature}>
-                    <Icons.check className="mr-3 size-5 shrink-0" />
+                    <Icons.check className="mr-3 size-5 shrink-0 text-purple-500" />
                     <p>{feature}</p>
                   </li>
                 ))}
@@ -114,7 +116,7 @@ export function PricingCardItem({
                     href="/dashboard"
                     className={buttonVariants({
                       className: 'w-full',
-                      variant: 'default',
+                      variant: 'outline',
                     })}
                   >
                     Go to dashboard
@@ -127,7 +129,17 @@ export function PricingCardItem({
                   />
                 )
               ) : (
-                <Button onClick={signInModal.onOpen}>Sign in</Button>
+                <Button
+                  variant={
+                    offer.title.toLocaleLowerCase() === 'pro'
+                      ? 'default'
+                      : 'outline'
+                  }
+                  onClick={signInModal.onOpen}
+                  className="w-full justify-center"
+                >
+                  Sign in
+                </Button>
               )}
             </div>
           </div>

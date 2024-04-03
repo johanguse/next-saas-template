@@ -2,40 +2,40 @@ import { Check, X } from 'lucide-react'
 
 export default function PlansTable() {
   return (
-    <section className="body-font overflow-hidden border-t border-gray-200 text-gray-700 dark:border-gray-700 dark:text-gray-200">
+    <section className="body-font overflow-hidden text-gray-700 dark:border-gray-700 dark:text-gray-200">
       <div className="container mx-auto flex flex-wrap px-5 py-24">
         <div className="mt-48 hidden lg:block lg:w-1/4 ">
           <div className="mt-px overflow-hidden rounded-l-lg border-y border-l border-gray-300 dark:border-gray-700 dark:bg-slate-900">
             <p className="-mt-px flex h-12 items-center justify-start bg-gray-100 px-4 text-center text-gray-900 dark:bg-gray-800 dark:text-gray-100">
-              Fingerstache disrupt
+              Real-time analytics dashboard
             </p>
             <p className="flex h-12 items-center justify-start px-4 text-center text-gray-900 dark:text-gray-100">
-              Franzen hashtag
+              AI-powered
             </p>
             <p className="-mt-px flex h-12 items-center justify-start bg-gray-100 px-4 text-center text-gray-900 dark:bg-gray-800 dark:text-gray-100">
-              Tilde art party
+              Predictive sales forecasting
             </p>
             <p className="flex h-12 items-center justify-start px-4 text-center text-gray-900 dark:text-gray-100">
-              Banh mi cornhole
+              Automated lead nurturing
             </p>
             <p className="-mt-px flex h-12 items-center justify-start bg-gray-100 px-4 text-center text-gray-900 dark:bg-gray-800 dark:text-gray-100">
-              Waistcoat squid hexagon
+              Dynamic pricing optimization
             </p>
             <p className="flex h-12 items-center justify-start px-4 text-center text-gray-900 dark:text-gray-100">
-              Pinterest occupy authentic
+              Personalized marketing automation
             </p>
             <p className="-mt-px flex h-12 items-center justify-start bg-gray-100 px-4 text-center text-gray-900 dark:bg-gray-800 dark:text-gray-100">
-              Brooklyn helvetica
+              Multichannel customer support
             </p>
             <p className="flex h-12 items-center justify-start px-4 text-center text-gray-900 dark:text-gray-100">
-              Long Feature Two
+              Advanced user behavior tracking
             </p>
             <p className="-mt-px flex h-12 items-center justify-start bg-gray-100 px-4 text-center text-gray-900 dark:bg-gray-800 dark:text-gray-100">
-              Feature One
+              Real-time collaboration tools
             </p>
           </div>
         </div>
-        <div className="z-10 flex w-full flex-wrap rounded-lg border-gray-300 bg-white dark:border-gray-700 dark:bg-slate-900 lg:w-3/4 lg:border">
+        <div className="z-10 flex w-full flex-wrap rounded-lg border-gray-300 dark:border-gray-700 lg:w-3/4 lg:border">
           <div className="dark:transparent mb-10 w-full rounded-lg border-2 border-gray-300 lg:mb-0 lg:mt-px lg:w-1/3 lg:rounded-none lg:border-none">
             <div className="flex h-48 flex-col items-center justify-center px-2 text-center">
               <h3 className="tracking-widest">START</h3>
@@ -47,7 +47,7 @@ export default function PlansTable() {
               </span>
             </div>
             <p className="-mt-px flex h-12 items-center justify-center border-t border-gray-300 bg-gray-100 px-2 text-center text-gray-600 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300">
-              Schlitz single-origin
+              Feature
             </p>
             <p className="flex h-12 items-center justify-center text-center text-gray-900  dark:text-gray-100">
               <Check />
@@ -110,7 +110,7 @@ export default function PlansTable() {
               </span>
             </div>
             <p className="-mt-px flex h-12 items-center justify-center border-t border-gray-300 bg-gray-100 px-2 text-center text-gray-600 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300">
-              Schlitz single-origin
+              Feature
             </p>
             <p className="flex h-12 items-center justify-center text-center text-gray-900  dark:text-gray-100">
               <Check />
@@ -170,7 +170,7 @@ export default function PlansTable() {
               </span>
             </div>
             <p className="-mt-px flex h-12 items-center justify-center border-t border-gray-300 bg-gray-100 px-2 text-center text-gray-600 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300">
-              Schlitz single-origin
+              Feature
             </p>
             <p className="flex h-12 items-center justify-center text-center text-gray-900  dark:text-gray-100">
               <Check />

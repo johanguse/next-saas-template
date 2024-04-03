@@ -1,9 +1,15 @@
+import { cn } from '@/lib/utils'
+
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion'
+
+type FAQProps = {
+  className?: string
+}
 
 const pricingFaqData = [
   {
@@ -38,9 +44,13 @@ const pricingFaqData = [
   },
 ]
 
-export default function FAQ() {
+export default function FAQ({ className }: FAQProps) {
   return (
-    <Accordion type="single" collapsible className="w-full text-left">
+    <Accordion
+      type="single"
+      collapsible
+      className={cn('w-full text-left ' + className)}
+    >
       {pricingFaqData.map((faqItem) => (
         <AccordionItem key={faqItem.id} value={faqItem.id}>
           <AccordionTrigger>{faqItem.question}</AccordionTrigger>

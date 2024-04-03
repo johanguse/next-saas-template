@@ -46,26 +46,26 @@ const tiersData: PricingTier[] = [
 
 const PricingCard: React.FC<PricingCardProps> = ({ tier }) => {
   return (
-    <div className="flex flex-col rounded-3xl bg-white shadow-xl ring-1 ring-black/10">
-      <div className="p-8 sm:p-10">
+    <div className="flex flex-col rounded-3xl bg-white shadow-xl ring-1 ring-black/10 transition-colors duration-500 ease-in-out dark:bg-gray-800 dark:ring-white/10">
+      <div className="p-8 dark:text-white sm:p-10">
         <h3
-          className="text-lg font-semibold leading-8 tracking-tight text-blue-600"
+          className="text-lg font-semibold leading-8 tracking-tight text-blue-600 dark:text-blue-400"
           id={`tier-${tier.name.toLowerCase()}`}
         >
           {tier.name}
         </h3>
-        <div className="mt-4 flex items-baseline justify-center text-5xl font-bold tracking-tight text-gray-900">
+        <div className="mt-4 flex items-baseline justify-center text-5xl font-bold tracking-tight text-gray-900 dark:text-gray-300">
           {tier.price}
-          <span className="text-lg font-semibold leading-8 tracking-normal text-gray-500">
+          <span className="text-lg font-semibold leading-8 tracking-normal text-gray-500 dark:text-gray-400">
             /mo
           </span>
         </div>
-        <p className="mt-6 text-base leading-7 text-gray-600">
+        <p className="mt-6 text-base leading-7 text-gray-600 dark:text-gray-400">
           {tier.description}
         </p>
       </div>
       <div className="flex flex-1 flex-col p-2">
-        <div className="flex flex-1 flex-col justify-between rounded-2xl bg-gray-50 p-6 sm:p-8">
+        <div className="flex flex-1 flex-col justify-between rounded-2xl bg-gray-50 p-6 dark:bg-gray-900 sm:p-8">
           <ul role="list" className="space-y-6">
             {tier.features.map((feature, index) => (
               <li key={index} className="flex items-start">
@@ -73,7 +73,7 @@ const PricingCard: React.FC<PricingCardProps> = ({ tier }) => {
                   <svg
                     className={`size-6 ${
                       feature.isPositive ? 'text-blue-600' : 'text-red-600'
-                    }`}
+                    } dark:text-blue-400`}
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
@@ -88,7 +88,7 @@ const PricingCard: React.FC<PricingCardProps> = ({ tier }) => {
                     ></path>
                   </svg>
                 </div>
-                <p className="ml-3 text-sm leading-6 text-gray-600">
+                <p className="ml-3 text-sm leading-6 text-gray-600 dark:text-gray-400">
                   {feature.name}
                 </p>
               </li>
@@ -97,7 +97,7 @@ const PricingCard: React.FC<PricingCardProps> = ({ tier }) => {
           <div className="mt-8">
             <a
               href={tier.link}
-              className="inline-block w-full rounded-lg bg-gray-900 p-4 text-center text-sm font-semibold leading-5 text-white shadow-md hover:bg-white hover:text-gray-900 hover:ring hover:ring-gray-900"
+              className="inline-block w-full rounded-lg bg-gray-900 p-4 text-center text-sm font-semibold leading-5 text-white shadow-md hover:bg-white hover:text-gray-900 hover:ring hover:ring-gray-900 dark:bg-white dark:text-gray-800 dark:hover:bg-gray-100 dark:hover:text-gray-900 dark:hover:ring-gray-100"
               aria-describedby={`tier-${tier.name.toLowerCase()}`}
             >
               Get started today

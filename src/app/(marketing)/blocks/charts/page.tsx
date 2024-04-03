@@ -14,7 +14,7 @@ export default function ChartsBlocksPage() {
   return (
     <div className="flex w-full flex-col gap-16 py-8 md:py-8">
       <div className="pt-20 text-center">
-        <BlockTitle.Wrapper>
+        <BlockTitle.Wrapper className="mb-20">
           <BlockTitle.Header elementType="h1" className="text-xl">
             Charts
           </BlockTitle.Header>
