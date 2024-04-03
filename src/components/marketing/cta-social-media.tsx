@@ -4,9 +4,9 @@ import Link from 'next/link'
 
 import { siteConfig } from '@/config/site'
 
+import { BlockTitle } from '@/components/layout/main-title'
 import { Icons } from '@/components/shared/icons'
 
-import { BlockTitle } from '../layout/main-title'
 import { SocialLink } from '@/root/types'
 
 export default function CtaSocialMedia() {
