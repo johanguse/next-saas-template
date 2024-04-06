@@ -21,7 +21,7 @@ export async function sendFeedbackEmail(data: FeedbackFormInputs) {
         to: [siteConfig.mailSupport],
         reply_to: email,
         subject: 'New feedback from ' + siteConfig.name,
-        text: `Name: ${name}\nEmail: ${email}\Suggestion: ${description}`,
+        text: `Name: ${name}\nEmail: ${email}\n\nSuggestion: ${description}`,
       })
       return { success: true, data }
     } catch (error) {

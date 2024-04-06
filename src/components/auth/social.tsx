@@ -10,7 +10,7 @@ import { Icons } from '@/components/shared/icons'
 
 import { signIn } from 'next-auth/react'
 
-export const Social = () => {
+export const SocialLogin = () => {
   const searchParams = useSearchParams()
   const callbackUrl = searchParams.get('callbackUrl')
 

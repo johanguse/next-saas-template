@@ -19,12 +19,12 @@ export default function Hero() {
             <div className="relative">
               <div className="absolute -inset-1 rounded bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500 opacity-75 blur"></div>
               <Link
-                href="https://twitter.com/johanguse"
+                href="https://twitter.com/SaasTemplate"
                 className="relative flex rounded bg-black px-7 py-4 font-semibold text-white"
                 target="_blank"
               >
                 <div className="flex items-center">
-                  Follow me on <Icons.twitter className="ml-2 size-4" />
+                  Follow on <Icons.twitter className="ml-2 size-4" />
                 </div>
               </Link>
             </div>
