@@ -7,6 +7,7 @@ import { cn } from '@/lib/utils'
 
 import { buttonVariants } from '@/components/ui/button'
 
+import { SignInWithPasswordForm } from '@/components/auth/signin-with-password-form'
 import { UserAuthForm } from '@/components/forms/user-auth-form'
 import { Icons } from '@/components/shared/icons'
 import IconLogo from '@/components/shared/logo-icon'
@@ -44,6 +45,10 @@ export default function LoginPage() {
         <Suspense>
           <UserAuthForm />
         </Suspense>
+        <h3>Login</h3>
+        <div className="flex flex-col space-y-2">
+          <SignInWithPasswordForm />
+        </div>
         <p className="px-8 text-center text-sm text-muted-foreground">
           <Link
             href="/register"
