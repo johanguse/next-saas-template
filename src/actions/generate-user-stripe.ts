@@ -2,11 +2,10 @@
 
 import { redirect } from 'next/navigation'
 
+import { auth } from '@/lib/auth/auth'
 import { stripe } from '@/lib/stripe'
 import { getUserSubscriptionPlan } from '@/lib/subscription'
 import { absoluteUrl } from '@/lib/utils'
-
-import { auth } from '@/root/auth'
 
 export type responseAction = {
   status: 'success' | 'error'

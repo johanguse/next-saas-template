@@ -1,12 +1,13 @@
 import { NextRequest } from 'next/server'
 
-import authConfig from '@/root/auth.config'
+import authConfig from '@/lib/auth/auth.config'
 import {
   DEFAULT_LOGIN_REDIRECT,
   apiAuthPrefix,
   authRoutes,
   publicRoutes,
-} from '@/root/routes'
+} from '@/lib/auth/routes'
+
 import NextAuth, { Session } from 'next-auth'
 
 const { auth: middleware } = NextAuth(authConfig)

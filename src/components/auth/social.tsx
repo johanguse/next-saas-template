@@ -2,11 +2,12 @@
 
 import { useSearchParams } from 'next/navigation'
 
+import { DEFAULT_LOGIN_REDIRECT } from '@/lib/auth/routes'
+
 import { Button } from '@/components/ui/button'
 
 import { Icons } from '@/components/shared/icons'
 
-import { DEFAULT_LOGIN_REDIRECT } from '@/root/routes'
 import { signIn } from 'next-auth/react'
 
 export const Social = () => {

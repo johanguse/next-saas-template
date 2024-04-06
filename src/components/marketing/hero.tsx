@@ -1,9 +1,12 @@
 import Link from 'next/link'
 
-import { Icons } from '@/components/shared/icons'
-import { buttonVariants } from '@/components/ui/button'
 import { siteConfig } from '@/config/site'
+
 import { cn } from '@/lib/utils'
+
+import { buttonVariants } from '@/components/ui/button'
+
+import { Icons } from '@/components/shared/icons'
 
 export default function Hero() {
   const twitterLink = siteConfig.social?.links?.twitter
@@ -11,7 +14,7 @@ export default function Hero() {
   return (
     <section>
       <section className="space-y-6 pb-12 pt-16 lg:py-28">
-        <div className="container relative flex max-w-[64rem] flex-col items-center gap-5 text-center">
+        <div className="container relative flex max-w-5xl flex-col items-center gap-5 text-center">
           <div className="my-6 flex items-center justify-center rounded bg-black">
             <div className="relative">
               <div className="absolute -inset-1 rounded bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500 opacity-75 blur"></div>
@@ -38,10 +41,10 @@ export default function Hero() {
           </h1>
 
           <p
-            className="mb-8 max-w-[42rem] animate-fade-up text-balance leading-normal text-muted-foreground opacity-0 sm:text-xl sm:leading-8"
+            className="mb-8 max-w-2xl animate-fade-up text-balance leading-normal text-muted-foreground opacity-0 sm:text-xl sm:leading-8"
             style={{ animationDelay: '0.35s', animationFillMode: 'forwards' }}
           >
-            Empower Your Next Project with Next.js 14, Prisma, Planetscale,
+            Empower Your Next Project with Next.js 14, Prisma, PostgreSQL,
             Auth.js v5, Resend, React Email, Shadcn/ui, and Stripe Integration
           </p>
 

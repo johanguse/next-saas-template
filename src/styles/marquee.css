@@ -72,3 +72,8 @@ https://github.com/devnomic/marquee
 .group:hover .group-hover\:\[animation-play-state\:paused\] {
   animation-play-state: paused;
 }
+
+/* CUSTOM CSS */
+.marquee-powered .animate-marquee-left {
+  @apply items-center;
+}

@@ -1,11 +1,11 @@
 'use client'
 
 import { useRef, useState } from 'react'
+
+import { routes } from './routes'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Squash as Hamburger } from 'hamburger-react'
 import { useClickAway } from 'react-use'
-
-import { routes } from './routes'
 
 export const NavMobile = () => {
   const [isOpen, setOpen] = useState(false)
@@ -23,7 +23,7 @@ export const NavMobile = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="shadow-4xl fixed inset-x-0 top-[3.5rem] border-b  bg-neutral-950 p-5 pt-0"
+            className="shadow-4xl fixed inset-x-0 top-14 border-b  bg-neutral-950 p-5 pt-0"
           >
             <ul className="grid gap-2">
               {routes.map((route, idx) => {

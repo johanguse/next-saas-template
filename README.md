@@ -80,7 +80,6 @@ Visit our [Public Roadmap](https://bit.ly/48LTNin) for more
 - [Framer Motion](https://framer.com/motion) – Motion library for React to animate components with ease
 - [Lucide](https://lucide.dev/) – Beautifully simple, pixel-perfect icons
 - [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) – Optimize custom fonts and remove external network requests for improved performance
-<!-- - [`ImageResponse`](https://nextjs.org/docs/app/api-reference/functions/image-response) – Generate dynamic Open Graph images at the edge -->
 
 ### Hooks and Utilities
 
@@ -104,12 +103,4 @@ Visit our [Public Roadmap](https://bit.ly/48LTNin) for more
 
 ## Author
 
-Created by [@johanguse](https://twitter.com/johanguse) in 2023, released under the [MIT license](https://github.com/shadcn/taxonomy/blob/main/LICENSE.md).
-
-## Credits
-
-This project was inspired by shadcn's [Taxonomy](https://github.com/shadcn-ui/taxonomy), Steven Tey’s [Precedent](https://github.com/steven-tey/precedent), and Antonio Erdeljac's [Next 13 AI SaaS](https://github.com/AntonioErdeljac/next13-ai-saas).
-
-- Shadcn ([@shadcn](https://twitter.com/shadcn))
-- Steven Tey ([@steventey](https://twitter.com/steventey))
-- Antonio Erdeljac ([@YTCodeAntonio](https://twitter.com/AntonioErdeljac))
+Created by [@johanguse](https://twitter.com/johanguse) in 2023
