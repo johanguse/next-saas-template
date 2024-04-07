@@ -26,7 +26,7 @@ export function PricingCardItem({
   subscriptionPlan,
 }: PricingCardsProps) {
   const isYearlyDefault =
-    !subscriptionPlan?.interval || subscriptionPlan.interval === 'year'
+    !subscriptionPlan?.stripeCustomerId || subscriptionPlan.interval === 'year'
       ? true
       : false
   const [isYearly, setIsYearly] = useState<boolean>(!!isYearlyDefault)
