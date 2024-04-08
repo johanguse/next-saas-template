@@ -8,11 +8,13 @@ import { auth } from '@/lib/auth/auth'
 import { DEFAULT_LOGIN_REDIRECT } from '@/lib/auth/routes'
 import { cn } from '@/lib/utils'
 
-import { buttonVariants } from '@/components/ui/button'
+import { Button, buttonVariants } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
 import { LogoutButton } from '@/components/auth/logout-button'
 import { Icons } from '@/components/shared/icons'
+
+import { LogOut } from 'lucide-react'
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -51,8 +53,10 @@ export default async function SignInPage(): Promise<JSX.Element> {
         </CardHeader>
         <CardContent className="max-sm:w-full max-sm:max-w-[340px] max-sm:px-10">
           <LogoutButton>
-            <Icons.close className="size-4" />
-            Sign out
+            <Button>
+              <LogOut className="mr-2 size-4" />
+              Logout
+            </Button>
           </LogoutButton>
         </CardContent>
       </Card>
