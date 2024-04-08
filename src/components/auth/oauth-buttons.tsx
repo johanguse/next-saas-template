@@ -32,7 +32,7 @@ export function OAuthButtons(): JSX.Element {
         callbackUrl: callbackUrl || '/dashboard',
       })
 
-      toast.success('Redirecting...<br/>Please try again')
+      toast.success('Redirecting...')
     } catch (error) {
       toast.error('Something went wrong<br/>Please try again')
 
