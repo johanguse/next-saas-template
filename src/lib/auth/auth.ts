@@ -16,13 +16,19 @@ export const {
   session: { strategy: 'jwt' },
   pages: {
     signIn: '/login',
-    error: '/auth/error',
+    signOut: '/signout',
+    error: '/auth-error',
   },
   events: {
     async linkAccount({ user }) {
       await prisma.user.update({
         where: { id: user.id },
-        data: { emailVerified: new Date() },
+        data: {
+          name: user.name,
+          email: user.email,
+          image: user.image,
+          emailVerified: new Date(),
+        },
       })
     },
   },
