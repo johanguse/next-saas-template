@@ -8,6 +8,8 @@ export const getUserByEmail = async (email: string) => {
       },
       select: {
         name: true,
+        email: true,
+        password: true,
         emailVerified: true,
       },
     })

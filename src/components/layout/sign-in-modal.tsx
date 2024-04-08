@@ -1,56 +1,114 @@
 'use client'
 
-import { useState } from 'react'
-import { signIn } from 'next-auth/react'
+import Link from 'next/link'
 
-import { siteConfig } from '@/config/site'
 import { useSigninModal } from '@/hooks/use-signin-modal'
-import { Button } from '@/components/ui/button'
+
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card'
+
+import { OAuthButtons } from '@/components/auth/oauth-buttons'
+import { SignUpWithPasswordForm } from '@/components/auth/signup-with-password-form'
 import { Icons } from '@/components/shared/icons'
-import IconLogo from '@/components/shared/logo-icon'
 import { Modal } from '@/components/shared/modal'
 
 export const SignInModal = () => {
   const signInModal = useSigninModal()
-  const [signInClicked, setSignInClicked] = useState(false)
 
   return (
     <Modal showModal={signInModal.isOpen} setShowModal={signInModal.onClose}>
-      <div className="w-full">
-        <div className="flex flex-col items-center justify-center space-y-3 border-b bg-background px-4 py-6 pt-8 text-center md:px-16">
-          <a href={siteConfig.url}>
-            <IconLogo className="size-10 self-center" />
-          </a>
-          <h3 className="font-urban text-2xl font-bold">Sign In</h3>
-          <p className="text-sm text-gray-500">
-            This is strictly for demo purposes - only your email and profile
-            picture will be stored.
-          </p>
-        </div>
-
-        <div className="flex flex-col space-y-4 bg-secondary/50 px-4 py-8 md:px-16">
-          <Button
-            variant="default"
-            disabled={signInClicked}
-            onClick={() => {
-              setSignInClicked(true)
-              signIn('google', { redirect: false }).then(() =>
-                // TODO: fix this without setTimeOut(), modal closes too quickly. Idea: update value before redirect
-                setTimeout(() => {
+      <Card className="w-full border-0 max-sm:flex max-sm:flex-col max-sm:items-center max-sm:justify-center max-sm:rounded-none max-sm:border-none">
+        <CardHeader className="space-y-1">
+          <div className="flex items-center justify-between">
+            <CardTitle className="text-2xl">Register</CardTitle>
+            <Link href="/">
+              <Icons.close className="size-4" />
+            </Link>
+          </div>
+          <CardDescription>
+            Choose your preferred sign up method
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="max-sm:w-full max-sm:max-w-[340px] max-sm:px-10">
+          <OAuthButtons />
+          <div className="relative">
+            <div className="absolute inset-0 flex items-center">
+              <span className="w-full border-t" />
+            </div>
+            <div className="relative mb-3 mt-6 flex justify-center text-xs uppercase">
+              <span className="bg-background px-2">
+                Or continue with password
+              </span>
+            </div>
+          </div>
+          <SignUpWithPasswordForm />
+        </CardContent>
+        <CardFooter className="grid w-full gap-4 text-sm text-muted-foreground max-sm:max-w-[340px] max-sm:px-10">
+          <div>
+            <div>
+              <span> Already have an account? </span>
+              <Link
+                aria-label="Sign in"
+                href="/login"
+                className="font-bold tracking-wide text-primary underline-offset-4 transition-all hover:underline"
+                onClick={() => {
                   signInModal.onClose()
-                }, 1000)
-              )
-            }}
-          >
-            {signInClicked ? (
-              <Icons.spinner className="mr-2 size-4 animate-spin" />
-            ) : (
-              <Icons.google className="mr-2 size-4" />
-            )}{' '}
-            Sign In with Google
-          </Button>
-        </div>
-      </div>
+                }}
+              >
+                Sign in
+                <span className="sr-only">Sign in</span>
+              </Link>
+              .
+            </div>
+            <div>
+              <span>Lost email verification link? </span>
+              <Link
+                aria-label="Resend email verification link"
+                href="/signup/reverify-email"
+                className="text-sm font-normal text-primary underline-offset-4 transition-colors hover:underline"
+              >
+                Resend
+                <span className="sr-only">Resend email verification link</span>
+              </Link>
+              .
+            </div>
+          </div>
+
+          <div className="text-sm text-muted-foreground md:text-xs">
+            By continuing, you agree to our{' '}
+            <Link
+              aria-label="Terms of Service"
+              href="/legal/terms-of-service"
+              className="font-semibold underline-offset-4 transition-all hover:underline"
+              onClick={() => {
+                signInModal.onClose()
+              }}
+            >
+              terms of service
+            </Link>{' '}
+            <br className="xs:hidden sm:block md:hidden" />
+            and
+            <Link
+              aria-label="Privacy Policy"
+              href="/legal/privacy-policy"
+              className="font-semibold underline-offset-4 transition-all hover:underline"
+              onClick={() => {
+                signInModal.onClose()
+              }}
+            >
+              {' '}
+              Privacy Policy
+            </Link>
+            .
+          </div>
+        </CardFooter>
+      </Card>
     </Modal>
   )
 }

@@ -24,7 +24,7 @@ export default function ButtonsBlocksPage() {
         </BlockTitle.Wrapper>
         <div className="mb-20">
           <Link
-            href="https://twitter.com/johanguse"
+            href="https://twitter.com/SaasTemplate"
             className={cn(
               buttonVariants({ variant: 'outline', size: 'sm' }),
               'animate-fade-up bg-gradient-to-r from-indigo-500 to-purple-500/80 px-4 py-2 font-semibold text-white opacity-0 hover:text-white'
@@ -39,11 +39,11 @@ export default function ButtonsBlocksPage() {
           <div className="relative">
             <div className="absolute -inset-1 rounded bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500 opacity-75 blur"></div>
             <Link
-              href="https://twitter.com/johanguse"
+              href="https://twitter.com/SaasTemplate"
               className="relative flex rounded bg-black px-7 py-4 font-semibold text-white"
             >
               <div className="flex items-center">
-                Follow me on <Icons.twitter className="ml-2 size-4" />
+                Follow on <Icons.twitter className="ml-2 size-4" />
               </div>
             </Link>
           </div>

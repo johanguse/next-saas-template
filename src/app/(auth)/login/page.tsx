@@ -1,22 +1,37 @@
-import { Suspense } from 'react'
-
-import { Metadata } from 'next'
+import type { Metadata } from 'next'
 import Link from 'next/link'
+import { redirect } from 'next/navigation'
 
+import { siteConfig } from '@/config/site'
+
+import { auth } from '@/lib/auth/auth'
+import { DEFAULT_LOGIN_REDIRECT } from '@/lib/auth/routes'
 import { cn } from '@/lib/utils'
 
 import { buttonVariants } from '@/components/ui/button'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card'
 
-import { UserAuthForm } from '@/components/forms/user-auth-form'
+import { OAuthButtons } from '@/components/auth/oauth-buttons'
+import { SignInWithPasswordForm } from '@/components/auth/signin-with-password-form'
 import { Icons } from '@/components/shared/icons'
-import IconLogo from '@/components/shared/logo-icon'
 
 export const metadata: Metadata = {
-  title: 'Login',
-  description: 'Login to your account',
+  metadataBase: new URL(siteConfig.url),
+  title: 'Sign In',
+  description: 'Sign in to your account',
 }
 
-export default function LoginPage() {
+export default async function SignInPage(): Promise<JSX.Element> {
+  const session = await auth()
+  if (session) redirect(DEFAULT_LOGIN_REDIRECT)
+
   return (
     <div className="size-screen container flex flex-col items-center justify-center">
       <Link
@@ -31,28 +46,60 @@ export default function LoginPage() {
           Back
         </>
       </Link>
-      <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
-        <div className="flex flex-col space-y-2 text-center">
-          <IconLogo className="mx-auto self-center" />
-          <h1 className="text-2xl font-semibold tracking-tight">
-            Welcome back
-          </h1>
-          <p className="text-sm text-muted-foreground">
-            Enter your email to sign in to your account
-          </p>
-        </div>
-        <Suspense>
-          <UserAuthForm />
-        </Suspense>
-        <p className="px-8 text-center text-sm text-muted-foreground">
-          <Link
-            href="/register"
-            className="hover:text-brand underline underline-offset-4"
-          >
-            Don&apos;t have an account? Sign Up
-          </Link>
-        </p>
-      </div>
+      <Card className="max-sm:flex  max-sm:w-full max-sm:flex-col max-sm:items-center max-sm:justify-center max-sm:rounded-none max-sm:border-none sm:min-w-[370px] sm:max-w-[368px]">
+        <CardHeader className="space-y-1">
+          <div className="flex items-center justify-between">
+            <CardTitle className="text-2xl">Login</CardTitle>
+            <Link href="/">
+              <Icons.close className="size-4" />
+            </Link>
+          </div>
+          <CardDescription>
+            Choose your preferred sign in method
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="max-sm:w-full max-sm:max-w-[340px] max-sm:px-10">
+          <OAuthButtons />
+          <div className="relative">
+            <div className="absolute inset-0 flex items-center">
+              <span className="w-full border-t" />
+            </div>
+            <div className="relative mb-3 mt-6 flex justify-center text-xs uppercase">
+              <span className="bg-background px-2">
+                Or continue with password
+              </span>
+            </div>
+          </div>
+          <SignInWithPasswordForm />
+        </CardContent>
+
+        <CardFooter className="grid w-full text-sm text-muted-foreground max-sm:max-w-[340px] max-sm:px-10">
+          <div>
+            <span>Don&apos;t have an account? </span>
+            <Link
+              aria-label="Sign up"
+              href="/register"
+              className="font-bold tracking-wide text-primary underline-offset-4 transition-colors hover:underline"
+            >
+              Sign up
+              <span className="sr-only">Sign up</span>
+            </Link>
+            .
+          </div>
+          <div>
+            <span>Forgot your password? </span>
+            <Link
+              aria-label="Reset password"
+              href="/signin/password-reset"
+              className="text-sm font-normal text-primary underline-offset-4 transition-colors hover:underline"
+            >
+              Reset now
+              <span className="sr-only">Reset Password</span>
+            </Link>
+            .
+          </div>
+        </CardFooter>
+      </Card>
     </div>
   )
 }

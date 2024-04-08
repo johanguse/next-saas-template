@@ -17,7 +17,7 @@ export default async function IndexPage() {
     <>
       <Hero />
       <section
-        className="animate-fade-up bg-gray-50 py-8 text-zinc-500 opacity-0 dark:bg-black dark:text-zinc-400 dark:opacity-50"
+        className="animate-fade-up bg-gray-50 py-8 text-zinc-500 opacity-0 dark:bg-black dark:text-zinc-700 dark:opacity-50"
         style={{ animationDelay: '0.55s', animationFillMode: 'forwards' }}
       >
         <div className="container mx-auto">

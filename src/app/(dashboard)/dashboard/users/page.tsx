@@ -10,7 +10,7 @@ import { DashboardShell } from '@/components/dashboard/shell'
 
 const UserTableRow = ({ user }) => {
   return (
-    <tr>
+    <tr className="dark:text-white">
       <td className="hidden p-3 text-center md:table-cell">
         <Image
           width={40}
@@ -40,7 +40,7 @@ const UserTableRow = ({ user }) => {
       <td className="p-3 text-center">
         <button
           type="button"
-          className="inline-flex items-center justify-center space-x-2 rounded border border-gray-300 bg-white px-2 py-1 text-sm font-semibold leading-5 text-gray-800 shadow-sm hover:border-gray-300 hover:bg-gray-100 hover:text-gray-800 hover:shadow focus:outline-none focus:ring focus:ring-gray-500/25 active:border-white active:bg-white active:shadow-none"
+          className="inline-flex items-center justify-center space-x-2 rounded border border-gray-300 bg-white px-2 py-1 text-sm font-semibold leading-5 text-gray-800 shadow-sm hover:border-gray-300 hover:bg-gray-100 hover:text-gray-800 hover:shadow focus:outline-none focus:ring focus:ring-gray-500/25 active:border-white active:bg-white active:shadow-none dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white dark:active:border-gray-600 dark:active:bg-gray-800 dark:active:shadow-none"
         >
           <svg
             className="hi-solid hi-pencil inline-block size-4"
@@ -142,28 +142,27 @@ export default async function StatusPage() {
     <DashboardShell>
       <DashboardHeader heading="Users" text="Manage your users." />
       <section className="grid gap-8">
-        <div className="min-w-full overflow-x-auto rounded border border-gray-200 bg-white">
-          <table className="min-w-full align-middle text-sm">
-            <thead>
-              <tr className="bg-gray-50">
-                <th className="hidden bg-gray-100 p-3 text-center text-sm font-semibold uppercase tracking-wider text-gray-700 md:table-cell">
+        <div className="min-w-full overflow-x-auto rounded border border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-800">
+          <table className="min-w-full align-middle text-sm dark:bg-gray-800">
+            <thead className="dark:text-white">
+              <tr className="bg-gray-50 dark:bg-gray-700">
+                <th className="hidden bg-gray-100 p-3 text-center text-sm font-semibold uppercase tracking-wider text-gray-700 dark:bg-gray-700 dark:text-white md:table-cell">
                   Avatar
                 </th>
-                <th className="bg-gray-100 p-3 text-left text-sm font-semibold uppercase tracking-wider text-gray-700">
+                <th className="bg-gray-100 p-3 text-left text-sm font-semibold uppercase tracking-wider text-gray-700 dark:bg-gray-700 dark:text-white">
                   Name
                 </th>
-                <th className="hidden bg-gray-100 p-3 text-left text-sm font-semibold uppercase tracking-wider text-gray-700 md:table-cell">
+                <th className="hidden bg-gray-100 p-3 text-left text-sm font-semibold uppercase tracking-wider text-gray-700 dark:bg-gray-700 dark:text-white md:table-cell">
                   Email
                 </th>
-                <th className="bg-gray-100 p-3 text-center text-sm font-semibold uppercase tracking-wider text-gray-700">
+                <th className="bg-gray-100 p-3 text-center text-sm font-semibold uppercase tracking-wider text-gray-700 dark:bg-gray-700 dark:text-white">
                   Plan
                 </th>
-                <th className="bg-gray-100 p-3 text-center text-sm font-semibold uppercase tracking-wider text-gray-700">
+                <th className="bg-gray-100 p-3 text-center text-sm font-semibold uppercase tracking-wider text-gray-700 dark:bg-gray-700 dark:text-white">
                   Actions
                 </th>
               </tr>
             </thead>
-
             <tbody>
               {userData.map((user) => (
                 <UserTableRow key={user.id} user={user} />

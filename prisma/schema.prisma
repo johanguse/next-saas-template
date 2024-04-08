@@ -53,16 +53,20 @@ model Session {
 }
 
 model User {
-  id            String    @id @default(cuid())
-  name          String?
-  email         String?   @unique
-  emailVerified DateTime?
-  image         String?
-  password      String?
+  id                       String    @id @default(cuid())
+  name                     String?
+  email                    String?   @unique
+  emailVerified            DateTime?
+  emailVerificationToken   String?   @unique @map("email_verification_token")
+  image                    String?
+  password                 String?
+  resetPasswordToken       String?   @unique @map("reset_password_token")
+  resetPasswordTokenExpiry DateTime? @map("reset_password_token_expiery")
 
   isBlocked Boolean @default(false)
 
-  role                  UserRole               @default(USER)
+  role UserRole @default(USER)
+
   isTwoFactorEnabled    Boolean                @default(false)
   twoFactorConfirmation TwoFactorConfirmation?
 
