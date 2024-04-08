@@ -56,13 +56,17 @@ export function SignInWithPasswordForm(): JSX.Element {
             )
             break
           case 'incorrect-provider':
-            toast.warning('Perhaps you signed up with a different method?')
+            toast.warning(
+              'Email already in use with another provider<br/>Perhaps you signed up with a different method?'
+            )
             break
           case 'unverified-email':
             toast.warning('Please verify your email address before signing in')
             break
           case 'invalid-credentials':
-            toast.error('Double-check your credentials and try again')
+            toast.error(
+              'Invalid email or Password<br/>Double-check your credentials and try again'
+            )
             break
           case 'success':
             toast.success('You are now signed in')

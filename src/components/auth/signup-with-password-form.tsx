@@ -59,7 +59,7 @@ export function SignUpWithPasswordForm(): JSX.Element {
             break
           case 'success':
             toast.success(
-              'Success! <br/ > Check your inbox to verify your email address'
+              'Success!<br/ >Check your inbox to verify your email address'
             )
             router.push('/signin')
             break
