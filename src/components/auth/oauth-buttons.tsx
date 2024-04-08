@@ -32,7 +32,7 @@ export function OAuthButtons(): JSX.Element {
         callbackUrl: callbackUrl || '/dashboard',
       })
 
-      toast.success('You are now signed in')
+      toast.success('Redirecting...')
     } catch (error) {
       toast.error('Something went wrong\nPlease try again')
 
