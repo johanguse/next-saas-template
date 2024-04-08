@@ -23,7 +23,7 @@ import { Input } from '@/components/ui/input'
 import { PasswordInput } from '@/components/forms/password-input'
 import { Icons } from '@/components/shared/icons'
 
-import { signUpWithPassword } from '@/actions/auth/singup-with-password'
+import { signUpWithPassword } from '@/actions/auth/signup-with-password'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
