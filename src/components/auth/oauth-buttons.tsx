@@ -32,9 +32,9 @@ export function OAuthButtons(): JSX.Element {
         callbackUrl: callbackUrl || '/dashboard',
       })
 
-      toast.success('Redirecting...')
+      toast.success('Redirecting...<br/>Please try again')
     } catch (error) {
-      toast.error('Something went wrong\nPlease try again')
+      toast.error('Something went wrong<br/>Please try again')
 
       console.error(error)
       throw new Error(`Error signing in with ${provider}`)

@@ -53,7 +53,7 @@ export function SignUpWithPasswordForm(): JSX.Element {
         switch (message) {
           case 'exists':
             toast.warning(
-              'User with this email address already exists \n If this is you, please sign in instead'
+              'User with this email address already exists<br/>If this is you, please sign in instead'
             )
             form.reset()
             break
@@ -64,12 +64,12 @@ export function SignUpWithPasswordForm(): JSX.Element {
             router.push('/signin')
             break
           default:
-            toast.error('Something went wrong \n Please try again')
+            toast.error('Something went wrong<br/>Please try again')
             console.error(message)
         }
       } catch (error) {
         console.error(error)
-        toast.error('Something went wrong \n Please try again')
+        toast.error('Something went wrong<br/>Please try again')
       }
     })
   }
