@@ -8,15 +8,28 @@ import { BlockTitle } from '@/components/layout/main-title'
 
 import { toast } from 'sonner'
 
+interface LoadingState {
+  message: string
+  result: boolean
+}
+
+const initialLoadingValues: LoadingState = {
+  message: '',
+  result: false,
+}
+
 export default function CtaSubscribe() {
   const [loading, setLoading] = useState<boolean>(false)
   const [email, setEmail] = useState<string>('')
-  const [results, setResults] = useState<string>('')
+  const [returnValues, setReturnValues] =
+    useState<LoadingState>(initialLoadingValues)
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const data = new FormData()
     data.set('email', email)
+    data.set('userGroup', 'Newsletter')
+    data.set('source', 'CtaSubscribe')
 
     setLoading(true)
 
@@ -32,20 +45,27 @@ export default function CtaSubscribe() {
 
       const dataSuccess = json.data.success
 
-      setResults(json.data.message)
-
       if (!dataSuccess) {
-        throw new Error(json.data.message)
+        setReturnValues({
+          message: json.data.message,
+          result: false,
+        })
+        toast.warning('You are already on the list.')
+
+        return
       }
 
+      setReturnValues({
+        message: 'Your email has been added.',
+        result: true,
+      })
       toast.success(
-        'Thanks! You have successfully subscribed to our newsletter.'
+        'Thanks! You have successfully added your email to the list.'
       )
 
       setEmail('')
     } catch (error: any) {
       console.error(error)
-
       toast.error('Something went wrong. Please try again.')
     } finally {
       setLoading(false)
@@ -109,9 +129,14 @@ export default function CtaSubscribe() {
               Subscribe
             </Button>
           </form>
-          {results && (
-            <p className="mt-3 text-balance pl-3 text-base text-rose-600">
-              {results}
+          {returnValues.message && (
+            <p
+              className={
+                `mt-3 text-balance pl-3 text-xs ` +
+                (returnValues.result ? 'text-green-400' : 'text-rose-600')
+              }
+            >
+              {returnValues.message}
             </p>
           )}
           <p className="mx-auto mt-3 text-center text-[15px] ">
