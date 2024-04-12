@@ -19,6 +19,7 @@ import {
 } from '@/components/ui/card'
 
 import { OAuthButtons } from '@/components/auth/oauth-buttons'
+import { SignInWithEmailForm } from '@/components/auth/signin-with-email-form'
 import { SignUpWithPasswordForm } from '@/components/auth/signup-with-password-form'
 import { Icons } from '@/components/shared/icons'
 
@@ -57,6 +58,17 @@ export default async function SignUpPage(): Promise<JSX.Element> {
         </CardHeader>
         <CardContent className="max-sm:w-full max-sm:max-w-[340px] max-sm:px-10">
           <OAuthButtons />
+          <div className="relative">
+            <div className="absolute inset-0 flex items-center">
+              <span className="w-full border-t" />
+            </div>
+            <div className="relative mb-3 mt-6 flex justify-center text-xs uppercase">
+              <span className="bg-background px-2">
+                Or continue with magic link
+              </span>
+            </div>
+          </div>
+          <SignInWithEmailForm />
           <div className="relative">
             <div className="absolute inset-0 flex items-center">
               <span className="w-full border-t" />

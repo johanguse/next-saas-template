@@ -19,6 +19,7 @@ import {
 } from '@/components/ui/card'
 
 import { OAuthButtons } from '@/components/auth/oauth-buttons'
+import { SignInWithEmailForm } from '@/components/auth/signin-with-email-form'
 import { SignInWithPasswordForm } from '@/components/auth/signin-with-password-form'
 import { Icons } from '@/components/shared/icons'
 
@@ -66,6 +67,17 @@ export default async function SignInPage(): Promise<JSX.Element> {
             </div>
             <div className="relative mb-3 mt-6 flex justify-center text-xs uppercase">
               <span className="bg-background px-2">
+                Or continue with magic link
+              </span>
+            </div>
+          </div>
+          <SignInWithEmailForm />
+          <div className="relative">
+            <div className="absolute inset-0 flex items-center">
+              <span className="w-full border-t" />
+            </div>
+            <div className="relative mb-3 mt-6 flex justify-center text-xs uppercase">
+              <span className="bg-background px-2">
                 Or continue with password
               </span>
             </div>
@@ -90,7 +102,7 @@ export default async function SignInPage(): Promise<JSX.Element> {
             <span>Forgot your password? </span>
             <Link
               aria-label="Reset password"
-              href="/signin/password-reset"
+              href="/login/password-reset"
               className="text-sm font-normal text-primary underline-offset-4 transition-colors hover:underline"
             >
               Reset now
