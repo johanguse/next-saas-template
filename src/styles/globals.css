@@ -1,3 +1,7 @@
+@import './changelog-notification.css';
+@import './gradients.css';
+@import './marquee.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -64,11 +68,6 @@ html {
       'calt' 1;
   }
 }
-
-/* Import Files */
-@import './changelog-notification.css';
-@import './gradients.css';
-@import './marquee.css';
 
 /* 
 Coming soon to Tailwind CSS

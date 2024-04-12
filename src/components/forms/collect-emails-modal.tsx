@@ -26,18 +26,29 @@ const formSchema = z.object({
   email: z.string().email(),
 })
 
+interface LoadingState {
+  message: string
+  result: boolean
+}
+
+const initialLoadingValues: LoadingState = {
+  message: '',
+  result: false,
+}
+
 export const CollectEmailsModal = () => {
   const collectEmailsModal = useCollectEmailsModal()
   const closeModal = () => {
     collectEmailsModal.onClose()
     setLoading(false)
-    setResults('')
+    setReturnValues(initialLoadingValues)
     form.reset()
   }
 
   let [isPending, startTransition] = useTransition()
   const [loading, setLoading] = useState<boolean>(false)
-  const [results, setResults] = useState<string>('')
+  const [returnValues, setReturnValues] =
+    useState<LoadingState>(initialLoadingValues)
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -51,6 +62,8 @@ export const CollectEmailsModal = () => {
 
     const data = new FormData()
     data.set('email', values.email)
+    data.set('userGroup', 'Waitlist')
+    data.set('source', 'CollectEmailsModal')
 
     startTransition(async () => {
       try {
@@ -65,23 +78,28 @@ export const CollectEmailsModal = () => {
 
         const dataSuccess = json.data.success
 
-        setResults(json.data.message)
-
         if (!dataSuccess) {
-          throw new Error(json.data.message)
+          setReturnValues({
+            message: json.data.message,
+            result: false,
+          })
+          toast.warning('You are already on the list.')
+
+          return
         }
 
+        setReturnValues({
+          message: 'Your email has been added.',
+          result: true,
+        })
         toast.success(
-          'Thanks! You have successfully subscribed to our newsletter.'
+          'Thanks! You have successfully added your email to the list.'
         )
+
+        form.reset()
       } catch (error: any) {
-        if (error.message.includes('Email already on list')) {
-          toast.warning('You are already on the list.')
-          return
-        } else {
-          console.error(error)
-          toast.error('Something went wrong. Please try again.')
-        }
+        console.error(error)
+        toast.error('Something went wrong. Please try again.')
       } finally {
         setLoading(false)
       }
@@ -114,9 +132,14 @@ export const CollectEmailsModal = () => {
                   </FormItem>
                 )}
               />
-              {results && (
-                <p className="mt-3 text-balance pl-3 text-xs text-rose-600">
-                  {results}
+              {returnValues.message && (
+                <p
+                  className={
+                    `mt-3 text-balance pl-3 text-xs ` +
+                    (returnValues.result ? 'text-green-400' : 'text-rose-600')
+                  }
+                >
+                  {returnValues.message}
                 </p>
               )}
               <p className="mx-auto mb-4 mt-3 text-center text-[11px] text-gray-500">
