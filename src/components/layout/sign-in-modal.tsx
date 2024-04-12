@@ -14,9 +14,12 @@ import {
 } from '@/components/ui/card'
 
 import { OAuthButtons } from '@/components/auth/oauth-buttons'
+import { SignInWithEmailForm } from '@/components/auth/signin-with-email-form'
 import { SignUpWithPasswordForm } from '@/components/auth/signup-with-password-form'
 import { Icons } from '@/components/shared/icons'
 import { Modal } from '@/components/shared/modal'
+
+import { BlockTitle } from './main-title'
 
 export const SignInModal = () => {
   const signInModal = useSigninModal()
@@ -26,7 +29,13 @@ export const SignInModal = () => {
       <Card className="w-full border-0 max-sm:flex max-sm:flex-col max-sm:items-center max-sm:justify-center max-sm:rounded-none max-sm:border-none">
         <CardHeader className="space-y-1">
           <div className="flex items-center justify-between">
-            <CardTitle className="text-2xl">Register</CardTitle>
+            <CardTitle>
+              <BlockTitle.Wrapper>
+                <BlockTitle.Header elementType="h1" className="text-2xl">
+                  Register
+                </BlockTitle.Header>
+              </BlockTitle.Wrapper>
+            </CardTitle>
             <Link href="/">
               <Icons.close className="size-4" />
             </Link>
@@ -37,6 +46,17 @@ export const SignInModal = () => {
         </CardHeader>
         <CardContent className="max-sm:w-full max-sm:max-w-[340px] max-sm:px-10">
           <OAuthButtons />
+          <div className="relative">
+            <div className="absolute inset-0 flex items-center">
+              <span className="w-full border-t" />
+            </div>
+            <div className="relative mb-3 mt-6 flex justify-center text-xs uppercase">
+              <span className="bg-background px-2">
+                Or continue with magic link
+              </span>
+            </div>
+          </div>
+          <SignInWithEmailForm />
           <div className="relative">
             <div className="absolute inset-0 flex items-center">
               <span className="w-full border-t" />

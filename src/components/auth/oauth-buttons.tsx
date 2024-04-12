@@ -22,14 +22,29 @@ function useSearchParam(key: string): string | null {
   return paramValue
 }
 
+interface LoadingState {
+  google: boolean
+  github: boolean
+}
+
 export function OAuthButtons(): JSX.Element {
   const callbackUrl = useSearchParam('from')
+  const initialLoadingValues = {
+    google: false,
+    github: false,
+  }
+  const [isLoading, setIsLoading] = useState<LoadingState>(initialLoadingValues)
   async function handleOAuthSignIn(
     provider: 'google' | 'github'
   ): Promise<void> {
     try {
       await signIn(provider, {
         callbackUrl: callbackUrl || '/dashboard',
+      })
+
+      setIsLoading({
+        ...initialLoadingValues,
+        [provider]: true,
       })
 
       toast.success('Redirecting...')
@@ -39,6 +54,11 @@ export function OAuthButtons(): JSX.Element {
       console.error(error)
       throw new Error(`Error signing in with ${provider}`)
     }
+
+    setIsLoading({
+      ...initialLoadingValues,
+      [provider]: false,
+    })
   }
 
   return (
@@ -46,20 +66,40 @@ export function OAuthButtons(): JSX.Element {
       <Button
         aria-label="Sign in with Google"
         variant="outline"
-        onClick={() => void handleOAuthSignIn('google')}
+        onClick={() => {
+          setIsLoading({
+            ...initialLoadingValues,
+            google: true,
+          })
+          void handleOAuthSignIn('google')
+        }}
         className="w-full sm:w-auto"
       >
-        <Icons.google className="mr-2 size-4" />
+        {isLoading.google ? (
+          <Icons.spinner className="mr-2 size-4 animate-spin" />
+        ) : (
+          <Icons.google className="mr-2 size-4" />
+        )}
         Google
       </Button>
 
       <Button
         aria-label="Sign in with gitHub"
         variant="outline"
-        onClick={() => void handleOAuthSignIn('github')}
+        onClick={() => {
+          setIsLoading({
+            ...initialLoadingValues,
+            github: true,
+          })
+          void handleOAuthSignIn('github')
+        }}
         className="w-full sm:w-auto"
       >
-        <Icons.github className="mr-2 size-4" />
+        {isLoading.github ? (
+          <Icons.spinner className="mr-2 size-4 animate-spin" />
+        ) : (
+          <Icons.github className="mr-2 size-4" />
+        )}
         GitHub
       </Button>
     </div>

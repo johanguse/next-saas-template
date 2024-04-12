@@ -1,13 +1,34 @@
-import { ErrorCard } from '@/components/auth/error-card'
+import Link from 'next/link'
 
-const AuthErrorPage = () => {
+import type { PageParams } from '@/types/next'
+
+import { buttonVariants } from '@/components/ui/button'
+import {
+  Card,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card'
+
+import { getError } from './auth-error-mapping'
+
+export default async function AuthErrorPage(props: PageParams<{}>) {
+  const { errorMessage, error } = getError(props.searchParams.error)
+
   return (
-    <div className="size-screen container flex flex-col items-center justify-center">
-      <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
-        <ErrorCard />
-      </div>
+    <div className="flex h-full flex-col">
+      <Card variant="error">
+        <CardHeader>
+          <CardDescription>{error}</CardDescription>
+          <CardTitle>{errorMessage}</CardTitle>
+        </CardHeader>
+        <CardFooter className="flex items-center gap-2">
+          <Link href="/" className={buttonVariants({ size: 'sm' })}>
+            Home
+          </Link>
+        </CardFooter>
+      </Card>
     </div>
   )
 }
-
-export default AuthErrorPage

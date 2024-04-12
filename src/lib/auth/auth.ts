@@ -2,6 +2,7 @@ import authConfig from '@/lib/auth/auth.config'
 import { prisma } from '@/lib/db'
 import { getUserById } from '@/lib/user'
 
+import { getUserById as actionGetUserById } from '@/actions/user'
 import { PrismaAdapter } from '@auth/prisma-adapter'
 import { UserRole } from '@prisma/client'
 import NextAuth from 'next-auth'
@@ -18,6 +19,7 @@ export const {
     signIn: '/login',
     signOut: '/signout',
     error: '/auth-error',
+    verifyRequest: '/login/magic-link-signin',
   },
   events: {
     async linkAccount({ user }) {
@@ -33,6 +35,16 @@ export const {
     },
   },
   callbacks: {
+    async signIn({ user, account }) {
+      console.log('signIn', { user, account })
+      if (!user.id) return false
+      if (account?.provider !== 'credentials') return true
+
+      const existingUser = await actionGetUserById({ id: user.id })
+
+      return !existingUser?.emailVerified ? false : true
+    },
+
     async session({ token, session }) {
       if (session.user) {
         if (token.sub) {
