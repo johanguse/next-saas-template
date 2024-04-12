@@ -1,5 +1,5 @@
 <a href="https://next-saas-template.vercel.app">
-  <img alt="SaaS Starter" src="public/og.jpg">
+  <img alt="SaaS Starter" src="public/og.jpg" />
   <h1 align="center">Next SaaS Stripe Starter</h1>
 </a>
 
@@ -53,6 +53,16 @@ cp .env.example .env.local
 ```sh
 pnpm dev
 ```
+
+### Extra
+
+In case you need to change the database and seed again, use this command:
+
+```sh
+prisma generate && prisma db push --force-reset && pnpm prisma:seed && next build
+```
+
+Replace the at Vercel the default Build Command to this above
 
 ## Roadmap
 
