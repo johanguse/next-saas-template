@@ -17,7 +17,7 @@ interface MagicLinkEmailProps {
   url: string
 }
 
-export function MagicLinkEmail({
+export default function MagicLinkEmail({
   identifier,
   url,
 }: MagicLinkEmailProps): JSX.Element {

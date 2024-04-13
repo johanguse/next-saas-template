@@ -1,11 +1,12 @@
 'use server'
 
-import { env } from '@/root/env.mjs'
-import { z } from 'zod'
-
 import { siteConfig } from '@/config/site'
+
 import { resend } from '@/lib/email'
 import { ContactFormSchema } from '@/lib/validations/contact-form'
+
+import { env } from '@/root/env.mjs'
+import { z } from 'zod'
 
 type ContactFormInputs = z.infer<typeof ContactFormSchema>
 
@@ -19,7 +20,7 @@ export async function sendEmail(data: ContactFormInputs) {
         from: env.RESEND_FROM_EMAIL,
         to: [siteConfig.mailSupport],
         reply_to: email,
-        subject: 'Contact form submission from ' + siteConfig.name,
+        subject: `${siteConfig.name} - New Contact Form Message`,
         text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
       })
       return { success: true, data }

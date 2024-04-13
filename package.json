@@ -22,7 +22,7 @@
     "prisma:generate": "prisma generate",
     "prisma:seed": "npm run db-seed",
     "db-seed": "tsc prisma/seed.ts && cat prisma/seed.js | node --input-type=\"commonjs\" && rm prisma/seed.js",
-    "dev:email": "email dev --dir src/components/emails --port 3333"
+    "dev:email": "cp .env ./node_modules/react-email/ && email dev --dir='src/components/emails' --port 3333"
   },
   "dependencies": {
     "@auth/prisma-adapter": "^1.5.2",

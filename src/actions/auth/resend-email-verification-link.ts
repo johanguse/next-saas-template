@@ -4,55 +4,53 @@ import { siteConfig } from '@/config/site'
 
 import { prisma } from '@/lib/db'
 import { resend } from '@/lib/email'
+import { absoluteUrl } from '@/lib/utils'
 import {
-  PasswordResetFormInput,
-  passwordResetSchema,
-} from '@/lib/validations/auth'
+  EmailVerificationFormInput,
+  emailVerificationSchema,
+} from '@/lib/validations/email'
 
-import { getUserByEmail } from '@/actions/user'
+import { getUserByEmail } from '../user'
 import { env } from '@/root/env.mjs'
 import crypto from 'crypto'
 
-export async function resetPassword(
-  rawInput: PasswordResetFormInput
+const baseUrl = absoluteUrl('')
+
+export async function resendEmailVerificationLink(
+  rawInput: EmailVerificationFormInput
 ): Promise<'invalid-input' | 'not-found' | 'error' | 'success'> {
   try {
-    const validatedInput = passwordResetSchema.safeParse(rawInput)
+    const validatedInput = emailVerificationSchema.safeParse(rawInput)
     if (!validatedInput.success) return 'invalid-input'
 
     const user = await getUserByEmail({ email: validatedInput.data.email })
     if (!user) return 'not-found'
 
-    const today = new Date()
-    const resetPasswordToken = crypto.randomBytes(32).toString('base64url')
-    const resetPasswordTokenExpiry = new Date(
-      today.setDate(today.getDate() + 1)
-    ) // 24 hours from now
+    const emailVerificationToken = crypto.randomBytes(32).toString('base64url')
 
     const userUpdated = await prisma.user.update({
       where: {
-        id: user.id,
+        email: validatedInput.data.email,
       },
       data: {
-        resetPasswordToken,
-        resetPasswordTokenExpiry,
+        emailVerificationToken,
       },
     })
 
     const emailSent = await resend.emails.send({
       from: env.RESEND_FROM_EMAIL,
       to: [validatedInput.data.email],
-      subject: `${siteConfig.name} - Reset your password`,
-      //react: ResetPasswordEmail({
+      subject: `${siteConfig.name} - Verify your email address`,
+      //react: EmailVerificationEmail({
       //  email: validatedInput.data.email,
-      //  resetPasswordToken,
+      //  emailVerificationToken,
       //}),
-      text: `Reset your password at ${siteConfig.url}/signin/password-update?token=${resetPasswordToken}`,
+      text: `Verify your email address at ${baseUrl}/signup/verify-email?token=${emailVerificationToken}`,
     })
 
     return userUpdated && emailSent ? 'success' : 'error'
   } catch (error) {
     console.error(error)
-    return 'error'
+    throw new Error('Error resending email verification link')
   }
 }

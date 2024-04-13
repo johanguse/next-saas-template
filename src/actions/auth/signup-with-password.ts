@@ -1,19 +1,22 @@
 'use server'
 
+import { siteConfig } from '@/config/site'
+
 import { prisma } from '@/lib/db'
 import { resend } from '@/lib/email'
+import { absoluteUrl } from '@/lib/utils'
 import {
   SignUpWithPasswordFormInput,
   signUpWithPasswordSchema,
 } from '@/lib/validations/auth'
-
-import { EmailVerificationEmail } from '@/components/emails/email-verification-email'
 
 import { getUserByEmail } from '@/actions/user'
 import { env } from '@/root/env.mjs'
 import crypto from 'crypto'
 
 var bcryptjs = require('bcryptjs')
+
+const baseUrl = absoluteUrl('')
 
 export async function signUpWithPassword(
   rawInput: SignUpWithPasswordFormInput
@@ -39,11 +42,12 @@ export async function signUpWithPassword(
     const emailSent = await resend.emails.send({
       from: env.RESEND_FROM_EMAIL,
       to: [validatedInput.data.email],
-      subject: 'Verify your email address',
-      react: EmailVerificationEmail({
-        email: validatedInput.data.email,
-        emailVerificationToken,
-      }),
+      subject: `${siteConfig.name} - Verify your email address`,
+      // react: EmailVerificationEmail({
+      //   email: validatedInput.data.email,
+      //   emailVerificationToken,
+      // }),
+      text: `Verify your email address at ${baseUrl}/signup/verify-email?token=${emailVerificationToken}`,
     })
 
     return newUser && emailSent ? 'success' : 'error'

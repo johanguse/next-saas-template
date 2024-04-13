@@ -90,7 +90,10 @@ export const SignInModal = () => {
               <span>Lost email verification link? </span>
               <Link
                 aria-label="Resend email verification link"
-                href="/signup/reverify-email"
+                href="/register/reverify-email"
+                onClick={() => {
+                  signInModal.onClose()
+                }}
                 className="text-sm font-normal text-primary underline-offset-4 transition-colors hover:underline"
               >
                 Resend

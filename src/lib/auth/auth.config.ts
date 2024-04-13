@@ -66,7 +66,30 @@ export default {
       id: 'resend',
       name: 'Resend',
       apiKey: env.RESEND_API_KEY,
-      from: 'SaaS Starter App <onboarding@resend.dev>',
+      from: env.RESEND_FROM_EMAIL,
+      //      async sendVerificationRequest({
+      //        identifier,
+      //        url,
+      //      }: {
+      //        identifier: string
+      //        url: string
+      //      }) {
+      //        try {
+      //          console.log('Sending verification email')
+      //          console.log({ identifier, url })
+      //          await resend.emails.send({
+      //            from: env.RESEND_FROM_EMAIL,
+      //            to: [identifier],
+      //            subject: `${siteConfig.name} magic link sign in`,
+      //            //react: MagicLinkEmail({ identifier, url }),
+      //            text: `${url}`,
+      //          })
+      //          console.log('Verification email sent')
+      //        } catch (error) {
+      //          console.log(error)
+      //          throw new Error('Failed to send verification email')
+      //        }
+      //      },
 
       //      async sendVerificationRequest({
       //        identifier,
