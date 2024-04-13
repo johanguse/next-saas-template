@@ -1,6 +1,6 @@
-import { z } from 'zod'
-
 import { ContactFormSchema } from '@/lib/validations/contact-form'
+
+import { z } from 'zod'
 
 type ContactFormInputs = z.infer<typeof ContactFormSchema>
 
