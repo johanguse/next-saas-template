@@ -20,7 +20,7 @@ export async function sendEmail(data: ContactFormInputs) {
         from: env.RESEND_FROM_EMAIL,
         to: [siteConfig.mailSupport],
         reply_to: email,
-        subject: 'Contact form submission from ' + siteConfig.name,
+        subject: `${siteConfig.name} - New Contact Form Message`,
         text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
       })
       return { success: true, data }

@@ -20,7 +20,7 @@ export async function sendFeedbackEmail(data: FeedbackFormInputs) {
         from: env.RESEND_FROM_EMAIL,
         to: [siteConfig.mailSupport],
         reply_to: email,
-        subject: 'New feedback from ' + siteConfig.name,
+        subject: `${siteConfig.name} - New Feedback`,
         text: `Name: ${name}\nEmail: ${email}\n\nSuggestion: ${description}`,
       })
       return { success: true, data }
