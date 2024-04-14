@@ -1,10 +1,14 @@
 import { DashboardConfig } from 'types'
 
+import { absoluteUrl } from '@/lib/utils'
+
+const baseUrl = absoluteUrl('')
+
 export const dashboardConfig: DashboardConfig = {
   mainNav: [
     {
       title: 'Documentation',
-      href: '/docs',
+      href: 'docs' + baseUrl,
     },
     {
       title: 'Contact',

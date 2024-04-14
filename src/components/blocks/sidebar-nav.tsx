@@ -4,13 +4,14 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
 import { SidebarNavItem } from 'types'
+
 import { cn } from '@/lib/utils'
 
-export interface DocsSidebarNavProps {
+export interface BlocksSidebarNavProps {
   items: SidebarNavItem[]
 }
 
-export function DocsSidebarNav({ items }: DocsSidebarNavProps) {
+export function BlocksSidebarNav({ items }: BlocksSidebarNavProps) {
   const pathname = usePathname()
 
   return items.length ? (
@@ -21,7 +22,7 @@ export function DocsSidebarNav({ items }: DocsSidebarNavProps) {
             {item.title}
           </h4>
           {item.items ? (
-            <DocsSidebarNavItems items={item.items} pathname={pathname} />
+            <BlocksSidebarNavItems items={item.items} pathname={pathname} />
           ) : null}
         </div>
       ))}
@@ -29,15 +30,15 @@ export function DocsSidebarNav({ items }: DocsSidebarNavProps) {
   ) : null
 }
 
-interface DocsSidebarNavItemsProps {
+interface BlocksSidebarNavItemsProps {
   items: SidebarNavItem[]
   pathname: string | null
 }
 
-export function DocsSidebarNavItems({
+export function BlocksSidebarNavItems({
   items,
   pathname,
-}: DocsSidebarNavItemsProps) {
+}: BlocksSidebarNavItemsProps) {
   return items?.length ? (
     <div className="grid grid-flow-row auto-rows-max text-sm">
       {items.map((item, index) =>

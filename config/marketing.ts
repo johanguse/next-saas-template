@@ -1,5 +1,7 @@
 import { MarketingConfig } from 'types'
 
+import { docsConfig } from '@/config/docs'
+
 export const marketingConfig: MarketingConfig = {
   mainNav: [
     {
@@ -24,7 +26,7 @@ export const marketingConfig: MarketingConfig = {
     },
     {
       title: 'Documentation',
-      href: '/docs',
+      href: docsConfig.docUrl.href,
     },
     {
       title: 'Contact',
@@ -54,24 +56,24 @@ export const marketingConfig: MarketingConfig = {
     },
     {
       title: 'Documentation',
-      href: '/docs',
+      href: docsConfig.docUrl.href,
       subMenu: [
         {
           title: 'Introduction',
-          href: '/docs',
+          href: docsConfig.docUrl.href + '/docs',
         },
         {
           title: 'Contentlayer',
-          href: '/docs/in-progress',
+          href: docsConfig.docUrl.href + '/docs/in-progress',
           disabled: true,
         },
         {
           title: 'Components',
-          href: '/docs/documentation/components',
+          href: docsConfig.docUrl.href + '/docs/documentation/components',
         },
         {
           title: 'Code Blocks',
-          href: '/docs/documentation/code-blocks',
+          href: docsConfig.docUrl.href + '/docs/documentation/code-blocks',
         },
       ],
     },
