@@ -1,0 +1,57 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "globalDependencies": ["**/.env.*local"],
+  "globalEnv": [
+    "NODE_ENV",
+    "NEXT_PUBLIC_APP_URL",
+    "NEXT_PUBLIC_GOOGLE_ANALITYCS",
+    "NEXTAUTH_SECRET",
+    "AUTH_GOOGLE_CLIENT_ID",
+    "AUTH_GOOGLE_CLIENT_SECRET",
+    "AUTH_GITHUB_SECRET",
+    "AUTH_GITHUB_ID",
+    "POSTGRES_DATABASE_URL",
+    "POSTGRES_DATABASE_URL_UNPOOLED",
+    "RESEND_USERNAME",
+    "RESEND_API_KEY",
+    "RESEND_EMAIL_SERVER_USER",
+    "RESEND_EMAIL_SERVER_HOST",
+    "RESEND_EMAIL_SERVER_PORT",
+    "RESEND_FROM_EMAIL",
+    "LOOPSO_API_KEY",
+    "STRIPE_SECRET_API_KEY",
+    "STRIPE_WEBHOOK_SECRET",
+    "NEXT_PUBLIC_STRIPE_PRO_MONTHLY_PLAN_ID",
+    "NEXT_PUBLIC_STRIPE_PRO_YEARLY_PLAN_ID",
+    "NEXT_PUBLIC_STRIPE_BUSINESS_MONTHLY_PLAN_ID",
+    "NEXT_PUBLIC_STRIPE_BUSINESS_YEARLY_PLAN_ID",
+    "NEXT_PUBLIC_STRIPE_PRICING_TABLE_ID",
+    "NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY"
+  ],
+  "pipeline": {
+    "build": {
+      "dependsOn": ["^build", "@turbocharger/database#db:generate"],
+      "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
+    },
+    "lint": {
+      "dependsOn": ["^build"]
+    },
+    "typecheck": { "dependsOn": ["^build"], "cache": false },
+    "dev": {
+      "dependsOn": ["^build", "@turbocharger/database#db:generate"],
+      "cache": false
+    },
+    "clean": {
+      "cache": false
+    },
+    "db:generate": {
+      "cache": false
+    },
+    "db:push": {
+      "cache": false
+    },
+    "db:seed": {
+      "cache": false
+    }
+  }
+}
