@@ -2,9 +2,10 @@ import Link from 'next/link'
 
 import { cn } from '@/lib/utils'
 
-import { buttonVariants } from '@/components/ui/button'
+import { Button, buttonVariants } from '@/components/ui/button'
 
 import { BlockTitle } from '@/components/layout/main-title'
+import MoreToCome from '@/components/more-to-come'
 import { Icons } from '@/components/shared/icons'
 
 export const metadata = {
@@ -48,22 +49,11 @@ export default function ButtonsBlocksPage() {
             </Link>
           </div>
         </div>
+        <div className="my-6 flex items-center justify-center rounded bg-background py-20">
+          <Button variant={'sexy'}>Sexy Border</Button>
+        </div>
       </div>
-      <div className="text-center text-sm">
-        <p>
-          More buttons to come...
-          <br />
-          checkout our&nbsp;
-          <a
-            href="https://bit.ly/48LTNin"
-            target="_blank"
-            className="underline"
-          >
-            public roadmap here
-          </a>
-          .
-        </p>
-      </div>
+      <MoreToCome />
     </div>
   )
 }

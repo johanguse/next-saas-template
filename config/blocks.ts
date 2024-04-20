@@ -15,6 +15,10 @@ export const blocksConfig: BlocksConfig = {
       title: 'Blocks',
       items: [
         {
+          title: 'Border',
+          href: '/blocks/border',
+        },
+        {
           title: 'Buttons',
           href: '/blocks/buttons',
         },
