@@ -8,11 +8,11 @@ import { SexyBorder } from '../sexy-border'
 import { type VariantProps, cva } from 'class-variance-authority'
 
 const buttonVariants = cva(
-  'w-fit inline-flex items-center justify-center whitespace-nowrap text-sm rounded-md font-alt font-medium transition-colors disabled:pointer-events-none disabled:opacity-50',
+  'inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background',
   {
     variants: {
       variant: {
-        default: 'bg-zinc-900 text-zinc-300 hover:bg-zinc-800',
+        default: 'bg-primary text-primary-foreground hover:bg-primary/90',
         destructive:
           'bg-destructive text-destructive-foreground hover:bg-destructive/90',
         outline:
