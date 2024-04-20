@@ -7,12 +7,18 @@ export function SexyBorder({
   from = 'rose-400',
   via = 'fuchsia-500',
   to = 'indigo-500',
+  gradientClassName = '',
 }: React.ButtonHTMLAttributes<HTMLButtonElement> & {
   offset?: number
   from?: string
   via?: string
   to?: string
+  gradientClassName?: string
 }) {
+  const gradientClasses = gradientClassName
+    ? `${gradientClassName}`
+    : `from-${from} via-${via} to-${to}`
+
   return (
     <div
       className={cn(
@@ -28,10 +34,10 @@ export function SexyBorder({
           right: `-${offset}px`,
           top: `-${offset}px`,
         }}
-        className={
-          `absolute m-auto aspect-square animate-spin-slow rounded-full bg-gradient-to-r` +
-          ` from-${from} via-${via} to-${to}`
-        }
+        className={cn(
+          `absolute m-auto aspect-square animate-spin-slow rounded-full bg-gradient-to-r`,
+          gradientClasses
+        )}
       />
     </div>
   )

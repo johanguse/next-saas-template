@@ -4,3 +4,12 @@
   -webkit-background-clip: text;
   background-clip: text;
 }
+
+.gradient-primary {
+  --tw-gradient-stops: theme('colors.rose.400'), theme('colors.fuchsia.400'),
+    theme('colors.indigo.500');
+}
+.gradient-secondary {
+  --tw-gradient-stops: theme('colors.indigo.400'), theme('colors.amber.400'),
+    theme('colors.green.500');
+}
