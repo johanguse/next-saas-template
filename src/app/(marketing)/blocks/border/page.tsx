@@ -1,6 +1,7 @@
+import { SexyBorder } from '@/components/ui/sexy-border'
+
 import { BlockTitle } from '@/components/layout/main-title'
 import MoreToCome from '@/components/more-to-come'
-import { SexyBorder } from '@/components/sexy-border'
 
 export const metadata = {
   title: 'Buttons Components Page',

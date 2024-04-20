@@ -4,7 +4,8 @@ import { cn } from '@/lib/utils'
 
 import { Slot } from '@radix-ui/react-slot'
 
-import { SexyBorder } from '../sexy-border'
+import { SexyBorder } from '@/components/ui/sexy-border'
+
 import { type VariantProps, cva } from 'class-variance-authority'
 
 const buttonVariants = cva(
