@@ -18,7 +18,7 @@ export default function ButtonsBlocksPage() {
           <BlockTitle.Separator />
         </BlockTitle.Wrapper>
         <div className="mb-20">
-          <SexyBorder>
+          <SexyBorder className="w-full" offset={20}>
             <div className="flex w-full flex-col rounded-md border bg-black p-4 lg:p-8">
               <div className="p-4">This is a sexy border</div>
             </div>

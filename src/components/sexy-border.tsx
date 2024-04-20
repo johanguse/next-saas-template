@@ -4,9 +4,9 @@ export function SexyBorder({
   children,
   className,
   offset = 100,
-  from = '#a855f7cc',
-  via = '#da6cae',
-  to = '#3778ff',
+  from = 'rose-400',
+  via = 'fuchsia-500',
+  to = 'indigo-500',
 }: React.ButtonHTMLAttributes<HTMLButtonElement> & {
   offset?: number
   from?: string
@@ -30,7 +30,7 @@ export function SexyBorder({
         }}
         className={
           `absolute m-auto aspect-square animate-spin-slow rounded-full bg-gradient-to-r` +
-          ` from-[${from}] via-[${via}] to-[${to}]`
+          ` from-${from} via-${via} to-${to}`
         }
       />
     </div>
