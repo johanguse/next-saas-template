@@ -1,10 +1,14 @@
 import Link from 'next/link'
-import { Doc } from 'contentlayer/generated'
 
 import { docsConfig } from '@/config/docs'
+
 import { cn } from '@/lib/utils'
+
 import { buttonVariants } from '@/components/ui/button'
+
 import { Icons } from '@/components/shared/icons'
+
+import { Doc } from 'contentlayer/generated'
 
 interface DocsPagerProps {
   doc: Doc
@@ -22,7 +26,7 @@ export function DocsPager({ doc }: DocsPagerProps) {
       {pager?.prev && (
         <Link
           href={pager.prev.href}
-          className={cn(buttonVariants({ variant: 'ghost' }))}
+          className={cn(buttonVariants({ variant: 'outline' }))}
         >
           <Icons.chevronLeft className="mr-2 size-4" />
           {pager.prev.title}
@@ -31,7 +35,7 @@ export function DocsPager({ doc }: DocsPagerProps) {
       {pager?.next && (
         <Link
           href={pager.next.href}
-          className={cn(buttonVariants({ variant: 'ghost' }), 'ml-auto')}
+          className={cn(buttonVariants({ variant: 'outline' }), 'ml-auto')}
         >
           {pager.next.title}
           <Icons.chevronRight className="ml-2 size-4" />

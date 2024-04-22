@@ -1,9 +1,11 @@
 import Link from 'next/link'
-import { allGuides } from 'contentlayer/generated'
-import { compareDesc } from 'date-fns'
 
 import { formatDate } from '@/lib/utils'
+
 import { DocsPageHeader } from '@/components/docs/page-header'
+
+import { allGuides } from 'contentlayer/generated'
+import { compareDesc } from 'date-fns'
 
 export const metadata = {
   title: 'Guides',

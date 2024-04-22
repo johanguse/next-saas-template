@@ -1,11 +1,13 @@
 import * as React from 'react'
 
 import NextImage, { ImageProps } from 'next/image'
+import Link from 'next/link'
 
 import { cn } from '@/lib/utils'
 
 import { MdxCard } from '@/components/content/mdx-card'
 import { Callout } from '@/components/shared/callout'
+import { CopyButton } from '@/components/shared/copy-button'
 
 import { useMDXComponent } from 'next-contentlayer/hooks'
 
@@ -22,7 +24,7 @@ const components = {
   h2: ({ className, ...props }) => (
     <h2
       className={cn(
-        'mt-10 scroll-m-20 border-b pb-1 text-3xl font-semibold tracking-tight first:mt-0',
+        'mt-10 scroll-m-20 border-b pb-1 text-2xl font-semibold tracking-tight first:mt-0',
         className
       )}
       {...props}
@@ -31,7 +33,7 @@ const components = {
   h3: ({ className, ...props }) => (
     <h3
       className={cn(
-        'mt-8 scroll-m-20 text-2xl font-semibold tracking-tight',
+        'mt-8 scroll-m-20 text-xl font-semibold tracking-tight',
         className
       )}
       {...props}
@@ -40,7 +42,7 @@ const components = {
   h4: ({ className, ...props }) => (
     <h4
       className={cn(
-        'mt-8 scroll-m-20 text-xl font-semibold tracking-tight',
+        'mt-8 scroll-m-20 text-lg font-semibold tracking-tight',
         className
       )}
       {...props}
@@ -132,19 +134,34 @@ const components = {
       {...props}
     />
   ),
-  pre: ({ className, ...props }) => (
-    <pre
-      className={cn(
-        'mb-4 mt-6 overflow-x-auto rounded-lg border bg-black p-4',
-        className
+  pre: ({
+    className,
+    __rawString__,
+    ...props
+  }: React.HTMLAttributes<HTMLPreElement> & { __rawString__?: string }) => (
+    <div className="group relative w-full overflow-hidden">
+      <pre
+        className={cn(
+          'max-h-[650px] overflow-x-auto rounded-lg border bg-zinc-900 py-4 dark:bg-zinc-900',
+          className
+        )}
+        {...props}
+      />
+      {__rawString__ && (
+        <CopyButton
+          value={__rawString__}
+          className={cn(
+            'absolute right-4 top-4 z-20',
+            'duration-250 opacity-0 transition-all group-hover:opacity-100'
+          )}
+        />
       )}
-      {...props}
-    />
+    </div>
   ),
   code: ({ className, ...props }) => (
     <code
       className={cn(
-        'relative px-[0.3rem] py-[0.2rem] font-mono text-sm',
+        'relative rounded-sm bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm',
         className
       )}
       {...props}
@@ -153,6 +170,36 @@ const components = {
   Image: (props: ImageProps) => <NextImage {...props} />,
   Callout,
   Card: MdxCard,
+  Step: ({ className, ...props }: React.ComponentProps<'h3'>) => (
+    <h3
+      className={cn(
+        'mt-8 scroll-m-20 font-heading text-xl font-semibold tracking-tight',
+        className
+      )}
+      {...props}
+    />
+  ),
+  Steps: ({ ...props }) => (
+    <div
+      className="[&>h3]:step steps mb-12 ml-4 border-l pl-8 [counter-reset:step]"
+      {...props}
+    />
+  ),
+  Link: ({ className, ...props }: React.ComponentProps<typeof Link>) => (
+    <Link
+      className={cn('font-medium underline underline-offset-4', className)}
+      {...props}
+    />
+  ),
+  LinkedCard: ({ className, ...props }: React.ComponentProps<typeof Link>) => (
+    <Link
+      className={cn(
+        'flex w-full flex-col items-center rounded-xl border bg-card p-6 text-card-foreground shadow transition-colors hover:bg-muted/50 sm:p-10',
+        className
+      )}
+      {...props}
+    />
+  ),
 }
 
 interface MdxProps {
@@ -163,7 +210,7 @@ export function Mdx({ code }: MdxProps) {
   const Component = useMDXComponent(code)
 
   return (
-    <div className="mdx text-balance">
+    <div className="mdx">
       <Component components={components} />
     </div>
   )
