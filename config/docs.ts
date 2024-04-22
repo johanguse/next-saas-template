@@ -3,20 +3,12 @@ import { DocsConfig } from 'types'
 export const docsConfig: DocsConfig = {
   mainNav: [
     {
-      title: 'Home',
-      href: '/',
-    },
-    {
       title: 'Documentation',
       href: '/docs',
     },
     {
       title: 'Guides',
       href: '/guides',
-    },
-    {
-      title: 'Components',
-      href: '/components',
     },
   ],
   sidebarNav: [
@@ -27,86 +19,42 @@ export const docsConfig: DocsConfig = {
           title: 'Introduction',
           href: '/docs',
         },
+        {
+          title: 'Installation',
+          href: '/docs/installation',
+        },
       ],
     },
     {
-      title: 'Documentation',
+      title: 'Configuration',
       items: [
         {
-          title: 'Introduction',
-          href: '/docs/documentation',
+          title: 'Database',
+          href: '/docs/configuration/database',
         },
         {
-          title: 'Contentlayer',
-          href: '/docs/in-progress',
-          disabled: true,
+          title: 'Subscriptions',
+          href: '/docs/configuration/subscriptions',
+        },
+        {
+          title: 'Config files',
+          href: '/docs/configuration/config-files',
+        },
+        {
+          title: 'Markdown files',
+          href: '/docs/configuration/markdown-files',
+        },
+        {
+          title: 'Authentification',
+          href: '/docs/configuration/authentification',
+        },
+        {
+          title: 'Email',
+          href: '/docs/configuration/email',
         },
         {
           title: 'Components',
-          href: '/docs/documentation/components',
-        },
-        {
-          title: 'Code Blocks',
-          href: '/docs/documentation/code-blocks',
-        },
-        {
-          title: 'Style Guide',
-          href: '/docs/documentation/style-guide',
-        },
-      ],
-    },
-    {
-      title: 'Blog',
-      items: [
-        {
-          title: 'Introduction',
-          href: '/docs/in-progress',
-          disabled: true,
-        },
-        {
-          title: 'Build your own',
-          href: '/docs/in-progress',
-          disabled: true,
-        },
-        {
-          title: 'Writing Posts',
-          href: '/docs/in-progress',
-          disabled: true,
-        },
-      ],
-    },
-    {
-      title: 'Dashboard',
-      items: [
-        {
-          title: 'Introduction',
-          href: '/docs/in-progress',
-          disabled: true,
-        },
-        {
-          title: 'Layouts',
-          href: '/docs/in-progress',
-          disabled: true,
-        },
-        {
-          title: 'Server Components',
-          href: '/docs/in-progress',
-          disabled: true,
-        },
-        {
-          title: 'Authentication',
-          href: '/docs/in-progress',
-          disabled: true,
-        },
-        {
-          title: 'Database with Prisma',
-          href: '/docs/in-progress',
-          disabled: true,
-        },
-        {
-          title: 'API Routes',
-          href: '/docs/in-progress',
-          disabled: true,
+          href: '/docs/configuration/components',
         },
       ],
     },

@@ -1,10 +1,12 @@
 'use client'
 
 import * as React from 'react'
-import { toast } from 'sonner'
 
 import { cn } from '@/lib/utils'
+
 import { Input } from '@/components/ui/input'
+
+import { toast } from 'sonner'
 
 interface DocsSearchProps extends React.HTMLAttributes<HTMLFormElement> {}
 

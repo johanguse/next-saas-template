@@ -1,8 +1,12 @@
+import { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { allGuides } from 'contentlayer/generated'
 
 import { getTableOfContents } from '@/lib/toc'
+import { absoluteUrl, cn } from '@/lib/utils'
+
+import { buttonVariants } from '@/components/ui/button'
+
 import { Mdx } from '@/components/content/mdx-components'
 import { DocsPageHeader } from '@/components/docs/page-header'
 import { Icons } from '@/components/shared/icons'
@@ -10,11 +14,8 @@ import { DashboardTableOfContents } from '@/components/shared/toc'
 
 import '@/styles/mdx.css'
 
-import { Metadata } from 'next'
 import { env } from '@/root/env.mjs'
-
-import { absoluteUrl, cn } from '@/lib/utils'
-import { buttonVariants } from '@/components/ui/button'
+import { allGuides } from 'contentlayer/generated'
 
 interface GuidePageProps {
   params: {

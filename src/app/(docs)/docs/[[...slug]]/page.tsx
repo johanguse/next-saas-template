@@ -1,7 +1,9 @@
+import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { allDocs } from 'contentlayer/generated'
 
 import { getTableOfContents } from '@/lib/toc'
+import { absoluteUrl } from '@/lib/utils'
+
 import { Mdx } from '@/components/content/mdx-components'
 import { DocsPageHeader } from '@/components/docs/page-header'
 import { DocsPager } from '@/components/docs/pager'
@@ -9,10 +11,8 @@ import { DashboardTableOfContents } from '@/components/shared/toc'
 
 import '@/styles/mdx.css'
 
-import { Metadata } from 'next'
 import { env } from '@/root/env.mjs'
-
-import { absoluteUrl } from '@/lib/utils'
+import { allDocs } from 'contentlayer/generated'
 
 interface DocPageProps {
   params: {
@@ -91,15 +91,17 @@ export default async function DocPage({ params }: DocPageProps) {
   const toc = await getTableOfContents(doc.body.raw)
 
   return (
-    <main className="relative py-6 lg:gap-10 lg:py-10 xl:grid xl:grid-cols-[1fr_300px]">
+    <main className="relative py-6 lg:gap-10 lg:py-8 xl:grid xl:grid-cols-[1fr_300px]">
       <div className="mx-auto w-full min-w-0">
         <DocsPageHeader heading={doc.title} text={doc.description} />
-        <Mdx code={doc.body.code} />
+        <div className="pb-4 pt-11">
+          <Mdx code={doc.body.code} />
+        </div>
         <hr className="my-4 md:my-6" />
         <DocsPager doc={doc} />
       </div>
       <div className="hidden text-sm xl:block">
-        <div className="sticky top-16 -mt-10 max-h-[calc(var(--vh)-4rem)] overflow-y-auto pt-10">
+        <div className="sticky top-16 -mt-10 max-h-[calc(var(--vh)-4rem)] overflow-y-auto pt-8">
           <DashboardTableOfContents toc={toc} />
         </div>
       </div>
