@@ -8,7 +8,7 @@ export const metadata = {
 export default function TestimonialBlocksPage() {
   return (
     <div className="flex w-full flex-col gap-16 py-8 md:py-8">
-      <div className="container mx-auto mb-10 pt-20 text-center">
+      <div className="container mx-auto my-8 text-center">
         <div className="mb-20">
           <BlockTitle.Wrapper>
             <BlockTitle.Header elementType="h1">Blocks</BlockTitle.Header>

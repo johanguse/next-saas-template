@@ -15,7 +15,7 @@ export const metadata = {
 export default function CarouselBlocksPage() {
   return (
     <div className="flex w-full flex-col gap-16 py-8 md:py-8">
-      <div className="pt-20 text-center">
+      <div className="pt-10 text-center">
         <BlockTitle.Wrapper className="mb-20">
           <BlockTitle.Header elementType="h1" className="text-xl">
             Carousel
