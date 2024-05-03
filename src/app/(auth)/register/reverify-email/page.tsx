@@ -16,6 +16,7 @@ import {
 
 import { EmailVerificationForm } from '@/components/auth/email-verification-form'
 import { Icons } from '@/components/shared/icons'
+import IconLogo from '@/components/shared/logo-icon'
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -38,6 +39,12 @@ export default function ReverifyEmailPage(): JSX.Element {
           Back
         </>
       </Link>
+      <div className="mx-auto mb-8 flex flex-col items-center">
+        <IconLogo className="mb-2 size-16" />
+        <span className="mb-2 hidden font-urban text-xl font-bold text-black dark:text-white sm:inline-block">
+          {siteConfig.name}
+        </span>
+      </div>
       <Card className="max-sm:flex max-sm:h-screen max-sm:w-full max-sm:flex-col max-sm:items-center max-sm:justify-center max-sm:rounded-none max-sm:border-none sm:min-w-[370px] sm:max-w-[368px]">
         <CardHeader className="space-y-1">
           <CardTitle className="text-2xl">Email Verification</CardTitle>
