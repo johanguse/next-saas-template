@@ -36,9 +36,8 @@ const nextConfig = {
       },
     ],
   },
-  transpilePackages: ['html-to-text'],
   experimental: {
-    serverComponentsExternalPackages: ['resend', '@prisma/client'],
+    serverComponentsExternalPackages: ['@prisma/client'],
   },
 }
 
