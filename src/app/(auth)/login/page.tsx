@@ -21,6 +21,7 @@ import {
 import { OAuthButtons } from '@/components/auth/oauth-buttons'
 import { SignInWithEmailForm } from '@/components/auth/signin-with-email-form'
 import { SignInWithPasswordForm } from '@/components/auth/signin-with-password-form'
+import { BlockTitle } from '@/components/layout/main-title'
 import { Icons } from '@/components/shared/icons'
 import IconLogo from '@/components/shared/logo-icon'
 
@@ -57,7 +58,13 @@ export default async function SignInPage(): Promise<JSX.Element> {
       <Card className="max-sm:flex  max-sm:w-full max-sm:flex-col max-sm:items-center max-sm:justify-center max-sm:rounded-none max-sm:border-none sm:min-w-[370px] sm:max-w-[368px]">
         <CardHeader className="space-y-1">
           <div className="flex items-center justify-between">
-            <CardTitle className="text-2xl">Login</CardTitle>
+            <CardTitle>
+              <BlockTitle.Wrapper>
+                <BlockTitle.Header elementType="h1" className="text-2xl">
+                  Login
+                </BlockTitle.Header>
+              </BlockTitle.Wrapper>
+            </CardTitle>
             <Link href="/">
               <Icons.close className="size-4" />
             </Link>

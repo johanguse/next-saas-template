@@ -36,7 +36,6 @@ const nextConfig = {
       },
     ],
   },
-  transpilePackages: ['html-to-text'],
   experimental: {
     serverComponentsExternalPackages: ['@prisma/client'],
   },

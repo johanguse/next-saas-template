@@ -15,6 +15,7 @@ import {
 } from '@/components/ui/card'
 
 import { PasswordResetForm } from '@/components/auth/password-reset-form'
+import { BlockTitle } from '@/components/layout/main-title'
 import { Icons } from '@/components/shared/icons'
 import IconLogo from '@/components/shared/logo-icon'
 
@@ -46,8 +47,14 @@ export default function PasswordReset(): JSX.Element {
         </span>
       </div>
       <Card className="max-sm:flex max-sm:h-screen max-sm:w-full max-sm:flex-col max-sm:items-center max-sm:justify-center max-sm:rounded-none max-sm:border-none sm:min-w-[370px] sm:max-w-[368px]">
-        <CardHeader className="space-y-1">
-          <CardTitle className="text-2xl">Password Reset</CardTitle>
+        <CardHeader className="place-items-start space-y-1">
+          <CardTitle>
+            <BlockTitle.Wrapper>
+              <BlockTitle.Header elementType="h1" className="text-2xl">
+                Password Reset
+              </BlockTitle.Header>
+            </BlockTitle.Wrapper>
+          </CardTitle>
           <CardDescription>
             Enter your email to receive a reset link
           </CardDescription>

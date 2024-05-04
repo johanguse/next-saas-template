@@ -5,6 +5,8 @@ import { siteConfig } from '@/config/site'
 import { resend } from '@/lib/email'
 import { ContactFormSchema } from '@/lib/validations/contact-form'
 
+import ContactFormEmail from '@/components/emails/contact-form-email'
+
 import { env } from '@/root/env.mjs'
 import { z } from 'zod'
 
@@ -21,7 +23,7 @@ export async function sendEmail(data: ContactFormInputs) {
         to: [siteConfig.mailSupport],
         reply_to: email,
         subject: `${siteConfig.name} - New Contact Form Message`,
-        text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
+        react: ContactFormEmail({ name, email, message }),
       })
       return { success: true, data }
     } catch (error) {

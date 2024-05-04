@@ -10,6 +10,8 @@ import {
   signUpWithPasswordSchema,
 } from '@/lib/validations/auth'
 
+import { EmailVerificationEmail } from '@/components/emails/email-verification-email'
+
 import { getUserByEmail } from '@/actions/user'
 import { env } from '@/root/env.mjs'
 import crypto from 'crypto'
@@ -43,11 +45,10 @@ export async function signUpWithPassword(
       from: env.RESEND_FROM_EMAIL,
       to: [validatedInput.data.email],
       subject: `${siteConfig.name} - Verify your email address`,
-      // react: EmailVerificationEmail({
-      //   email: validatedInput.data.email,
-      //   emailVerificationToken,
-      // }),
-      text: `Verify your email address at ${baseUrl}/signup/verify-email?token=${emailVerificationToken}`,
+      react: EmailVerificationEmail({
+        email: validatedInput.data.email,
+        emailVerificationToken,
+      }),
     })
 
     return newUser && emailSent ? 'success' : 'error'

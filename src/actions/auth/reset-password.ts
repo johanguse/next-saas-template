@@ -9,6 +9,8 @@ import {
   passwordResetSchema,
 } from '@/lib/validations/auth'
 
+import { ResetPasswordEmail } from '@/components/emails/reset-password-email'
+
 import { getUserByEmail } from '@/actions/user'
 import { env } from '@/root/env.mjs'
 import crypto from 'crypto'
@@ -43,11 +45,10 @@ export async function resetPassword(
       from: env.RESEND_FROM_EMAIL,
       to: [validatedInput.data.email],
       subject: `${siteConfig.name} - Reset your password`,
-      //react: ResetPasswordEmail({
-      //  email: validatedInput.data.email,
-      //  resetPasswordToken,
-      //}),
-      text: `Reset your password at ${siteConfig.url}/signin/password-update?token=${resetPasswordToken}`,
+      react: ResetPasswordEmail({
+        email: validatedInput.data.email,
+        resetPasswordToken,
+      }),
     })
 
     return userUpdated && emailSent ? 'success' : 'error'

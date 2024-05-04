@@ -4,17 +4,16 @@ import { siteConfig } from '@/config/site'
 
 import { prisma } from '@/lib/db'
 import { resend } from '@/lib/email'
-import { absoluteUrl } from '@/lib/utils'
 import {
   EmailVerificationFormInput,
   emailVerificationSchema,
 } from '@/lib/validations/email'
 
+import { EmailVerificationEmail } from '@/components/emails/email-verification-email'
+
 import { getUserByEmail } from '../user'
 import { env } from '@/root/env.mjs'
 import crypto from 'crypto'
-
-const baseUrl = absoluteUrl('')
 
 export async function resendEmailVerificationLink(
   rawInput: EmailVerificationFormInput
@@ -41,11 +40,10 @@ export async function resendEmailVerificationLink(
       from: env.RESEND_FROM_EMAIL,
       to: [validatedInput.data.email],
       subject: `${siteConfig.name} - Verify your email address`,
-      //react: EmailVerificationEmail({
-      //  email: validatedInput.data.email,
-      //  emailVerificationToken,
-      //}),
-      text: `Verify your email address at ${baseUrl}/signup/verify-email?token=${emailVerificationToken}`,
+      react: EmailVerificationEmail({
+        email: validatedInput.data.email,
+        emailVerificationToken,
+      }),
     })
 
     return userUpdated && emailSent ? 'success' : 'error'

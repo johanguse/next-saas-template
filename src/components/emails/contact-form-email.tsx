@@ -1,22 +1,23 @@
-import { ContactFormSchema } from '@/lib/validations/contact-form'
+import { Heading, Html, Text } from '@react-email/components'
 
-import { z } from 'zod'
+interface ContactFormEmailProps {
+  name: string
+  email: string
+  message: string
+}
 
-type ContactFormInputs = z.infer<typeof ContactFormSchema>
-
-const ContactFormEmail: React.FC<Readonly<ContactFormInputs>> = ({
+export default function ContactFormEmail({
   name,
   email,
   message,
-}) => (
-  <div>
-    <h1>Contact form submission</h1>
-    <p>
-      From <strong>{name}</strong> at {email}
-    </p>
-    <h2>Message:</h2>
-    <p>{message}</p>
-  </div>
-)
-
-export default ContactFormEmail
+}: ContactFormEmailProps) {
+  return (
+    <Html lang="en">
+      <Heading as="h1">New Form Submission</Heading>
+      <Text>You just submitted a form. Here are the details:</Text>
+      <Text>Name: {name}</Text>
+      <Text>Email: {email}</Text>
+      <Text>Message: {message}</Text>
+    </Html>
+  )
+}
