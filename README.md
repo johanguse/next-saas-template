@@ -64,6 +64,12 @@ prisma generate && prisma db push --force-reset && pnpm prisma:seed && next buil
 
 Replace the at Vercel the default Build Command to this above
 
+> [!WARNING]  
+> You need update `.react-email` folder before use `pnpm run email`. Check the link [here](https://github.com/resend/react-email/issues/868#issuecomment-1828411325) if you have the error : `renderToReadableStream not found`
+>
+> You can't use turbo mode to sent react-email. Check the issue [here](https://github.com/resend/resend-node/issues/258)
+> So if you are developer the emails use the command `pnpm run dev` if you are not you can use `pnpm run dev:turbo`
+
 ## Roadmap
 
 Visit our [Public Roadmap](https://bit.ly/48LTNin) for more
