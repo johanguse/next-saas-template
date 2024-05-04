@@ -14,6 +14,7 @@ import {
   CardTitle,
 } from '@/components/ui/card'
 
+import { BlockTitle } from '@/components/layout/main-title'
 import { Icons } from '@/components/shared/icons'
 import IconLogo from '@/components/shared/logo-icon'
 
@@ -45,8 +46,14 @@ export default async function SignInPage(): Promise<JSX.Element> {
         </span>
       </div>
       <Card className="max-sm:flex  max-sm:w-full max-sm:flex-col max-sm:items-center max-sm:justify-center max-sm:rounded-none max-sm:border-none sm:min-w-[370px] sm:max-w-[368px]">
-        <CardHeader className="space-y-1">
-          <CardTitle className="text-2xl">Success!</CardTitle>
+        <CardHeader className="place-items-start space-y-1">
+          <CardTitle>
+            <BlockTitle.Wrapper>
+              <BlockTitle.Header elementType="h1" className="text-2xl">
+                Success!
+              </BlockTitle.Header>
+            </BlockTitle.Wrapper>
+          </CardTitle>
           <CardDescription>
             Check your email for the magic link to sign in
           </CardDescription>

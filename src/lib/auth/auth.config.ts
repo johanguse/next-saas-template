@@ -1,8 +1,13 @@
+import { siteConfig } from '@/config/site'
+
 import { prisma } from '@/lib/db'
+import { resend } from '@/lib/email'
 import { signInWithPasswordSchema } from '@/lib/validations/auth'
 
+import MagicLinkEmail from '@/components/emails/magic-link-email'
+
 import { env } from '@/root/env.mjs'
-import type { NextAuthConfig } from 'next-auth'
+import { NextAuthConfig } from 'next-auth'
 import Credentials from 'next-auth/providers/credentials'
 import GitHubProvider from 'next-auth/providers/github'
 import Google from 'next-auth/providers/google'
@@ -67,89 +72,26 @@ export default {
       name: 'Resend',
       apiKey: env.RESEND_API_KEY,
       from: env.RESEND_FROM_EMAIL,
-      //      async sendVerificationRequest({
-      //        identifier,
-      //        url,
-      //      }: {
-      //        identifier: string
-      //        url: string
-      //      }) {
-      //        try {
-      //          console.log('Sending verification email')
-      //          console.log({ identifier, url })
-      //          await resend.emails.send({
-      //            from: env.RESEND_FROM_EMAIL,
-      //            to: [identifier],
-      //            subject: `${siteConfig.name} magic link sign in`,
-      //            //react: MagicLinkEmail({ identifier, url }),
-      //            text: `${url}`,
-      //          })
-      //          console.log('Verification email sent')
-      //        } catch (error) {
-      //          console.log(error)
-      //          throw new Error('Failed to send verification email')
-      //        }
-      //      },
-
-      //      async sendVerificationRequest({
-      //        identifier,
-      //        url,
-      //      }: {
-      //        identifier: string
-      //        url: string
-      //      }) {
-      //        try {
-      //          console.log('Sending verification email')
-      //          await resend.emails.send({
-      //            from: env.RESEND_FROM_EMAIL,
-      //            to: [identifier],
-      //            subject: `${siteConfig.name} magic link sign in`,
-      //            react: MagicLinkEmail({ identifier, url }),
-      //          })
-      //          console.log('Verification email sent')
-      //        } catch (error) {
-      //          throw new Error('Failed to send verification email')
-      //        }
-      //      },
+      async sendVerificationRequest({
+        identifier,
+        url,
+      }: {
+        identifier: string
+        url: string
+      }) {
+        try {
+          await resend.emails.send({
+            from: env.RESEND_FROM_EMAIL,
+            to: [identifier],
+            subject: `${siteConfig.name} magic link sign in`,
+            react: MagicLinkEmail({ identifier, url }),
+          })
+          console.log('Verification email sent')
+        } catch (error) {
+          console.log(error)
+          throw new Error('Failed to send verification email')
+        }
+      },
     }),
-    //    EmailProvider({
-    //      sendVerificationRequest: async ({ identifier, url, provider }) => {
-    //        const user = await getUserByEmail(identifier)
-    //        if (!user || !user.name) return null
-    //
-    //        const userVerified = user?.emailVerified ? true : false
-    //        const authSubject = userVerified
-    //          ? `Sign-in link for ${siteConfig.name}`
-    //          : 'Activate your account'
-    //
-    //        try {
-    //          const { data, error } = await resend.emails.send({
-    //            from: 'SaaS Starter App <onboarding@resend.dev>',
-    //            to:
-    //              process.env.NODE_ENV === 'development'
-    //                ? 'delivered@resend.dev'
-    //                : identifier,
-    //            subject: authSubject,
-    //            react: MagicLinkEmail({
-    //              firstName: user?.name as string,
-    //              actionUrl: url,
-    //              mailType: userVerified ? 'login' : 'register',
-    //              siteName: siteConfig.name,
-    //            }),
-    //            // Set this to prevent Gmail from threading emails.
-    //            // More info: https://resend.com/changelog/custom-email-headers
-    //            headers: {
-    //              'X-Entity-Ref-ID': new Date().getTime() + '',
-    //            },
-    //          })
-    //          if (error || !data) {
-    //            throw new Error(error?.message)
-    //          }
-    //          // console.log(data)
-    //        } catch (error) {
-    //          throw new Error('Failed to send verification email.')
-    //        }
-    //      },
-    //    }),
   ],
 } satisfies NextAuthConfig
