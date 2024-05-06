@@ -7,7 +7,6 @@ import('./env.mjs')
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
   images: {
     remotePatterns: [
       {
@@ -36,9 +35,11 @@ const nextConfig = {
       },
     ],
   },
+  reactStrictMode: true,
   experimental: {
     serverComponentsExternalPackages: ['@prisma/client'],
   },
+  transpilePackages: ['html-to-text'],
 }
 
 const withContentlayer = createContentlayerPlugin({

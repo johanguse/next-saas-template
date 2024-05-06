@@ -37,15 +37,27 @@ export default async function SignUpPage(): Promise<JSX.Element> {
 
   return (
     <div className="size-screen container flex flex-col items-center justify-center">
-      <Link
-        href="/login"
-        className={cn(
-          buttonVariants({ variant: 'ghost' }),
-          'absolute right-4 top-4 md:right-8 md:top-8'
-        )}
-      >
-        Login
-      </Link>
+      <div className="">
+        <Link
+          href="/"
+          className={cn(
+            buttonVariants({ variant: 'ghost' }),
+            'absolute left-4 top-4 md:left-8 md:top-8'
+          )}
+        >
+          <Icons.chevronLeft className="mr-2 size-4" />
+          Back
+        </Link>
+        <Link
+          href="/login"
+          className={cn(
+            buttonVariants({ variant: 'ghost' }),
+            'absolute right-4 top-4 md:right-8 md:top-8'
+          )}
+        >
+          Login
+        </Link>
+      </div>
       <div className="mx-auto mb-8 flex flex-col items-center">
         <IconLogo className="mb-2 size-16" />
         <span className="mb-2 hidden font-urban text-xl font-bold text-black dark:text-white sm:inline-block">
