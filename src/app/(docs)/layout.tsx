@@ -7,7 +7,7 @@ import { getCurrentUser } from '@/lib/session'
 
 import { DocsSearch } from '@/components/docs/search'
 import { DocsSidebarNav } from '@/components/docs/sidebar-nav'
-import { NavBar } from '@/components/layout/navbar'
+import { NavBar } from '@/components/layout/header-navbar'
 import { SiteFooter } from '@/components/layout/site-footer'
 import { Icons } from '@/components/shared/icons'
 
