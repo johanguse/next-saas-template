@@ -10,7 +10,7 @@ description: How to install the project.
 Start by creating a new Next.js project using `create-next-app`:
 
 ```bash
-npx create-next-app next-saas-template --example "https://github.com/johanguse/next-saas-template"
+npx create-next-app my-saas-project --example "https://github.com/mickasmt/next-saas-stripe-starter"
 ```
 
 ### Install dependencies
@@ -18,49 +18,33 @@ npx create-next-app next-saas-template --example "https://github.com/johanguse/n
 Enter in the folder and install dependencies for your project:
 
 ```bash
-cd next-saas-template
+cd my-saas-project
 pnpm install
 ```
 
 ### Create a `.env` file
 
 Copy/paste the `.env.example` in the `.env` file:
-When you are ready to make your app live change the `NODE_ENV` to production
 
 ```md title=".env"
-NODE_ENV="development"
 NEXT_PUBLIC_APP_URL=http://localhost:3000
 
-NEXTAUTH_SECRET=
-
+AUTH_SECRET=
 GOOGLE_CLIENT_ID=
 GOOGLE_CLIENT_SECRET=
+GITHUB_OAUTH_TOKEN=
 
-GITHUB_CLIENT_SECRET=
-GITHUB_CLIENT_ID=
+DATABASE_URL=
 
-POSTGRES_DATABASE_URL=
+RESEND_API_KEY=
 
-RESEND_USERNAME='resend'
-RESEND_API_KEY=re_xxx
-RESEND_EMAIL_SERVER_USER=resend
-RESEND_EMAIL_SERVER_HOST=smtp.resend.com
-RESEND_EMAIL_SERVER_PORT=25
-RESEND_FROM_EMAIL="Your APP Email Name <welcome@your-app.com>"
-
-LOOPSO_API_KEY=""
-
-STRIPE_SECRET_API_KEY=
+STRIPE_API_KEY=
 STRIPE_WEBHOOK_SECRET=
 
 NEXT_PUBLIC_STRIPE_PRO_MONTHLY_PLAN_ID=
 NEXT_PUBLIC_STRIPE_PRO_YEARLY_PLAN_ID=
-
 NEXT_PUBLIC_STRIPE_BUSINESS_MONTHLY_PLAN_ID=
 NEXT_PUBLIC_STRIPE_BUSINESS_YEARLY_PLAN_ID=
-
-NEXT_PUBLIC_STRIPE_PRICING_TABLE_ID=
-NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=
 ```
 
 ### Configuration part

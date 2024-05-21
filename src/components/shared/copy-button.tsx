@@ -31,7 +31,7 @@ export function CopyButton({ value, className, ...props }: CopyButtonProps) {
       size="sm"
       variant="ghost"
       className={cn(
-        'z-10 size-[30px] border border-white/25 bg-zinc-900 p-1.5 text-primary-foreground hover:text-foreground dark:text-foreground',
+        'z-10 mr-2 size-[30px] border border-white/25 bg-zinc-900 p-1.5 text-primary-foreground hover:text-foreground dark:text-foreground',
         className
       )}
       onClick={() => handleCopyValue(value)}
