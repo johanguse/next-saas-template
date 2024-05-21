@@ -23,12 +23,14 @@ export function DocsPageHeader({
         </div>
       </div>
 
-      <div className={cn('space-y-2', className)} {...props}>
+      <div className={cn('mb-4 space-y-2', className)} {...props}>
         <h1 className="inline-block scroll-m-20 font-heading text-4xl">
           {heading}
         </h1>
         {text && (
-          <p className="text-balance text-lg text-muted-foreground">{text}</p>
+          <p className="mb-2 text-balance text-lg text-muted-foreground">
+            {text}
+          </p>
         )}
       </div>
     </>

@@ -81,6 +81,24 @@ html {
   }
 }
 
+@layer components {
+  .text-highlight {
+    @apply bg-gradient-to-r from-amber-100 via-amber-200 to-amber-300 bg-clip-text text-transparent;
+  }
+  .text-highlight2 {
+    background: linear-gradient(
+      90deg,
+      var(--amber-1) 0,
+      var(--amber-3) 5%,
+      var(--amber-4) 55%,
+      var(--amber-4) 75%,
+      var(--amber-1) 100%
+    );
+    font-weight: 500;
+    color: var(--sand-12);
+  }
+}
+
 /* 
 Coming soon to Tailwind CSS
 https://github.com/tailwindlabs/tailwindcss/pull/12128
