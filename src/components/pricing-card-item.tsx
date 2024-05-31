@@ -9,7 +9,7 @@ import { pricingData } from '@/config/subscriptions'
 import { useSigninModal } from '@/hooks/use-signin-modal'
 
 import { Button, buttonVariants } from '@/components/ui/button'
-import { Switch } from '@/components/ui/switch'
+import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group'
 
 import { BillingFormButton } from '@/components/forms/billing-form-button'
 import { Icons } from '@/components/shared/icons'
@@ -39,14 +39,29 @@ export function PricingCardItem({
   return (
     <section className="container flex flex-col items-center text-center">
       <div className="mb-4 flex items-center gap-5">
-        <span>Monthly Billing</span>
-        <Switch
-          checked={isYearly}
-          onCheckedChange={toggleBilling}
-          role="switch"
-          aria-label="switch-year"
-        />
-        <span>Annual Billing</span>
+        <ToggleGroup
+          type="single"
+          size="sm"
+          defaultValue={isYearly ? 'yearly' : 'monthly'}
+          onValueChange={toggleBilling}
+          aria-label="toggle-year"
+          className="h-9 overflow-hidden rounded-full border bg-background p-1 *:h-7 *:text-muted-foreground"
+        >
+          <ToggleGroupItem
+            value="yearly"
+            className="rounded-full px-5 data-[state=on]:!bg-primary data-[state=on]:!text-primary-foreground"
+            aria-label="Toggle yearly billing"
+          >
+            Yearly (-20%)
+          </ToggleGroupItem>
+          <ToggleGroupItem
+            value="monthly"
+            className="rounded-full px-5 data-[state=on]:!bg-primary data-[state=on]:!text-primary-foreground"
+            aria-label="Toggle monthly billing"
+          >
+            Monthly
+          </ToggleGroupItem>
+        </ToggleGroup>
       </div>
       <div className="mx-auto grid max-w-screen-lg gap-5 bg-inherit py-5 md:grid-cols-3 lg:grid-cols-3">
         {pricingData.map((offer) => (
