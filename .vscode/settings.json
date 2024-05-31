@@ -3,11 +3,11 @@
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true,
-    "source.fixAll.prettier": true,
-    "source.addMissingImports": true,
-    "source.organizeImports": true,
-    "source.fixAll": true
+    "source.fixAll.eslint": "explicit",
+    "source.fixAll.prettier": "explicit",
+    "source.addMissingImports": "explicit",
+    "source.organizeImports": "explicit",
+    "source.fixAll": "explicit"
   },
   "[prisma]": {
     "editor.defaultFormatter": "Prisma.prisma"
