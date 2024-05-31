@@ -2,6 +2,7 @@ import { testimonialsData } from '@/lib/fake-data/testimonials'
 
 import CarouselLogos from '@/components/carousel/carousel-logos'
 import { BlockTitle } from '@/components/layout/main-title'
+import BentoGrid from '@/components/marketing/bento-grid'
 import CtaSocialMedia from '@/components/marketing/cta-social-media'
 import CtaSubscribe from '@/components/marketing/cta-subscribe'
 import FAQ from '@/components/marketing/faq'
@@ -58,6 +59,7 @@ export default async function IndexPage() {
         <TestimonialCards testimonials={testimonialsData} />
       </section>
       <Powered />
+      <BentoGrid />
       <LatestFromBlog />
       <CtaSocialMedia />
       <section className="mx-auto flex w-full flex-col px-6 py-10 md:w-10/12 md:py-40 lg:max-w-4xl">

@@ -1,4 +1,5 @@
 import { BlockTitle } from '@/components/layout/main-title'
+import BentoGrid from '@/components/marketing/bento-grid'
 import BrandLogos from '@/components/shared/brands-logos'
 
 export const metadata = {
@@ -32,6 +33,7 @@ export default function TestimonialBlocksPage() {
         </div>
       </div>
       <div>
+        <BentoGrid />
         <BrandLogos />
       </div>
     </div>
