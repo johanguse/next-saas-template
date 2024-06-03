@@ -1,8 +1,10 @@
 import Image from 'next/image'
 
-export default function BentoGrid() {
+import { cn } from '@/lib/utils'
+
+export default function BentoGrid({ className }: { className?: string }) {
   return (
-    <section className="w-full">
+    <section className={cn(className) + ' w-full'}>
       <div className="container mx-auto flex flex-col gap-16 px-4 sm:gap-y-24 sm:px-6 lg:px-8">
         <div className="relative z-10 grid grid-cols-6 gap-3">
           {/* First card */}

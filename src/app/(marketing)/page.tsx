@@ -32,6 +32,7 @@ export default async function IndexPage() {
         </div>
       </section>
       <Features />
+      <BentoGrid className="mb-36" />
       <section className="mb-36">
         <BlockTitle.Wrapper className="mb-36">
           <BlockTitle.Header elementType="h1">
@@ -59,7 +60,6 @@ export default async function IndexPage() {
         <TestimonialCards testimonials={testimonialsData} />
       </section>
       <Powered />
-      <BentoGrid />
       <LatestFromBlog />
       <CtaSocialMedia />
       <section className="mx-auto flex w-full flex-col px-6 py-10 md:w-10/12 md:py-40 lg:max-w-4xl">
