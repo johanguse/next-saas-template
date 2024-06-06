@@ -33,7 +33,7 @@ export default function TestimonialBlocksPage() {
         </div>
       </div>
       <div>
-        <BentoGrid />
+        <BentoGrid className="mb-36" />
         <BrandLogos />
       </div>
     </div>
