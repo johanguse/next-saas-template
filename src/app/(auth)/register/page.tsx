@@ -20,7 +20,6 @@ import {
 
 import { OAuthButtons } from '@/components/auth/oauth-buttons'
 import { SignInWithEmailForm } from '@/components/auth/signin-with-email-form'
-import { SignUpWithPasswordForm } from '@/components/auth/signup-with-password-form'
 import { BlockTitle } from '@/components/layout/main-title'
 import { Icons } from '@/components/shared/icons'
 import IconLogo from '@/components/shared/logo-icon'
@@ -95,17 +94,6 @@ export default async function SignUpPage(): Promise<JSX.Element> {
             </div>
           </div>
           <SignInWithEmailForm />
-          <div className="relative">
-            <div className="absolute inset-0 flex items-center">
-              <span className="w-full border-t" />
-            </div>
-            <div className="relative mb-3 mt-6 flex justify-center text-xs uppercase">
-              <span className="bg-background px-2">
-                Or continue with password
-              </span>
-            </div>
-          </div>
-          <SignUpWithPasswordForm />
         </CardContent>
         <CardFooter className="grid w-full gap-4 text-sm text-muted-foreground max-sm:max-w-[340px] max-sm:px-10">
           <div>

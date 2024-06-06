@@ -88,7 +88,7 @@ export default function RootLayout({ children, modal }: RootLayoutProps) {
       <head />
       <body
         className={cn(
-          'min-h-screen bg-background font-sans antialiased',
+          'isolate min-h-screen bg-background font-sans antialiased',
           fontSans.variable,
           fontUrban.variable,
           fontHeading.variable
