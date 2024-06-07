@@ -1,10 +1,12 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { Post } from '@/root/.contentlayer/generated'
-import { format, parseISO } from 'date-fns'
 
 import { Badge } from '@/components/ui/badge'
+
 import { BlogPostListItem } from '@/components/marketing/blog-list-item'
+
+import { Post } from '@/root/.contentlayer/generated'
+import { format, parseISO } from 'date-fns'
 
 type BlogPostsProps = {
   posts: Post[]

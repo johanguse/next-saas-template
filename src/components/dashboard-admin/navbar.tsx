@@ -2,7 +2,7 @@
 
 import { useCurrentUser } from '@/hooks/use-current-user'
 
-import { SheetMenu } from '@/components/admin-panel/sheet-menu'
+import { SheetMenu } from '@/components/dashboard-admin/sheet-menu'
 import { ModeToggle } from '@/components/layout/mode-toggle'
 import { UserAccountNav } from '@/components/layout/navigation/user-account-nav'
 

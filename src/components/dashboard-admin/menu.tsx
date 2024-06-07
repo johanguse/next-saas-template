@@ -15,7 +15,7 @@ import {
   TooltipTrigger,
 } from '@/components/ui/tooltip'
 
-import { CollapseMenuButton } from '@/components/admin-panel/collapse-menu-button'
+import { CollapseMenuButton } from '@/components/dashboard-admin/collapse-menu-button'
 
 import { Ellipsis, LogOut } from 'lucide-react'
 

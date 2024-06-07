@@ -14,7 +14,7 @@ import {
 } from '@/components/ui/breadcrumb'
 import PaginationNST from '@/components/ui/pagination-nst'
 
-import { ContentLayout } from '@/components/admin-panel/content-layout'
+import { ContentLayout } from '@/components/dashboard-admin/content-layout'
 
 const UserTableRow = ({ user }) => {
   return (

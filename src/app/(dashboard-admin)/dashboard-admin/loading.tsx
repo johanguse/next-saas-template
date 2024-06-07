@@ -6,7 +6,7 @@ import {
   BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb'
 
-import { ContentLayout } from '@/components/admin-panel/content-layout'
+import { ContentLayout } from '@/components/dashboard-admin/content-layout'
 import { CardSkeleton } from '@/components/shared/card-skeleton'
 
 export default function DashboardLoading() {

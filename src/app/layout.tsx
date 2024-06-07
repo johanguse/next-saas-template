@@ -8,7 +8,7 @@ import { cn } from '@/lib/utils'
 
 import { Toaster } from '@/components/ui/toaster'
 
-import { ModalProvider } from '@/components/modal-provider'
+import { ModalProvider } from '@/components/modals/modal-provider'
 import { Providers } from '@/components/providers'
 import { TailwindIndicator } from '@/components/tailwind-indicator'
 import HWComponent from '@/components/thirdparty/headwayapp'

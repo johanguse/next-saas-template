@@ -2,7 +2,7 @@ import { redirect } from 'next/navigation'
 
 import { getCurrentUser } from '@/lib/session'
 
-import AdminPanelLayout from '@/components/admin-panel/admin-panel-layout'
+import AdminPanelLayout from '@/components/dashboard-admin/admin-panel-layout'
 
 interface DashboardLayoutProps {
   children?: React.ReactNode

@@ -8,7 +8,7 @@ import {
   SheetTrigger,
 } from '@/components/ui/sheet'
 
-import { Menu } from '@/components/admin-panel/menu'
+import { Menu } from '@/components/dashboard-admin/menu'
 
 import { MenuIcon, PanelsTopLeft } from 'lucide-react'
 

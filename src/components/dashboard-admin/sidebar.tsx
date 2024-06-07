@@ -9,8 +9,8 @@ import { useStore } from '@/hooks/use-store'
 
 import { Button } from '@/components/ui/button'
 
-import { Menu } from '@/components/admin-panel/menu'
-import { SidebarToggle } from '@/components/admin-panel/sidebar-toggle'
+import { Menu } from '@/components/dashboard-admin/menu'
+import { SidebarToggle } from '@/components/dashboard-admin/sidebar-toggle'
 import IconLogo from '@/components/shared/logo-icon'
 
 export function Sidebar() {

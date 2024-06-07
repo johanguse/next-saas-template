@@ -11,7 +11,7 @@ import {
   BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb'
 
-import { ContentLayout } from '@/components/admin-panel/content-layout'
+import { ContentLayout } from '@/components/dashboard-admin/content-layout'
 import PlaceholderContent from '@/components/demo/placeholder-content'
 
 export default function NewPostPage() {
