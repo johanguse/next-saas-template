@@ -14,9 +14,9 @@ import {
 import { ContentLayout } from '@/components/dashboard-admin/content-layout'
 import PlaceholderContent from '@/components/demo/placeholder-content'
 
-export default function PaymentsPage() {
+export default function CategoriesPage() {
   return (
-    <ContentLayout title="Payments">
+    <ContentLayout title="Categories">
       <Breadcrumb className="mb-6">
         <BreadcrumbList>
           <BreadcrumbItem>
@@ -32,7 +32,7 @@ export default function PaymentsPage() {
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
-            <BreadcrumbPage>Payments</BreadcrumbPage>
+            <BreadcrumbPage>Categories</BreadcrumbPage>
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>

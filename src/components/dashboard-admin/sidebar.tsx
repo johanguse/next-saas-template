@@ -1,53 +1,58 @@
-'use client'
-
 import Link from 'next/link'
 
-import { dashboardAdminMenuitems } from '@/config/dashboard-admin'
 import { siteConfig } from '@/config/site'
 
 import { cn } from '@/lib/utils'
 
-import SidebarItem from '@/components/dashboard-admin/sidebar/item'
-import { UserDropdown } from '@/components/dashboard-admin/sidebar/user-dropdown'
+import { useSidebarToggle } from '@/hooks/use-sidebar-toggle'
+import { useStore } from '@/hooks/use-store'
+
+import { Button } from '@/components/ui/button'
+
+import { Menu } from '@/components/dashboard-admin/menu'
+import { SidebarToggle } from '@/components/dashboard-admin/sidebar-toggle'
 import IconLogo from '@/components/shared/logo-icon'
 
-import { Session } from 'next-auth'
+export function Sidebar() {
+  const sidebar = useStore(useSidebarToggle, (state) => state)
 
-type SidebarProps = {
-  user: Session['user']
-}
+  if (!sidebar) return null
 
-export function Sidebar({ user }: SidebarProps) {
   return (
-    <div className="fixed left-0 top-0 z-10 h-screen w-64 bg-slate-50 p-4 shadow-lg dark:bg-slate-800/40">
-      <div className="flex size-full flex-col justify-between space-y-10">
-        <div>
-          <Link
-            href="/"
-            target="_blank"
-            className="sidebar-top relative mb-12 flex items-center justify-start px-3.5 py-3"
-          >
+    <aside
+      className={cn(
+        'fixed left-0 top-0 z-20 h-screen -translate-x-full transition-[width] duration-300 ease-in-out lg:translate-x-0',
+        sidebar?.isOpen === false ? 'w-[90px]' : 'w-72'
+      )}
+    >
+      <SidebarToggle isOpen={sidebar?.isOpen} setIsOpen={sidebar?.setIsOpen} />
+      <div className="relative flex h-full flex-col overflow-y-auto px-3 py-4 shadow-md dark:shadow-zinc-800">
+        <Button
+          className={cn(
+            'mb-1 transition-transform duration-300 ease-in-out',
+            sidebar?.isOpen === false ? 'translate-x-1' : 'translate-x-0'
+          )}
+          variant="link"
+          asChild
+        >
+          <Link href="/dashboard" className="flex items-center gap-2">
             <IconLogo />
             <h3
               className={cn(
-                'text-sidebar-foreground min-w-max pl-2 text-2xl font-bold'
+                'min-w-max pl-2 text-2xl font-bold',
+                sidebar?.isOpen === false
+                  ? 'hidden -translate-x-96 opacity-0'
+                  : 'translate-x-0 opacity-100'
               )}
             >
-              <span className="hidden font-urban text-base font-bold sm:inline-block">
+              <span className="hidden font-urban text-base font-bold text-black dark:text-white sm:inline-block">
                 {siteConfig.name}
               </span>
             </h3>
           </Link>
-          <div className="flex flex-col space-y-2">
-            {dashboardAdminMenuitems.map((item, index) => (
-              <SidebarItem key={index} item={item} />
-            ))}
-          </div>
-        </div>
-        <div className="mt-auto border-t border-border p-6">
-          <UserDropdown user={user} />
-        </div>
+        </Button>
+        <Menu isOpen={sidebar?.isOpen} />
       </div>
-    </div>
+    </aside>
   )
 }
