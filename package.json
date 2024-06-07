@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "author": {
-    "name": "johanguse",
-    "url": "https://twitter.com/johanguse"
+    "name": "SaasTemplate",
+    "url": "https://twitter.com/SaasTemplate"
   },
   "scripts": {
     "dev": "next dev",
@@ -26,10 +26,10 @@
     "dev:email": "cp .env ./node_modules/react-email/ && email dev --dir='src/components/emails' --port 3333"
   },
   "dependencies": {
-    "@auth/prisma-adapter": "^2.1.0",
+    "@auth/prisma-adapter": "^2.2.0",
     "@devnomic/marquee": "^1.0.2",
     "@hookform/resolvers": "^3.4.2",
-    "@prisma/client": "^5.14.0",
+    "@prisma/client": "^5.15.0",
     "@radix-ui/react-accessible-icon": "^1.0.3",
     "@radix-ui/react-accordion": "^1.1.2",
     "@radix-ui/react-alert-dialog": "^1.0.5",
@@ -65,7 +65,6 @@
     "@t3-oss/env-nextjs": "^0.7.3",
     "@typescript-eslint/parser": "^6.19.0",
     "@vercel/analytics": "^1.2.2",
-    "@vercel/og": "^0.6.2",
     "@vercel/speed-insights": "^1.0.10",
     "bcrypt": "^5.1.1",
     "bcryptjs": "^2.4.3",
@@ -81,7 +80,7 @@
     "github-slugger": "^2.0.0",
     "hamburger-react": "^2.5.0",
     "loops": "^0.3.0",
-    "lucide-react": "^0.379.0",
+    "lucide-react": "^0.390.0",
     "ms": "^2.1.3",
     "next": "14.2.3",
     "next-auth": "beta",
@@ -103,9 +102,9 @@
     "shiki": "^1.3.0",
     "sonner": "^1.4.41",
     "stripe": "^14.24.0",
-    "tailwind-merge": "^2.2.2",
+    "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7",
-    "vaul": "^0.9.0",
+    "vaul": "^0.9.1",
     "zod": "^3.22.4",
     "zustand": "^4.5.2"
   },
@@ -134,7 +133,7 @@
     "prettier": "^3.2.5",
     "prettier-plugin-tailwindcss": "^0.5.13",
     "pretty-quick": "^4.0.0",
-    "prisma": "^5.14.0",
+    "prisma": "^5.15.0",
     "rehype": "^13.0.1",
     "rehype-autolink-headings": "^7.1.0",
     "rehype-pretty-code": "^0.13.1",

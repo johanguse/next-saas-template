@@ -1,15 +1,13 @@
+import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { allPages } from 'contentlayer/generated'
+
+import { constructMetadata } from '@/lib/metadata'
 
 import { Mdx } from '@/components/content/mdx-components'
 
 import '@/styles/mdx.css'
 
-import { Metadata } from 'next'
-import { env } from '@/root/env.mjs'
-
-import { siteConfig } from '@/config/site'
-import { absoluteUrl } from '@/lib/utils'
+import { allPages } from 'contentlayer/generated'
 
 interface PageProps {
   params: {
@@ -33,41 +31,14 @@ export async function generateMetadata({
 }: PageProps): Promise<Metadata> {
   const page = await getPageFromParams(params)
 
-  if (!page) {
-    return {}
-  }
+  if (!page) return {}
 
-  const url = env.NEXT_PUBLIC_APP_URL
+  const { title, description } = page
 
-  const ogUrl = new URL(`${url}/api/og`)
-  ogUrl.searchParams.set('heading', page.title)
-  ogUrl.searchParams.set('type', siteConfig.name)
-  ogUrl.searchParams.set('mode', 'light')
-
-  return {
-    title: page.title,
-    description: page.description,
-    openGraph: {
-      title: page.title,
-      description: page.description,
-      type: 'article',
-      url: absoluteUrl(page.slug),
-      images: [
-        {
-          url: ogUrl.toString(),
-          width: 1200,
-          height: 630,
-          alt: page.title,
-        },
-      ],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: page.title,
-      description: page.description,
-      images: [ogUrl.toString()],
-    },
-  }
+  return constructMetadata({
+    title: `${title} – SaaS Starter`,
+    description: description,
+  })
 }
 
 export async function generateStaticParams(): Promise<PageProps['params'][]> {

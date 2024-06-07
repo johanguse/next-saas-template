@@ -1,8 +1,8 @@
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
+import { constructMetadata } from '@/lib/metadata'
 import { getTableOfContents } from '@/lib/toc'
-import { absoluteUrl } from '@/lib/utils'
 
 import { Mdx } from '@/components/content/mdx-components'
 import { DocsPageHeader } from '@/components/docs/page-header'
@@ -11,7 +11,6 @@ import { DashboardTableOfContents } from '@/components/shared/toc'
 
 import '@/styles/mdx.css'
 
-import { env } from '@/root/env.mjs'
 import { allDocs } from 'contentlayer/generated'
 
 interface DocPageProps {
@@ -36,41 +35,14 @@ export async function generateMetadata({
 }: DocPageProps): Promise<Metadata> {
   const doc = await getDocFromParams(params)
 
-  if (!doc) {
-    return {}
-  }
+  if (!doc) return {}
 
-  const url = env.NEXT_PUBLIC_APP_URL
+  const { title, description } = doc
 
-  const ogUrl = new URL(`${url}/api/og`)
-  ogUrl.searchParams.set('heading', doc.description ?? doc.title)
-  ogUrl.searchParams.set('type', 'Documentation')
-  ogUrl.searchParams.set('mode', 'dark')
-
-  return {
-    title: doc.title,
-    description: doc.description,
-    openGraph: {
-      title: doc.title,
-      description: doc.description,
-      type: 'article',
-      url: absoluteUrl(doc.slug),
-      images: [
-        {
-          url: ogUrl.toString(),
-          width: 1200,
-          height: 630,
-          alt: doc.title,
-        },
-      ],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: doc.title,
-      description: doc.description,
-      images: [ogUrl.toString()],
-    },
-  }
+  return constructMetadata({
+    title: `${title} – SaaS Starter`,
+    description: description,
+  })
 }
 
 export async function generateStaticParams(): Promise<
