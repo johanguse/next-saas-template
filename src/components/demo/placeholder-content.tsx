@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button-ui'
 
-import { EmptyPlaceholder } from '@/components/shared/empty-placeholder'
+import { EmptyPlaceholder } from '@/components/demo/empty-placeholder'
 
 export default function PlaceholderContent() {
   return (

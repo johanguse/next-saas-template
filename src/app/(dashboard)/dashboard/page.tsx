@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button-ui'
 
 import { DashboardHeader } from '@/components/dashboard/header'
 import { DashboardShell } from '@/components/dashboard/shell'
-import { EmptyPlaceholder } from '@/components/shared/empty-placeholder'
+import { EmptyPlaceholder } from '@/components/demo/empty-placeholder'
 
 export const metadata = {
   title: 'Dashboard',
