@@ -20,13 +20,15 @@ const UserTableRow = ({ user }) => {
   return (
     <tr className="text-black even:bg-gray-50 dark:text-white dark:even:bg-gray-700">
       <td className="hidden p-3 text-center md:table-cell">
-        <Image
-          width={40}
-          height={40}
-          src={user.image}
-          alt="User Avatar"
-          className="inline-block size-10 rounded-full"
-        />
+        {user.image ? (
+          <Image
+            width={40}
+            height={40}
+            src={user.image}
+            alt="User Avatar"
+            className="inline-block size-10 rounded-full"
+          />
+        ) : null}
       </td>
       <td className="p-3 ">
         <p className="font-medium">{user.name}</p>
@@ -67,7 +69,7 @@ export const metadata = {
   description: 'Manage your users.',
 }
 
-export default async function TagsPage() {
+export default async function UsersPage() {
   const usersData = await prisma.user.findMany({
     take: 12,
     where: {},
