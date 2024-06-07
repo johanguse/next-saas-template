@@ -1,19 +1,42 @@
-import {
-  DashboardPage,
-  DashboardPageHeader,
-  DashboardPageHeaderTitle,
-  DashboardPageMain,
-} from '@/components/dashboard-admin/page'
+import Link from 'next/link'
 
-export default function Page() {
+import { dashboardPrefixURL } from '@/lib/menu-list'
+
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from '@/components/ui/breadcrumb'
+
+import { ContentLayout } from '@/components/admin-panel/content-layout'
+import PlaceholderContent from '@/components/demo/placeholder-content'
+
+export default function SettingsPage() {
   return (
-    <DashboardPage>
-      <DashboardPageHeader>
-        <DashboardPageHeaderTitle>Settings</DashboardPageHeaderTitle>
-      </DashboardPageHeader>
-      <DashboardPageMain>
-        <div className="h-96 w-full">teste</div>
-      </DashboardPageMain>
-    </DashboardPage>
+    <ContentLayout title="Settings">
+      <Breadcrumb className="mb-6">
+        <BreadcrumbList>
+          <BreadcrumbItem>
+            <BreadcrumbLink asChild>
+              <Link href="/">Home</Link>
+            </BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>
+            <BreadcrumbLink asChild>
+              <Link href={dashboardPrefixURL}>Dashboard</Link>
+            </BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>
+            <BreadcrumbPage>Settings</BreadcrumbPage>
+          </BreadcrumbItem>
+        </BreadcrumbList>
+      </Breadcrumb>
+      <PlaceholderContent />
+    </ContentLayout>
   )
 }

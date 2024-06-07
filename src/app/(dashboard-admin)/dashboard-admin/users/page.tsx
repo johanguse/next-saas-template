@@ -1,15 +1,20 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
 import { prisma } from '@/lib/db'
-
-import PaginationNST from '@/components/ui/pagination-nst'
+import { dashboardPrefixURL } from '@/lib/menu-list'
 
 import {
-  DashboardPage,
-  DashboardPageHeader,
-  DashboardPageHeaderTitle,
-  DashboardPageMain,
-} from '@/components/dashboard-admin/page'
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from '@/components/ui/breadcrumb'
+import PaginationNST from '@/components/ui/pagination-nst'
+
+import { ContentLayout } from '@/components/admin-panel/content-layout'
 
 const UserTableRow = ({ user }) => {
   return (
@@ -62,51 +67,65 @@ export const metadata = {
   description: 'Manage your users.',
 }
 
-export default async function AdminUsersPage() {
+export default async function TagsPage() {
   const usersData = await prisma.user.findMany({
     take: 12,
     where: {},
     orderBy: [{ createdAt: 'desc' }],
   })
   return (
-    <DashboardPage>
-      <DashboardPageHeader>
-        <DashboardPageHeaderTitle>Users</DashboardPageHeaderTitle>
-      </DashboardPageHeader>
-      <DashboardPageMain>
-        <div className="rounded border border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-800">
-          <table className="min-w-full align-middle text-sm">
-            <thead className="bg-gray-100 text-gray-700 dark:bg-gray-900 dark:text-white">
-              <tr className="p-3 text-left text-sm font-semibold uppercase tracking-wider">
-                <th className="hidden p-3 text-center text-sm font-semibold uppercase tracking-wider md:table-cell">
-                  Avatar
-                </th>
-                <th className="p-3 text-left text-sm font-semibold uppercase tracking-wider">
-                  Name
-                </th>
-                <th className="hidden p-3 text-left text-sm font-semibold uppercase tracking-wider md:table-cell">
-                  Email
-                </th>
-                <th className="p-3 text-center text-sm font-semibold uppercase tracking-wider">
-                  Role
-                </th>
-                <th className="p-3 text-center text-sm font-semibold uppercase tracking-wider">
-                  Actions
-                </th>
-              </tr>
-            </thead>
+    <ContentLayout title="Users">
+      <Breadcrumb className="mb-6">
+        <BreadcrumbList>
+          <BreadcrumbItem>
+            <BreadcrumbLink asChild>
+              <Link href="/">Home</Link>
+            </BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>
+            <BreadcrumbLink asChild>
+              <Link href={dashboardPrefixURL}>Dashboard</Link>
+            </BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>
+            <BreadcrumbPage>Users</BreadcrumbPage>
+          </BreadcrumbItem>
+        </BreadcrumbList>
+      </Breadcrumb>
+      <div className="rounded border border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-800">
+        <table className="min-w-full align-middle text-sm">
+          <thead className="bg-gray-100 text-gray-700 dark:bg-gray-900 dark:text-white">
+            <tr className="p-3 text-left text-sm font-semibold uppercase tracking-wider">
+              <th className="hidden p-3 text-center text-sm font-semibold uppercase tracking-wider md:table-cell">
+                Avatar
+              </th>
+              <th className="p-3 text-left text-sm font-semibold uppercase tracking-wider">
+                Name
+              </th>
+              <th className="hidden p-3 text-left text-sm font-semibold uppercase tracking-wider md:table-cell">
+                Email
+              </th>
+              <th className="p-3 text-center text-sm font-semibold uppercase tracking-wider">
+                Role
+              </th>
+              <th className="p-3 text-center text-sm font-semibold uppercase tracking-wider">
+                Actions
+              </th>
+            </tr>
+          </thead>
 
-            <tbody>
-              {usersData.map((user) => (
-                <UserTableRow key={user.id} user={user} />
-              ))}
-            </tbody>
-          </table>
-        </div>
-        <div className="mb-6 w-full px-10">
-          <PaginationNST />
-        </div>
-      </DashboardPageMain>
-    </DashboardPage>
+          <tbody>
+            {usersData.map((user) => (
+              <UserTableRow key={user.id} user={user} />
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div className="mb-6 w-full px-10">
+        <PaginationNST />
+      </div>
+    </ContentLayout>
   )
 }

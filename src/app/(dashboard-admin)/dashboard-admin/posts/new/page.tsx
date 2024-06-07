@@ -14,9 +14,9 @@ import {
 import { ContentLayout } from '@/components/admin-panel/content-layout'
 import PlaceholderContent from '@/components/demo/placeholder-content'
 
-export default function PaymentsPage() {
+export default function NewPostPage() {
   return (
-    <ContentLayout title="Payments">
+    <ContentLayout title="New Post">
       <Breadcrumb className="mb-6">
         <BreadcrumbList>
           <BreadcrumbItem>
@@ -32,7 +32,13 @@ export default function PaymentsPage() {
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
-            <BreadcrumbPage>Payments</BreadcrumbPage>
+            <BreadcrumbLink asChild>
+              <Link href={dashboardPrefixURL + '/posts'}>Posts</Link>
+            </BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>
+            <BreadcrumbPage>New</BreadcrumbPage>
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>

@@ -8,8 +8,8 @@ import { Button } from '@/components/ui/button'
 
 import { MainNav } from '@/components/layout/navigation/main/main-nav'
 import { UserAccountNav } from '@/components/layout/navigation/user-account-nav'
+import { Icons } from '@/components/shared/icons'
 
-import { Icons } from '../shared/icons'
 import { MainNavItem } from '@/root/types'
 import { User } from 'next-auth'
 
@@ -42,21 +42,6 @@ export function NavBar({
 
         <div className="flex items-center space-x-3">
           {rightElements}
-
-          {/* {!user ? (
-            <Link
-              href="/login"
-              className={cn(
-                buttonVariants({
-                  variant: "outline",
-                  rounded: "full",
-                }),
-                "px-4",
-              )}
-            >
-              Login Page
-            </Link>
-          ) : null} */}
 
           {user ? (
             <UserAccountNav user={user} />
