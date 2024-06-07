@@ -25,7 +25,7 @@ const UserTableRow = ({ user }) => {
             width={40}
             height={40}
             src={user.image}
-            alt="User Avatar"
+            alt={`Profile Image of ${user.name}`}
             className="inline-block size-10 rounded-full"
           />
         ) : null}
