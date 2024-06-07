@@ -8,8 +8,8 @@
 </p>
 
 <p align="center">
-  <a href="https://twitter.com/johanguse">
-    <img src="https://img.shields.io/twitter/follow/johanguse?style=flat&label=johanguse&logo=twitter&color=0bf&logoColor=fff" alt="johanguse Twitter follower count" />
+  <a href="https://twitter.com/SaasTemplate">
+    <img src="https://img.shields.io/twitter/follow/SaasTemplate?style=flat&label=SaasTemplate&logo=twitter&color=0bf&logoColor=fff" alt="SaasTemplate Twitter follower count" />
   </a>
 </p>
 
@@ -119,4 +119,4 @@ Visit our [Public Roadmap](https://bit.ly/48LTNin) for more
 
 ## Author
 
-Created by [@johanguse](https://twitter.com/johanguse) in 2023
+Created by [@SaasTemplate](https://twitter.com/SaasTemplate) in 2023

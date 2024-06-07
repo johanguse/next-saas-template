@@ -2,8 +2,9 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
+import { constructMetadata } from '@/lib/metadata'
 import { getTableOfContents } from '@/lib/toc'
-import { absoluteUrl, cn } from '@/lib/utils'
+import { cn } from '@/lib/utils'
 
 import { buttonVariants } from '@/components/ui/button'
 
@@ -14,7 +15,6 @@ import { DashboardTableOfContents } from '@/components/shared/toc'
 
 import '@/styles/mdx.css'
 
-import { env } from '@/root/env.mjs'
 import { allGuides } from 'contentlayer/generated'
 
 interface GuidePageProps {
@@ -37,43 +37,16 @@ async function getGuideFromParams(params) {
 export async function generateMetadata({
   params,
 }: GuidePageProps): Promise<Metadata> {
-  const guide = await getGuideFromParams(params)
+  const doc = await getGuideFromParams(params)
 
-  if (!guide) {
-    return {}
-  }
+  if (!doc) return {}
 
-  const url = env.NEXT_PUBLIC_APP_URL
+  const { title, description } = doc
 
-  const ogUrl = new URL(`${url}/api/og`)
-  ogUrl.searchParams.set('heading', guide.title)
-  ogUrl.searchParams.set('type', 'Guide')
-  ogUrl.searchParams.set('mode', 'dark')
-
-  return {
-    title: guide.title,
-    description: guide.description,
-    openGraph: {
-      title: guide.title,
-      description: guide.description,
-      type: 'article',
-      url: absoluteUrl(guide.slug),
-      images: [
-        {
-          url: ogUrl.toString(),
-          width: 1200,
-          height: 630,
-          alt: guide.title,
-        },
-      ],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: guide.title,
-      description: guide.description,
-      images: [ogUrl.toString()],
-    },
-  }
+  return constructMetadata({
+    title: `${title} – SaaS Starter`,
+    description: description,
+  })
 }
 
 export async function generateStaticParams(): Promise<

@@ -3,7 +3,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
-import { absoluteUrl, cn, formatDate } from '@/lib/utils'
+import { constructMetadata } from '@/lib/metadata'
+import { cn, formatDate } from '@/lib/utils'
 
 import { buttonVariants } from '@/components/ui/button'
 
@@ -43,46 +44,16 @@ async function getPostFromParams(params) {
 export async function generateMetadata({
   params,
 }: PostPageProps): Promise<Metadata> {
-  const post = await getPostFromParams(params)
+  const page = await getPostFromParams(params)
 
-  if (!post) {
-    return {}
-  }
+  if (!page) return {}
 
-  const url = env.NEXT_PUBLIC_APP_URL
+  const { title, description } = page
 
-  const ogUrl = new URL(`${url}/api/og`)
-  ogUrl.searchParams.set('heading', post.title)
-  ogUrl.searchParams.set('type', 'Blog Post')
-  ogUrl.searchParams.set('mode', 'dark')
-
-  return {
-    title: post.title,
-    description: post.description,
-    authors: post.authors.map((author) => ({
-      name: author,
-    })),
-    openGraph: {
-      title: post.title,
-      description: post.description,
-      type: 'article',
-      url: absoluteUrl(post.slug),
-      images: [
-        {
-          url: ogUrl.toString(),
-          width: 1200,
-          height: 630,
-          alt: post.title,
-        },
-      ],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: post.title,
-      description: post.description,
-      images: [ogUrl.toString()],
-    },
-  }
+  return constructMetadata({
+    title: `${title} – SaaS Starter`,
+    description: description,
+  })
 }
 
 export async function generateStaticParams(): Promise<

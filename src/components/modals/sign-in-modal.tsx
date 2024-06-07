@@ -15,10 +15,9 @@ import {
 
 import { OAuthButtons } from '@/components/auth/oauth-buttons'
 import { SignInWithEmailForm } from '@/components/auth/signin-with-email-form'
+import { BlockTitle } from '@/components/layout/main-title'
 import { Icons } from '@/components/shared/icons'
 import { Modal } from '@/components/shared/modal'
-
-import { BlockTitle } from './main-title'
 
 export const SignInModal = () => {
   const signInModal = useSigninModal()

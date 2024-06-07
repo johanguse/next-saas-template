@@ -49,10 +49,10 @@ export const metadata: Metadata = {
   ],
   authors: [
     {
-      name: 'johanguse',
+      name: 'SaasTemplate',
     },
   ],
-  creator: 'johanguse',
+  creator: 'SaasTemplate',
   metadataBase: new URL(siteConfig.url),
   openGraph: {
     type: 'website',
@@ -67,7 +67,7 @@ export const metadata: Metadata = {
     title: siteConfig.name,
     description: siteConfig.description,
     images: [siteConfig.ogImage],
-    creator: '@johanguse',
+    creator: '@SaasTemplate',
   },
   icons: {
     icon: '/favicons/favicon.ico',
