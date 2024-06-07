@@ -8,6 +8,8 @@ import { buttonVariants } from '@/components/ui/button'
 
 import { Icons } from '@/components/shared/icons'
 
+import SparklesText from '../magicui/sparkles-text'
+
 export default function Hero() {
   const twitterLink = siteConfig.social?.links?.twitter
 
@@ -31,21 +33,19 @@ export default function Hero() {
           </div>
 
           <h1
-            className="my-6 animate-fade-up text-balance font-urban text-4xl font-extrabold tracking-tight opacity-0 sm:text-5xl md:text-6xl lg:text-7xl"
+            className="my-6 animate-fade-up text-balance font-urban text-5xl font-extrabold tracking-tight opacity-0 sm:text-4xl md:text-5xl lg:text-6xl"
             style={{ animationDelay: '0.25s', animationFillMode: 'forwards' }}
           >
-            Launching Your SaaS Success Story with{' '}
-            <span className="relative bg-gradient-to-r from-indigo-500 to-purple-500/80 bg-clip-text font-extrabold text-transparent">
-              Next SaaS Template
-            </span>
+            Launching Your SaaS <SparklesText text="Success Story" />
           </h1>
 
           <p
-            className="mb-8 max-w-2xl animate-fade-up text-balance leading-normal text-muted-foreground opacity-0 sm:text-xl sm:leading-8"
+            className="mb-8 max-w-4xl animate-fade-up text-balance text-lg leading-normal text-muted-foreground opacity-0 sm:text-lg sm:leading-8"
             style={{ animationDelay: '0.35s', animationFillMode: 'forwards' }}
           >
             Empower Your Next Project with Next.js 14, Prisma, PostgreSQL,
-            Auth.js v5, Resend, React Email, Shadcn/ui, and Stripe Integration
+            Auth.js v5, Resend, React Email, Shadcn/ui, Stripe Integration and a
+            lot of ready made components.
           </p>
 
           <div
