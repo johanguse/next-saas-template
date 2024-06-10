@@ -12,12 +12,12 @@ export default function Powered({ className }: PoweredProps) {
   return (
     <section
       className={cn(
-        'animate-fade-up bg-gray-50 py-16 text-zinc-500 opacity-0 dark:bg-black dark:text-zinc-400 dark:opacity-50',
+        'bg-gray-50 py-16 text-zinc-500 dark:bg-black dark:text-zinc-400',
         className
       )}
     >
       <div className="container mx-auto">
-        <h2 className="text-center text-sm font-semibold uppercase">
+        <h2 className="text-center text-sm font-semibold uppercase text-zinc-500 dark:text-white">
           Powered by
         </h2>
 

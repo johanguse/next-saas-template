@@ -83,8 +83,10 @@ interface RootLayoutProps {
 }
 
 export default function RootLayout({ children, modal }: RootLayoutProps) {
+  const isDev = process.env.NODE_ENV === 'development'
+
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning={isDev}>
       <head />
       <body
         className={cn(
@@ -94,10 +96,16 @@ export default function RootLayout({ children, modal }: RootLayoutProps) {
           fontHeading.variable
         )}
       >
-        <Providers attribute="class" defaultTheme="system" enableSystem>
+        <Providers
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
           {children}
           {modal}
-          <GA googleAnalyticsId={googleAnalyticsId} />
+
+          {isDev && <GA googleAnalyticsId={googleAnalyticsId} />}
           <VercelAnalytics />
           <SpeedInsights />
           <Toaster richColors closeButton position="top-center" />
