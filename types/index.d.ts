@@ -63,8 +63,8 @@ export type SiteConfig = {
   url: string
   ogImage: string
   mailSupport: string
-  social?: {
-    links?: Record<keyof Icons, SocialLink>
+  social: {
+    links: Record<keyof Icons, SocialLink>
   }
 }
 
