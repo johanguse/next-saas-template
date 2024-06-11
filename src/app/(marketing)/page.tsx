@@ -31,7 +31,7 @@ export default async function IndexPage() {
           </div>
         </div>
       </section>
-      <Features className="mb-36" />
+      <Features className="my-36" />
       <BentoGrid className="mb-36" />
       <section className="mb-36">
         <BlockTitle.Wrapper className="mb-36">
