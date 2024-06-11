@@ -16,10 +16,10 @@ import HWComponent from '@/components/thirdparty/headwayapp'
 import '@/styles/globals.css'
 
 import { fontHeading, fontSans, fontUrban } from '@/assets/fonts'
+import { env } from '@/root/env.mjs'
 import { Analytics as VercelAnalytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { GA } from 'pliny/analytics/GoogleAnalytics'
-import { env } from 'process'
 
 const googleAnalyticsId = env.NEXT_PUBLIC_ANALITYCS_ID!
 
@@ -105,7 +105,7 @@ export default function RootLayout({ children, modal }: RootLayoutProps) {
           {children}
           {modal}
 
-          {isDev && <GA googleAnalyticsId={googleAnalyticsId} />}
+          {!isDev && <GA googleAnalyticsId={googleAnalyticsId} />}
           <VercelAnalytics />
           <SpeedInsights />
           <Toaster richColors closeButton position="top-center" />
