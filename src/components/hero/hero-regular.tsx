@@ -6,11 +6,10 @@ import { cn } from '@/lib/utils'
 
 import { buttonVariants } from '@/components/ui/button'
 
+import SparklesText from '@/components/magicui/sparkles-text'
 import { Icons } from '@/components/shared/icons'
 
-import SparklesText from '../magicui/sparkles-text'
-
-export default function Hero() {
+export default function HeroRegular() {
   const twitterLink = siteConfig.social?.links?.twitter
 
   return (
@@ -75,7 +74,7 @@ export default function Hero() {
               </Link>
             )}
           </div>
-          <div className="absolute inset-0 top-[calc(100%-16rem)] mx-auto h-10 max-w-xs bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-600 via-pink-600 to-blue-600 blur-[118px]  dark:from-rose-400 dark:via-fuchsia-500 dark:to-indigo-500"></div>
+          <div className="absolute inset-0 top-[calc(100%-16rem)] mx-auto h-10 max-w-xs bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-600 via-pink-600 to-blue-600 blur-[118px] dark:from-rose-400 dark:via-fuchsia-500 dark:to-indigo-500"></div>
         </div>
       </section>
     </section>

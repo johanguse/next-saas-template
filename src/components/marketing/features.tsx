@@ -1,8 +1,10 @@
+import { cn } from '@/lib/utils'
+
 import { BlockTitle } from '@/components/layout/main-title'
 
-export default function Features() {
+export default function Features({ className }: { className?: string }) {
   return (
-    <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48">
+    <section className={cn(className) + ' w-full'}>
       <div className="container px-4 md:px-6">
         <div className="grid items-center gap-16 px-4 sm:gap-y-24 sm:px-6 lg:px-8">
           <BlockTitle.Wrapper>

@@ -16,7 +16,7 @@ export default async function IndexPage() {
   return (
     <>
       <HeroParallax products={productData} />
-      <Features />
+      <Features className="mb-36" />
       <section className="mb-36">
         <BlockTitle.Wrapper className="mb-36">
           <BlockTitle.Header elementType="h1">
