@@ -5,7 +5,7 @@ import { absoluteUrl } from '@/lib/utils'
 const defaultUrl = absoluteUrl('')
 
 export const siteConfig: SiteConfig = {
-  name: 'Next SaaS Template',
+  name: 'Next SaaS Template - DEMO',
   description:
     'Empowering your SaaS startup journey with a meticulously crafted Next.js boilerplate and starter kit for fully-functional websites and apps.',
   shortDescription:

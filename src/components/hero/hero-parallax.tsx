@@ -110,7 +110,7 @@ export const Header = () => {
         <BlockTitle.Title elementType="h2">
           Launching Your SaaS Success Story with{' '}
           <span className="relative bg-gradient-to-r from-indigo-500 to-purple-500/80 bg-clip-text font-extrabold text-transparent">
-            Next SaaS Template
+            Next SaaS Template - Demo version
           </span>
         </BlockTitle.Title>
 

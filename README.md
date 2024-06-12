@@ -1,6 +1,6 @@
 <a href="https://next-saas-template.vercel.app">
   <img alt="SaaS Starter" src="public/og.jpg" />
-  <h1 align="center">Next SaaS Stripe Starter</h1>
+  <h1 align="center">Next SaaS Template Starter</h1>
 </a>
 
 <p align="center">
@@ -9,7 +9,7 @@
 
 <p align="center">
   <a href="https://twitter.com/SaasTemplate">
-    <img src="https://img.shields.io/twitter/follow/SaasTemplate?style=flat&label=SaasTemplate&logo=twitter&color=0bf&logoColor=fff" alt="SaasTemplate Twitter follower count" />
+    <img src="https://img.shields.io/twitter/follow/SaasTemplate?style=flat&label=SaasTemplate&logo=twitter&color=0bf&logoColor=fff" alt="Next SaaS Template Twitter follower count" />
   </a>
 </p>
 
