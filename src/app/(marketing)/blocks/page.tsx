@@ -27,6 +27,20 @@ export default function TestimonialBlocksPage() {
             <BlockTitle.Separator />
           </BlockTitle.Wrapper>
         </div>
+        <div className="mx-auto my-14 flex w-full justify-center">
+          <a
+            href="https://www.producthunt.com/posts/next-saas-template?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-next&#0045;saas&#0045;template"
+            target="_blank"
+          >
+            <img
+              src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=464422&theme=light"
+              alt="Next&#0032;SaaS&#0032;Template - Launching&#0032;your&#0032;SaaS&#0032;success&#0032;story | Product Hunt"
+              style={{ width: '250px', height: '54px' }}
+              width="250"
+              height="54"
+            />
+          </a>
+        </div>
         <div>
           <BlockTitle.Header elementType="h1">Custom Header</BlockTitle.Header>
           <BlockTitle.Title elementType="span">Custom Title</BlockTitle.Title>

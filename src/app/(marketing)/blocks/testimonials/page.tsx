@@ -1,5 +1,3 @@
-import Image from 'next/image'
-
 import { testimonialsData } from '@/lib/fake-data/testimonials'
 
 import { AvatarsGroup } from '@/components/ui/avatar-group'
@@ -27,14 +25,6 @@ export default function TestimonialBlocksPage() {
           <BlockTitle.Background />
           <BlockTitle.Separator />
         </BlockTitle.Wrapper>
-        <div className="flex justify-center">
-          <Image
-            src="/images/demo/product-hunt-button.png"
-            alt="Product Hunt"
-            width={220}
-            height={51}
-          />
-        </div>
         <div className="mb-6 mt-4 flex flex-col items-center justify-center gap-2 md:flex-row">
           <div className="flex flex-col items-center">
             <AvatarsGroup />

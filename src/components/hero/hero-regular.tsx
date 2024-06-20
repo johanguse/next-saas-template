@@ -85,6 +85,20 @@ export default function HeroRegular() {
               <p className="text-sm font-medium">loved by 10,000+ developers</p>
             </div>
           </div>
+          <div className="mx-auto my-6 flex w-full justify-center">
+            <a
+              href="https://www.producthunt.com/posts/next-saas-template?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-next&#0045;saas&#0045;template"
+              target="_blank"
+            >
+              <img
+                src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=464422&theme=light"
+                alt="Next&#0032;SaaS&#0032;Template - Launching&#0032;your&#0032;SaaS&#0032;success&#0032;story | Product Hunt"
+                style={{ width: '250px', height: '54px' }}
+                width="250"
+                height="54"
+              />
+            </a>
+          </div>
           <div className="absolute inset-0 top-[calc(100%-16rem)] mx-auto h-10 max-w-xs bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-600 via-pink-600 to-blue-600 blur-[118px] dark:from-rose-400 dark:via-fuchsia-500 dark:to-indigo-500"></div>
         </div>
       </section>
