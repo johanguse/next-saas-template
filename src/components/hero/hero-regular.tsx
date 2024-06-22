@@ -50,7 +50,7 @@ export default function HeroRegular() {
           </p>
 
           <div
-            className="flex animate-fade-up justify-center space-x-2 opacity-0 md:space-x-4"
+            className="z-50 flex animate-fade-up justify-center space-x-2 opacity-0 md:space-x-4"
             style={{ animationDelay: '0.4s', animationFillMode: 'forwards' }}
           >
             <Link
