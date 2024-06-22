@@ -20,17 +20,15 @@ const UserTableRow = ({ user }) => {
   return (
     <tr className="text-black even:bg-gray-50 dark:text-white dark:even:bg-gray-700">
       <td className="hidden p-3 text-center md:table-cell">
-        {user.image ? (
-          <Image
-            width={40}
-            height={40}
-            src={user.image}
-            alt={`Profile Image of ${user.name}`}
-            className="inline-block size-10 rounded-full"
-          />
-        ) : null}
+        <Image
+          width={40}
+          height={40}
+          src={user.image || '/images/avatars/noavatar.png'}
+          alt={`Profile Image of ${user.name}`}
+          className="inline-block size-10 rounded-full"
+        />
       </td>
-      <td className="p-3 ">
+      <td className="p-3">
         <p className="font-medium">{user.name}</p>
       </td>
       <td className="hidden p-3 text-gray-800 dark:text-gray-200 md:table-cell">

@@ -15,8 +15,8 @@ const UserTableRow = ({ user }) => {
         <Image
           width={40}
           height={40}
-          src={user.avatarSrc}
-          alt="User Avatar"
+          src={user.avatarSrc || '/images/avatars/noavatar.png'}
+          alt={`Profile Image of ${user.name}`}
           className="inline-block size-10 rounded-full"
         />
       </td>
@@ -63,7 +63,7 @@ const userData = [
     name: 'Nansi Hart',
     jobTitle: 'Web Designer',
     email: 'n.hart@example.com',
-    avatarSrc: 'https://source.unsplash.com/mEZ3PoFGs_k/64x64',
+    avatarSrc: 'https://i.pravatar.cc/120?img=13',
     plan: 'Agency',
     planBadgeColor: 'bg-emerald-300',
     planBadgeBg: 'bg-emerald-200',
@@ -74,7 +74,7 @@ const userData = [
     name: 'Lia Baker',
     jobTitle: 'Web Developer',
     email: 'l.baker@example.com',
-    avatarSrc: 'https://source.unsplash.com/BGz8vO3pK8k/64x64',
+    avatarSrc: 'https://i.pravatar.cc/120?img=11',
     plan: 'Freelancer',
     planBadgeColor: 'bg-blue-300',
     planBadgeBg: 'bg-blue-200',
@@ -85,7 +85,7 @@ const userData = [
     name: 'Xavier Rosales',
     jobTitle: 'Author',
     email: 'x.rosales@example.com',
-    avatarSrc: 'https://source.unsplash.com/iFgRcqHznqg/64x64',
+    avatarSrc: 'https://i.pravatar.cc/120?img=10',
     plan: 'Trial',
     planBadgeColor: 'bg-orange-300',
     planBadgeBg: 'bg-orange-200',
@@ -96,7 +96,7 @@ const userData = [
     name: 'Danyal Clark',
     jobTitle: 'Laravel Developer',
     email: 'd.clark@example.com',
-    avatarSrc: 'https://source.unsplash.com/c_GmwfHBDzk/64x64',
+    avatarSrc: 'https://i.pravatar.cc/120?img=12',
     plan: 'Agency',
     planBadgeColor: 'bg-emerald-300',
     planBadgeBg: 'bg-emerald-200',
@@ -107,7 +107,7 @@ const userData = [
     name: 'Keira Simons',
     jobTitle: 'Marketing Director',
     email: 'k.simons@example.com',
-    avatarSrc: 'https://source.unsplash.com/QXevDflbl8A/64x64',
+    avatarSrc: 'https://i.pravatar.cc/120?img=14',
     plan: 'Freelancer',
     planBadgeColor: 'bg-blue-300',
     planBadgeBg: 'bg-blue-200',
@@ -118,7 +118,7 @@ const userData = [
     name: 'John Doe',
     jobTitle: 'Frontend Developer',
     email: 'john.doe@example.com',
-    avatarSrc: 'https://source.unsplash.com/1_cDvzCxw0U/64x64',
+    avatarSrc: 'https://i.pravatar.cc/120?img=15',
     plan: 'Pro',
     planBadgeColor: 'bg-purple-300',
     planBadgeBg: 'bg-purple-200',

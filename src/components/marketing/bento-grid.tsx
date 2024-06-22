@@ -323,7 +323,7 @@ export default function BentoGrid({ className }: { className?: string }) {
                         width={100}
                         height={100}
                         className="size-full rounded-full border"
-                        src="https://randomuser.me/api/portraits/men/4.jpg"
+                        src="https://i.pravatar.cc/120?img=1"
                         alt="fake-avatar"
                       />
                     </div>
@@ -334,7 +334,7 @@ export default function BentoGrid({ className }: { className?: string }) {
                         width={100}
                         height={100}
                         className="size-full rounded-full border"
-                        src="https://randomuser.me/api/portraits/men/6.jpg"
+                        src="https://i.pravatar.cc/120?img=6"
                         alt="fake-avatar"
                       />
                     </div>
@@ -351,7 +351,7 @@ export default function BentoGrid({ className }: { className?: string }) {
                         width={100}
                         height={100}
                         className="size-full rounded-full border"
-                        src="https://randomuser.me/api/portraits/men/2.jpg"
+                        src="https://i.pravatar.cc/120?img=3"
                         alt="fake-avatar"
                       />
                     </div>
