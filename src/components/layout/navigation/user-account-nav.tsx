@@ -37,7 +37,10 @@ export function UserAccountNav({ user }: UserAccountNavProps) {
     <DropdownMenu>
       <DropdownMenuTrigger>
         <UserAvatar
-          user={{ name: user?.name || null, image: user?.image || null }}
+          user={{
+            name: user?.name || null,
+            image: user?.image || '/images/avatars/noavatar.png',
+          }}
           className="size-9 border-2 border-slate-100 bg-slate-100 dark:border-slate-700 dark:bg-slate-700"
         />
       </DropdownMenuTrigger>
