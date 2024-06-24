@@ -10,6 +10,7 @@
     "dev": "next dev",
     "dev:turbo": "next dev --turbo",
     "dev:clean": "rm -fr node_modules/.cache/contentlayer && contentlayer build && rm -fr .next",
+    "dev:db": "prisma generate && prisma db push --force-reset && pnpm prisma:seed && next build",
     "build": "contentlayer build && next build",
     "build:content": "contentlayer build",
     "start": "next start",
@@ -21,7 +22,7 @@
     "prepare": "husky",
     "prisma": "prisma studio",
     "prisma:generate": "prisma generate",
-    "prisma:seed": "npm run db-seed",
+    "prisma:seed": "npm run db:seed",
     "db:seed": "tsc prisma/seed.ts && cat prisma/seed.js | node --input-type=\"commonjs\" && rm prisma/seed.js",
     "dev:email": "cp .env ./node_modules/react-email/ && email dev --dir='src/components/emails' --port 3333"
   },
