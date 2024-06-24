@@ -19,6 +19,7 @@ function DeleteAccountModal({
 }) {
   const { data: session } = useSession()
   const [deleting, setDeleting] = useState(false)
+  const handleCloseModal = () => setShowDeleteAccountModal(false)
 
   async function deleteAccount() {
     setDeleting(true)
@@ -49,7 +50,7 @@ function DeleteAccountModal({
   return (
     <Modal
       showModal={showDeleteAccountModal}
-      setShowModal={setShowDeleteAccountModal}
+      setShowModal={handleCloseModal}
       className="gap-0"
     >
       <div className="flex flex-col items-center justify-center space-y-3 border-b p-4 pt-8 sm:px-16">
