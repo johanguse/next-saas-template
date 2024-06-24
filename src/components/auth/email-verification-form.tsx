@@ -69,7 +69,7 @@ export function EmailVerificationForm(): JSX.Element {
   return (
     <Form {...form}>
       <form
-        className="grid gap-4 "
+        className="grid gap-4"
         onSubmit={(...args) => void form.handleSubmit(onSubmit)(...args)}
       >
         <FormField
@@ -93,7 +93,7 @@ export function EmailVerificationForm(): JSX.Element {
                 className="mr-2 size-4 animate-spin"
                 aria-hidden="true"
               />
-              <span>Pending...</span>
+              <span>Loading...</span>
             </>
           ) : (
             <span>Get verification link</span>
