@@ -56,7 +56,7 @@ pnpm dev
 
 ### Extra
 
-In case you need to change the database and seed again, use this command:
+In case you need to change the database and seed again on localhost or at Vercel, use this command:
 
 ```sh
 prisma generate && prisma db push --force-reset && pnpm prisma:seed && next build
