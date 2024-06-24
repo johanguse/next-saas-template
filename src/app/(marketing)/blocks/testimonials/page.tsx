@@ -4,7 +4,7 @@ import { AvatarsGroup } from '@/components/ui/avatar-group'
 import StarRating from '@/components/ui/star-rating'
 
 import { BlockTitle } from '@/components/layout/main-title'
-import ReviewsGridAnimation from '@/components/marketing/ReviewsGridAnimation'
+import ReviewsGridAnimation from '@/components/marketing/reviews-grid-animation'
 import TestimonialCards from '@/components/marketing/testimonials-cards'
 import TestimonialSlider from '@/components/marketing/testimonials-slider'
 import TestimonialSliderBrand from '@/components/marketing/testimonials-slider-brand'
