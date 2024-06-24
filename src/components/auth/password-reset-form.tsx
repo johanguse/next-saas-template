@@ -91,7 +91,7 @@ export function PasswordResetForm(): JSX.Element {
                 className="mr-2 size-4 animate-spin"
                 aria-hidden="true"
               />
-              <span>Pending...</span>
+              <span>Loading...</span>
             </>
           ) : (
             <span>Continue</span>

@@ -63,7 +63,8 @@ model User {
   resetPasswordToken       String?   @unique @map("reset_password_token")
   resetPasswordTokenExpiry DateTime? @map("reset_password_token_expiery")
 
-  isBlocked Boolean @default(false)
+  deletedAt DateTime?
+  isBlocked Boolean   @default(false)
 
   role UserRole @default(USER)
 
