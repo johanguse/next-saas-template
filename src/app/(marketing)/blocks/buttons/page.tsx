@@ -1,5 +1,7 @@
 import Link from 'next/link'
 
+import { siteConfig } from '@/config/site'
+
 import { cn } from '@/lib/utils'
 
 import { Button, buttonVariants } from '@/components/ui/button'
@@ -13,6 +15,8 @@ export const metadata = {
 }
 
 export default function ButtonsBlocksPage() {
+  const twitterLink = siteConfig.social?.links?.twitter
+
   return (
     <div className="flex w-full flex-col gap-16 py-8 md:py-8">
       <div className="mx-auto pt-10 text-center">
@@ -25,7 +29,7 @@ export default function ButtonsBlocksPage() {
         </BlockTitle.Wrapper>
         <div className="mb-20">
           <Link
-            href="https://twitter.com/SaasTemplate"
+            href={twitterLink.href}
             className={cn(
               buttonVariants({ variant: 'outline', size: 'sm' }),
               'animate-fade-up bg-gradient-to-r from-indigo-500 to-purple-500/80 px-4 py-2 font-semibold text-white opacity-0 hover:text-white'
@@ -40,7 +44,7 @@ export default function ButtonsBlocksPage() {
           <div className="relative">
             <div className="absolute -inset-1 rounded bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500 opacity-75 blur"></div>
             <Link
-              href="https://twitter.com/SaasTemplate"
+              href={twitterLink.href}
               className="relative flex rounded bg-black px-7 py-4 font-semibold text-white"
             >
               <div className="flex items-center">

@@ -49,26 +49,14 @@ export const CtaBanner = () => {
         />
       </div>
       <p className="text-sm leading-6">
-        <span className="mr-1">
-          <strong className="font-semibold">We are are live</strong>{' '}
-          <a
-            href="https://nextsaastemplate.com"
-            target="_blank"
-            rel="noreferrer"
-            className="underline"
-          >
-            Buy it now
-          </a>
-          !
-        </span>
-        | Stay tunned{' '}
+        Stay tunned{' '}
         <Button
           size={'sm'}
           variant={'link'}
           className="px-0"
           onClick={collectEmailsModal.onOpen}
         >
-          Join on our mailing list
+          join on our mailing list
         </Button>
       </p>
       <div className="flex flex-1 justify-end">

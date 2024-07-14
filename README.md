@@ -8,7 +8,7 @@
 </p>
 
 <p align="center">
-  <a href="https://twitter.com/SaasTemplate">
+  <a href="https://twitter.com/johanguse">
     <img src="https://img.shields.io/twitter/follow/SaasTemplate?style=flat&label=SaasTemplate&logo=twitter&color=0bf&logoColor=fff" alt="Next SaaS Template Twitter follower count" />
   </a>
 </p>
@@ -119,4 +119,4 @@ Visit our [Public Roadmap](https://bit.ly/48LTNin) for more
 
 ## Author
 
-Created by [@SaasTemplate](https://twitter.com/SaasTemplate) in 2023
+Created by [@johanguse](https://twitter.com/johanguse) in 2023

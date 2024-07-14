@@ -22,7 +22,7 @@ export default function HeroRegular() {
             <div className="relative">
               <div className="absolute -inset-1 rounded bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500 opacity-75 blur"></div>
               <Link
-                href="https://twitter.com/SaasTemplate"
+                href={twitterLink.href}
                 className="relative flex rounded bg-black px-7 py-4 font-semibold text-white"
                 target="_blank"
               >
