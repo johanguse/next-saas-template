@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "author": {
-    "name": "SaasTemplate",
-    "url": "https://twitter.com/SaasTemplate"
+    "name": "Johan Guse",
+    "url": "https://twitter.com/johanguse"
   },
   "scripts": {
     "dev": "next dev",
