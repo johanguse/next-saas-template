@@ -4,13 +4,15 @@ import { revalidatePath } from 'next/cache'
 
 import { auth } from '@/lib/auth/auth'
 import { prisma } from '@/lib/db'
-import { userNameSchema } from '@/lib/validations/user'
+import { userRoleSchema } from '@/lib/validations/user'
+
+import { UserRole } from '@prisma/client'
 
 export type FormData = {
-  name: string
+  role: UserRole
 }
 
-export async function updateUserName(userId: string, data: FormData) {
+export async function updateUserRole(userId: string, data: FormData) {
   try {
     const session = await auth()
 
@@ -18,22 +20,20 @@ export async function updateUserName(userId: string, data: FormData) {
       throw new Error('Unauthorized')
     }
 
-    const { name } = userNameSchema.parse(data)
+    const { role } = userRoleSchema.parse(data)
 
-    // Update the user name.
     await prisma.user.update({
       where: {
         id: userId,
       },
       data: {
-        name: name,
+        role: role,
       },
     })
 
     revalidatePath('/dashboard/settings')
     return { status: 'success' }
   } catch (error) {
-    // console.log(error)
     return { status: 'error' }
   }
 }
