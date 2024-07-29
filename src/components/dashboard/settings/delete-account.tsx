@@ -11,7 +11,7 @@ import {
   CardTitle,
 } from '@/components/ui/card'
 
-import { useDeleteAccountModal } from '../modals/delete-account-modal'
+import { useDeleteAccountModal } from '../../modals/delete-account-modal'
 
 export function DeleteAccountSection() {
   const { setShowDeleteAccountModal, DeleteAccountModal } =

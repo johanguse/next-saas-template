@@ -1,4 +1,5 @@
 import { emailSchema } from './email'
+import { UserRole } from '@prisma/client'
 import * as z from 'zod'
 
 export const userNameSchema = z.object({
@@ -32,3 +33,7 @@ export type GetUserByResetPasswordTokenInput = z.infer<
 export type GetUserByEmailVerificationTokenInput = z.infer<
   typeof getUserByEmailVerificationTokenSchema
 >
+
+export const userRoleSchema = z.object({
+  role: z.nativeEnum(UserRole),
+})
