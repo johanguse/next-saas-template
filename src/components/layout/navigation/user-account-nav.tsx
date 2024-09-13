@@ -1,5 +1,7 @@
 'use client'
 
+import { useEffect } from 'react'
+
 import Link from 'next/link'
 
 import {
@@ -13,6 +15,7 @@ import {
 import { Icons } from '@/components/shared/icons'
 import { UserAvatar } from '@/components/shared/user-avatar'
 
+import { useUserStore } from '@/store/use-user-store'
 import {
   Cog,
   CreditCard,
@@ -22,16 +25,33 @@ import {
   User2Icon,
 } from 'lucide-react'
 import type { Session } from 'next-auth'
-import { signOut } from 'next-auth/react'
+import { signOut, useSession } from 'next-auth/react'
 
 type UserAccountNavProps = {
-  user: Session['user']
+  initialUser?: Session['user']
 }
 
-export function UserAccountNav({ user }: UserAccountNavProps) {
-  if (!user) return
+export function UserAccountNav({ initialUser }: UserAccountNavProps) {
+  const { data: session, update } = useSession()
+  const { user, setUser } = useUserStore()
 
-  const userRole = user.role
+  useEffect(() => {
+    if (session?.user) {
+      setUser(session.user)
+    }
+  }, [session, setUser])
+
+  useEffect(() => {
+    if (user?.image && initialUser && user.image !== initialUser.image) {
+      update({ user: { ...initialUser, image: user.image } })
+    }
+  }, [user, initialUser, update])
+
+  const displayUser = user || initialUser || null
+
+  if (!displayUser) return null
+
+  const userRole = displayUser.role
 
   return (
     <DropdownMenu>

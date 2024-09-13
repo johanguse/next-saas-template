@@ -1,6 +1,8 @@
+'use client'
+
 import { redirect } from 'next/navigation'
 
-import { getCurrentUser } from '@/lib/session'
+import { Skeleton } from '@/components/ui/skeleton'
 
 import { DashboardHeader } from '@/components/dashboard/header'
 import { ChangeUserNameSection } from '@/components/dashboard/settings/change-name'
@@ -8,15 +10,18 @@ import { ChangeRoleAccountSection } from '@/components/dashboard/settings/change
 import { DeleteAccountSection } from '@/components/dashboard/settings/delete-account'
 import { DashboardShell } from '@/components/dashboard/shell'
 
-export const metadata = {
-  title: 'Settings',
-  description: 'Manage account and website settings.',
-}
+import { useUserStore } from '@/store/use-user-store'
+import { useSession } from 'next-auth/react'
 
-export default async function SettingsPage() {
-  const user = await getCurrentUser()
+export default function ProfilePage() {
+  const { data: session, status } = useSession()
+  const { user, setUser } = useUserStore()
 
-  if (!user) {
+  if (status === 'loading') {
+    return <Skeleton className="h-80 w-full rounded-lg" />
+  }
+
+  if (status === 'unauthenticated') {
     redirect('/login')
   }
 
@@ -27,9 +32,15 @@ export default async function SettingsPage() {
         text="Manage account and website settings."
       />
       <div className="grid gap-10">
-        <ChangeUserNameSection user={{ id: user.id, name: user.name || '' }} />
-        <ChangeRoleAccountSection user={user} />
-        <DeleteAccountSection />
+        {user && (
+          <>
+            <ChangeUserNameSection
+              user={{ id: user.id, name: user.name || '' }}
+            />
+            <ChangeRoleAccountSection user={user} />
+            <DeleteAccountSection />
+          </>
+        )}
       </div>
     </DashboardShell>
   )

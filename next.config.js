@@ -25,6 +25,18 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'res.cloudinary.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'next-saas-template-demo.r2.cloudflarestorage.com',
+      },
+      {
+        protocol: 'https',
+        hostname: '7f28ed1894bb6eae10f75ec0933a4726.r2.cloudflarestorage.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'pub-55daa4875b3a4e7a980cf546816ad948.r2.dev',
+      },
     ],
   },
   reactStrictMode: true,

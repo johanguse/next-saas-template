@@ -69,7 +69,7 @@ export function UserNameForm({ user }: UserProps) {
           loading={isPending}
           disabled={isPending}
         >
-          Save
+          Change Name
         </Button>
       </div>
     </form>
