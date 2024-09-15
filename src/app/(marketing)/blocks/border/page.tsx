@@ -20,7 +20,7 @@ export default function ButtonsBlocksPage() {
         </BlockTitle.Wrapper>
         <div className="mb-20">
           <SexyBorder>
-            <div className="flex w-full flex-col rounded-md border bg-black p-4 lg:p-8">
+            <div className="flex w-full flex-col rounded-md border p-4 lg:p-8">
               <div className="p-4">This is a default sexy border</div>
             </div>
           </SexyBorder>
@@ -28,7 +28,7 @@ export default function ButtonsBlocksPage() {
 
         <div className="mb-20">
           <SexyBorder from="[#ff80b5]" to="indigo-500" via="fuchsia-500">
-            <div className="flex w-full flex-col rounded-md border bg-black p-4 lg:p-8">
+            <div className="flex w-full flex-col rounded-md border p-4 lg:p-8">
               <div className="p-4">This is a custom sexy border</div>
             </div>
           </SexyBorder>
@@ -39,7 +39,7 @@ export default function ButtonsBlocksPage() {
             offset={20}
             gradientClassName="gradient-secondary"
           >
-            <div className="flex w-full flex-col rounded-md border bg-black p-4 lg:p-8">
+            <div className="flex w-full flex-col rounded-md border p-4 lg:p-8">
               <div className="p-4">
                 This is a sexy border with custom gradient css class
               </div>
