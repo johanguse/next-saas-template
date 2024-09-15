@@ -25,6 +25,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'res.cloudinary.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'pub-55daa4875b3a4e7a980cf546816ad948.r2.dev',
+      },
     ],
   },
   reactStrictMode: true,

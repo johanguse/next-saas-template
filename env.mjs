@@ -20,6 +20,10 @@ export const env = createEnv({
     RESEND_EMAIL_SERVER_HOST: z.string().min(1),
     RESEND_EMAIL_SERVER_PORT: z.string().min(1),
     RESEND_FROM_EMAIL: z.string().min(1),
+    CLOUDFLARE_R2_ACCOUNT_ID: z.string().min(1),
+    CLOUDFLARE_R2_ACCESS_KEY_ID: z.string().min(1),
+    CLOUDFLARE_R2_SECRET_ACCESS_KEY: z.string().min(1),
+    CLOUDFLARE_R2_BUCKET_NAME: z.string().min(1),
   },
   client: {
     NEXT_PUBLIC_ANALITYCS_ID: z.string().min(1).optional(),
@@ -30,6 +34,7 @@ export const env = createEnv({
     NEXT_PUBLIC_STRIPE_BUSINESS_YEARLY_PLAN_ID: z.string().min(1),
     NEXT_PUBLIC_STRIPE_PRICING_TABLE_ID: z.string().min(1).optional(),
     NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: z.string().min(1).optional(),
+    NEXT_PUBLIC_R2_DEV_URL: z.string().min(1).optional(),
   },
   runtimeEnv: {
     NODE_ENV: process.env.NODE_ENV,
@@ -64,5 +69,12 @@ export const env = createEnv({
     RESEND_EMAIL_SERVER_HOST: process.env.RESEND_EMAIL_SERVER_HOST,
     RESEND_EMAIL_SERVER_PORT: process.env.RESEND_EMAIL_SERVER_PORT,
     RESEND_FROM_EMAIL: process.env.RESEND_FROM_EMAIL,
+    NEXT_PUBLIC_R2_DEV_URL: process.env.NEXT_PUBLIC_R2_DEV_URL,
+    // Cloudflare R2
+    CLOUDFLARE_R2_ACCOUNT_ID: process.env.CLOUDFLARE_R2_ACCOUNT_ID,
+    CLOUDFLARE_R2_ACCESS_KEY_ID: process.env.CLOUDFLARE_R2_ACCESS_KEY_ID,
+    CLOUDFLARE_R2_SECRET_ACCESS_KEY:
+      process.env.CLOUDFLARE_R2_SECRET_ACCESS_KEY,
+    CLOUDFLARE_R2_BUCKET_NAME: process.env.CLOUDFLARE_R2_BUCKET_NAME,
   },
 })

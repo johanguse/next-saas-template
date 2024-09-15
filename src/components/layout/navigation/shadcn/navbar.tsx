@@ -67,7 +67,7 @@ export function NavBar({
                   <ButtonShareFeedback />
                 </li>
               </ul>
-              <UserAccountNav user={user} />
+              <UserAccountNav initialUser={user} />
             </>
           )}
 

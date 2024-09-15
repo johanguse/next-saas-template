@@ -176,3 +176,34 @@ export function splitArray<T>(array: T[], numParts: number): T[][] {
 
   return result
 }
+
+/**
+ * Extracts initials from a given name.
+ *
+ * This function takes a name string and returns the initials based on the following rules:
+ * - For a single name, it returns the first letter.
+ * - For two or more names, it returns the first letter of the first and last name.
+ * - If the name is empty, null, or undefined, it returns "Guest".
+ *
+ * @param {string | null | undefined} name - The full name to extract initials from.
+ * @returns {string} The extracted initials or "Guest" if no valid name is provided.
+ *
+ * @example
+ * getInitials("Johan Guse") // Returns "JG"
+ * getInitials("Johan Robertt Guse") // Returns "JG"
+ * getInitials("Johan") // Returns "J"
+ * getInitials("") // Returns "Guest"
+ * getInitials(null) // Returns "Guest"
+ * getInitials(undefined) // Returns "Guest"
+ */
+export function getInitials(name: string | null | undefined): string {
+  if (!name || name.trim() === '') return 'Guest'
+
+  const words = name.trim().split(/\s+/)
+
+  if (words.length === 1) {
+    return words[0].charAt(0).toUpperCase()
+  }
+
+  return (words[0].charAt(0) + words[words.length - 1].charAt(0)).toUpperCase()
+}

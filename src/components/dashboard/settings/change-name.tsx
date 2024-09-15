@@ -8,6 +8,8 @@ import {
   CardTitle,
 } from '@/components/ui/card'
 
+import { UploadForm } from '@/components/forms/upload-form'
+
 import { UserNameForm } from '../forms/user-name-form'
 import { User } from '@prisma/client'
 
@@ -26,6 +28,7 @@ export function ChangeUserNameSection({ user }: UserProps) {
         </CardDescription>
       </CardHeader>
       <CardContent>
+        <UploadForm className="aling-self-center mb-6" />
         <UserNameForm user={{ id: user.id, name: user.name }} />
       </CardContent>
     </Card>

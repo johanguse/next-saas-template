@@ -129,7 +129,7 @@ export function MultiLevelNav({
                   <ModeToggle />
                 </li>
               </ul>
-              <UserAccountNav user={user} />
+              <UserAccountNav initialUser={user} />
             </>
           ) : (
             <Button

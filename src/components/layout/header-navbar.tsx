@@ -44,7 +44,7 @@ export function NavBar({
           {rightElements}
 
           {user ? (
-            <UserAccountNav user={user} />
+            <UserAccountNav initialUser={user} />
           ) : (
             <Button
               className="gap-2 px-4"
