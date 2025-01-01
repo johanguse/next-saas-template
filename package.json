@@ -148,12 +148,13 @@
     "remark": "^15.0.1",
     "remark-gfm": "^4.0.0",
     "tailwindcss": "^3.4.10",
+    "ts-plugin-sort-import-suggestions": "^1.0.4",
     "typescript": "5.4.5",
     "unist-util-visit": "^5.0.0"
   },
   "pnpm": {
     "peerDependencyRules": {
-      "allowedVersion": {
+      "allowedVersions": {
         "next": "^14.0.0",
         "esbuild": "^0.19.0",
         "@opentelemetry/api": "^1.9.0"
